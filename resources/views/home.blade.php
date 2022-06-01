@@ -9,7 +9,7 @@
             <!--Slide 1-->
             <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden="" checked="checked">
             <div class="carousel-item absolute opacity-0" style="height:50vh;">
-                <div class="block h-full w-full mx-auto pt-6 md:pt-0 md:items-center bg-cover bg-right" style="background-image: url('https://images.unsplash.com/photo-1422190441165-ec2956dc9ecc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1600&q=80');">
+                <div class="block h-full w-full mx-auto pt-6 md:pt-0 md:items-center bg-cover bg-right" style="background-image: url('{{ asset('img/b2.jpg')}}');">
 
                     <div class="container mx-auto">
                         <div class="flex flex-col w-full lg:w-1/2 md:ml-16 items-center md:items-start px-6 tracking-wide">
@@ -26,7 +26,7 @@
             <!--Slide 2-->
             <input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
             <div class="carousel-item absolute opacity-0 bg-cover bg-right" style="height:50vh;">
-                <div class="block h-full w-full mx-auto  pt-6 md:pt-0 md:items-center bg-cover bg-right" style="background-image: url('https://images.unsplash.com/photo-1533090161767-e6ffed986c88?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjM0MTM2fQ&auto=format&fit=crop&w=1600&q=80');">
+                <div class="block h-full w-full mx-auto  pt-6 md:pt-0 md:items-center bg-cover bg-right" style="background-image: url('{{ asset('img/b5.jpg')}}');">
 
                     <div class="container mx-auto">
                         <div class="flex flex-col w-full lg:w-1/2 md:ml-16 items-center md:items-start px-6 tracking-wide">
@@ -43,7 +43,7 @@
             <!--Slide 3-->
             <input class="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden="">
             <div class="carousel-item absolute opacity-0" style="height:50vh;">
-                <div class="block h-full w-full mx-auto pt-6 md:pt-0 md:items-center bg-cover bg-bottom" style="background-image: url('https://images.unsplash.com/photo-1519327232521-1ea2c736d34d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1600&q=80');">
+                <div class="block h-full w-full mx-auto pt-6 md:pt-0 md:items-center bg-cover bg-bottom" style="background-image: url('{{ asset('img/b3.jpg')}}');">
 
                     <div class="container mx-auto">
                         <div class="flex flex-col w-full lg:w-1/2 md:ml-16 items-center md:items-start px-6 tracking-wide">
@@ -105,7 +105,7 @@
 
             <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
                 <a href="#">
-                    <img class="hover:grow hover:shadow-lg" src="https://images.unsplash.com/photo-1592496431122-2349e0fbc666?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1212&q=80">
+                    <img class="hover:grow hover:shadow-lg" src="{{ asset('img/l1.jpg')}}">
                     <div class="pt-3  items-center justify-between">
                         <p class="mt-2 text-xl font-medium text-dark ">Libro </p>
                         <p class="">Autor</p>
@@ -132,7 +132,7 @@
 
             <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
                 <a href="#">
-                    <img class="hover:grow hover:shadow-lg" src="https://images.unsplash.com/photo-1508423134147-addf71308178?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&h=400&q=80">
+                    <img class="hover:grow hover:shadow-lg" src="{{ asset('img/l2.jpg')}}">
                     <div class="pt-3  items-center justify-between">
                         <p class="mt-2 text-xl font-medium text-dark ">Libro </p>
                         <p class="">Autor</p>
@@ -159,7 +159,7 @@
 
             <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
                 <a href="#">
-                    <img class="hover:grow hover:shadow-lg" src="https://images.unsplash.com/photo-1449247709967-d4461a6a6103?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&h=400&q=80">
+                    <img class="hover:grow hover:shadow-lg" src="{{ asset('img/l8.jpg')}}">
                     <div class="pt-3  items-center justify-between">
                         <p class="mt-2 text-xl font-medium text-dark ">Libro </p>
                         <p class="">Autor</p>
@@ -186,7 +186,7 @@
 
             <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
                 <a href="#">
-                    <img class="hover:grow hover:shadow-lg" src="https://images.unsplash.com/reserve/LJIZlzHgQ7WPSh5KVTCB_Typewriter.jpg?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&h=400&q=80">
+                    <img class="hover:grow hover:shadow-lg" src="{{ asset('img/l3.jpg')}}">
                     <div class="pt-3  items-center justify-between">
                         <p class="mt-2 text-xl font-medium text-dark ">Libro </p>
                         <p class="">Autor</p>
@@ -213,7 +213,7 @@
 
             <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
                 <a href="#">
-                    <img class="hover:grow hover:shadow-lg" src="https://images.unsplash.com/photo-1467949576168-6ce8e2df4e13?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&h=400&q=80">
+                    <img class="hover:grow hover:shadow-lg" src="{{ asset('img/l4.jpg')}}">
                     <div class="pt-3  items-center justify-between">
                         <p class="mt-2 text-xl font-medium text-dark ">Libro </p>
                         <p class="">Autor</p>
@@ -240,7 +240,7 @@
 
             <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
                 <a href="#">
-                    <img class="hover:grow hover:shadow-lg" src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&h=400&q=80">
+                    <img class="hover:grow hover:shadow-lg" src="{{ asset('img/l5.jpg')}}">
                     <div class="pt-3  items-center justify-between">
                         <p class="mt-2 text-xl font-medium text-dark ">Libro </p>
                         <p class="">Autor</p>
@@ -267,7 +267,7 @@
 
             <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
                 <a href="#">
-                    <img class="hover:grow hover:shadow-lg" src="https://images.unsplash.com/photo-1550837368-6594235de85c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&h=400&q=80">
+                    <img class="hover:grow hover:shadow-lg" src="{{ asset('img/l6.jpg')}}">
                     <div class="pt-3  items-center justify-between">
                         <p class="mt-2 text-xl font-medium text-dark ">Libro </p>
                         <p class="">Autor</p>
@@ -294,7 +294,7 @@
 
             <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
                 <a href="#">
-                    <img class="hover:grow hover:shadow-lg" src="https://images.unsplash.com/photo-1551431009-a802eeec77b1?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&h=400&q=80">
+                    <img class="hover:grow hover:shadow-lg" src="{{ asset('img/l7.jpg')}}">
                     <div class="pt-3  items-center justify-between">
                         <p class="mt-2 text-xl font-medium text-dark ">Libro </p>
                         <p class="">Autor</p>
