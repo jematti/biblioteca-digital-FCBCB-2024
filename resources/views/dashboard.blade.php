@@ -13,12 +13,12 @@
                 x-show="asideOpen">
                 <a href="#" class="flex items-center space-x-1 rounded-md px-2 py-3 hover:bg-gray-100 hover:text-blue-600">
                     <span class="text-2xl"><i class="bx bx-home"></i></span>
-                    <span>Principal</span>
+                    <span>Principal6</span>
                 </a>
 
                 <a href="#" class="flex items-center space-x-1 rounded-md px-2 py-3 hover:bg-gray-100 hover:text-blue-600">
                     <span class="text-2xl"><i class="bx bx-cart"></i></span>
-                    <span>Carro</span>
+                    <span>Carr6o</span>
                 </a>
 
                 <a href="#" class="flex items-center space-x-1 rounded-md px-2 py-3 hover:bg-gray-100 hover:text-blue-600">
