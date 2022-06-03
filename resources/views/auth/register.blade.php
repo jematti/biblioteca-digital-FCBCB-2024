@@ -10,6 +10,8 @@
             <img src="{{asset('img/registrar.jpg')}}" alt="Imagen de registro usuario">
         </div>
 
+
+
         <div class="md:w-4/12 bg-white p-6 rounded-lg shadow-xl">
             <form action="{{route('register')}}" method="POST" novalidate>
                 @csrf
@@ -98,7 +100,7 @@
                     <input
                         type="submit"
                         value="Crear Cuenta"
-                        class="bg-sky-600 hover:bg-sky-700 transition-colors cursor-pointer uppercase font-bold w-full text-white rounded-lg p-3"
+                        class="bg-sky-600 hover:bg-sky-700 transition-colors cursor-pointer uppercase font-bold w-full text-white rounded-lg p-3 mt-5"
                     />
                 </div>
             </form>

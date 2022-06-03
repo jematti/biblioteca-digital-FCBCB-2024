@@ -10,24 +10,28 @@
         <div class="md:flex md:justify-center md:gap md:items-center">
 
           <div class="md:w-3/12  p-5">
-                <img alt="ecommerce" src="{{ asset('img/l9.jpg')}}">
+                <img alt="ecommerce" src="{{ asset('img/PA11.png')}}">
           </div>
 
           <div class="md:w-9/12 p-6 rounded-lg shadow-xl">
-                <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">CIEN AÑOS DE SOLEDAD</h1>
-                <h2 class="text-lg title-font text-gray-500 tracking-widest">GABRIEL GARCIA MARQUEZ</h2>
+                <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">
+                    Dossier Biblioteca del Bicentenario de Bolivia
+                    </h1>
+                <h2 class="text-lg title-font text-gray-500 tracking-widest">Revista Nacional Piedra de Agua</h2>
 
-                <p class="leading-relaxed">Señalada como «catedral gótica del lenguaje», este clásico del siglo XX es el enorme y espléndido tapiz de la saga de la familia Buendía, en la mítica aldea de Macondo.
-
-                    Un referente imprescindible de la vida y la narrativa latinoamericana.
-
-                    «Muchos años despues</p>
+                <p class="leading-relaxed">
+                    La Biblioteca del Bicentenario de Bolivia es
+                    el proyecto editorial estatal más grande emprendido en nuestro país, el cual, inserto en
+                    la Agenda Patriótica, es impulsado por la Vicepresidencia del Estado Plurinacional para conmemorar
+                    los 200 años de nacimiento de nuestro país; proyecto que la FCBCB está apoyando con exposiciones y
+                    conferencias acerca de los libros y autores seleccionados. Por ese motivo, Piedra de agua le dedica un
+                    dossier y explora su dimensión, alcances y características. Informa, además, de varias acciones que se
+                    vienen desarrollando en la segunda etapa del proyecto, es decir, en la etapa de edición de los primeros títulos que serán presentados en breve
+                </p>
                 <div class="flex mt-6 items-center pb-5 border-b-2 border-blue-100 mb-5">
                     <h4 class="font-medium mb-1">Categoria:</h4>
                     <div class="flex ml-6 items-center">
-                        <button type="button" class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Novela</button>
-                        <button type="button" class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Narrativa</button>
-                        <button type="button" class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Literatura</button>
+                        <button type="button" class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">REVISTA</button>
                     </div>
                 </div>
 
@@ -47,7 +51,7 @@
                             año:
                           </th>
                           <td class="align-middle text-lg pl-1 text-left text-blueGray-700 ">
-                            2019
+                            2015
                           </td>
                         </tr>
                       </tbody>

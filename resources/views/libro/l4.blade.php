@@ -10,24 +10,32 @@
         <div class="md:flex md:justify-center md:gap md:items-center">
 
           <div class="md:w-3/12  p-5">
-                <img alt="ecommerce" src="{{ asset('img/l9.jpg')}}">
+                <img alt="ecommerce" src="{{ asset('img/PA4.png')}}">
           </div>
 
           <div class="md:w-9/12 p-6 rounded-lg shadow-xl">
-                <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">CIEN AÑOS DE SOLEDAD</h1>
-                <h2 class="text-lg title-font text-gray-500 tracking-widest">GABRIEL GARCIA MARQUEZ</h2>
+                <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">
+                    Dossier Luis Rico Premio Nacional de Cultura Mario Ríos Gastelú Premio Gunnar Mendoza</h1>
+                <h2 class="text-lg title-font text-gray-500 tracking-widest">Revista Nacional Piedra de Agua</h2>
 
-                <p class="leading-relaxed">Señalada como «catedral gótica del lenguaje», este clásico del siglo XX es el enorme y espléndido tapiz de la saga de la familia Buendía, en la mítica aldea de Macondo.
-
-                    Un referente imprescindible de la vida y la narrativa latinoamericana.
-
-                    «Muchos años despues</p>
+                <p class="leading-relaxed">
+                    Desde julio de 2013 en que nació Piedra de
+                    agua, publicamos tres números bimensuales. Ahora, iniciando nuestro segundo año de vigencia entre los lectores,
+                    presentamos la edición número cuatro.
+                    En esta ocasión, el dossier está dedicado al
+                    cantautor Luis Rico y al periodista Mario Ríos
+                    Gastelú, ganadores del Premio Nacional de
+                    Cultura y Premio Nacional de Gestión Cultural
+                    Gunnar Mendoza respectivamente, con sendos
+                    reportajes que muestran su trayectoria y los
+                    méritos más que suficientes que les permitieron
+                    obtener esos galardones, los más importantes
+                    en materia cultural que otorga el país.
+                </p>
                 <div class="flex mt-6 items-center pb-5 border-b-2 border-blue-100 mb-5">
                     <h4 class="font-medium mb-1">Categoria:</h4>
                     <div class="flex ml-6 items-center">
-                        <button type="button" class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Novela</button>
-                        <button type="button" class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Narrativa</button>
-                        <button type="button" class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Literatura</button>
+                        <button type="button" class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">REVISTA</button>
                     </div>
                 </div>
 
@@ -47,7 +55,7 @@
                             año:
                           </th>
                           <td class="align-middle text-lg pl-1 text-left text-blueGray-700 ">
-                            2019
+                            2014
                           </td>
                         </tr>
                       </tbody>
