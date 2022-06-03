@@ -119,6 +119,66 @@
             @endguest
 
            </div>
+
+
+
+			<div class="max-w-6xl mx-auto px-4">
+				<div class="flex justify-between">
+                    <h1 class="text-3xl font-black text-gray-200 pt-2">
+                        <div class="flex space-x-7">
+                            <div>
+                                <!-- Website Logo -->
+                                <a href="#" class="flex items-center py-4 px-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                                      </svg>
+                                    <span class="font-bold text-lg pl-2">Libros Populares</span>
+                                </a>
+                            </div>
+
+                            <div>
+                                <!-- Website Logo -->
+                                <a href="#" class="flex items-center py-4 px-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                                      </svg>
+                                    <span class="font-bold text-lg pl-2">Mas Leidos</span>
+                                </a>
+                            </div>
+
+                            <div>
+                                <!-- Website Logo -->
+                                <a href="#" class="flex items-center py-4 px-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
+                                    </svg>
+                                    <span class="font-bold text-lg pl-2">Recomendados</span>
+                                </a>
+                            </div>
+                            <div>
+                                <!-- Website Logo -->
+                                <a href="#" class="flex items-center py-4 px-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
+                                      </svg>
+                                    <span class="font-bold text-lg pl-2">Novedades</span>
+                                </a>
+                            </div>
+
+                            <div>
+                                <!-- Website Logo -->
+                                <a href="#" class="flex items-center py-4 px-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                                      </svg>
+                                    <span class="font-bold text-lg pl-2">Ofertas</span>
+                                </a>
+                            </div>
+                        </div>
+                    </h1>
+				</div>
+			</div>
+
         </header>
 
         {{-- Seccion para introducir contenido --}}
@@ -127,7 +187,7 @@
         </main>
 
         <footer class="text-center p-5 text-gray-500 font-bold uppercase mt-10">
-            Fundacion BNB- Todos los derechos reservados {{now()->year}}
+            Fundacion BCB- Todos los derechos reservados {{now()->year}}
         </footer>
     </body>
 </html>

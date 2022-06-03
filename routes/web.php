@@ -27,6 +27,10 @@ Route::get('/pruebas',function(){
 });
 
 
+Route::get('/libro',function(){
+    return view('libro.libro');
+});
+
 Route::get('/register',[RegisterController::class, 'index'])->name('register');
 
 Route::post('/register',[RegisterController::class, 'store']);
