@@ -6,6 +6,11 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\BookController;
+use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\EditorialController;
+use App\Models\Category;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +31,16 @@ Route::get('/pruebas',function(){
     return view('pruebas.prueba');
 });
 
+//CRUD libros
+Route::get('/book',[BookController::class,'index'])->name('book');
+//CRUD Categoria
+Route::resource('category', CategoryController::class);
+
+Route::get('/categoryindex',[CategoryController::class,'index']);
+//CRUD Autor
+Route::get('/author',[AuthorController::class,'index'])->name('author');
+//CRUD Editorial
+Route::get('/editorial',[EditorialController::class,'index'])->name('editorial');
 
 Route::get('/libro',function(){
     return view('libro.libro');
