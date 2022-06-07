@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Author;
+use App\Models\Category;
+use App\Models\Editorial;
+use App\Models\Book;
 
 class BookController extends Controller
 {
@@ -23,7 +27,18 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+       // $categories = Category::all();
+       // $authors = Author::all();
+       // $editorials = Editorial::all();
+        $title = 'Hola';
+        return view ('book.create', [
+            'title' => $title
+         ]);
+        //return view (('book.create'),compact ('mensaje'));
+
+         //   ->with('categoria', $categories)
+            //-> compact($mensaje);
+           // ->with('editorials', $editorials)
     }
 
     /**
@@ -34,7 +49,16 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'titulo' => 'required|unique:books|max:255',
+            'edicion' => 'required',
+            'isbn' => 'required',
+            'ubicacion' => 'required',
+            'numero_paginas' => 'required',
+            'idioma' => 'required',
+            'resumen' => 'required',
+            'fecha_publicacion' => 'required|date',
+        ]);
     }
 
     /**
@@ -43,9 +67,9 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Book $book)
     {
-        //
+        return view('book.show', compact('book'));
     }
 
     /**

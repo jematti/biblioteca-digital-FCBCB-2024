@@ -2,149 +2,156 @@
 
 @section('contenido-admin')
 
+
 <h2 class="bg-white text-lg rounded-lg p-4 text-center font-bold border-2 border-sky-800">Agregar Libro</h2>
-<form action="#" method="POST" novalidate>
 
+    <form action="{{ route('book.store') }}" method="POST" class="w-full max-w-lg" novalidate>
+        @csrf
+        <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full px-3">
+              <label class="mb-2 block uppercase text-gray-500 font-bold" >
+                Título
+              </label>
+              <input
+                    class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="titulo"
+                    name="titulo"
+                    type="text"
+                    placeholder="Título"
+                    @error('titulo')
+                    border-red-500
+                    @enderror
+                    value="{{old('titulo')}}"
+                />
 
-    @csrf
-    <div class="mb-5">
-        <label for="titulo" class="mb-2 block uppercase text-gray-500 font-bold">
-            Título
-        </label>
-        <input
-            id="titulo"
-            type="text"
-            name="titulo"
-            placeholder="Ingrese titulo del libro"
-            class="border p-3 w-full rounded-lg"
-            @error('titulo')
-                border-red-500
-            @enderror
-            value="{{old('titulo')}}"
-        />
-        @error('titulo')
-            <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
-        @enderror
-
-        <label for="edicion" class="mb-2 block uppercase text-gray-500 font-bold">
-            Edición
-        </label>
-        <input
-            id="edicion"
-            type="text"
-            name="edicion"
-            placeholder="numero de edicion"
-            class="border p-3 w-full rounded-lg"
-            @error('edicion')
-                border-red-500
-            @enderror
-            value="{{old('edicion')}}"
-        />
-        @error('edicion')
-            <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
-        @enderror
-
-        <label for="ubicacion" class="mb-2 block uppercase text-gray-500 font-bold">
-            Ubicación Fisica del libro
-        </label>
-        <input
-            id="ubicacion"
-            type="text"
-            name="ubicacion"
-            placeholder="Indicar donde sucursal donde se encuentra el libro"
-            class="border p-3 w-full rounded-lg"
-            @error('ubicacion')
-                border-red-500
-            @enderror
-            value="{{old('ubicacion')}}"
-        />
-        @error('ubicacion')
-            <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
-        @enderror
-
-        <label for="num_pag" class="mb-2 block uppercase text-gray-500 font-bold">
-            Número de Páginas
-        </label>
-        <input
-            id="num_pag"
-            type="text"
-            name="num_pag"
-            placeholder="Ingrese el número de páginas del libro"
-            class="border p-3 w-full rounded-lg"
-            @error('num_pag')
-                border-red-500
-            @enderror
-            value="{{old('num_pag')}}"
-        />
-        @error('num_pag')
-            <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
-        @enderror
-
-        <label for="num_pag" class="mb-2 block uppercase text-gray-500 font-bold">
-            Fecha de Publicación
-        </label>
-
-        <div class="relative">
-            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-              <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
+                @error('titulo')
+                <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
+                @enderror
             </div>
-            <input datepicker type="text" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">
+        </div>
+
+        <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full px-3">
+              <label class="mb-2 block uppercase text-gray-500 font-bold" >
+                Categoría:
+              </label>
+
+              <select
+                class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                id="grid-state"
+                name="categoria"
+              >
+                <option disabled selected>- Seleccione una categoría -</option>
+              {{$title}}
+                {{-- @foreach ($category as $categories)
+                    <option
+                        {{ old('categoria') == $category->id ? 'selected' : '' }}
+                        value="{{ $category->id }}"
+                    >
+                        {{$category->nombre_categoria}}
+                    </option>
+                @endforeach --}}
+
+              </select>
+
+                @error('categoria')
+                <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
+                @enderror
+            </div>
+        </div>
+
+        <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full px-3">
+                <select
+                    class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="grid-state"
+                    name="idioma"
+
+                >
+                        <option value="">- Seleccione el idioma del Libro- </option>
+                        <option>Español</option>
+                        <option>Aymara</option>
+                        <option>Quechua</option>
+                        <option>Inglés</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                    </div>
+                @error('idioma')
+                <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
+                @enderror
+            </div>
+        </div>
+
+        <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+              <label class="block mb-2 uppercase text-gray-500 font-bold" for="grid-city">
+                Páginas
+              </label>
+              <input
+                class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                id="numero_paginas"
+                type="number"
+                name="numero_paginas"
+                placeholder="Nro de Páginas"
+                @error('numero_paginas')
+                    border-red-500
+                @enderror
+                value="{{old('nuemro_paginas')}}"
+               >
+
+               @error('numero_paginas')
+                <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
+               @enderror
+            </div>
+            <div class="w-full md:w-1/2 px-3">
+                <label class="block mb-2 uppercase text-gray-500 font-bold" for="grid-city">
+                  Edición
+                </label>
+                <input
+                  class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  id="edicion"
+                  name="edicion"
+                  type="text"
+                  placeholder="Ej: Primera Edición"
+                  @error('edicion')
+                  border-red-500
+                  @enderror
+                  value="{{old('edicion')}}"
+                 >
+                 @error('edicion')
+                 <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
+                @enderror
+            </div>
+        </div>
+
+        <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full px-3">
+              <label class="mb-2 block uppercase text-gray-500 font-bold" >
+                Fecha de Publicación
+              </label>
+              <input
+                    class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="fecha_publicacion"
+                    name="fecha_publicacion"
+                    type="date"
+                    placeholder="fecha de publicación del Libro"
+                    @error('fecha_publicacion')
+                    border-red-500
+                    @enderror
+                    value="{{old('fecha_publicacion')}}"
+                />
+
+                @error('fecha_publicacion')
+                <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
+                @enderror
+            </div>
         </div>
 
 
-        <label for="idioma" class="mb-2 block uppercase text-gray-500 font-bold">
-            Idioma
-        </label>
-        <input
-            id="idioma"
-            type="text"
-            name="idioma"
-            placeholder="Idiom del libro"
-            class="border p-3 w-full rounded-lg"
-            @error('idioma')
-                border-red-500
-            @enderror
-            value="{{old('idioma')}}"
-        />
-        @error('idioma')
-            <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
-        @enderror
 
-        <label for="resumen" class="mb-2 block uppercase text-gray-500 font-bold">
-            Resumen
-        </label>
-        <input
-            id="resumen"
-            type="text"
-            name="resumen"
-            placeholder="Resumen del libro"
-            class="border p-3 w-full rounded-lg"
-            @error('resumen')
-                border-red-500
-            @enderror
-            value="{{old('resumen')}}"
-        />
-        @error('resumen')
-            <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
-        @enderror
 
-        <div class="mb-5">
-            <label
-                for="descripcion"
-                class="block text-gray-700 text-sm mb-2"
-            >Imagen del libro:</label>
 
-            <div id="dropzoneDevJobs" class="dropzone rounded bg-gray-100"></div>
-
-            <input type="hidden" name="imagen" id="imagen" value="{{ old('imagen') }}" >
-            @error('imagen')
-                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-3 mb-6" role="alert">
-                    <strong class="font-bold">Error!</strong>
-                    <span class="block"> {{$message}}</span>
-                </div>
-            @enderror
-            <p id="error"></p>
-        </div>
 
         <input
             type="submit"
@@ -152,8 +159,8 @@
             class="bg-sky-600 hover:bg-sky-700 transition-colors cursor-pointer uppercase font-bold w-full text-white rounded-lg p-3 mt-5"
         />
 
-    </div>
-</form>
+        </div>
+    </form>
 
 
 @endsection

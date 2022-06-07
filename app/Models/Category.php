@@ -17,4 +17,6 @@ class Category extends Model
         'nombre_categoria',
         'descripcion'
     ];
+
+
 }

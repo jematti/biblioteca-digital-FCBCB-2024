@@ -27,39 +27,40 @@ use App\Models\Category;
 
 Route::get('/',HomeController::class)->name('home');
 
-Route::get('/pruebas',function(){
-    return view('pruebas.prueba');
-});
-
 //CRUD libros
-Route::get('/book',[BookController::class,'index'])->name('book');
+//Route::get('/book',[BookController::class,'index'])->name('book');
+Route::resource('book', BookController::class);
 //CRUD Categoria
 Route::resource('category', CategoryController::class);
-
-Route::get('/categoryindex',[CategoryController::class,'index']);
 //CRUD Autor
-Route::get('/author',[AuthorController::class,'index'])->name('author');
+Route::resource('author', AuthorController::class);
 //CRUD Editorial
-Route::get('/editorial',[EditorialController::class,'index'])->name('editorial');
+Route::resource('editorial', EditorialController::class);
 
-Route::get('/libro',function(){
-    return view('libro.libro');
-});
 //Rutas para el Perfil
 Route::get('/editar-perfil',[ProfileController::class, 'index'])->name('perfil.index');
 Route::post('/editar-perfil',[ProfileController::class, 'store'])->name('perfil.store');
-
-
+//Rutas para el registro
 Route::get('/register',[RegisterController::class, 'index'])->name('register');
-
 Route::post('/register',[RegisterController::class, 'store']);
-
+//Rutas para el login
 Route::get('/login',[LoginController::class, 'index'])->name('login');
 Route::post('/login',[LoginController::class, 'store']);
 Route::post('/logout',[LogoutController::class, 'store'])->name('logout');
 //post pantalla principal de cada usuario
 Route::get('/muro',[PostController::class, 'index'])->name('posts.index');
 
+
+//Rutas de prueba
+Route::get('/pruebas',function(){
+    return view('pruebas.prueba');
+});
+
+
+//rutas de prueba para libros
+Route::get('/libro',function(){
+    return view('libro.libro');
+});
 
 Route::get('/libro1',function(){
     return view('libro.l1');

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Author;
 class AuthorController extends Controller
 {
     /**
@@ -13,7 +13,9 @@ class AuthorController extends Controller
      */
     public function index()
     {
-        return view('author.create');
+        $data['author']= Author::orderBy('id','desc')->paginate(5);
+        return view('author.index',$data);
+
     }
 
     /**
@@ -23,7 +25,7 @@ class AuthorController extends Controller
      */
     public function create()
     {
-        //
+        return view('author.create');
     }
 
     /**
@@ -34,7 +36,15 @@ class AuthorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'nombre_autor' => 'required|unique:authors|max:255',
+            'biografia' => 'required'
+        ]);
+
+        Author::create($request->all());
+
+        return redirect()->route('author.index')
+                        ->with('success','Post has been created successfully.');
     }
 
     /**
@@ -43,9 +53,9 @@ class AuthorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Author $author)
     {
-        //
+        return view('author.show',compact('author'));
     }
 
     /**
@@ -54,9 +64,9 @@ class AuthorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Author $author)
     {
-        //
+        return view('author.edit',compact('author'));
     }
 
     /**
@@ -66,10 +76,19 @@ class AuthorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Author $author)
     {
-        //
+        $request->validate([
+            'nombre_autor' => 'required|unique:authors|max:255',
+            'biografia' => 'required'
+        ]);
+
+        $author->update($request->all());
+
+        return redirect()->route('author.index')
+                        ->with('success','Post has been updated successfully.');
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -77,8 +96,10 @@ class AuthorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Author $author)
     {
-        //
+        $author->delete();
+        return redirect()->route('author.index')
+                        ->with('success','Post has been deleted successfully.');
     }
 }

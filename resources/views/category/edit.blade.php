@@ -44,11 +44,16 @@
             <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
         @enderror
 
-        <input
-            type="submit"
-            value="Actualizar Categoría"
-            class="bg-sky-600 hover:bg-sky-700 transition-colors cursor-pointer uppercase font-bold w-full text-white rounded-lg p-3 mt-5"
-        />
+        {{-- botones de guardar - cancelar cambios --}}
+
+        <div class="flex flex-row-reverse  my-5 text-right">
+            <input
+                type="submit"
+                value="Guardar Cambios"
+                class="w-1/2 text-white bg-sky-600 hover:bg-sky-700 uppercase font-bold focus:ring-4 font-lg rounded-lg text-sm px-5 py-2.5 text- mr-2 mb-2 "
+            />
+            <a class=" text-white bg-red-600 hover:bg-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 " href="{{ route('category.index') }}">Cancelar</a>
+        </div>
 
 </form>
 

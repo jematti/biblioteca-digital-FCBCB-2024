@@ -2,7 +2,7 @@
 
 @section('contenido-admin')
 
-    <h2 class="bg-white text-lg rounded-lg p-4 text-center font-bold border-2 border-sky-800">Agregar Categoría</h2>
+    <h2 class="bg-white text-lg rounded-lg p-4 text-center font-bold border-2 border-sky-800">Categoría</h2>
 
     {{-- menu de navegacion para crear y editar categorias --}}
     <div class="flex">
@@ -68,7 +68,7 @@
 
             <input
                 type="submit"
-                value="Crear Categoría"
+                value="Añadir Categoría"
                 class="bg-sky-600 hover:bg-sky-700 transition-colors cursor-pointer uppercase font-bold w-full text-white rounded-lg p-3 mt-5"
             />
 
