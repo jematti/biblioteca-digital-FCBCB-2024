@@ -17,14 +17,34 @@ class Book extends Model
     protected $fillable = [
         'titulo',
         'edicion',
-        'isbn',
         'ubicacion',
         'numero_paginas',
         'fecha_publicacion',
         'idioma',
         'resumen',
-        'imagen'
+        'imagen',
+        'author_id',
+        'editorial_id',
+        'category_id'
+
     ];
+/*
+    // Obtiene la información del usuario via FK
+    public function author()
+    {
+        return $this->belongsTo(Author::class); // FK de esta tabla
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class); // FK de esta tabla
+    }
+
+    public function editorial()
+    {
+        return $this->belongsTo(Editorial::class); // FK de esta tabla
+    }
+*/
 
 
 }

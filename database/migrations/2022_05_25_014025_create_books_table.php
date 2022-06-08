@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('titulo');
             $table->string('edicion');
-            $table->string('isbn');
             $table->string('ubicacion');
             $table->integer('numero_paginas');
             $table->date('fecha_publicacion');

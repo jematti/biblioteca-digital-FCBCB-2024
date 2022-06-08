@@ -4,8 +4,16 @@
 
 
 <h2 class="bg-white text-lg rounded-lg p-4 text-center font-bold border-2 border-sky-800">Agregar Libro</h2>
-
-    <form action="{{ route('books.store') }}" method="POST" class="w-full max-w-lg" novalidate>
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+    <form action="{{ route('books.store') }}" method="POST" class="w-full " novalidate>
         @csrf
         <div class="flex flex-wrap -mx-3 mb-6">
             <div class="w-full px-3">
@@ -17,7 +25,7 @@
                     id="titulo"
                     name="titulo"
                     type="text"
-                    placeholder="Título"
+                    placeholder="Título del Libro"
                     @error('titulo')
                     border-red-500
                     @enderror
@@ -32,29 +40,84 @@
 
         <div class="flex flex-wrap -mx-3 mb-6">
             <div class="w-full px-3">
+                <label class="mb-2 block uppercase text-gray-500 font-bold" >
+                    Ubicación:
+                </label>
+                <select
+                    class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="ubicacion"
+                    name="ubicacion"
+
+                >
+                        {{ $ubicacion="" }}
+                        <option value="">- Seleccione la Sucursal- </option>
+                        <option value="La Paz" {{ old('ubicacion', $ubicacion)=='La Paz' ? 'selected':'' }}>La Paz</option>
+                        <option value="Oruro" {{ old('ubicacion', $ubicacion)=='Oruro' ? 'selected':'' }}>Oruro</option>
+                        <option value="Sucre" {{ old('ubicacion', $ubicacion)=='Sucre' ? 'selected':'' }}>Sucre</option>
+                </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                    </div>
+                @error('ubicacion')
+                <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
+                @enderror
+            </div>
+        </div>
+
+        <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full px-3">
               <label class="mb-2 block uppercase text-gray-500 font-bold" >
                 Autor:
               </label>
 
               <select
                 class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                id="grid-state"
+                id="author"
                 name="author"
               >
                 <option disabled selected>- Seleccione una Autor -</option>
 
-                @foreach ($author as $authors)
+                @foreach ($authors as $author)
                     <option
-                        {{ old('author') == $authors->id ? 'selected' : '' }}
-                        value="{{ $authors->id }}"
+                        {{ old('author') == $author->id ? 'selected' : '' }}
+                        value="{{ $author->id }}"
                     >
-                        {{$authors->nombre_autor}}
+                        {{$author->nombre_autor}}
                     </option>
                 @endforeach
 
               </select>
 
-                @error('autor')
+                @error('author')
+                <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
+                @enderror
+            </div>
+        </div>
+
+        <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full px-3">
+              <label class="mb-2 block uppercase text-gray-500 font-bold" >
+                Editorial:
+              </label>
+
+              <select
+                class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                id="editorial"
+                name="editorial"
+              >
+                <option disabled selected>- Seleccione Editorial-</option>
+                @foreach ($editorials as $editorial)
+                    <option
+                        {{ old('editorial') == $editorial->id ? 'selected' : '' }}
+                        value="{{ $editorial->id }}"
+                    >
+                        {{$editorial->nombre_editorial}}
+                    </option>
+                @endforeach
+
+              </select>
+
+                @error('editorial')
                 <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
                 @enderror
             </div>
@@ -68,42 +131,46 @@
 
               <select
                 class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                id="grid-state"
-                name="categoria"
+                id="category"
+                name="category"
               >
                 <option disabled selected>- Seleccione una categoría -</option>
 
-                {{-- @foreach ($category as $categories)
+                @foreach ($categories as $category)
                     <option
-                        {{ old('categoria') == $category->id ? 'selected' : '' }}
+                        {{ old('category') == $category->id ? 'selected' : '' }}
                         value="{{ $category->id }}"
                     >
                         {{$category->nombre_categoria}}
                     </option>
-                @endforeach --}}
-
+                @endforeach
               </select>
 
-                @error('categoria')
-                <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
+                @error('category')
+                    <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
                 @enderror
             </div>
         </div>
 
         <div class="flex flex-wrap -mx-3 mb-6">
             <div class="w-full px-3">
+                <label class="mb-2 block uppercase text-gray-500 font-bold" >
+                    Idioma:
+                </label>
                 <select
                     class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                    id="grid-state"
+                    id="idioma"
                     name="idioma"
 
                 >
+                        {{ $idioma="" }}
                         <option value="">- Seleccione el idioma del Libro- </option>
-                        <option>Español</option>
-                        <option>Aymara</option>
-                        <option>Quechua</option>
-                        <option>Inglés</option>
-                    </select>
+                        <option value="Español" {{ old('idioma',$idioma)=='Español' ? 'selected' : ''  }}>Español</option>
+                        <option value="Aymara" {{ old('idioma',$idioma)=='Aymara' ? 'selected' : ''  }}>Aymara</option>
+                        <option value="Quechua" {{ old('idioma',$idioma)=='Quechua' ? 'selected' : ''  }}>Quechua</option>
+                        <option value="Ingles" {{ old('idioma',$idioma)=='Ingles' ? 'selected' : ''  }}>Ingles</option>
+
+                </select>
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                         <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
                     </div>
@@ -112,6 +179,8 @@
                 @enderror
             </div>
         </div>
+
+
 
         <div class="flex flex-wrap -mx-3 mb-6">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -127,7 +196,7 @@
                 @error('numero_paginas')
                     border-red-500
                 @enderror
-                value="{{old('nuemro_paginas')}}"
+                value="{{old('numero_paginas')}}"
                >
 
                @error('numero_paginas')
@@ -179,13 +248,55 @@
         </div>
 
 
+        <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full px-3">
+              <label class="mb-2 block uppercase text-gray-500 font-bold" >
+                Resumen
+              </label>
+              <input
+                    class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="resumen"
+                    name="resumen"
+                    type="text"
+                    placeholder="Resumen del Libro"
+                    @error('resumen')
+                    border-red-500
+                    @enderror
+                    value="{{old('resumen')}}"
+                />
 
+                @error('resumen')
+                <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
+                @enderror
+            </div>
+        </div>
 
+        <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full px-3">
+              <label class="mb-2 block uppercase text-gray-500 font-bold" >
+                Imagen del Libro
+              </label>
+              <input
+                    class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="imagen"
+                    name="imagen"
+                    type="text"
+                    placeholder="Imagen del Libro"
+                    @error('imagen')
+                    border-red-500
+                    @enderror
+                    value="{{old('imagen')}}"
+                />
 
+                @error('imagen')
+                <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
+                @enderror
+            </div>
+        </div>
 
         <input
             type="submit"
-            value="Actualizar Datos"
+            value="Agregar Libro"
             class="bg-sky-600 hover:bg-sky-700 transition-colors cursor-pointer uppercase font-bold w-full text-white rounded-lg p-3 mt-5"
         />
 
