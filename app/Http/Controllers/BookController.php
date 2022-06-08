@@ -17,7 +17,8 @@ class BookController extends Controller
      */
     public function index()
     {
-        return view('book.create');
+        $data['book']= Book::orderBy('id','desc')->paginate(5);
+        return view('book.create',$data);
     }
 
     /**
@@ -30,15 +31,16 @@ class BookController extends Controller
        // $categories = Category::all();
        // $authors = Author::all();
        // $editorials = Editorial::all();
-        $title = 'Hola';
-        return view ('book.create', [
-            'title' => $title
-         ]);
+        //$author = Author::all();
+        //return view('book.create')->with('author',$author);
         //return view (('book.create'),compact ('mensaje'));
 
          //   ->with('categoria', $categories)
             //-> compact($mensaje);
            // ->with('editorials', $editorials)
+           $author = Author::all();
+           return view('book.create')->with('author',$author);
+
     }
 
     /**
@@ -78,10 +80,11 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Book $book)
     {
-        //
+        return view('book.edit', compact('book'));
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -90,10 +93,20 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Book $book)
     {
-        //
+        $data = $request->validate([
+            'titulo' => 'required|unique:books|max:255',
+            'edicion' => 'required',
+            'isbn' => 'required',
+            'ubicacion' => 'required',
+            'numero_paginas' => 'required',
+            'idioma' => 'required',
+            'resumen' => 'required',
+            'fecha_publicacion' => 'required|date',
+        ]);
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -101,8 +114,10 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Book $book)
     {
-        //
+        $book->delete();
+        return redirect()->route('book.index')
+                        ->with('success','Post deleted successfully');
     }
 }

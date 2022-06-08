@@ -27,15 +27,20 @@ use App\Models\Category;
 
 Route::get('/',HomeController::class)->name('home');
 
-//CRUD libros
-//Route::get('/book',[BookController::class,'index'])->name('book');
-Route::resource('book', BookController::class);
+
 //CRUD Categoria
 Route::resource('category', CategoryController::class);
 //CRUD Autor
 Route::resource('author', AuthorController::class);
 //CRUD Editorial
 Route::resource('editorial', EditorialController::class);
+//CRUD libros
+Route::resource('books',BookController::class);
+//Route::resource('books', LibroController::class);
+//Route::get('/books', [LibroController::class, 'index'])->name('libros.index');
+//Route::get('/books/{book}', [LibroController::class, 'show'])->name('libros.show');
+//Route::get('/books/create', [LibroController::class, 'create'])->name('libros.create');
+//Route::post('/books', [LibroController::class, 'store'])->name('libros.store');
 
 //Rutas para el Perfil
 Route::get('/editar-perfil',[ProfileController::class, 'index'])->name('perfil.index');

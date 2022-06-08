@@ -5,7 +5,7 @@
 
 <h2 class="bg-white text-lg rounded-lg p-4 text-center font-bold border-2 border-sky-800">Agregar Libro</h2>
 
-    <form action="{{ route('book.store') }}" method="POST" class="w-full max-w-lg" novalidate>
+    <form action="{{ route('books.store') }}" method="POST" class="w-full max-w-lg" novalidate>
         @csrf
         <div class="flex flex-wrap -mx-3 mb-6">
             <div class="w-full px-3">
@@ -33,6 +33,36 @@
         <div class="flex flex-wrap -mx-3 mb-6">
             <div class="w-full px-3">
               <label class="mb-2 block uppercase text-gray-500 font-bold" >
+                Autor:
+              </label>
+
+              <select
+                class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                id="grid-state"
+                name="author"
+              >
+                <option disabled selected>- Seleccione una Autor -</option>
+
+                @foreach ($author as $authors)
+                    <option
+                        {{ old('author') == $authors->id ? 'selected' : '' }}
+                        value="{{ $authors->id }}"
+                    >
+                        {{$authors->nombre_autor}}
+                    </option>
+                @endforeach
+
+              </select>
+
+                @error('autor')
+                <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
+                @enderror
+            </div>
+        </div>
+
+        <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full px-3">
+              <label class="mb-2 block uppercase text-gray-500 font-bold" >
                 Categoría:
               </label>
 
@@ -42,7 +72,7 @@
                 name="categoria"
               >
                 <option disabled selected>- Seleccione una categoría -</option>
-              {{$title}}
+
                 {{-- @foreach ($category as $categories)
                     <option
                         {{ old('categoria') == $category->id ? 'selected' : '' }}

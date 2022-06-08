@@ -26,6 +26,7 @@
 
 
    {{-- formulario para agregar categoria --}}
+
     <form action="{{ route('category.store') }}" method="POST" novalidate>
 
         @csrf
@@ -33,6 +34,7 @@
             <label for="nombre_categoria" class="mb-2 block uppercase text-gray-500 font-bold">
                 Nombre de Categoría
             </label>
+
             <input
                 id="nombre_categoria"
                 type="text"
