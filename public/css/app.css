@@ -626,6 +626,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .h-8 {
   height: 2rem;
 }
+.h-96 {
+  height: 24rem;
+}
 .h-4 {
   height: 1rem;
 }
@@ -670,9 +673,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .max-w-2xl {
   max-width: 42rem;
-}
-.max-w-lg {
-  max-width: 32rem;
 }
 .max-w-6xl {
   max-width: 72rem;
@@ -814,6 +814,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .border-solid {
   border-style: solid;
+}
+.border-dashed {
+  border-style: dashed;
 }
 .border-gray-200 {
   --tw-border-opacity: 1;

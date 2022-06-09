@@ -10,6 +10,7 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EditorialController;
+use App\Http\Controllers\ImagenController;
 use App\Models\Category;
 
 /*
@@ -41,6 +42,9 @@ Route::resource('books',BookController::class);
 //Route::get('/books/{book}', [LibroController::class, 'show'])->name('libros.show');
 //Route::get('/books/create', [LibroController::class, 'create'])->name('libros.create');
 //Route::post('/books', [LibroController::class, 'store'])->name('libros.store');
+
+//Ruta para imagenes
+Route::post('/imagenes', [ImagenController::class, 'store'])->name('imagenes.store');
 
 //Rutas para el Perfil
 Route::get('/editar-perfil',[ProfileController::class, 'index'])->name('perfil.index');

@@ -66,7 +66,7 @@
         <div class="w-1/2 p-4">
             @yield('contenido-admin')
         </div>
-</div>
+    </div>
 
 @endsection
 

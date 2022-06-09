@@ -2,8 +2,13 @@
 
 @section('contenido-admin')
 
+{{-- mostrar estilos de dropzone solo en esta vista --}}
+@push('styles')
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+@endpush
 
 <h2 class="bg-white text-lg rounded-lg p-4 text-center font-bold border-2 border-sky-800">Agregar Libro</h2>
+
 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -13,6 +18,18 @@
         </ul>
     </div>
 @endif
+
+    <div class="flex flex-wrap -mx-3 mb-6">
+        <div class="w-1/2  px-3">
+            <label class="mb-2 block uppercase text-gray-500 font-bold" >
+                Imagen del Libro
+              </label>
+        <form enctype="multipart/form-data" action="{{ route('imagenes.store') }}" method="POST" id="dropzone" class="dropzone border-dashed border-2 w-full h-96 rounded flex flex-col justify-center items-center" >
+            @csrf
+        </form>
+        </div>
+    </div>
+
     <form action="{{ route('books.store') }}" method="POST" class="w-full " novalidate>
         @csrf
         <div class="flex flex-wrap -mx-3 mb-6">
@@ -271,37 +288,14 @@
             </div>
         </div>
 
-        <div class="flex flex-wrap -mx-3 mb-6">
-            <div class="w-full px-3">
-              <label class="mb-2 block uppercase text-gray-500 font-bold" >
-                Imagen del Libro
-              </label>
-              <input
-                    class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                    id="imagen"
-                    name="imagen"
-                    type="text"
-                    placeholder="Imagen del Libro"
-                    @error('imagen')
-                    border-red-500
-                    @enderror
-                    value="{{old('imagen')}}"
-                />
-
-                @error('imagen')
-                <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
-                @enderror
-            </div>
-        </div>
-
         <input
             type="submit"
             value="Agregar Libro"
             class="bg-sky-600 hover:bg-sky-700 transition-colors cursor-pointer uppercase font-bold w-full text-white rounded-lg p-3 mt-5"
         />
 
-        </div>
     </form>
+
 
 
 @endsection

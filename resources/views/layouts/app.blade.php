@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    {{-- hojas de estilos diferentes --}}
+    @stack('styles')
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -76,54 +78,54 @@
     <body class="bg-gray-200">
         <header class="p-5 border-b bg-sky-800 shadow">
            <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-3xl font-black text-gray-200">
-                <a href="{{route('home')}}" class="text-3xl font-black">
-                    Biblioteca
-                </a>
-            </h1>
+                <h1 class="text-3xl font-black text-gray-200">
+                    <a href="{{route('home')}}" class="text-3xl font-black">
+                        Biblioteca
+                    </a>
+                </h1>
 
 
-                <!-- Barra de Busqueda -->
-            <div class="sm:px-28 lg:px-46 xl:px-40 mx-auto w-5/6">
-                <div class="box-wrapper">
-                    <div class=" bg-white rounded flex items-center w-full p-3 shadow-sm border border-gray-200">
-                        <input type="search" name="" id="" placeholder="Buscar libro por palabra clave / titulo / autor " x-model="q" class="w-full pl-4 text-sm outline-none focus:outline-none bg-transparent">
-                        <button  class="outline-none focus:outline-none"><svg class=" w-5 text-gray-600 h-5 cursor-pointer" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
+                    <!-- Barra de Busqueda -->
+                <div class="sm:px-28 lg:px-46 xl:px-40 mx-auto w-5/6">
+                    <div class="box-wrapper">
+                        <div class=" bg-white rounded flex items-center w-full p-3 shadow-sm border border-gray-200">
+                            <input type="search" name="" id="" placeholder="Buscar libro por palabra clave / titulo / autor " x-model="q" class="w-full pl-4 text-sm outline-none focus:outline-none bg-transparent">
+                            <button  class="outline-none focus:outline-none"><svg class=" w-5 text-gray-600 h-5 cursor-pointer" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            {{-- verificacion de autenticacion de usuario --}}
-            @auth
-                <nav class="flex gap-2 items-center ">
-                    <a class="font-bold text-gray-200" href="#">
-                        Hola: <span class="font-normal">
-                              {{auth()->user()->name}}
-                              </span>
-                    </a>
+                {{-- verificacion de autenticacion de usuario --}}
+                @auth
+                    <nav class="flex gap-2 items-center ">
+                        <a class="font-bold text-gray-200" href="#">
+                            Hola: <span class="font-normal">
+                                {{auth()->user()->name}}
+                                </span>
+                        </a>
 
-                    <a class="font-bold text-gray-200" href="{{route('posts.index')}}">
-                            Editar<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                            </svg>
-                    </a>
+                        <a class="font-bold text-gray-200" href="{{route('posts.index')}}">
+                                Editar<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                </svg>
+                        </a>
 
 
-                    {{-- metodo para cerrar sesion --}}
-                    <form action="{{route('logout')}}" method="POST">
-                        @csrf
-                        <button type="submit" class="font-bold uppercase text-gray-200 "  >Cerrar Sesión</button>
-                    </form>
+                        {{-- metodo para cerrar sesion --}}
+                        <form action="{{route('logout')}}" method="POST">
+                            @csrf
+                            <button type="submit" class="font-bold uppercase text-gray-200 "  >Cerrar Sesión</button>
+                        </form>
 
-                </nav>
-            @endauth
+                    </nav>
+                @endauth
 
-            @guest
-                <nav class="w-1/3 flex gap-2 items-center text-base justify-end">
-                    <a class="font-bold text-left text-gray-200 " href="{{route('register')}}">Crear Cuenta</a>
-                    <a class="font-bold text-left text-gray-200" href="{{route('login')}}">Login</a>
-                </nav>
-            @endguest
+                @guest
+                    <nav class="w-1/3 flex gap-2 items-center text-base justify-end">
+                        <a class="font-bold text-left text-gray-200 " href="{{route('register')}}">Crear Cuenta</a>
+                        <a class="font-bold text-left text-gray-200" href="{{route('login')}}">Login</a>
+                    </nav>
+                @endguest
 
            </div>
 
@@ -162,6 +164,7 @@
                                     <span class="font-bold text-lg pl-2">Recomendados</span>
                                 </a>
                             </div>
+
                             <div>
                                 <!-- Categoria novedades -->
                                 <a href="{{route('home')}}" class="flex items-center py-4 px-2">
@@ -181,6 +184,7 @@
                                     <span class="font-bold text-lg pl-2">Ofertas</span>
                                 </a>
                             </div>
+
                         </div>
                     </h1>
 				</div>
