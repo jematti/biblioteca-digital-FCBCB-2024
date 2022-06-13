@@ -17,6 +17,10 @@ class Category extends Model
         'nombre_categoria',
         'descripcion'
     ];
-
+    // relacion 1 a n una Categoria puede tener varios libro
+    public function books()
+    {
+        return $this->hasMany(Book::class);
+    }
 
 }

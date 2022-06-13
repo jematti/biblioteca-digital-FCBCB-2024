@@ -28,6 +28,21 @@ class Book extends Model
         'category_id'
 
     ];
+    public function editorial()
+    {
+        return $this->belongsTo(Editorial::class); // FK de esta tabla
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class); // FK de esta tabla
+    }
+
+    public function author()
+    {
+        return $this->belongsTo(Author::class); // FK de esta tabla
+    }
+
 /*
     // Obtiene la información del usuario via FK
     public function author()
@@ -40,10 +55,7 @@ class Book extends Model
         return $this->belongsTo(Category::class); // FK de esta tabla
     }
 
-    public function editorial()
-    {
-        return $this->belongsTo(Editorial::class); // FK de esta tabla
-    }
+
 */
 
 

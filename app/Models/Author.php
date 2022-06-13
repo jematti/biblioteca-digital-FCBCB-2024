@@ -17,4 +17,9 @@ class Author extends Model
         'nombre_autor',
         'biografia'
     ];
+    // relacion 1 a n una Categoria puede tener varios libro
+    public function books()
+    {
+        return $this->hasMany(Book::class);
+    }
 }

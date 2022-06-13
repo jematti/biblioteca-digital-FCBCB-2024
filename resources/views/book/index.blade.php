@@ -19,7 +19,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
               </svg>
-              <span>Listar Categorias</span>
+              <span>Listar Libro</span>
         </button>
     </div>
 </div>
@@ -32,28 +32,32 @@
     @endif --}}
 
     <!-- Table -->
-        <div class="w-full max-w-2xl mx-auto bg-white shadow-lg rounded-sm border border-gray-200">
+        <div class="w-full  mx-auto bg-white shadow-lg rounded-sm border border-gray-200">
             <header class="px-5 py-4 border-b border-gray-100">
-                <div class="font-semibold text-gray-800">Categorias</div>
+                <div class="font-semibold text-gray-800">Libros </div>
             </header>
 
             <div class="overflow-x-auto p-3">
                 <table class="table-auto w-full">
                     <thead class="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
                         <tr>
-                            <th></th>
+                            <th class="p-2"></th>
                             <th class="p-2">
-                                <div class="font-semibold text-left">Nombre</div>
+                                <div class="font-semibold text-left">Libro</div>
                             </th>
                             <th class="p-2">
-                                <div class="font-semibold text-left">Descripcion</div>
+                                <div class="font-semibold text-left">Edición</div>
                             </th>
                             <th class="p-2">
-                                <div class="font-semibold text-left">Editar </div>
+                                <div class="font-semibold text-left">Ubicación </div>
                             </th>
                             <th class="p-2">
-                                <div class="font-semibold text-center">Eliminar</div>
+                                <div class="font-semibold text-center">Autor</div>
                             </th>
+                            <th class="p-2">
+                                <div class="font-semibold text-center">Editorial</div>
+                            </th>
+
                         </tr>
                     </thead>
 
@@ -62,7 +66,7 @@
                         @foreach ($book as $books)
                             <tr>
                                 <td class="p-2">
-                                    1
+
                                 </td>
                                 <td class="p-2">
                                     <div class="font-medium text-gray-800">
@@ -74,23 +78,38 @@
                                        {{ $books->edicion }}
                                     </div>
                                 </td>
+                                <td class="p-2">
+                                    <div class="text-left">
+                                       {{ $books->ubicacion }}
+                                    </div>
+                                </td>
+                                <td class="p-2">
+                                    <div class="text-left">
+                                      autor
+                                    </div>
+                                </td>
+                                <td class="p-2">
+                                    <div class="text-left">
+                                       {{ $books->editorial->nombre_editorial }}
+                                    </div>
+                                </td>
                                 {{-- seccion editar --}}
                                 <td class="p-2">
                                         <div class="flex justify-center">
 
                                             {{-- editar --}}
-                                            {{-- <a href="{{ route('category.edit',$categories->id) }}">
+                                            <a href="{{ route('books.edit',$books->id) }}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                                     <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                                                 </svg>
-                                            </a> --}}
+                                            </a>
 
                                         </div>
                                 </td>
 
                               {{-- seccion eliminar --}}
-                                {{-- <td class="p-2">
-                                    <form action="{{ route('category.destroy',$categories->id) }}" method="POST">
+                                <td class="p-2">
+                                    <form action="{{ route('books.destroy',$books->id) }}" method="POST">
                                         <div class="flex justify-center">
                                             <button >
                                                 @csrf
@@ -105,7 +124,7 @@
                                             </button>
                                         </div>
                                     </form>
-                                </td> --}}
+                                </td>
 
                             </tr>
                         @endforeach

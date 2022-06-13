@@ -9,15 +9,7 @@
 
 <h2 class="bg-white text-lg rounded-lg p-4 text-center font-bold border-2 border-sky-800">Agregar Libro</h2>
 
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+
 
     <div class="flex flex-wrap -mx-3 mb-6">
         <div class="w-1/2  px-3">
@@ -32,6 +24,19 @@
 
     <form action="{{ route('books.store') }}" method="POST" class="w-full " novalidate>
         @csrf
+        <div class="mb-5">
+            <input
+             type="hidden"
+             name="imagen"
+             id="imagen"
+             value="{{ old('imagen') }}"
+             >
+
+             @error('imagen')
+                <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
+             @enderror
+        </div>
+
         <div class="flex flex-wrap -mx-3 mb-6">
             <div class="w-full px-3">
               <label class="mb-2 block uppercase text-gray-500 font-bold" >
@@ -287,6 +292,8 @@
                 @enderror
             </div>
         </div>
+
+
 
         <input
             type="submit"

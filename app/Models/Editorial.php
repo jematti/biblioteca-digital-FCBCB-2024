@@ -19,4 +19,11 @@ class Editorial extends Model
         'direccion',
         'contacto'
     ];
+
+    // relacion 1 a n una Editorial puede tener varios libros
+    public function books()
+    {
+        return $this->hasMany(Book::class);
+    }
+
 }
