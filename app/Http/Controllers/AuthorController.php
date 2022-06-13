@@ -79,7 +79,7 @@ class AuthorController extends Controller
     public function update(Request $request, Author $author)
     {
         $request->validate([
-            'nombre_autor' => 'required|unique:authors|max:255',
+            'nombre_autor' => 'required',
             'biografia' => 'required'
         ]);
 
@@ -100,6 +100,6 @@ class AuthorController extends Controller
     {
         $author->delete();
         return redirect()->route('author.index')
-                        ->with('success','Post has been deleted successfully.');
+                        ->with('eliminar','ok');
     }
 }

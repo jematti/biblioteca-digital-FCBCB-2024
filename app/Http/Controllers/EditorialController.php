@@ -79,7 +79,7 @@ class EditorialController extends Controller
     public function update(Request $request, Editorial $editorial)
     {
         $request->validate([
-            'nombre_editorial' => 'required|unique:editorials|max:255',
+            'nombre_editorial' => 'required',
             'direccion' => 'required',
             'contacto' => 'required'
         ]);

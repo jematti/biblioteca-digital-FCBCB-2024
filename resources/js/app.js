@@ -1,8 +1,14 @@
 import {Dropzone} from "dropzone";
+ //sweetalert2
+window.Swal = require('sweetalert2');
 
 Dropzone.autoDiscover = false;
 
+
+
 window.addEventListener('DOMContentLoaded', () => {
+
+
     const dropzone = new Dropzone("#dropzone", {
         dictDefaultMessage: "Sube tu imagen del libro",
         acceptedFiles: ".png,.jpg,.jpeg,.gif",
@@ -41,6 +47,7 @@ window.addEventListener('DOMContentLoaded', () => {
         // resetar el campo imagen si no se usa
         document.querySelector('[name="imagen"]').value = "";
     })
+
 });
 
 

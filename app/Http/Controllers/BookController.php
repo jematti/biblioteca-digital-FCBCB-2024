@@ -98,7 +98,15 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        return view('book.edit', compact('book'));
+          $categories = Category::all();
+          $editorials = Editorial::all();
+          $authors = Author::all();
+
+        return view('book.edit')
+        ->with('categories',$categories)
+        ->with('authors',$authors)
+        ->with('editorials',$editorials)
+        ->with('book',$book);;
     }
 
 
@@ -111,16 +119,37 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        $data = $request->validate([
-            'titulo' => 'required|unique:books|max:255',
+        //validacion de los inputs de la vista create de seccion "book"
+        $this->validate($request,[
+            'titulo' => 'required|max:255',
             'edicion' => 'required',
             'ubicacion' => 'required',
             'numero_paginas' => 'required',
+            'fecha_publicacion' => 'required|date',
             'idioma' => 'required',
             'resumen' => 'required',
-            'fecha_publicacion' => 'required|date',
-            'imagen' => 'required'
+            'imagen' => 'required',
+            'author' => 'required',
+            'editorial'=> 'required',
+            'category'=> 'required',
         ]);
+
+        //creacion de un nuevo libro y recibiendo datos de la vista
+
+        $book->titulo = $request->titulo;
+        $book->edicion = $request->edicion;
+        $book->ubicacion = $request->ubicacion;
+        $book->numero_paginas = $request->numero_paginas;
+        $book->fecha_publicacion = $request->fecha_publicacion;
+        $book->idioma = $request->idioma;
+        $book->resumen = $request->resumen;
+        $book->imagen = $request->imagen;
+        $book->author_id = $request->author;
+        $book->category_id = $request->category;
+        $book->editorial_id = $request->editorial;
+        $book->save();
+
+        return redirect()->route('books.index');
     }
 
 

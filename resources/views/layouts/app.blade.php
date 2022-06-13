@@ -11,10 +11,6 @@
 
     <title>{{ config('app.name', 'Biblioteca') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
@@ -185,6 +181,7 @@
                                 </a>
                             </div>
 
+
                         </div>
                     </h1>
 				</div>
@@ -197,8 +194,22 @@
             @yield('contenido')
         </main>
 
+
+        {{-- Seccion para el footer --}}
         <footer class="text-center p-5 text-gray-500 font-bold uppercase mt-10">
             Fundacion BCB- Todos los derechos reservados {{now()->year}}
         </footer>
+
+
     </body>
+
+        <!-- Scripts -->
+        <script src="{{ asset('js/app.js') }}" defer></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"> </script>
+
+         @yield('js')
+
+
 </html>

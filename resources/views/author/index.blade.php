@@ -2,6 +2,7 @@
 
 @section('contenido-admin')
 
+
     <h2 class="bg-white text-lg rounded-lg p-4 text-center font-bold border-2 border-sky-800">Autor</h2>
 
     {{-- menu de navegacion para crear y editar autores de libros --}}
@@ -91,7 +92,7 @@
 
                               {{-- seccion eliminar --}}
                                 <td class="p-2">
-                                    <form action="{{ route('author.destroy',$authors->id) }}" method="POST">
+                                    <form  class="form-delete" action="{{ route('author.destroy',$authors->id) }}" method="POST">
                                         <div class="flex justify-center">
                                             <button >
                                                 @csrf
@@ -114,6 +115,58 @@
                     </tbody>
                 </table>
             </div>
-{{--
-            {!! $author->links() !!} --}}
+
+            {{-- {!! $author->links() !!}  --}}
+
+
 @endsection
+
+@section('js')
+
+{{-- mensaje de exito de eliminacion --}}
+@if(session('eliminar') == 'ok')
+
+    <script>
+        Swal.fire({
+        icon: 'success',
+        title: 'Se elimino correctamente',
+        showConfirmButton: false,
+        timer: 1500
+        })
+    </script>
+@endif
+
+{{-- solicitud de confirmacion de eliminacion --}}
+<script type="text/javascript">
+
+
+    $('.form-delete').submit(function(e){
+
+      //previene el comportamiento por defecto del formulario
+      e.preventDefault();
+
+      Swal.fire({
+      title: '¿Esta Seguro de Eliminar este Author?',
+      text: "¡Esta accion no es reversible!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, estoy Seguro',
+      }).then((result) => {
+          if (result.value) {
+            this.submit();
+          }
+          })
+    });
+ </script>
+
+
+@endsection
+
+
+
+
+
+
+
