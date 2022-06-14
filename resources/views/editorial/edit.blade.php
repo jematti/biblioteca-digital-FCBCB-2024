@@ -5,7 +5,7 @@
     <h2 class="bg-white text-lg rounded-lg p-4 text-center font-bold border-2 border-sky-800">Editorial</h2>
 
    {{-- formulario para agregar editorial --}}
-    <form action="{{ route('editorial.update',$editorial->id) }}" method="POST" novalidate>
+    <form action="{{ route('editorial.update',$editorial->id) }}" method="POST" novalidate class="actualizar">
 
         @csrf
         @method('PUT')

@@ -90,7 +90,7 @@
 
                               {{-- seccion eliminar --}}
                                 <td class="p-2">
-                                    <form action="{{ route('category.destroy',$categories->id) }}" method="POST">
+                                    <form action="{{ route('category.destroy',$categories->id) }}" method="POST" class="delete-category">
                                         <div class="flex justify-center">
                                             <button >
                                                 @csrf
@@ -115,4 +115,73 @@
             </div>
 
             {!! $category->links() !!}
+@endsection
+
+@section('js')
+
+{{-- mensaje de exito de eliminacion --}}
+@if(session('eliminar') == 'ok')
+
+    <script>
+        Swal.fire({
+        icon: 'success',
+        title: 'Se elimino correctamente',
+        showConfirmButton: false,
+        timer: 1500
+        })
+    </script>
+@endif
+
+{{-- mensaje de exito de agregacion de Categoria --}}
+@if(session('store') == 'ok')
+
+    <script>
+        Swal.fire({
+        icon: 'success',
+        title: 'Se creado la Categoria Correctamente',
+        showConfirmButton: false,
+        timer: 2000
+        })
+    </script>
+@endif
+
+{{-- mensaje de exito de actualizacion correcta --}}
+@if(session('update') == 'ok')
+
+    <script>
+        Swal.fire({
+        icon: 'success',
+        title: 'Se ha actualizado los datos Correctamente',
+        showConfirmButton: false,
+        timer: 2000
+        })
+    </script>
+@endif
+
+{{-- solicitud de confirmacion de eliminacion --}}
+<script type="text/javascript">
+
+
+    $('.delete-category').submit(function(e){
+
+      //previene el comportamiento por defecto del formulario
+      e.preventDefault();
+
+      Swal.fire({
+      title: '¿Esta Seguro de Eliminar esta Categoria?',
+      text: "¡Esta accion no es reversible!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, estoy Seguro',
+      }).then((result) => {
+          if (result.value) {
+            this.submit();
+          }
+          })
+    });
+ </script>
+
+
 @endsection

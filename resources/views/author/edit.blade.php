@@ -5,7 +5,7 @@
     <h2 class="bg-white text-lg rounded-lg p-4 text-center font-bold border-2 border-sky-800">Autor</h2>
 
    {{-- formulario para agregar Autor --}}
-    <form action="{{ route('author.update',$author->id) }}" method="POST" novalidate>
+    <form action="{{ route('author.update',$author->id) }}" method="POST" class="actualizar" novalidate>
 
         @csrf
         @method('PUT')
@@ -52,6 +52,7 @@
                     <input
                         type="submit"
                         value="Guardar Cambios"
+
                         class="w-1/2 text-white bg-sky-600 hover:bg-sky-700 uppercase font-bold focus:ring-4 font-lg rounded-lg text-sm px-5 py-2.5 text- mr-2 mb-2 "
                     />
                     <a class=" text-white bg-red-600 hover:bg-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 " href="{{ route('author.index') }}">Cancelar</a>
@@ -62,3 +63,8 @@
 
 
 @endsection
+{{--
+@section('js')
+
+
+@endsection --}}

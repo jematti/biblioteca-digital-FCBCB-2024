@@ -11,19 +11,26 @@
 
 
 
-    {{-- <div class="flex flex-wrap -mx-3 mb-6">
+    <div class="flex flex-wrap -mx-3 mb-6">
         <div class="w-1/2  px-3">
             <label class="mb-2 block uppercase text-gray-500 font-bold" >
                 Imagen del Libro
               </label>
-        <form enctype="multipart/form-data" action="{{ route('imagenes.store') }}" method="POST" id="dropzone" class="dropzone border-dashed border-2 w-full h-96 rounded flex flex-col justify-center items-center" >
+        <form
+            enctype="multipart/form-data"
+            action="{{ route('imagenes.store') }}"
+            method="POST"
+            id="dropzone"
+            class="dropzone actualizar border-dashed border-2 w-full h-96 rounded flex flex-col justify-center items-center" >
             @csrf
         </form>
         </div>
-    </div> --}}
+    </div>
 
-    <form action="{{ route('books.store') }}" method="POST" class="w-full " novalidate>
+    <form action="{{ route('books.update', ['book' => $book->id]) }}" method="POST" class="w-full actualizar"  novalidate  >
         @csrf
+        @method('PUT')
+
         <div class="mb-5">
             <input
              type="hidden"
@@ -71,11 +78,10 @@
                     name="ubicacion"
 
                 >
-                        {{ $ubicacion="" }}
-                        <option value="">- Seleccione la Sucursal- </option>
-                        <option value="La Paz" {{($book->ubicacion, $ubicacion)=='La Paz' ? 'selected':'' }}>La Paz</option>
-                        <option value="Oruro" {{ ($book->ubicacion, $ubicacion)=='Oruro' ? 'selected':'' }}>Oruro</option>
-                        <option value="Sucre" {{ ($book->ubicacion, $ubicacion)=='Sucre' ? 'selected':'' }}>Sucre</option>
+                        <option disabled selected>- Seleccione la Sucursal- </option>
+                        <option value="La Paz" {{($book->ubicacion)=='La Paz' ? 'selected':'' }}>La Paz</option>
+                        <option value="Oruro" {{ ($book->ubicacion)=='Oruro' ? 'selected':'' }}>Oruro</option>
+                        <option value="Sucre" {{ ($book->ubicacion)=='Sucre' ? 'selected':'' }}>Sucre</option>
                 </select>
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                         <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -185,12 +191,13 @@
                     name="idioma"
 
                 >
-                        {{ $idioma="" }}
-                        <option value="">- Seleccione el idioma del Libro- </option>
-                        <option value="Español" {{ $book->idioma,$idioma)=='Español' ? 'selected' : ''  }}>Español</option>
-                        <option value="Aymara" {{ $book->idioma,$idioma)=='Aymara' ? 'selected' : ''  }}>Aymara</option>
-                        <option value="Quechua" {{ $book->idioma,$idioma)=='Quechua' ? 'selected' : ''  }}>Quechua</option>
-                        <option value="Ingles" {{ $book->idioma,$idioma)=='Ingles' ? 'selected' : ''  }}>Ingles</option>
+
+                        <option disabled selected>- Seleccione el idioma del Libro- </option>
+
+                        <option value="Español" {{ ($book->idioma)=='Español' ? 'selected' : ''  }}>Español</option>
+                        <option value="Aymara" {{ ($book->idioma)=='Aymara' ? 'selected' : ''  }}>Aymara</option>
+                        <option value="Quechua" {{ ($book->idioma)=='Quechua' ? 'selected' : ''  }}>Quechua</option>
+                        <option value="Ingles" {{ ($book->idioma)=='Ingles' ? 'selected' : ''  }}>Ingles</option>
 
                 </select>
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -295,11 +302,16 @@
 
 
 
-        <input
-            type="submit"
-            value="Agregar Libro"
-            class="bg-sky-600 hover:bg-sky-700 transition-colors cursor-pointer uppercase font-bold w-full text-white rounded-lg p-3 mt-5"
-        />
+        {{-- botones de guardar - cancelar cambios --}}
+
+        <div class="flex flex-row-reverse  my-5 text-right">
+            <input
+                type="submit"
+                value="Guardar Cambios"
+                class="w-1/2 text-white bg-sky-600 hover:bg-sky-700 uppercase font-bold focus:ring-4 font-lg rounded-lg text-sm px-5 py-2.5 text- mr-2 mb-2 "
+            />
+            <a class=" text-white bg-red-600 hover:bg-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 " href="{{ route('books.index') }}">Cancelar</a>
+        </div>
 
     </form>
 

@@ -3,7 +3,7 @@
 @section('contenido-admin')
 
 <h2 class="bg-white text-lg rounded-lg p-4 text-center font-bold border-2 border-sky-800">Agregar Categoría</h2>
-<form action="{{ route('category.update', $category->id) }}" method="POST" novalidate>
+<form action="{{ route('category.update', $category->id) }}" method="POST" novalidate class="actualizar">
 
     @csrf
     @method('PUT')

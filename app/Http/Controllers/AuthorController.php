@@ -44,7 +44,7 @@ class AuthorController extends Controller
         Author::create($request->all());
 
         return redirect()->route('author.index')
-                        ->with('success','Post has been created successfully.');
+                         ->with('store','ok');
     }
 
     /**
@@ -86,7 +86,7 @@ class AuthorController extends Controller
         $author->update($request->all());
 
         return redirect()->route('author.index')
-                        ->with('success','Post has been updated successfully.');
+                         ->with('update','ok');
     }
 
 

@@ -45,7 +45,7 @@ class EditorialController extends Controller
         Editorial::create($request->all());
 
         return redirect()->route('editorial.index')
-                        ->with('success','Post has been created successfully.');
+                                ->with('store','ok');
     }
 
     /**
@@ -86,8 +86,7 @@ class EditorialController extends Controller
 
         $editorial->update($request->all());
 
-        return redirect()->route('editorial.index')
-                        ->with('success','Post has been updated successfully.');
+        return redirect()->route('editorial.index')->with('update','ok');
     }
 
     /**
@@ -100,6 +99,6 @@ class EditorialController extends Controller
     {
         $editorial->delete();
         return redirect()->route('editorial.index')
-                        ->with('success','Post has been deleted successfully.');
+                         ->with('eliminar','ok');
     }
 }

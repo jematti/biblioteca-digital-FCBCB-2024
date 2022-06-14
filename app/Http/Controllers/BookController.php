@@ -48,7 +48,7 @@ class BookController extends Controller
 
         //validacion de los inputs de la vista create de seccion "book"
         $this->validate($request,[
-            'titulo' => 'required|unique:books|max:255',
+            'titulo' => 'required|max:255',
             'edicion' => 'required',
             'ubicacion' => 'required',
             'numero_paginas' => 'required',
@@ -76,7 +76,7 @@ class BookController extends Controller
         $book->editorial_id = $request->editorial;
         $book->save();
 
-        return redirect()->route('books.index')->with('success','Libro creado correctamente');
+        return redirect()->route('books.index')->with('store','ok');
     }
 
     /**
@@ -149,7 +149,7 @@ class BookController extends Controller
         $book->editorial_id = $request->editorial;
         $book->save();
 
-        return redirect()->route('books.index');
+        return redirect()->route('books.index')->with('update','ok');;
     }
 
 
@@ -162,7 +162,7 @@ class BookController extends Controller
     public function destroy(Book $book)
     {
         $book->delete();
-        return redirect()->route('book.index')
+        return redirect()->route('books.index')
                         ->with('success','Post deleted successfully');
     }
 }

@@ -64,7 +64,7 @@
                         @foreach ($author as $authors)
                             <tr>
                                 <td class="p-2">
-                                    *
+
                                 </td>
                                 <td class="p-2">
                                     <div class="font-medium text-gray-800">
@@ -92,7 +92,7 @@
 
                               {{-- seccion eliminar --}}
                                 <td class="p-2">
-                                    <form  class="form-delete" action="{{ route('author.destroy',$authors->id) }}" method="POST">
+                                    <form  class="delete-author" action="{{ route('author.destroy',$authors->id) }}" method="POST">
                                         <div class="flex justify-center">
                                             <button >
                                                 @csrf
@@ -136,11 +136,39 @@
     </script>
 @endif
 
+{{-- mensaje de exito de agregacion de autor --}}
+@if(session('store') == 'ok')
+
+    <script>
+        Swal.fire({
+        icon: 'success',
+        title: 'Se ha agregado el Autor Correctamente',
+        showConfirmButton: false,
+        timer: 2000
+        })
+    </script>
+@endif
+
+{{-- mensaje de exito de actualizacion correcta --}}
+@if(session('update') == 'ok')
+
+    <script>
+        Swal.fire({
+        icon: 'success',
+        title: 'Se ha actualizado los datos Correctamente',
+        showConfirmButton: false,
+        timer: 2000
+        })
+    </script>
+@endif
+
+
+
 {{-- solicitud de confirmacion de eliminacion --}}
 <script type="text/javascript">
 
 
-    $('.form-delete').submit(function(e){
+    $('.delete-author').submit(function(e){
 
       //previene el comportamiento por defecto del formulario
       e.preventDefault();
