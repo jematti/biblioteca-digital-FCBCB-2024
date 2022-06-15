@@ -80,7 +80,7 @@
                 >
                         <option disabled selected>- Seleccione la Sucursal- </option>
                         <option value="La Paz" {{($book->ubicacion)=='La Paz' ? 'selected':'' }}>La Paz</option>
-                        <option value="Oruro" {{ ($book->ubicacion)=='Oruro' ? 'selected':'' }}>Oruro</option>
+                        <option value="Potosi" {{ ($book->ubicacion)=='Potosi' ? 'selected':'' }}>Oruro</option>
                         <option value="Sucre" {{ ($book->ubicacion)=='Sucre' ? 'selected':'' }}>Sucre</option>
                 </select>
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">

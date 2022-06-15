@@ -17,7 +17,7 @@
                 {{-- titulo --}}
                 <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">{{ $book->titulo }}</h1>
                 {{-- autor --}}
-                <h2 class="text-lg title-font text-gray-500 tracking-widest">{{ $book->autor }}</h2>
+                <h2 class="text-xl title-font underline font-medium text-gray-500 tracking-widest">{{ $book->author->nombre_autor }}</h2>
                 {{-- resumen --}}
                 <p class="leading-relaxed">{{ $book->resumen }}</p>
                 <div class="flex mt-6 items-center pb-5 border-b-2 border-blue-100 mb-5">

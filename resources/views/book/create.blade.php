@@ -74,7 +74,7 @@
                         {{ $ubicacion="" }}
                         <option value="">- Seleccione la Sucursal- </option>
                         <option value="La Paz" {{ old('ubicacion', $ubicacion)=='La Paz' ? 'selected':'' }}>La Paz</option>
-                        <option value="Oruro" {{ old('ubicacion', $ubicacion)=='Oruro' ? 'selected':'' }}>Oruro</option>
+                        <option value="Potosi" {{ old('ubicacion', $ubicacion)=='Potosi' ? 'selected':'' }}>Oruro</option>
                         <option value="Sucre" {{ old('ubicacion', $ubicacion)=='Sucre' ? 'selected':'' }}>Sucre</option>
                 </select>
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">

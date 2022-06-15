@@ -72,8 +72,8 @@
 
 </head>
     <body class="bg-gray-200">
-        <header class="p-5 border-b bg-sky-800 shadow">
-           <div class="container mx-auto flex justify-between items-center">
+        <header class="p-5 border-b bg-sky-800 shadow ">
+           <div class="container mx-auto flex justify-between items-center ">
                 <h1 class="text-3xl font-black text-gray-200">
                     <a href="{{route('home')}}" class="text-3xl font-black">
                         Biblioteca
@@ -190,8 +190,8 @@
         </header>
 
 
-
-        <div class="text-white flex flex-col rounded-md bg-sky-600 p-2 mb-10 fixed z-10 max-w-xs" >
+        {{-- seccion QR de la aplicacion wayruru --}}
+        {{-- <div class="text-white flex flex-col rounded-md bg-sky-600 p-2 mb-10 fixed z-10 max-w-xs" >
             <button id="btnMostrar" >
                 <p class="mx-1 font-bold p-2">¡Descarga Nuestra <br> Aplicación Wayruru!</p>
                 <img class="rounded-xl h-auto p-2 align-middle w-40 width:16rem " alt="imagen de aplicacion wayruru" src="{{ asset('img/iconowayruru.png')}}">
@@ -212,7 +212,7 @@
             <div class="flex flex-row-reverse gap-2">
                 <button id="btnOcultar" class="rounded-md hover:bg-opacity-30 hover:bg-gray-500 transition-all ease-in p-1">Cerrar</button>
             </div>
-        </div>
+        </div> --}}
 
         {{-- Seccion para introducir contenido --}}
         <main class="container mx-auto">
