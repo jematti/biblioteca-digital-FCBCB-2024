@@ -66,7 +66,7 @@
                             Sucre
                         </button>
                         <button class="bg-blue-600 text-white mx-5 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" onclick="toggleModal('modal-id-or')">
-                            Oruro
+                            Potosi
                         </button>
 
                     </div>
@@ -251,7 +251,7 @@
             <!--header-->
             <div class="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
               <h3 class="text-3xl font-semibold">
-                Contactanos en la Ciudad de Oruro
+                Contactanos en la Ciudad de Potosi
               </h3>
               <button class="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none" onclick="toggleModal('modal-id-or')">
                 <span class="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
