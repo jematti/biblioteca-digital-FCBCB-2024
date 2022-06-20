@@ -37,15 +37,42 @@
             </div>
         </div>
         {{-- seccion de login y registro --}}
+        @auth
+            <nav class="flex gap-2 items-center ">
+                <a class="font-bold text-gray-200" href="#">
+                    Hola: <span class="font-normal">
+                        {{auth()->user()->name}}
+                        </span>
+                </a>
+
+                <a class="font-bold text-gray-200" href="{{route('books.index')}}">
+                        Dashboard<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                        </svg>
+                </a>
+
+
+                {{-- metodo para cerrar sesion --}}
+                <form action="{{route('logout')}}" method="POST">
+                    @csrf
+                    <button type="submit" class="font-bold uppercase text-gray-200 "  >Cerrar Sesión</button>
+                </form>
+
+            </nav>
+        @endauth
+
+        @guest
         <div class=" px-2 py-2  mt-2 flex-2 hidden md:block" >
-            <a class="inline-block py-2 px-3 hover:bg-white hover:text-black font-bold rounded-full" href="#">
+            <a class="inline-block py-2 px-3 hover:bg-white hover:text-black font-bold rounded-full" href="{{ route('register') }}">
                 <div class="flex items-center relative cursor-pointer whitespace-nowrap">Crear Cuenta</div>
             </a>
 
-            <a class="inline-block py-2 px-3 hover:bg-white hover:text-black  font-bold rounded-full" href="#">
+            <a class="inline-block py-2 px-3 hover:bg-white hover:text-black  font-bold rounded-full" href="{{ route('login') }}">
                 <div class="flex items-center relative cursor-pointer whitespace-nowrap">Login</div>
             </a>
         </div>
+        @endguest
+
     </div>
     <hr>
     <div class="container mx-auto items-star hidden md:block">

@@ -20,7 +20,6 @@ class RegisterController extends Controller
 
         $this->validate($request, [
             'name' => 'required',
-            'ci'=> 'required|unique:users|min:3|max:30',
             'email' => 'required|unique:users|email',
             'password' => 'required|confirmed|min:6'
 
@@ -29,7 +28,6 @@ class RegisterController extends Controller
         //haciendo peticiones desde la vista
         User::create([
             'name' => $request ->name,
-            'ci' => $request->ci,
             'email' => $request ->email,
             'password' => Hash::make($request ->password)
 

@@ -10,7 +10,6 @@
 <h2 class="bg-white text-lg rounded-lg p-4 text-center font-bold border-2 border-sky-800">Agregar Libro</h2>
 
 
-
     <div class="flex flex-wrap -mx-3 mb-6">
         <div class="w-1/2  px-3">
             <label class="mb-2 block uppercase text-gray-500 font-bold" >
@@ -69,6 +68,29 @@
 
         <div class="flex flex-wrap -mx-3 mb-6">
             <div class="w-full px-3">
+              <label class="mb-2 block uppercase text-gray-500 font-bold" >
+                Precio del Libro
+              </label>
+              <input
+                    class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="precio"
+                    name="precio"
+                    type="text"
+                    placeholder="Precio del Libro"
+                    @error('precio')
+                    border-red-500
+                    @enderror
+                    value="{{$book->precio}}"
+                />
+
+                @error('precio')
+                <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
+                @enderror
+            </div>
+        </div>
+
+        <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full px-3">
                 <label class="mb-2 block uppercase text-gray-500 font-bold" >
                     Ubicación:
                 </label>
@@ -78,19 +100,25 @@
                     name="ubicacion"
 
                 >
-                        <option disabled selected>- Seleccione la Sucursal- </option>
-                        <option value="La Paz" {{($book->ubicacion)=='La Paz' ? 'selected':'' }}>La Paz</option>
-                        <option value="Potosi" {{ ($book->ubicacion)=='Potosi' ? 'selected':'' }}>Oruro</option>
-                        <option value="Sucre" {{ ($book->ubicacion)=='Sucre' ? 'selected':'' }}>Sucre</option>
+                <option disabled selected>- Seleccione una Autor -</option>
+
+                @foreach ($repositories as $repository)
+                    <option
+                        {{ $book->repository->id == $repository->id ? 'selected' : '' }}
+                        value="{{ $repository->id }}"
+                    >
+                    {{$repository->ciudad}} | {{$repository->nombre_repositorio}}
+                    </option>
+                @endforeach
+
                 </select>
-                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                    </div>
+
                 @error('ubicacion')
                 <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
                 @enderror
             </div>
         </div>
+
 
         <div class="flex flex-wrap -mx-3 mb-6">
             <div class="w-full px-3">
@@ -282,24 +310,39 @@
               <label class="mb-2 block uppercase text-gray-500 font-bold" >
                 Resumen
               </label>
-              <input
-                    class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                    id="resumen"
-                    name="resumen"
-                    type="text"
-                    placeholder="Resumen del Libro"
-                    @error('resumen')
-                    border-red-500
-                    @enderror
-                    value="{{$book->resumen}}"
-                />
+                <textarea
+                class="
+                    form-control
+                    block
+                    w-full
+                    px-3
+                    py-1.5
+                    text-base
+                    font-normal
+                    text-gray-700
+                    bg-white bg-clip-padding
+                    border border-solid border-gray-300
+                    rounded
+                    transition
+                    ease-in-out
+                    m-0
+                    focus:text-neutral-700 focus:bg-white focus:border-gray-600 focus:outline-none
+                "
+                id="resumen"
+                name="resumen"
+                placeholder="Resumen del Libro"
+                @error('resumen')
+                border-red-500
+                @enderror
+                value="{{$book->resumen}}"
+                rows="3"
+                >{{$book->resumen}}</textarea>
 
                 @error('resumen')
                 <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
                 @enderror
             </div>
         </div>
-
 
 
         {{-- botones de guardar - cancelar cambios --}}

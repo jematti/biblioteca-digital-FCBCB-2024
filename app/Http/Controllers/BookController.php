@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Book;
 use App\Models\Author;
 use App\Models\Category;
 use App\Models\Editorial;
-use App\Models\Book;
+use App\Models\Repository;
+use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
@@ -31,10 +32,12 @@ class BookController extends Controller
           $categories = Category::all();
           $editorials = Editorial::all();
           $authors = Author::all();
+          $repositories = Repository::all();
           return view('book.create')
                     ->with('categories',$categories)
                     ->with('authors',$authors)
-                    ->with('editorials',$editorials);
+                    ->with('editorials',$editorials)
+                    ->with('repositories',$repositories);
     }
 
     /**
@@ -50,30 +53,32 @@ class BookController extends Controller
         $this->validate($request,[
             'titulo' => 'required|max:255',
             'edicion' => 'required',
-            'ubicacion' => 'required',
             'numero_paginas' => 'required',
             'fecha_publicacion' => 'required|date',
             'idioma' => 'required',
             'resumen' => 'required',
             'imagen' => 'required',
+            'precio' => 'required',
             'author' => 'required',
             'editorial'=> 'required',
             'category'=> 'required',
+            'ubicacion'=> 'required',
         ]);
 
-        //creacion de un nuevo libro y recibiendo datos de la vista
+        //creacion de un nuevo libro y recibiendo datos de la vista usan las variables de request
         $book = new Book;
         $book->titulo = $request->titulo;
         $book->edicion = $request->edicion;
-        $book->ubicacion = $request->ubicacion;
         $book->numero_paginas = $request->numero_paginas;
         $book->fecha_publicacion = $request->fecha_publicacion;
         $book->idioma = $request->idioma;
         $book->resumen = $request->resumen;
         $book->imagen = $request->imagen;
+        $book->precio = $request->precio;
         $book->author_id = $request->author;
         $book->category_id = $request->category;
         $book->editorial_id = $request->editorial;
+        $book->repository_id = $request->ubicacion;
         $book->save();
 
         return redirect()->route('books.index')->with('store','ok');
@@ -101,11 +106,13 @@ class BookController extends Controller
           $categories = Category::all();
           $editorials = Editorial::all();
           $authors = Author::all();
+          $repositories = Repository::all();
 
         return view('book.edit')
         ->with('categories',$categories)
         ->with('authors',$authors)
         ->with('editorials',$editorials)
+        ->with('repositories',$repositories)
         ->with('book',$book);;
     }
 
@@ -123,30 +130,32 @@ class BookController extends Controller
         $this->validate($request,[
             'titulo' => 'required|max:255',
             'edicion' => 'required',
-            'ubicacion' => 'required',
             'numero_paginas' => 'required',
             'fecha_publicacion' => 'required|date',
             'idioma' => 'required',
             'resumen' => 'required',
             'imagen' => 'required',
+            'precio' => 'required',
             'author' => 'required',
             'editorial'=> 'required',
             'category'=> 'required',
+            'ubicacion'=> 'required',
         ]);
 
         //creacion de un nuevo libro y recibiendo datos de la vista
 
         $book->titulo = $request->titulo;
         $book->edicion = $request->edicion;
-        $book->ubicacion = $request->ubicacion;
         $book->numero_paginas = $request->numero_paginas;
         $book->fecha_publicacion = $request->fecha_publicacion;
         $book->idioma = $request->idioma;
         $book->resumen = $request->resumen;
         $book->imagen = $request->imagen;
+        $book->precio = $request->precio;
         $book->author_id = $request->author;
         $book->category_id = $request->category;
         $book->editorial_id = $request->editorial;
+        $book->repository_id = $request->ubicacion;
         $book->save();
 
         return redirect()->route('books.index')->with('update','ok');;

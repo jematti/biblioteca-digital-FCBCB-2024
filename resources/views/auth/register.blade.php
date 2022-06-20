@@ -33,23 +33,6 @@
                     @error('name')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
                     @enderror
-                    <label for="ci" class="mb-2 block uppercase text-gray-500 font-bold">
-                        Carnet de Identidad
-                    </label>
-                    <input
-                        id="ci"
-                        type="text"
-                        name="ci"
-                        placeholder="Tu Nro de Carnet de Identidad"
-                        class="border p-3 w-full rounded-lg"
-                        @error('ci')
-                        border-red-500
-                        @enderror
-                        value="{{old('ci')}}"
-                    />
-                    @error('ci')
-                        <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
-                    @enderror
                     <label for="email" class="mb-2 block uppercase text-gray-500 font-bold">
                         Correo Electronico
                     </label>

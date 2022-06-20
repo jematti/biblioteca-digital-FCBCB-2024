@@ -11,7 +11,7 @@ use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EditorialController;
 use App\Http\Controllers\ImagenController;
-use App\Models\Category;
+use App\Http\Controllers\RepositoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +35,8 @@ Route::resource('category', CategoryController::class);
 Route::resource('author', AuthorController::class);
 //CRUD Editorial
 Route::resource('editorial', EditorialController::class);
+//CRUD Repositorios
+Route::resource('repository', RepositoryController::class);
 //CRUD libros
 Route::resource('books',BookController::class);
 //Route::resource('books', LibroController::class);

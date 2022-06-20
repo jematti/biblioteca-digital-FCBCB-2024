@@ -6,7 +6,7 @@
 
 
 <!-- page -->
-<main class="min-h-screen w-full bg-gray-100 text-gray-700" x-data="layout">
+<main class="min-h-screen w-full bg-gray-100 text-gray-700" >
     <div class="flex w-full">
         <!-- aside -->
         <aside class="flex w-72 flex-col space-y-2 border-r-2 border-gray-200 bg-white p-2" style="height: 90.5vh"
@@ -47,6 +47,13 @@
                 <span>Autor</span>
             </a>
 
+            <a href="{{ route('repository.index') }}" class="flex items-center space-x-1 rounded-md px-2 py-3 hover:bg-gray-100 hover:text-blue-600">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+                <span>Repositorios</span>
+            </a>
+
             <a href="#" class="flex items-center space-x-1 rounded-md px-2 py-3 hover:bg-gray-100 hover:text-blue-600">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
@@ -63,7 +70,7 @@
 
         </aside>
         {{-- Seccion para introducir el contenido }} --}}
-        <div class="w-1/2 p-4">
+        <div class="flex-1 p-4">
             @yield('contenido-admin')
         </div>
     </div>

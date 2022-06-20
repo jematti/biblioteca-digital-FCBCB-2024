@@ -32,7 +32,7 @@
     @endif --}}
 
     <!-- Table -->
-        <div class="w-full max-w-2xl mx-auto bg-white shadow-lg rounded-sm border border-gray-200">
+        <div class="w-full mx-auto bg-white shadow-lg rounded-sm border border-gray-200">
             <header class="px-5 py-4 border-b border-gray-100">
                 <div class="font-semibold text-gray-800">Editorial</div>
             </header>

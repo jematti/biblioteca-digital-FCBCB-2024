@@ -7,17 +7,21 @@
     <div class="container px-5 mx-auto bg-white">
 
         {{-- seccion de libro --}}
-        <div class="md:flex md:justify-center md:gap md:items-center">
+        <div class="md:flex md:justify-center md:gap md:items-center justify-between">
 
-          <div class="md:w-3/12  p-5">
-                <img alt="imagen del post {{ $book->titulo }}" src="{{ asset('uploads').'/'.$book->imagen}}">
+          <div class="md:w-64  p-5">
+                <img class="h-65 w-full "alt="imagen del post {{ $book->titulo }}" src="{{ asset('uploads').'/'.$book->imagen}}">
           </div>
 
-          <div class="md:w-9/12 p-6 rounded-lg shadow-xl">
+          <div class="md:w-1/3 p-6 rounded-lg shadow-xl">
                 {{-- titulo --}}
                 <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">{{ $book->titulo }}</h1>
                 {{-- autor --}}
-                <h2 class="text-xl title-font underline font-medium text-gray-500 tracking-widest">{{ $book->author->nombre_autor }}</h2>
+                <h2 class="text-xl title-font underline font-medium text-gray-500 tracking-widest">
+                    <a href="{{ route('author.show', $book->author->id) }}">
+                        {{ $book->author->nombre_autor }}
+                    </a>
+                </h2>
                 {{-- resumen --}}
                 <p class="leading-relaxed">{{ $book->resumen }}</p>
                 <div class="flex mt-6 items-center pb-5 border-b-2 border-blue-100 mb-5">
@@ -28,45 +32,41 @@
                         </button>
                     </div>
                 </div>
+          </div>
 
+          <div class="md:w-1/3 ml-2 rounded-lg shadow-xl p-2">
                 {{-- Tabla de datos del libro --}}
 
                 <div class="block overflow-x-auto pb-4">
                     <table>
-                      <tbody>
+                    <tbody>
                         <tr>
-                          <th class="align-middle text-lg pl-1  text-left text-blueGray-700 ">
+                        <th class="align-middle text-lg pl-1  text-left text-blueGray-700 ">
                             idioma:
-                          </th>
-                          <td class="align-middle text-lg pl-1 pr-10 text-left text-blueGray-700 ">
+                        </th>
+                        <td class="align-middle text-lg pl-1 pr-10 text-left text-blueGray-700 ">
                             {{ $book->idioma }}
-                          </td>
-                          <th class="align-middle text-lg pl-1 text-left text-blueGray-700 ">
+                        </td>
+                        <th class="align-middle text-lg pl-1 text-left text-blueGray-700 ">
                             Fecha de Publicación:
-                          </th>
-                          <td class="align-middle text-lg pl-1 text-left text-blueGray-700 ">
+                        </th>
+                        <td class="align-middle text-lg pl-1 text-left text-blueGray-700 ">
                             {{ $book->fecha_publicacion }}
-                          </td>
+                        </td>
                         </tr>
-                      </tbody>
+                    </tbody>
 
                     </table>
-                  </div>
+                </div>
 
 
                 {{-- informacion de envio  --}}
                 <div class="bg-blue-100 border-l-4 border-blue-500 text-blue-700 p-4 text-center"  role="alert">
                     <div class="p-2">
-                     <h5 class="text-gray-900 text-xl font-bold mb-2">Disponible en las Sucursales: </h5>
+                    <h5 class="text-gray-900 text-xl font-bold mb-2">Disponible en las Sucursales: </h5>
 
                         <button class="bg-blue-600 text-white mx-5  font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" onclick="toggleModal('modal-id-lp')">
-                            La Paz
-                        </button>
-                        <button class="bg-blue-600 text-white mx-5 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" onclick="toggleModal('modal-id-sc')">
-                            Sucre
-                        </button>
-                        <button class="bg-blue-600 text-white mx-5 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" onclick="toggleModal('modal-id-or')">
-                            Potosi
+                            {{ $book->repository->ciudad}}
                         </button>
 
                     </div>
@@ -75,7 +75,7 @@
                         Tiempo estimado de Envio es de 3 dias a partir de la compra
                     </div> --}}
                 </div>
-          </div>
+            </div>
         </div>
 
         {{-- seccion de compra --}}
@@ -107,7 +107,7 @@
     </div>
 
 
-    {{-- Codigo Modal La Paz--}}
+    {{-- Codigo Modal --}}
       <div class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" id="modal-id-lp">
         <div class="relative w-auto my-6 mx-auto max-w-3xl">
           <!--content-->
@@ -115,7 +115,7 @@
             <!--header-->
             <div class="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
               <h3 class="text-3xl font-semibold">
-                Contactanos en la Ciudad de La Paz
+                Contactanos en la Ciudad de {{ $book->repository->ciudad}}
               </h3>
               <button class="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none" onclick="toggleModal('modal-id-lp')">
                 <span class="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
@@ -130,7 +130,8 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                     <p class="font-medium my-4 text-black text-xl leading-relaxed mx-1 ">
-                        Correo: ejemplo@ejemplo.com
+                            Correo Electronico: {{ $book->repository->correo}}
+
                     </p>
                 </div>
                 <div class="flex flex-row">
@@ -138,7 +139,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
                     <p class="font-medium my-4 text-black text-xl leading-relaxed mx-1 ">
-                        Celulares: 244-196
+                        Celulares/Telefonos: {{ $book->repository->telefono}}
                     </p>
                 </div>
                 <div class="flex flex-row">
@@ -159,7 +160,7 @@
                     </p>
                 </div>
                 <div>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1912.6677131703736!2d-68.12918784562898!3d-16.509155279017744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x915f21b7e47521e1%3A0x7fa0fb5d64caf2f2!2sFUNDACI%C3%93N%20CULTURAL%20DEL%20BANCO%20CENTRAL%20DE%20BOLIVIA!5e0!3m2!1ses-419!2sbo!4v1654261936603!5m2!1ses-419!2sbo" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    {!! $book->repository->ubicacion !!}
                 </div>
             </div>
 
@@ -175,139 +176,7 @@
       </div>
       <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id-lp-backdrop"></div>
 
-      {{-- Codigo Modal Sucre--}}
 
-      <div class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" id="modal-id-sc">
-        <div class="relative w-auto my-6 mx-auto max-w-3xl">
-          <!--content-->
-          <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-            <!--header-->
-            <div class="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
-              <h3 class="text-3xl font-semibold">
-                Contactanos en la Ciudad de Sucre
-              </h3>
-              <button class="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none" onclick="toggleModal('modal-id-sc')">
-                <span class="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
-                  ×
-                </span>
-              </button>
-            </div>
-            <!--body-->
-            <div class="flex flex-col p-6">
-                <div class="flex flex-row">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mt-5 " fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                    <p class="font-medium my-4 text-black text-xl leading-relaxed mx-1 ">
-                        Correo: ejemplo@ejemplo.com
-                    </p>
-                </div>
-                <div class="flex flex-row">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mt-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                    </svg>
-                    <p class="font-medium my-4 text-black text-xl leading-relaxed mx-1 ">
-                        Celulares: 244-196
-                    </p>
-                </div>
-                <div class="flex flex-row">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mt-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <p class="font-medium my-4 text-black text-xl leading-relaxed mx-1 ">
-                        Encargado: Jhon Smith
-                    </p>
-                </div>
-                <div class="flex flex-row">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mt-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                    <p class="font-medium my-4 text-black text-xl leading-relaxed mx-1 ">
-                        Ubicación:
-                    </p>
-                </div>
-                <div>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1912.6677131703736!2d-68.12918784562898!3d-16.509155279017744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x915f21b7e47521e1%3A0x7fa0fb5d64caf2f2!2sFUNDACI%C3%93N%20CULTURAL%20DEL%20BANCO%20CENTRAL%20DE%20BOLIVIA!5e0!3m2!1ses-419!2sbo!4v1654261936603!5m2!1ses-419!2sbo" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-            </div>
-            <!--footer-->
-            <div class="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
-              <button class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" onclick="toggleModal('modal-id-sc')">
-                Cerrar
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id-sc-backdrop"></div>
-
-    {{-- Codigo Modal Oruro--}}
-
-      <div class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" id="modal-id-or">
-        <div class="relative w-auto my-6 mx-auto max-w-3xl">
-          <!--content-->
-          <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-            <!--header-->
-            <div class="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
-              <h3 class="text-3xl font-semibold">
-                Contactanos en la Ciudad de Potosi
-              </h3>
-              <button class="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none" onclick="toggleModal('modal-id-or')">
-                <span class="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
-                  ×
-                </span>
-              </button>
-            </div>
-            <!--body-->
-            <div class="flex flex-col p-6">
-                <div class="flex flex-row">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mt-5 " fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                    <p class="font-medium my-4 text-black text-xl leading-relaxed mx-1 ">
-                        Correo: ejemplo@ejemplo.com
-                    </p>
-                </div>
-                <div class="flex flex-row">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mt-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                    </svg>
-                    <p class="font-medium my-4 text-black text-xl leading-relaxed mx-1 ">
-                        Celulares: 244-196
-                    </p>
-                </div>
-                <div class="flex flex-row">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mt-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <p class="font-medium my-4 text-black text-xl leading-relaxed mx-1 ">
-                        Encargado: Jhon Smith
-                    </p>
-                </div>
-                <div class="flex flex-row">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mt-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                    <p class="font-medium my-4 text-black text-xl leading-relaxed mx-1 ">
-                        Ubicación:
-                    </p>
-                </div>
-                <div>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1912.6677131703736!2d-68.12918784562898!3d-16.509155279017744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x915f21b7e47521e1%3A0x7fa0fb5d64caf2f2!2sFUNDACI%C3%93N%20CULTURAL%20DEL%20BANCO%20CENTRAL%20DE%20BOLIVIA!5e0!3m2!1ses-419!2sbo!4v1654261936603!5m2!1ses-419!2sbo" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-            </div>
-            <!--footer-->
-            <div class="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
-              <button class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" onclick="toggleModal('modal-id-or')">
-                Cerrar
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id-or-backdrop"></div>
 
       <script type="text/javascript">
         function toggleModal(modalID){

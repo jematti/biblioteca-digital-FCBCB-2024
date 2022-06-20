@@ -2,29 +2,27 @@
 
 @section('contenido-admin')
 
+    <h2 class="bg-white text-lg rounded-lg p-4 text-center font-bold border-2 border-sky-800">Repositorios</h2>
 
-    <h2 class="bg-white text-lg rounded-lg p-4 text-center font-bold border-2 border-sky-800">Autor</h2>
-
-    {{-- menu de navegacion para crear y editar autores de libros --}}
+    {{-- menu de navegacion para crear y editar repositorios --}}
     <div class="flex">
         <div class="w-1/2 mt-5 p-2 ">
-            <button class="w-full uppercase h-10 px-5 bg-white text-red-500 transition-colors font-bold duration-150 border border-red-500  focus:shadow-outline hover:bg-red-500 hover:text-white py-2  rounded-lg inline-flex " onclick="location.href = '{{ route('author.create') }}'">
+            <button class="w-full uppercase h-10 px-5 bg-white text-red-500 transition-colors font-bold duration-150 border border-red-500  focus:shadow-outline hover:bg-red-500 hover:text-white py-2  rounded-lg inline-flex " onclick="location.href = '{{ route('repository.create') }}'">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
-                </svg>
-                <span>Agregar Autor</span>
+                  </svg>
+                  <span>Agregar Repositorio</span>
             </button>
         </div>
         <div class="w-1/2  mt-5 p-2 ">
-            <button class="w-full uppercase h-10 px-5 bg-white text-red-500 transition-colors font-bold duration-150 border border-red-500  focus:shadow-outline hover:bg-red-500 hover:text-white py-2  rounded-lg inline-flex " onclick="location.href = '{{ route('author.index') }}'">
+            <button class="w-full uppercase h-10 px-5 bg-white text-red-500 transition-colors font-bold duration-150 border border-red-500  focus:shadow-outline hover:bg-red-500 hover:text-white py-2  rounded-lg inline-flex " onclick="location.href = '{{ route('repository.index') }}'">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                </svg>
-                <span>Listar Autores</span>
+                  </svg>
+                  <span>Listar Repositorios</span>
             </button>
         </div>
-    </div>
-
+   </div>
 
 {{-- mensaje de alerta --}}
     {{-- @if ($message = Session::get('success'))
@@ -36,7 +34,7 @@
     <!-- Table -->
         <div class="w-full  mx-auto bg-white shadow-lg rounded-sm border border-gray-200">
             <header class="px-5 py-4 border-b border-gray-100">
-                <div class="font-semibold text-gray-800">Autores</div>
+                <div class="font-semibold text-gray-800">Repositorios</div>
             </header>
 
             <div class="overflow-x-auto p-3">
@@ -48,7 +46,22 @@
                                 <div class="font-semibold text-left">Nombre</div>
                             </th>
                             <th class="p-2">
-                                <div class="font-semibold text-left">Biografía</div>
+                                <div class="font-semibold text-left">Sigla</div>
+                            </th>
+                            <th class="p-2">
+                                <div class="font-semibold text-left">Ciudad</div>
+                            </th>
+                            <th class="p-2">
+                                <div class="font-semibold text-left">Correo</div>
+                            </th>
+                            <th class="p-2">
+                                <div class="font-semibold text-left">Horario</div>
+                            </th>
+                            <th class="p-2">
+                                <div class="font-semibold text-left">Telefono</div>
+                            </th>
+                            <th class="p-2">
+                                <div class="font-semibold text-left">Pagina Web</div>
                             </th>
                             <th class="p-2">
                                 <div class="font-semibold text-left">Editar </div>
@@ -61,19 +74,44 @@
 
                     <tbody class="text-sm divide-y divide-gray-100">
                         <!-- tabla de datos -->
-                        @foreach ($author as $authors)
+                        @foreach ($repository as $repositories)
                             <tr>
                                 <td class="p-2">
 
                                 </td>
                                 <td class="p-2">
                                     <div class="font-medium text-gray-800">
-                                        {{ $authors->nombre_autor }}
+                                        {{ $repositories->nombre_repositorio }}
                                     </div>
                                 </td>
                                 <td class="p-2">
                                     <div class="text-left">
-                                       {{ $authors->biografia }}
+                                       {{ $repositories->sigla }}
+                                    </div>
+                                </td>
+                                <td class="p-2">
+                                    <div class="text-left">
+                                       {{ $repositories->ciudad }}
+                                    </div>
+                                </td>
+                                <td class="p-2">
+                                    <div class="text-left">
+                                       {{ $repositories->correo }}
+                                    </div>
+                                </td>
+                                <td class="p-2">
+                                    <div class="text-left">
+                                       {{ $repositories->horario_atencion }}
+                                    </div>
+                                </td>
+                                <td class="p-2">
+                                    <div class="text-left">
+                                       {{ $repositories->telefono}}
+                                    </div>
+                                </td>
+                                <td class="p-2">
+                                    <div class="text-left">
+                                       {{ $repositories->pagina_web }}
                                     </div>
                                 </td>
                                 {{-- seccion editar --}}
@@ -81,7 +119,7 @@
                                         <div class="flex justify-center">
 
                                             {{-- editar --}}
-                                            <a href="{{ route('author.edit',$authors->id) }}">
+                                            <a href="{{ route('repository.edit',$repositories->id) }}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                                     <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                                                 </svg>
@@ -92,7 +130,7 @@
 
                               {{-- seccion eliminar --}}
                                 <td class="p-2">
-                                    <form  class="delete-author" action="{{ route('author.destroy',$authors->id) }}" method="POST">
+                                    <form  class="delete-author" action="{{ route('repository.destroy',$repositories->id) }}" method="POST">
                                         <div class="flex justify-center">
                                             <button >
                                                 @csrf
@@ -120,81 +158,3 @@
 
 
 @endsection
-
-@section('js')
-
-{{-- mensaje de exito de eliminacion --}}
-@if(session('eliminar') == 'ok')
-
-    <script>
-        Swal.fire({
-        icon: 'success',
-        title: 'Se elimino correctamente',
-        showConfirmButton: false,
-        timer: 1500
-        })
-    </script>
-@endif
-
-{{-- mensaje de exito de agregacion de autor --}}
-@if(session('store') == 'ok')
-
-    <script>
-        Swal.fire({
-        icon: 'success',
-        title: 'Se ha agregado el Autor Correctamente',
-        showConfirmButton: false,
-        timer: 2000
-        })
-    </script>
-@endif
-
-{{-- mensaje de exito de actualizacion correcta --}}
-@if(session('update') == 'ok')
-
-    <script>
-        Swal.fire({
-        icon: 'success',
-        title: 'Se ha actualizado los datos Correctamente',
-        showConfirmButton: false,
-        timer: 2000
-        })
-    </script>
-@endif
-
-
-
-{{-- solicitud de confirmacion de eliminacion --}}
-<script type="text/javascript">
-
-
-    $('.delete-author').submit(function(e){
-
-      //previene el comportamiento por defecto del formulario
-      e.preventDefault();
-
-      Swal.fire({
-      title: '¿Esta Seguro de Eliminar este Author?',
-      text: "¡Esta accion no es reversible!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Si, estoy Seguro',
-      }).then((result) => {
-          if (result.value) {
-            this.submit();
-          }
-          })
-    });
- </script>
-
-
-@endsection
-
-
-
-
-
-
-

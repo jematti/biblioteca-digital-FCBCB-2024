@@ -80,7 +80,7 @@
                                 </td>
                                 <td class="p-2">
                                     <div class="text-left">
-                                       {{ $books->ubicacion }}
+                                       {{ $books->repository->nombre_repositorio }}
                                     </div>
                                 </td>
                                 <td class="p-2">
