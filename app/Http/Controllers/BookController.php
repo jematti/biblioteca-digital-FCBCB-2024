@@ -18,7 +18,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        $data['book']= Book::orderBy('id','desc')->paginate(5);
+        $data['book']= Book::orderBy('id','desc')->paginate(18);
         return view('book.index',$data);
     }
 
@@ -172,6 +172,6 @@ class BookController extends Controller
     {
         $book->delete();
         return redirect()->route('books.index')
-                        ->with('success','Post deleted successfully');
+                        ->with('eliminar','ok');
     }
 }

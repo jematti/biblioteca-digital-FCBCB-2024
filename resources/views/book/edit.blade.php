@@ -222,10 +222,10 @@
 
                         <option disabled selected>- Seleccione el idioma del Libro- </option>
 
-                        <option value="Español" {{ ($book->idioma)=='Español' ? 'selected' : ''  }}>Español</option>
-                        <option value="Aymara" {{ ($book->idioma)=='Aymara' ? 'selected' : ''  }}>Aymara</option>
-                        <option value="Quechua" {{ ($book->idioma)=='Quechua' ? 'selected' : ''  }}>Quechua</option>
-                        <option value="Ingles" {{ ($book->idioma)=='Ingles' ? 'selected' : ''  }}>Ingles</option>
+                        <option value="español" {{ ($book->idioma)=='español' ? 'selected' : ''  }}>Español</option>
+                        <option value="aymara" {{ ($book->idioma)=='aymara' ? 'selected' : ''  }}>Aymara</option>
+                        <option value="quechua" {{ ($book->idioma)=='quechua' ? 'selected' : ''  }}>Quechua</option>
+                        <option value="ingles" {{ ($book->idioma)=='ingles' ? 'selected' : ''  }}>Ingles</option>
 
                 </select>
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">

@@ -130,7 +130,7 @@
 
                               {{-- seccion eliminar --}}
                                 <td class="p-2">
-                                    <form  class="delete-author" action="{{ route('repository.destroy',$repositories->id) }}" method="POST">
+                                    <form  class="delete-repository" action="{{ route('repository.destroy',$repositories->id) }}" method="POST">
                                         <div class="flex justify-center">
                                             <button >
                                                 @csrf
@@ -155,6 +155,77 @@
             </div>
 
             {{-- {!! $author->links() !!}  --}}
+
+
+@endsection
+
+
+
+@section('js')
+
+{{-- mensaje de exito de eliminacion --}}
+@if(session('eliminar') == 'ok')
+
+    <script>
+        Swal.fire({
+        icon: 'success',
+        title: 'Se elimino correctamente',
+        showConfirmButton: false,
+        timer: 1500
+        })
+    </script>
+@endif
+
+{{-- mensaje de exito de agregar Editorial --}}
+@if(session('store') == 'ok')
+
+    <script>
+        Swal.fire({
+        icon: 'success',
+        title: 'Se ha agregado el repositorio correctamente',
+        showConfirmButton: false,
+        timer: 2000
+        })
+    </script>
+@endif
+
+{{-- mensaje de exito de actualizacion correcta --}}
+@if(session('update') == 'ok')
+
+    <script>
+        Swal.fire({
+        icon: 'success',
+        title: 'Se ha actualizado los datos Correctamente',
+        showConfirmButton: false,
+        timer: 2000
+        })
+    </script>
+@endif
+
+{{-- solicitud de confirmacion de eliminacion --}}
+<script type="text/javascript">
+
+
+    $('.delete-repository').submit(function(e){
+
+      //previene el comportamiento por defecto del formulario
+      e.preventDefault();
+
+      Swal.fire({
+      title: '¿Esta Seguro de Eliminar este Repositorio?',
+      text: "¡Esta accion no es reversible!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, estoy Seguro',
+      }).then((result) => {
+          if (result.value) {
+            this.submit();
+          }
+          })
+    });
+ </script>
 
 
 @endsection

@@ -225,7 +225,7 @@
  </header>
 
         {{-- Seccion para introducir contenido --}}
-        <main class="container mx-auto">
+        <main class="container mx-auto bg-[url('{{ asset('img/por1.jpg')}}')]">
             @yield('contenido')
         </main>
 

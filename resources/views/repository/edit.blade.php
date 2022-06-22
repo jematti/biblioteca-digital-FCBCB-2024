@@ -57,26 +57,41 @@
 
             <div class="flex flex-wrap -mx-3 mb-3">
                 <div class="w-full px-3">
-                    <label for="ubicacion" class="mb-2 block uppercase text-gray-500 font-bold">
-                        Dirección de Google Maps
+                    <label for="direccion" class="mb-2 block uppercase text-gray-500 font-bold">
+                        Dirección
                     </label>
                     <input
-                        id="ubicacion"
+                        id="direccion"
                         type="text"
-                        name="ubicacion"
+                        name="direccion"
                         placeholder="Dirección Actual"
                         class="border p-3 w-full rounded-lg"
-                        @error('ubicacion')
+                        @error('direccion')
                             border-red-500
                         @enderror
-                        value="{{$repository->ubicacion}}"
+                        value="{{$repository->direccion}}"
                     />
-                    @error('ubicacion')
+                    @error('direccion')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
                     @enderror
                 </div>
             </div>
 
+            <div class="flex flex-wrap -mx-3 mb-3">
+                <div class="w-full px-3">
+                    <label for="ubicacion" class="mb-2 block uppercase text-gray-500 font-bold">
+                        Ubicacion Google Maps Repositorio (Opcional)
+                    </label>
+                    <input
+                        id="ubicacion"
+                        type="text"
+                        name="ubicacion"
+                        placeholder="Insertar desde el Mapa de Google Maps"
+                        class="border p-3 w-full rounded-lg"
+                        value="{{$repository->ubicacion}}"
+                    />
+                </div>
+            </div>
             <div class="flex flex-wrap -mx-3 mb-3">
                 <div class="w-full md:w-1/2 px-3 mb-3 md:mb-0">
                     <label for="sigla" class="mb-2 block uppercase text-gray-500 font-bold">
@@ -111,6 +126,7 @@
                             <option value="La Paz" {{ ($repository->ciudad)=='La Paz' ? 'selected':'' }}>La Paz</option>
                             <option value="Potosi" {{ ($repository->ciudad)=='Potosi' ? 'selected':'' }}>Potosi</option>
                             <option value="Sucre" {{  ($repository->ciudad)=='Sucre' ? 'selected':'' }}>Sucre</option>
+                            <option value="Santa Cruz" {{  ($repository->ciudad)=='Santa Cruz' ? 'selected':'' }}>Santa Cruz</option>
                     </select>
                         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                             <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>

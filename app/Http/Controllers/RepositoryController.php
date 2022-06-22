@@ -14,7 +14,7 @@ class RepositoryController extends Controller
      */
     public function index()
     {
-        $data['repository']= Repository::orderBy('id','desc')->paginate(5);
+        $data['repository']= Repository::orderBy('id','desc')->paginate(8);
         return view('repository.index',$data);
 
     }
@@ -42,7 +42,8 @@ class RepositoryController extends Controller
             'sigla' => 'required',
             'ciudad' => 'required',
             'correo' => 'required|email',
-            'ubicacion' => 'required',
+            'direccion' => 'required',
+            'ubicacion',
             'horario_atencion' => 'required',
             'telefono' => 'required',
             'pagina_web' => 'required'
@@ -90,7 +91,8 @@ class RepositoryController extends Controller
             'sigla' => 'required',
             'ciudad' => 'required',
             'correo' => 'required|email',
-            'ubicacion' => 'required',
+            'direccion' => 'required',
+            'ubicacion',
             'horario_atencion' => 'required',
             'telefono' => 'required',
             'pagina_web' => 'required'
