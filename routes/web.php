@@ -64,7 +64,7 @@ Route::get('/muro',[PostController::class, 'index'])->name('posts.index');
 
 //Rutas de prueba
 Route::get('/pruebas',function(){
-    return view('pruebas.prueba');
+    return view('pruebas.prueba2');
 });
 
 

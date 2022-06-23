@@ -75,8 +75,8 @@
 
        {{-- mostrar libros de la base de datos --}}
 
-       <section class="bg-white py-8">
-        <div class="max-w-screen-xl px-4 py-12 mx-auto sm:px-6 lg:px-8 b">
+       <section class="bg-white py-2">
+        <div class="max-w-screen-xl px-4 py-4 mx-auto sm:px-6 lg:px-8 ">
 
            <div class="grid grid-cols-2 gap-3 mt-4 sm:grid-cols-2 lg:grid-cols-5">
                 {{-- seccion de libros --}}
