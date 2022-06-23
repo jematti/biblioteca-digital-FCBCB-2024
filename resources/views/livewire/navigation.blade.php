@@ -111,7 +111,6 @@ x-data="{open:false,menu:false, lokasi:false}">
 
     {{-- menu para dispositivos moviles --}}
     <div x-show="menu" class="block lg:hidden">
-        menu
       <div class="px-2 pt-2 pb-3">
         <a href="{{route('home')}}" class="mt-1 block px-3 py-2 rounded-md text-white font-semibold hover:bg-yellow-500 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Novedades</a>
         <a href="{{route('home')}}" class="mt-1 block px-3 py-2 rounded-md text-white font-semibold hover:bg-yellow-500 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Recomendados </a>

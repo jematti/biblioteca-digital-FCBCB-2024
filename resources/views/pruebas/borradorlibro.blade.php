@@ -1,46 +1,40 @@
-
 @extends('layouts.app')
 
 
 @section('contenido')
 
-<main class="max-w-7xl mx-auto bg-white">
-    <section class="text-gray-600 body-font overflow-hidden ">
-      <div class="container px-5 py-24 mx-auto">
-        <div class="lg:w-full flex flex-wrap mx-2 object-center">
-          {{-- seccion de la imagen --}}
-          <img alt="imagen del post {{ $book->titulo }}" class="lg:w-1/4 max-w-screen-sm lg:h-72 h-64 object-cover object-center rounded" src="{{ asset('uploads').'/'.$book->imagen}}">
-          {{-- seccion informacion del libro --}}
-          <div class="lg:w-2/5 w-full lg:pl-5 lg:py-6 lg:pr-2 mt-6 lg:mt-0 ">
-            <h1 class="text-gray-900 text-4xl title-font font-medium mb-1">{{ $book->titulo }}</h1>
-            <h2 class="text-xl title-font text-gray-500 tracking-widest">
-                <a href="{{ route('author.show', $book->author->id) }}">
-                    {{ $book->author->nombre_autor }}
-                </a>
-            </h2>
-              <p
-                x-data="{ isCollapsed: false, maxLength: 350, originalContent: '', content: '' }"
-                x-init="originalContent = $el.firstElementChild.textContent.trim(); content = originalContent.slice(0, maxLength)"
-                >
-                    <span x-text="isCollapsed ? originalContent : content">
-                        {{ $book->resumen }}
-                    </span>
-                    <button
-                    @click="isCollapsed = !isCollapsed"
-                    x-show="originalContent.length > maxLength"
-                    x-text="isCollapsed ? 'Ver menos' : 'Ver mas'"
-                    ></button>
-                </p>
+<body class="bg-white text-gray-600 work-sans leading-normal text-base tracking-normal">
+    <div class="container px-5 mx-auto bg-white">
 
-            <hr class="mb-2">
-            <div class="flex">
-                <h4 class="font-medium mx-4">Categoria:</h4>
-              <button class="flex text-white bg-green-700 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded">{{ $book->category->nombre_categoria }}</button>
-            </div>
+        {{-- seccion de libro --}}
+        <div class="md:flex md:justify-center md:gap md:items-center justify-between">
+
+          <div class="md:w-64  p-5">
+                <img class="h-65 w-full "alt="imagen del post {{ $book->titulo }}" src="{{ asset('uploads').'/'.$book->imagen}}">
           </div>
-          {{-- seccion de ubicacion del libro --}}
-          <div class="lg:w-1/3 w-full lg:pl-2 lg:py-6 mt-6 lg:mt-0 border-l border-gray-900 ">
-            <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">Caracteristicas</h1>
+
+          <div class="md:w-1/3 p-6 rounded-lg shadow-xl">
+                {{-- titulo --}}
+                <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">{{ $book->titulo }}</h1>
+                {{-- autor --}}
+                <h2 class="text-xl title-font underline font-medium text-gray-500 tracking-widest">
+                    <a href="{{ route('author.show', $book->author->id) }}">
+                        {{ $book->author->nombre_autor }}
+                    </a>
+                </h2>
+                {{-- resumen --}}
+                <p class="leading-relaxed">{{ $book->resumen }}</p>
+                <div class="flex mt-6 items-center pb-5 border-b-2 border-blue-100 mb-5">
+                    <h4 class="font-medium mb-1">Categoria:</h4>
+                    <div class="flex ml-6 items-center">
+                        <button type="button" class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                            {{ $book->category->nombre_categoria }}
+                        </button>
+                    </div>
+                </div>
+          </div>
+
+          <div class="md:w-1/3 ml-2 rounded-lg shadow-xl p-2">
                 {{-- Tabla de datos del libro --}}
 
                 <div class="block overflow-x-auto pb-4">
@@ -54,7 +48,7 @@
                             {{ $book->idioma }}
                         </td>
                         <th class="align-middle text-lg pl-1 text-left text-blueGray-700 ">
-                            Fecha Publicación:
+                            Fecha de Publicación:
                         </th>
                         <td class="align-middle text-lg pl-1 text-left text-blueGray-700 ">
                             {{ $book->fecha_publicacion }}
@@ -67,21 +61,54 @@
 
 
                 {{-- informacion de envio  --}}
-                <div class="bg-blue-100 border-l-4 border-blue-500 text-blue-700 p-4 text-left"  role="alert">
-
+                <div class="bg-blue-100 border-l-4 border-blue-500 text-blue-700 p-4 text-center"  role="alert">
+                    <div class="p-2">
                     <h5 class="text-gray-900 text-xl font-bold mb-2">Disponible en las Sucursales: </h5>
 
                         <button class="bg-blue-600 text-white mx-5  font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" onclick="toggleModal('modal-id-lp')">
                             {{ $book->repository->ciudad}}
                         </button>
+
+                    </div>
+
+                    {{-- <div class="py-3 px-6 border-t border-gray-300 text-gray-600 uppercase font-bold text-center" >
+                        Tiempo estimado de Envio es de 3 dias a partir de la compra
+                    </div> --}}
                 </div>
-          </div>
+            </div>
         </div>
-      </div>
-    </section>
+
+        {{-- seccion de compra --}}
+        {{-- <div class="lg:w-1/4 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+            <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">Precio Final del Libro</h1>
+            <h2 class="text-sm title-font text-gray-500 tracking-widest">Porcentaje de Descuento 10% Por Comprar Online</h2>
+
+            <span class="title-font font-medium text-2xl text-gray-900">Bs. 58.00</span>
+
+            <div class="flex">
+                <button class="flex items-center justify-center w-full px-2 py-2 mt-4 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-red-500 rounded-md hover:bg-red-700 focus:outline-none focus:bg-red-700">
+                    <svg class="w-5 h-5 mx-1" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
+                    </svg>
+                    <span class="mx-1">Añadir Compra</span>
+                </button>
+            </div>
+            <div class="flex">
+                <button class="flex items-center justify-center w-full px-2 py-2 mt-4 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-orange-400 rounded-md hover:bg-orange-700 focus:outline-none focus:bg-orange-700">
+                    <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                    <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+                    </svg>
+                    <span class="mx-1">Guardar </span>
+                </button>
+
+            </div>
+        </div> --}}
+
+    </div>
+
 
     {{-- Codigo Modal --}}
-    <div class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" id="modal-id-lp">
+      <div class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" id="modal-id-lp">
         <div class="relative w-auto my-6 mx-auto max-w-3xl">
           <!--content-->
           <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
@@ -159,5 +186,6 @@
           document.getElementById(modalID + "-backdrop").classList.toggle("flex");
         }
       </script>
-</main>
+</body>
+
 @endsection
