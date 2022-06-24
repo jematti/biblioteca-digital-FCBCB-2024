@@ -14,6 +14,7 @@ class Repository extends Model
         'sigla',
         'ciudad',
         'correo',
+        'nombre_encargado',
         'direccion',
         'ubicacion',
         'horario_atencion',

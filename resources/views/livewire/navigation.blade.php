@@ -5,7 +5,7 @@
 class="z-0 relative"
 x-data="{open:false,menu:false, lokasi:false}">
 
-  <div class="relative z-10 bg-sky-700 shadow">
+  <div class="relative z-10 bg-red-900 shadow">
 
     <div class="max-w-7xl mx-auto px-2 sm:px-4  ">
        {{-- barra de navegacion principal --}}

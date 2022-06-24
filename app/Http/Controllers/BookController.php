@@ -18,7 +18,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        $data['book']= Book::orderBy('id','desc')->paginate(18);
+        $data['book']= Book::orderBy('id','desc')->paginate(10);
         return view('book.index',$data);
     }
 
@@ -60,6 +60,10 @@ class BookController extends Controller
             'imagen' => 'required',
             'precio' => 'required',
             'author' => 'required',
+            'ancho',
+            'alto',
+            'peso',
+            'grueso',
             'editorial'=> 'required',
             'category'=> 'required',
             'ubicacion'=> 'required',
@@ -75,6 +79,10 @@ class BookController extends Controller
         $book->resumen = $request->resumen;
         $book->imagen = $request->imagen;
         $book->precio = $request->precio;
+        $book->ancho = $request->ancho;
+        $book->alto = $request->alto;
+        $book->peso= $request->peso;
+        $book->grueso= $request->grueso;
         $book->author_id = $request->author;
         $book->category_id = $request->category;
         $book->editorial_id = $request->editorial;
@@ -136,6 +144,10 @@ class BookController extends Controller
             'resumen' => 'required',
             'imagen' => 'required',
             'precio' => 'required',
+            'ancho',
+            'alto',
+            'peso',
+            'grueso',
             'author' => 'required',
             'editorial'=> 'required',
             'category'=> 'required',
@@ -152,6 +164,10 @@ class BookController extends Controller
         $book->resumen = $request->resumen;
         $book->imagen = $request->imagen;
         $book->precio = $request->precio;
+        $book->ancho = $request->ancho;
+        $book->alto = $request->alto;
+        $book->peso= $request->peso;
+        $book->grueso= $request->grueso;
         $book->author_id = $request->author;
         $book->category_id = $request->category;
         $book->editorial_id = $request->editorial;

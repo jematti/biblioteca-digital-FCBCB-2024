@@ -54,9 +54,9 @@
                             <th class="p-2">
                                 <div class="font-semibold text-left">Correo</div>
                             </th>
-                            <th class="p-2">
+                            {{-- <th class="p-2">
                                 <div class="font-semibold text-left">Horario</div>
-                            </th>
+                            </th> --}}
                             <th class="p-2">
                                 <div class="font-semibold text-left">Telefono</div>
                             </th>
@@ -99,11 +99,11 @@
                                        {{ $repositories->correo }}
                                     </div>
                                 </td>
-                                <td class="p-2">
-                                    <div class="text-left">
+                                {{-- <td class="p-2">
+                                    <div class="text-left ">
                                        {{ $repositories->horario_atencion }}
                                     </div>
-                                </td>
+                                </td> --}}
                                 <td class="p-2">
                                     <div class="text-left">
                                        {{ $repositories->telefono}}

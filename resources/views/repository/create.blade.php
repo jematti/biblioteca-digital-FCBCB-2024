@@ -76,6 +76,29 @@
 
             <div class="flex flex-wrap -mx-3 mb-3">
                 <div class="w-full px-3">
+                    <label for="nombre_encargado" class="mb-2 block uppercase text-gray-500 font-bold">
+                        Nombre del Encargado del Repositorio
+                    </label>
+                    <input
+                        id="nombre_encargado"
+                        type="text"
+                        name="nombre_encargado"
+                        placeholder="Nombre del Encargado del Repositorio"
+                        class="border p-3 w-full rounded-lg"
+                        @error('nombre_encargado')
+                            border-red-500
+                        @enderror
+                        value="{{old('nombre_encargado')}}"
+                    />
+                    @error('nombre_encargado')
+                        <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
+                    @enderror
+                </div>
+            </div>
+
+
+            <div class="flex flex-wrap -mx-3 mb-3">
+                <div class="w-full px-3">
                     <label for="direccion" class="mb-2 block uppercase text-gray-500 font-bold">
                         Dirección
                     </label>

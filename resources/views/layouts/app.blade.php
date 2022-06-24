@@ -114,9 +114,7 @@
 
 
         {{-- Seccion para el footer --}}
-        <footer class="text-center p-5 text-gray-500 font-bold uppercase mt-10">
-            Fundacion BCB- Todos los derechos reservados {{now()->year}}
-        </footer>
+        @livewire('footer')
 
 
     </body>

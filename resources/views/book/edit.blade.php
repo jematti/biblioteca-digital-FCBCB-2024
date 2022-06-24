@@ -304,7 +304,67 @@
             </div>
         </div>
 
+ {{-- datos opcionales --}}
+        <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label class="block mb-2 uppercase text-gray-500 font-bold" for="grid-city">
+                    Ancho (opcional)
+                  </label>
+                  <input
+                    class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="ancho"
+                    type="number"
+                    name="ancho"
+                    placeholder="Ancho del libro en 'cm' (centimetros)"
+                    value="{{$book->ancho}}"
+                   >
+            </div>
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
 
+                <label class="block mb-2 uppercase text-gray-500 font-bold" for="grid-city">
+                    Alto (opcional)
+                  </label>
+                  <input
+                    class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="alto"
+                    type="number"
+                    name="alto"
+                    placeholder="altura del libro en 'cm' (centimetros)"
+                    value="{{$book->alto}}"
+                   >
+            </div>
+        </div>
+
+        <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label class="block mb-2 uppercase text-gray-500 font-bold" for="grid-city">
+                    Peso (opcional)
+                  </label>
+                  <input
+                    class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="peso"
+                    type="number"
+                    name="peso"
+                    placeholder="Peso del libro en 'gr' (gramos)"
+                    value="{{$book->ancho}}"
+                   >
+            </div>
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+
+                <label class="block mb-2 uppercase text-gray-500 font-bold" for="grid-city">
+                    Grueso (opcional)
+                  </label>
+                  <input
+                    class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="grueso"
+                    type="number"
+                    name="grueso"
+                    placeholder="grueso del libro en 'cm' (centimetros)"
+                    value="{{$book->grueso}}"
+                   >
+            </div>
+        </div>
+        {{-- fin seccion datos opcionales --}}
         <div class="flex flex-wrap -mx-3 mb-6">
             <div class="w-full px-3">
               <label class="mb-2 block uppercase text-gray-500 font-bold" >

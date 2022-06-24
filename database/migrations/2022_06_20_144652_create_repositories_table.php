@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('sigla');
             $table->string('ciudad');
             $table->string('correo');
+            $table->string('nombre_encargado');
             $table->string('direccion');
             $table->text('ubicacion')->nullable();
             $table->string('horario_atencion');

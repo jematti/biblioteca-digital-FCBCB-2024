@@ -10,8 +10,8 @@ class HomeController extends Controller
 
     public function __invoke()
     {
-        $books = Book::all();
-        return view('home')->with('books',$books);;
+        $books = Book::orderBy('id','desc')->simplepaginate(10);
+        return view('home')->with('books',$books);
     }
 
 }

@@ -2,4 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
 
+
+html,body{
+    /* opcion1 */
+    background-image: url("/img/fondobody2.png");
+    background-size: 100rem;
+
+    /* opcion2 */
+    /* background-image: url("/img/fondobody6.png");
+    background-size: 80rem; */
+
+
+}
