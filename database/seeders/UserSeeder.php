@@ -4,8 +4,10 @@ namespace Database\Seeders;
 
 use App\Models\User;
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class UserSeeder extends Seeder
@@ -18,9 +20,19 @@ class UserSeeder extends Seeder
     public function run()
     {
         User::create([
-            'name' => 'usuario_prueba',
+            'name' => 'admin',
             'email' => 'a1@a1.com',
-            'password' => bcrypt('123456')
+            'email_verified_at' => now(),
+            'password' => Hash::make('12345678'), // password
+            'remember_token' => Str::random(10),
         ])->assignRole('admin');
+
+        User::create([
+            'name' => 'usuario_prueba',
+            'email' => 'p1@p1.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('12345678'), // password
+            'remember_token' => Str::random(10),
+        ])->assignRole('usuario');
     }
 }

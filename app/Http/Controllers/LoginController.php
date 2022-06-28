@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+
 class LoginController extends Controller
 {
 
@@ -22,7 +23,9 @@ class LoginController extends Controller
             return back()->with('mensaje','Credenciales Incorrectas');
         }
 
-        return redirect()->route('home');
+        return redirect()->route('books.index');
+
+
     }
 
 }

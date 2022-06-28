@@ -1,4 +1,4 @@
-@extends('ui.adminnav')
+@extends('ui.nav')
 
 @section('contenido-admin')
 

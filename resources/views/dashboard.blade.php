@@ -3,7 +3,6 @@
 
 
 @section('contenido')
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" />
 
     <!-- page -->
     <main class="min-h-screen w-full bg-gray-100 text-gray-700" x-data="layout">

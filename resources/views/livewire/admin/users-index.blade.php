@@ -1,13 +1,13 @@
 <div>
 
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+
 
 
 <h2 class="bg-white text-lg rounded-lg p-4 text-center font-bold border-2 border-sky-800">Lista de Usuarios </h2>
 {{-- tabla de usuarios --}}
 <!-- component -->
 <section class="py-1 bg-blueGray-50">
-<div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto mt-24">
+<div class="w-full  mb-12 xl:mb-0 px-4 mx-auto mt-24">
   <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
     <div class="rounded-t mb-0 px-4 py-3 border-0">
         <div class="relative">

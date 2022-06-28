@@ -58,7 +58,7 @@
 
                     <div class="mb-5">
                         <input type="checkbox" name="remember">
-                        <label for="password" class=" text-sm text-gray-500 ">
+                        <label class="text-sm text-gray-500 ">
                             Mentener mi sesión abierta
                         </label>
                     </div>

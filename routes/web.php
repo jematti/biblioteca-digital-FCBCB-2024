@@ -29,27 +29,22 @@ use App\Http\Controllers\Admin\UserController;
 
 Route::get('/',HomeController::class)->name('home');
 
-Route::resource('users',UserController::class)->names('admin.users');
+Route::group(['middleware' => ['auth','verified']], function(){
 
-//CRUD Categoria
-Route::resource('category', CategoryController::class);
-//CRUD Autor
-Route::resource('author', AuthorController::class);
-//CRUD Editorial
-Route::resource('editorial', EditorialController::class);
-//CRUD Repositorios
-Route::resource('repository', RepositoryController::class);
-//CRUD libros
-Route::resource('books',BookController::class);
-
-//Route::resource('books', LibroController::class);
-//Route::get('/books', [LibroController::class, 'index'])->name('libros.index');
-//Route::get('/books/{book}', [LibroController::class, 'show'])->name('libros.show');
-//Route::get('/books/create', [LibroController::class, 'create'])->name('libros.create');
-//Route::post('/books', [LibroController::class, 'store'])->name('libros.store');
-
-//Ruta para imagenes
-Route::post('/imagenes', [ImagenController::class, 'store'])->name('imagenes.store');
+    Route::resource('users',UserController::class)->names('admin.users');
+    //CRUD Categoria
+    Route::resource('category', CategoryController::class);
+    //CRUD Autor
+    Route::resource('author', AuthorController::class);
+    //CRUD Editorial
+    Route::resource('editorial', EditorialController::class);
+    //CRUD Repositorios
+    Route::resource('repository', RepositoryController::class);
+    //CRUD libros
+    Route::resource('books',BookController::class);
+    //Ruta para imagenes
+    Route::post('/imagenes', [ImagenController::class, 'store'])->name('imagenes.store');
+});
 
 //Rutas para el Perfil
 Route::get('/editar-perfil',[ProfileController::class, 'index'])->name('perfil.index');
@@ -68,3 +63,11 @@ Route::get('/pruebas',function(){
 });
 
 
+
+
+
+//Route::resource('books', LibroController::class);
+//Route::get('/books', [LibroController::class, 'index'])->name('libros.index');
+//Route::get('/books/{book}', [LibroController::class, 'show'])->name('libros.show');
+//Route::get('/books/create', [LibroController::class, 'create'])->name('libros.create');
+//Route::post('/books', [LibroController::class, 'store'])->name('libros.store');

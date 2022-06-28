@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DatabaseSeeder extends Seeder
 {
@@ -27,6 +28,10 @@ class DatabaseSeeder extends Seeder
         $this->call(BookSeeder::class);
         $this->call(RoleSeeder::class);
         $this->call(UserSeeder::class);
+
+        // User::factory(10)->create()->each(function($user){
+        //     $user->assignRole('usuario');
+        // });
 
 
 

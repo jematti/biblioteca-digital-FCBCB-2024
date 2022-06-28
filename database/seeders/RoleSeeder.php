@@ -16,14 +16,17 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        $role1 = Role::create(['name' => 'admin']);
-        $role2 = Role::create(['name'=>'delegado']);
+        $admin = Role::create(['name' => 'admin']);
+        $usuario = Role::create(['name'=>'usuario']);
 
-        Permission::create(['name'=>'admin.muro'])->syncRoles([$role1],[$role2]);
+        // Permission::create(['name'=>'home'])->syncRoles([$admin],[$usuario]);
 
-        Permission::create(['name' => 'admin.books.index'])->syncRoles([$role1],[$role2]);
-        Permission::create(['name' => 'admin.books.create'])->syncRoles([$role1],[$role2]);
-        Permission::create(['name' => 'admin.books.edit'])->syncRoles([$role1],[$role2]);
-        Permission::create(['name' => 'admin.books.destroy'])->syncRoles([$role1],[$role2]);
+        // Permission::create(['name' => 'admin.books.index'])->syncRoles([$admin]);
+        // Permission::create(['name' => 'admin.books.create'])->syncRoles([$admin]);
+        // Permission::create(['name' => 'admin.books.edit'])->syncRoles([$admin]);
+        // Permission::create(['name' => 'admin.books.destroy'])->syncRoles([$admin]);
+
+        Permission::create(['name' => 'nav.users'])->assignRole('usuario');
+        Permission::create(['name' => 'nav.admin'])->assignRole('admin');
     }
 }
