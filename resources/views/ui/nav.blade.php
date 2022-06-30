@@ -109,6 +109,7 @@
         {{-- Seccion para introducir el contenido }} --}}
         <div class="flex-1 p-4">
             @yield('contenido-admin')
+            @yield('contenido-perfil')
         </div>
     </div>
 

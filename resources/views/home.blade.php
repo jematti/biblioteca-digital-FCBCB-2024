@@ -9,7 +9,7 @@
             <!--Slide 1-->
             <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden="" checked="checked">
             <div class="carousel-item absolute opacity-0" style="height:50vh;">
-                <div class="block h-full w-full mx-auto pt-6 md:pt-0 md:items-center bg-cover bg-right" style="background-image: url('{{ asset('img/por2.jpg')}}');">
+                <div class="block h-full w-full mx-auto pt-6 md:pt-0 md:items-center bg-cover bg-right" style="background-image: url('{{ asset('img/portada1l.jpeg')}}');">
 
                     {{-- <div class="container mx-auto">
                         <div class="flex flex-col w-full lg:w-1/2 md:ml-16 items-center md:items-start px-6 tracking-wide">
@@ -26,7 +26,7 @@
             <!--Slide 2-->
             <input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
             <div class="carousel-item absolute opacity-0 bg-cover bg-right" style="height:50vh;">
-                <div class="block h-full w-full mx-auto  pt-6 md:pt-0 md:items-center bg-cover bg-right" style="background-image: url('{{ asset('img/por1.jpg')}}');">
+                <div class="block h-full w-full mx-auto  pt-6 md:pt-0 md:items-center bg-cover bg-right" style="background-image: url('{{ asset('img/por2.jpg')}}');">
 
                     {{-- <div class="container mx-auto">
                         <div class="flex flex-col w-full lg:w-1/2 md:ml-16 items-center md:items-start px-6 tracking-wide">
@@ -60,13 +60,13 @@
             <!-- Add additional indicators for each slide-->
             <ol class="carousel-indicators">
                 <li class="inline-block mr-3">
-                    <label for="carousel-1" class="carousel-bullet cursor-pointer block text-4xl text-gray-400 hover:text-gray-900">•</label>
+                    <label for="carousel-1" class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-gray-900">•</label>
                 </li>
                 <li class="inline-block mr-3">
-                    <label for="carousel-2" class="carousel-bullet cursor-pointer block text-4xl text-gray-400 hover:text-gray-900">•</label>
+                    <label for="carousel-2" class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-gray-900">•</label>
                 </li>
                 <li class="inline-block mr-3">
-                    <label for="carousel-3" class="carousel-bullet cursor-pointer block text-4xl text-gray-400 hover:text-gray-900">•</label>
+                    <label for="carousel-3" class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-gray-900">•</label>
                 </li>
             </ol>
 
@@ -121,7 +121,7 @@
                             onclick="location.href ='{{ route('books.show', $book) }}' "
                             name="add"
                             type="button"
-                            class="flex items-center w-full justify-center p-2 sm:px-8 sm:py-4 sm:mt-4 text-white bg-red-500  hover:bg-red-400 focus:outline-none focus:bg-red-400 rounded-sm"
+                            class="flex items-center w-full justify-center p-2 sm:px-8 sm:py-4 sm:mt-4 text-white bg-custom-200  hover:bg-red-600 focus:outline-none focus:bg-red-600 rounded-sm"
                         >
                         <span class="text-sm font-medium">
                             Ver Libro

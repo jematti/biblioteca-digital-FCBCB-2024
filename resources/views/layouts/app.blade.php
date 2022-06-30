@@ -72,7 +72,7 @@
 
 </head>
 
-    <body class="bg-gray-200">
+    <body >
 
         {{-- seccion barra de navegacion --}}
 
@@ -160,6 +160,7 @@
                 })
             });
         </script>
+
         @yield('js')
 
 

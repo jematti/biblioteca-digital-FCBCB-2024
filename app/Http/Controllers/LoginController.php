@@ -23,7 +23,7 @@ class LoginController extends Controller
             return back()->with('mensaje','Credenciales Incorrectas');
         }
 
-        return redirect()->route('books.index');
+        return redirect()->route('home');
 
 
     }

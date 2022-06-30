@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\PostController;
+use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\RegisterController;
@@ -40,15 +40,22 @@ Route::group(['middleware' => ['auth','verified']], function(){
     Route::resource('editorial', EditorialController::class);
     //CRUD Repositorios
     Route::resource('repository', RepositoryController::class);
-    //CRUD libros
-    Route::resource('books',BookController::class);
+
     //Ruta para imagenes
     Route::post('/imagenes', [ImagenController::class, 'store'])->name('imagenes.store');
+
+    //Rutas para el Perfil de usario
+    Route::get('/editar-perfil',[PerfilController::class, 'index'])->name('perfil.index');
+    Route::post('/editar-perfil',[PerfilController::class, 'store'])->name('perfil.store');
+
+    //actualizar contraseña
+    Route::post('/change-password', [PerfilController::class, 'updatePassword'])->name('update-password');
 });
 
-//Rutas para el Perfil
-Route::get('/editar-perfil',[ProfileController::class, 'index'])->name('perfil.index');
-Route::post('/editar-perfil',[ProfileController::class, 'store'])->name('perfil.store');
+//CRUD libros
+Route::resource('books',BookController::class);
+
+
 //Rutas para el registro
 Route::get('/register',[RegisterController::class, 'index'])->name('register');
 Route::post('/register',[RegisterController::class, 'store']);

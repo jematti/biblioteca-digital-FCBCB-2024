@@ -5,7 +5,7 @@
 class="z-0 relative"
 x-data="{open:false,menu:false, lokasi:false}">
 
-  <div class="relative z-10 bg-red-900 shadow">
+  <div class="relative z-10 bg-custom-100 shadow">
 
     <div class="max-w-7xl mx-auto px-2 sm:px-4  ">
        {{-- barra de navegacion principal --}}
@@ -31,7 +31,7 @@ x-data="{open:false,menu:false, lokasi:false}">
                   <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
                 </svg>
               </button>
-              <input type="text" placeholder="Buscar libro por palabra clave / titulo / autor " name="s" id="s" class="block w-full pl-10 pr-3 py-2 h-12 border border-transparent rounded-md leading-5 bg-white text-gray-300 placeholder-gray-400 focus:outline-none focus:bg-white focus:text-gray-900 sm:text-sm transition duration-150 ease-in-out" placeholder="Search">
+              <input type="text" placeholder="Buscar libro por palabra clave / titulo / autor " name="search_main" id="search_main" class="z-50 block w-full pl-10 pr-3 py-2 h-12 border border-transparent rounded-md leading-5 bg-white text-gray-300 placeholder-gray-400 focus:outline-none focus:bg-white focus:text-gray-900 sm:text-sm transition duration-150 ease-in-out" placeholder="Search">
             </form>
           </div>
         </div>
@@ -39,6 +39,8 @@ x-data="{open:false,menu:false, lokasi:false}">
         {{-- icono de inicio de session y login --}}
 
         @auth
+
+        @can('nav.admin')
         <div class="hidden lg:block lg:ml-2">
             <div class="flex">
                 <a class="block w-1/2 px-3 py-2 mx-1 rounded text-center text-sm bg-white font-medium text-black leading-5 hover:bg-gray-600 hover:text-white md:mx-2 md:w-auto" href="#">
@@ -46,7 +48,7 @@ x-data="{open:false,menu:false, lokasi:false}">
                     {{auth()->user()->name}}
                     </span>
                 </a>
-                <a class="block w-1/2 px-3 py-2 mx-1 rounded text-center text-sm bg-blue-500 font-medium text-white leading-5 hover:bg-blue-600 md:mx-0 md:w-auto" href="{{route('books.index')}}">Administrador</a>
+                <a class="block w-1/2 px-3 py-2 mx-1 rounded text-center text-sm bg-custom-400 font-medium text-white leading-5 hover:bg-blue-600 md:mx-0 md:w-auto" href="{{route('admin.users.index')}}">Administrador</a>
                 {{-- metodo para cerrar sesion --}}
                 <form action="{{route('logout')}}" method="POST" class="mx-2">
                     @csrf
@@ -54,13 +56,33 @@ x-data="{open:false,menu:false, lokasi:false}">
                 </form>
             </div>
         </div>
+        @endcan
+
+        @can('nav.users')
+        <div class="hidden lg:block lg:ml-2">
+            <div class="flex">
+                <a class="block w-1/2 px-3 py-2 mx-1 rounded text-center text-sm bg-white font-medium text-black leading-5 hover:bg-gray-600 hover:text-white md:mx-2 md:w-auto" href="#">
+                    Hola: <span class="font-normal">
+                    {{auth()->user()->name}}
+                    </span>
+                </a>
+                <a class="block w-1/2 px-3 py-2 mx-1 rounded text-center text-sm bg-custom-400 font-medium text-white leading-5 hover:bg-blue-500 md:mx-0 md:w-auto" href="{{route('perfil.index')}}">Ver Perfil</a>
+                {{-- metodo para cerrar sesion --}}
+                <form action="{{route('logout')}}" method="POST" class="mx-2">
+                    @csrf
+                    <button type="submit" class="block w-1/2 mx-2 px-1 py-2  rounded text-center text-sm bg-red-500 font-medium text-white leading-5 hover:bg-red-400 md:mx-0 md:w-auto "  >Cerrar Sesión</button>
+                </form>
+            </div>
+        </div>
+        @endcan
+
         @endauth
 
         @guest
         <div class="hidden lg:block lg:ml-2">
             <div class="flex">
                 <a class="block w-1/2 px-3 py-2 mx-1 rounded text-center text-sm bg-white font-medium text-black leading-5 hover:bg-gray-600 hover:text-white md:mx-2 md:w-auto" href="{{ route('login') }}">Ingresa</a>
-                <a class="block w-1/2 px-3 py-2 mx-1 rounded text-center text-sm bg-blue-500 font-medium text-white leading-5 hover:bg-blue-600 md:mx-0 md:w-auto" href="{{ route('register') }}">Registrate</a>
+                <a class="block w-1/2 px-3 py-2 mx-1 rounded text-center text-sm bg-custom-400 font-medium text-white leading-5 hover:bg-blue-500 md:mx-0 md:w-auto" href="{{ route('register') }}">Registrate</a>
             </div>
         </div>
 
@@ -110,24 +132,48 @@ x-data="{open:false,menu:false, lokasi:false}">
     </div>
 
     {{-- menu para dispositivos moviles --}}
-    <div x-show="menu" class="block lg:hidden">
-      <div class="px-2 pt-2 pb-3">
-        <a href="{{route('home')}}" class="mt-1 block px-3 py-2 rounded-md text-white font-semibold hover:bg-yellow-500 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Novedades</a>
-        <a href="{{route('home')}}" class="mt-1 block px-3 py-2 rounded-md text-white font-semibold hover:bg-yellow-500 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Recomendados </a>
-        <a href="{{route('home')}}" class="mt-1 block px-3 py-2 rounded-md text-white font-semibold hover:bg-yellow-500 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Los más vistos</a>
 
-      </div>
-      {{-- inicio y registro para modo celular --}}
+            <div x-show="menu" class="block lg:hidden">
+                <div class="px-2 pt-2 pb-3">
+                    <a href="{{route('home')}}" class="mt-1 block px-3 py-2 rounded-md text-white font-semibold hover:bg-yellow-500 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Novedades</a>
+                    <a href="{{route('home')}}" class="mt-1 block px-3 py-2 rounded-md text-white font-semibold hover:bg-yellow-500 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Recomendados </a>
+                    <a href="{{route('home')}}" class="mt-1 block px-3 py-2 rounded-md text-white font-semibold hover:bg-yellow-500 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Los más vistos</a>
 
-      {{-- <div class="flex items-center py-2 -mx-1 md:mx-0">
-        <a class="block w-1/2 px-3 py-2 mx-1 rounded text-center text-sm bg-gray-500 font-medium text-white leading-5 hover:bg-blue-600 md:mx-2 md:w-auto" href="{{ route('login') }}">Unete</a>
-        <a class="block w-1/2 px-3 py-2 mx-1 rounded text-center text-sm bg-blue-500 font-medium text-white leading-5 hover:bg-blue-600 md:mx-0 md:w-auto" href="{{ route('register') }}">Registrate</a>
-      </div> --}}
+                </div>
+            {{-- inicio y registro para modo celular --}}
+            @auth
+                @can('nav.users')
+                <div class="block md:flex items-center py-2 -mx-1 md:mx-0 ">
+                    <a class="block w-full mx-2 my-2  px-1 py-2  rounded text-center text-sm bg-white font-medium hover:text-white leading-5 hover:bg-gray-600 md:mx-2 md:w-1/2 " href="#">
+                        Hola: <span class="font-normal">
+                        {{auth()->user()->name}}
+                        </span>
+                    </a>
+                    <a class="block w-full mx-2 my-2 px-1 py-2 rounded text-center text-sm bg-custom-400 font-medium text-white leading-5 hover:bg-blue-500 md:mx-2 md:w-1/2" href="{{route('perfil.index')}}">
+                        Ver Perfil
+                    </a>
+                    <form action="{{route('logout')}}" method="POST" class="md:w-1/2">
+                        @csrf
+                        <button type="submit" class="block w-full mx-2 my-2 px-1 py-2  rounded text-center text-sm bg-custom-200 font-medium text-white leading-5 hover:bg-red-400 md:mx-2 md:px-10 md:w-auto "  >Cerrar Sesión</button>
+                    </form>
+                </div>
+                @endcan
+            @endauth
 
-    </div>
+            @guest
+                <div class="flex items-center py-2 -mx-1 md:mx-0">
+                    <a class="block w-1/2 px-3 py-2 mx-1 rounded text-center text-sm font-medium hover:text-white leading-5 bg-white hover:bg-gray-600 md:mx-2 md:w-auto" href="{{ route('login') }}">Unete</a>
+                    <a class="block w-1/2 px-3 py-2 mx-1 rounded text-center text-sm bg-blue-500 font-medium text-white leading-5 hover:bg-blue-600 md:mx-0 md:w-auto" href="{{ route('register') }}">Registrate</a>
+                </div>
+            @endguest
+
+
+            </div>
     {{-- fin de menu de dispositivos moviles --}}
 
   </div>
+
+
 </nav>
 
 {{-- fin de barra --}}
