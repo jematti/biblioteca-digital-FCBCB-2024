@@ -31,13 +31,13 @@ class RegisterController extends Controller
             'email' => $request ->email,
             'password' => Hash::make($request ->password)
 
-        ]);
+        ])->each(function($user){
+            $user->assignRole('usuario');
+        });
 
         //Autenticas un Usuario
-        auth()->attempt([
-            'email' => $request->email,
-            'password' => $request->password
-        ]);
+        auth()->attempt($request->only('email','password'));
+
 
         //Redireccionar
         return redirect()->route('home');

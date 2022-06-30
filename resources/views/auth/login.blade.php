@@ -2,7 +2,7 @@
 
 
 @section('contenido')
-    <h2 class="font-black text-center text-3xl mb-10 mt-10">
+    <h2 class="font-black text-center text-3xl mb-10 mt-10 text-white">
         Inicia Sesión en la Biblioteca Virtual
     </h2>
     <div class="md:flex md:justify-center md:gap md:items-center">
@@ -58,7 +58,7 @@
 
                     <div class="mb-5">
                         <input type="checkbox" name="remember">
-                        <label for="password" class=" text-sm text-gray-500 ">
+                        <label class="text-sm text-gray-500 ">
                             Mentener mi sesión abierta
                         </label>
                     </div>

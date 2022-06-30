@@ -72,7 +72,7 @@
 
 </head>
 
-    <body class="bg-gray-200">
+    <body >
 
         {{-- seccion barra de navegacion --}}
 
@@ -120,10 +120,11 @@
     </body>
 
         <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}" defer></script>
+        <script src="{{ asset('js/app.js') }}"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"> </script>
+        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
 
         <script type="text/javascript">
             // const $btnOcultar = document.querySelector("#btnOcultar"),
@@ -159,6 +160,7 @@
                 })
             });
         </script>
+
         @yield('js')
 
 
