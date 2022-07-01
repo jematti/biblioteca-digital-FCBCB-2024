@@ -60,9 +60,9 @@
                             <th class="p-2">
                                 <div class="font-semibold text-left">Telefono</div>
                             </th>
-                            <th class="p-2">
+                            {{-- <th class="p-2">
                                 <div class="font-semibold text-left">Pagina Web</div>
-                            </th>
+                            </th> --}}
                             <th class="p-2">
                                 <div class="font-semibold text-left">Editar </div>
                             </th>
@@ -80,7 +80,7 @@
 
                                 </td>
                                 <td class="p-2">
-                                    <div class="font-medium text-gray-800">
+                                    <div class="font-medium text-gray-800 w-64">
                                         {{ $repositories->nombre_repositorio }}
                                     </div>
                                 </td>
@@ -109,11 +109,11 @@
                                        {{ $repositories->telefono}}
                                     </div>
                                 </td>
-                                <td class="p-2">
-                                    <div class="text-left">
+                                {{-- <td class="p-2">
+                                    <div class="text-left ">
                                        {{ $repositories->pagina_web }}
                                     </div>
-                                </td>
+                                </td> --}}
                                 {{-- seccion editar --}}
                                 <td class="p-2">
                                         <div class="flex justify-center">
@@ -154,7 +154,10 @@
                 </table>
             </div>
 
-            {{-- {!! $author->links() !!}  --}}
+            {{-- paginacion --}}
+            <div class="my-10">
+                {{ $repository->links() }}
+            </div>
 
 
 @endsection

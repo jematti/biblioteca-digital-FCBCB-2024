@@ -116,6 +116,11 @@
                 </table>
             </div>
 
+            {{-- paginacion --}}
+            <div class="my-10">
+                {{ $author->links() }}
+            </div>
+
             {{-- {!! $author->links() !!}  --}}
 
 

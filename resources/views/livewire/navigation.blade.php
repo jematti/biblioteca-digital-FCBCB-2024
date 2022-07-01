@@ -2,10 +2,10 @@
 
 {{-- barra de nevagacion  --}}
 <nav
-class="relative"
+class="fixed w-full z-10 lg:-mt-20 "
 x-data="{open:false,menu:false, lokasi:false}">
 
-  <div class="bg-custom-100 shadow sticky top-0" style="z-index: 900">
+  <div class="bg-custom-100 shadow " >
 
     <div class="max-w-7xl mx-auto px-2 sm:px-4  ">
        {{-- barra de navegacion principal --}}

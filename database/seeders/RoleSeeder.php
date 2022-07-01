@@ -26,7 +26,8 @@ class RoleSeeder extends Seeder
         // Permission::create(['name' => 'admin.books.edit'])->syncRoles([$admin]);
         // Permission::create(['name' => 'admin.books.destroy'])->syncRoles([$admin]);
 
-        Permission::create(['name' => 'nav.users'])->assignRole('usuario');
         Permission::create(['name' => 'nav.admin'])->assignRole('admin');
+        Permission::create(['name' => 'nav.users'])->assignRole('usuario');
+
     }
 }

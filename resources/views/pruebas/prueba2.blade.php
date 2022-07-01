@@ -13,12 +13,6 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-<!-- Alpine Plugins -->
-<script defer src="https://unpkg.com/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
-
-<!-- Alpine Core -->
-<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
     <style>
         .work-sans {
             font-family: 'Work Sans', sans-serif;
@@ -77,8 +71,19 @@
 </head>
 
 <body class="bg-gray-200">
-@livewire('footer')
+    <p
+    x-data="{ isCollapsed: false, maxLength: 20, originalContent: '', content: '' }"
+    x-init="originalContent = $el.firstElementChild.textContent.trim(); content = originalContent.slice(0, maxLength)"
+    >
+     <span x-text="isCollapsed ? originalContent : content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+     <button
+       @click="isCollapsed = !isCollapsed"
+       x-show="originalContent.length > maxLength"
+       x-text="isCollapsed ? 'Show less' : 'Show more'"
+     class="bg-white"></button>
+   </p>
 
 
 
 </body>
+<script src="{{ asset('js/app.js') }}" defer ></script>

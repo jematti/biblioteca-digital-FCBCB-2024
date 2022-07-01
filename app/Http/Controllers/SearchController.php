@@ -9,11 +9,11 @@ class SearchController extends Controller
 {
     public function __invoke(Request $request)
     {
-        $name = $request->name;
+        $book_search = $request->book_search;
 
         $books =  Book::join("authors","books.author_id","=","authors.id")
-                                    ->where('books.titulo','LIKE',"%". $name."%")
-                                    ->orWhere('authors.nombre_autor', 'LIKE' , '%' .$name. '%')
+                                    ->where('books.titulo','LIKE',"%". $book_search."%")
+                                    ->orWhere('authors.nombre_autor', 'LIKE' , '%' .$book_search. '%')
                                     ->take(5)
                                     ->get();
 

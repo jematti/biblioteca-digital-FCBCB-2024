@@ -31,7 +31,7 @@ class UserSeeder extends Seeder
             'name' => 'usuario_prueba',
             'email' => 'p1@p1.com',
             'email_verified_at' => now(),
-            'password' => Hash::make('12345678'), // password
+            'password' => Hash::make('123456'), // password
             'remember_token' => Str::random(10),
         ])->assignRole('usuario');
     }

@@ -96,25 +96,26 @@
 
                     <div class="p-6">
                         <div class="group cursor-pointer relative ">
-                            <p class="sm:truncate lg:truncate mt-2 text-xl font-medium text-dark ">
+                            <p class="line-clamp-2 lg:text-justify mt-2 text-xl font-bold text-dark ">
                                 {{ $book->titulo }}
 
                             </p>
-                            {{-- detalles de descripcion --}}
-                            <div class="opacity-0 w-60 bg-black text-white text-center text-sm rounded-lg py-4 absolute z-10 group-hover:opacity-100 bottom-full -left-1/4 ml-20 px-3 pointer-events-none">
+                            {{-- detalles de Popup de descripcion --}}
+                            <div class="opacity-0 lg:w-60 sm:w-30 lg:ml-20  sm:ml-0d lg:px-3 sm:px-2   bg-black text-white text-center text-sm rounded-lg py-2 absolute z-10 group-hover:opacity-100 bottom-full  pointer-events-none">
                                 {{ $book->titulo }}
                                 <br>
                                 {{ $book->author->nombre_autor }}
                             </div>
+                            {{-- fin de detalle --}}
                         </div>
 
-                        <h5 class="truncate text-lg font-bold">
+                        <h5 class="truncate text-base font-medium text-gray-500">
                             {{ $book->author->nombre_autor }}
                         </h5>
 
 
-                        <p class="mt-2 text-sm font-medium text-gray-600">
-                        20 Bs
+                        <p class="mt-2 text-sm font-semibold ">
+                         {{ $book->precio }}
                         </p>
 
                         <button
@@ -137,11 +138,12 @@
                 @endforeach
                 {{-- fin de seccion libros --}}
 
-                {{-- paginacion --}}
-                <div class="my-10">
-                    {{ $books->links() }}
-                </div>
           </div>
+
+            {{-- paginacion --}}
+            <div class="my-10">
+                {{ $books->links() }}
+            </div>
        </div>
     </section>
 

@@ -114,7 +114,10 @@
                 </table>
             </div>
 
-            {!! $category->links() !!}
+            {{-- paginacion --}}
+            <div class="my-10">
+                {{ $category->links() }}
+            </div>
 @endsection
 
 @section('js')

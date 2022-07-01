@@ -31,9 +31,8 @@ class RegisterController extends Controller
             'email' => $request ->email,
             'password' => Hash::make($request ->password)
 
-        ])->each(function($user){
-            $user->assignRole('usuario');
-        });
+        ])->assignRole('usuario');
+
 
         //Autenticas un Usuario
         auth()->attempt($request->only('email','password'));

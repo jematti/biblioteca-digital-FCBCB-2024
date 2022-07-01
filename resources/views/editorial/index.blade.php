@@ -123,7 +123,10 @@
                 </table>
             </div>
 
-            {{-- {!! $category->links() !!} --}}
+            {{-- paginacion --}}
+            <div class="my-10">
+                {{ $editorial->links() }}
+            </div>
 @endsection
 
 

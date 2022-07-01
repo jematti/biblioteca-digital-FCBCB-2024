@@ -14,7 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $data['category']= Category::orderBy('id','desc')->paginate(5);
+        $data['category']= Category::orderBy('id','desc')->simplepaginate(5);
         return view('category.index',$data);
     }
 

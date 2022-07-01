@@ -14,7 +14,7 @@ class EditorialController extends Controller
      */
     public function index()
     {
-        $data['editorial']= Editorial::orderBy('id','desc')->paginate(5);
+        $data['editorial']= Editorial::orderBy('id','desc')->simplepaginate(5);
         return view('editorial.index',$data);
     }
 
