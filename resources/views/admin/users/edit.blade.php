@@ -29,6 +29,7 @@
                     border-red-500
                 @enderror
                 value="{{$user->name}}"
+                readonly
             />
             @error('name')
                 <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
@@ -36,22 +37,31 @@
 
             {{-- listado de roles --}}
             <h2 class="my-5 font-bold">Listado de Roles</h2>
-            <div class="flex justify-start">
-                <div>
-                @foreach ($roles as $role )
-                    <div class="flex items-center">
-                        <input checked id="checked-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                        <label for="checked-checkbox" class="ml-2 text-lg  ">
-                            {{ $role->name }}
-                        </label>
-                    </div>
-                @endforeach
+                <div class="flex  justify-start">
+
+                    {{-- @foreach ($roles as $role )
+                        <div class="flex items-center">
+                            <input checked id="checked-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <label for="checked-checkbox" class="ml-2 text-lg  ">
+                                {{ $role->name }}
+                            </label>
+                        </div>
+                    @endforeach --}}
+
+                    @foreach ($roles as $role )
+                        <div class="flex flex-wrap items-center">
+                            <input  {{ $user->roles->pluck('name')->contains($role->name) ? 'checked' : '' }}  name=roles[] id="checked-checkbox" type="checkbox" value="{{ $role->id }}" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <label for="checked-checkbox" class="ml-2 text-lg  ">
+                                {{ $role->name }}
+                            </label>
+                        </div>
+                    @endforeach
+
                 </div>
-            </div>
 
             <input
                 type="submit"
-                value="Actualizar Datos"
+                value="Asignar Rol"
                 class="bg-sky-600 hover:bg-sky-700 transition-colors cursor-pointer uppercase font-bold w-full text-white rounded-lg p-3 mt-5"
             />
         </div>

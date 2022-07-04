@@ -19,26 +19,47 @@ class PerfilController extends Controller
         return view('perfil.index');
     }
 
+    public function changePassword()
+    {
+        return view('perfil.changepassword');
+    }
+
     public function updatePassword(Request $request)
-{
-        # Validation
+    {
+        # Validacion
         $request->validate([
             'old_password' => 'required',
-            'new_password' => 'required|confirmed',
+            'password' => 'required|confirmed',
         ]);
 
-
-        #Match The Old Password
+        #Comparar con la contraseña actual
         if(!Hash::check($request->old_password, auth()->user()->password)){
             return back()->with("error", "¡la Contraseña puesta no coincide con la actual!");
         }
 
-
-        #Update the new Password
+        #actualizar contraseña
         User::whereId(auth()->user()->id)->update([
-            'password' => Hash::make($request->new_password)
+            'password' => Hash::make($request->password)
         ]);
 
         return back()->with("status", "¡Contraseña Cambiada Exitosamente!");
+    }
+
+
+
+    public function store(Request $request){
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+        ]);
+
+        $user=User::find(auth()->user()->id);
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->save();
+
+
+        return redirect()->route('perfil.index')->with('status', 'Perfil Actualizado');
     }
 }

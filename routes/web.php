@@ -42,11 +42,13 @@ Route::group(['middleware' => ['auth','verified']], function(){
     Route::post('/imagenes', [ImagenController::class, 'store'])->name('imagenes.store');
 
     //Rutas para el Perfil de usario
-    Route::get('/editar-perfil',[PerfilController::class, 'index'])->name('perfil.index');
-    Route::post('/editar-perfil',[PerfilController::class, 'store'])->name('perfil.store');
+    // Route::get('/editar-perfil',[PerfilController::class, 'index'])->name('perfil.index');
+    // Route::post('/editar-perfil',[PerfilController::class, 'store'])->name('perfil.store');
+    Route::resource('perfil', PerfilController::class);
 
     //actualizar contraseña
-    Route::post('/change-password', [PerfilController::class, 'updatePassword'])->name('update-password');
+    Route::get('/changepassword', [PerfilController::class, 'changePassword'])->name('changepassword');
+    Route::post('/change-password', [PerfilController::class, 'updatePassword'])->name('updatepassword');
 });
 
 //CRUD libros

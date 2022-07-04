@@ -22,7 +22,7 @@
                 </a>
             </h2>
              <p
-                x-data="{ isCollapsed: false, maxLength: 350, originalContent: '', content: '' }"
+                x-data="{ isCollapsed: false, maxLength: 750, originalContent: '', content: '' }"
                 x-init="originalContent = $el.firstElementChild.textContent.trim(); content = originalContent.slice(0, maxLength)"
                 >
                     <span x-text="isCollapsed ? originalContent : content">
