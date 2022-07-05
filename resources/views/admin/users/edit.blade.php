@@ -39,24 +39,28 @@
             <h2 class="my-5 font-bold">Listado de Roles</h2>
                 <div class="flex  justify-start">
 
-                    {{-- @foreach ($roles as $role )
-                        <div class="flex items-center">
-                            <input checked id="checked-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                            <label for="checked-checkbox" class="ml-2 text-lg  ">
-                                {{ $role->name }}
-                            </label>
-                        </div>
-                    @endforeach --}}
-
                     @foreach ($roles as $role )
                         <div class="flex flex-wrap items-center">
-                            <input  {{ $user->roles->pluck('name')->contains($role->name) ? 'checked' : '' }}  name=roles[] id="checked-checkbox" type="checkbox" value="{{ $role->id }}" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                             <label for="checked-checkbox" class="ml-2 text-lg  ">
                                 {{ $role->name }}
                             </label>
+
+                            <input
+                            {{ $user->roles->pluck('name')->contains($role->name) ? 'checked' : '' }}
+                            name=roles[]
+                            id="checked-checkbox"
+                            type="checkbox"
+                            value="{{ $role->id }}"
+                            class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                            @error('roles')
+                            border-red-500
+                            @enderror
+                            >
                         </div>
                     @endforeach
-
+                    @error('roles')
+                        <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
+                    @enderror
                 </div>
 
             <input
