@@ -44,34 +44,15 @@
               <button class="flex text-white bg-green-700 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded">{{ $book->category->nombre_categoria }}</button>
             </div>
           </div>
-          {{-- seccion de ubicacion del libro --}}
+          {{-- seccion de datos  de pago y envio del libro --}}
           <div class="lg:w-1/3 w-full lg:pl-2 lg:py-6 mt-6 lg:mt-0 lg:border-l border-gray-900 ">
-            <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">Caracteristicas</h1>
-                {{-- Tabla de datos del libro --}}
-
-                <div class="block overflow-x-auto pb-4">
-                    <table>
-                    <tbody>
-                        <tr>
-                            <td class="align-middle text-lg text-left flex text-blueGray-700 ">
-                                <p class="font-bold mr-2">idioma: </p>  {{ $book->idioma }}
-                            </td>
-                        </tr>
-                            <td class="align-middle text-lg text-left flex text-blueGray-700 ">
-                                <p class="font-bold mr-2">Fecha de Publicación: </p>  {{ $book->fecha_publicacion }}
-                            </td>
-                        <tr>
-                        </tr>
-                    </tbody>
-
-                    </table>
-                </div>
-
-
+            <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">{{ $book->precio }}bs</h1>
+                {{-- añadir al carro de compras --}}
+                   @livewire('add-cart-item',['book'=>$book])
                 {{-- informacion de envio  --}}
                 <div class="p-2 text-left w-60"  role="alert">
 
-                    <h5 class="text-gray-900 text-xl font-bold mb-2">Disponible en las Sucursales: </h5>
+                    <h4 class="text-gray-900 font-bold mb-2">Disponible en las Sucursales: </h4>
 
                     <div class="flex flex-wrap">
                         <div class="flex my-2">

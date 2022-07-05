@@ -64,6 +64,7 @@ class BookController extends Controller
             'imagen' => 'required',
             'precio' => 'required',
             'author' => 'required',
+            'cantidad' => 'required',
             'ancho',
             'alto',
             'peso',
@@ -83,6 +84,7 @@ class BookController extends Controller
         $book->resumen = $request->resumen;
         $book->imagen = $request->imagen;
         $book->precio = $request->precio;
+        $book->cantidad = $request->cantidad;
         $book->ancho = $request->ancho;
         $book->alto = $request->alto;
         $book->peso= $request->peso;
@@ -148,6 +150,7 @@ class BookController extends Controller
             'resumen' => 'required',
             'imagen' => 'required',
             'precio' => 'required',
+            'cantidad'=> 'required',
             'ancho',
             'alto',
             'peso',
@@ -168,6 +171,7 @@ class BookController extends Controller
         $book->resumen = $request->resumen;
         $book->imagen = $request->imagen;
         $book->precio = $request->precio;
+        $book->cantidad = $request->cantidad;
         $book->ancho = $request->ancho;
         $book->alto = $request->alto;
         $book->peso= $request->peso;

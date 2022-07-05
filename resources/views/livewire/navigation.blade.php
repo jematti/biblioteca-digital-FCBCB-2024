@@ -12,7 +12,7 @@ x-data="{open:false,menu:false, lokasi:false}">
       <div class="container flex items-center justify-between h-20">
 
         {{-- seccion del icono --}}
-        <div class="flex items-center px-2 lg:px-0">
+        <div class="hidden lg:flex items-center px-2 lg:px-0">
 
           <a class="flex-shrink-0" href="{{ route('home') }}">
             <img class="block lg:hidden h-12 w-16" src="{{ asset('img/logo1.jpg')}}" alt="Logo">
@@ -44,25 +44,29 @@ x-data="{open:false,menu:false, lokasi:false}">
                     @csrf
                     <button type="submit" class="block w-1/2 mx-2 px-1 py-2  rounded text-center text-sm bg-red-500 font-medium text-white leading-5 hover:bg-red-400 md:mx-0 md:w-auto "  >Cerrar Sesión</button>
                 </form>
+
             </div>
         </div>
         @endcan
 
         @can('nav.users')
-        <div class="hidden lg:block lg:ml-2">
+        @livewire('dropdown-cart')
+        <div class="hidden lg:flex lg:ml-2">
+
             <div class="flex">
-                <a class="block w-1/2 px-3 py-2 mx-1 rounded text-center text-sm bg-white font-medium text-black leading-5 hover:bg-gray-600 hover:text-white md:mx-2 md:w-auto" href="#">
+                {{-- <a class="block w-1/2 px-3 py-2 mx-1 my-2 rounded text-center text-sm bg-white font-medium text-black leading-5 hover:bg-gray-600 hover:text-white md:mx-2 md:w-auto" href="#">
                     Hola: <span class="font-normal">
                     {{auth()->user()->name}}
                     </span>
-                </a>
-                <a class="block w-1/2 px-3 py-2 mx-1 rounded text-center text-sm bg-custom-400 font-medium text-white leading-5 hover:bg-blue-500 md:mx-0 md:w-auto" href="{{route('perfil.index')}}">Ver Perfil</a>
+                </a> --}}
+                <a class="block  px-3 py-2 mx-1 my-4 rounded text-center text-sm bg-custom-400 font-medium text-white leading-5 hover:bg-blue-500 md:mx-0 md:w-auto" href="{{route('perfil.index')}}">Ver Perfil</a>
                 {{-- metodo para cerrar sesion --}}
-                <form action="{{route('logout')}}" method="POST" class="mx-2">
+                <form action="{{route('logout')}}" method="POST" class="mx-2 mt-4">
                     @csrf
-                    <button type="submit" class="block w-1/2 mx-2 px-1 py-2  rounded text-center text-sm bg-red-500 font-medium text-white leading-5 hover:bg-red-400 md:mx-0 md:w-auto "  >Cerrar Sesión</button>
+                    <button type="submit" class="px-1 py-2 rounded text-center text-sm bg-red-500 font-medium text-white leading-5 hover:bg-red-400 md:mx-0 md:w-auto "  >Cerrar Sesión</button>
                 </form>
             </div>
+
         </div>
         @endcan
 

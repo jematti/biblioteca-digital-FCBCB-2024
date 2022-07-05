@@ -61,9 +61,9 @@
         </div>
 
         <div class="flex flex-wrap -mx-3 mb-6">
-            <div class="w-full px-3">
+            <div class="w-full md:w-1/2 px-3">
               <label class="mb-2 block uppercase text-gray-500 font-bold" >
-                Precio del Libro
+                  Precio del Libro
               </label>
               <input
                     class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -80,6 +80,26 @@
                 @error('precio')
                 <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
                 @enderror
+            </div>
+            <div class="w-full md:w-1/2 px-3">
+                <label class="mb-2 block uppercase text-gray-500 font-bold" >
+                    Stock (Numero de copias del libro)
+                  </label>
+                  <input
+                        class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="cantidad"
+                        name="cantidad"
+                        type="text"
+                        placeholder="Precio del Libro"
+                        @error('cantidad')
+                        border-red-500
+                        @enderror
+                        value="{{old('cantidad')}}"
+                    />
+
+                    @error('cantidad')
+                    <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
+                    @enderror
             </div>
         </div>
 

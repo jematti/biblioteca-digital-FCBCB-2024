@@ -27,6 +27,7 @@ class Book extends Model
         'alto',
         'grueso',
         'peso',
+        'cantidad',
         'author_id',
         'editorial_id',
         'category_id',
