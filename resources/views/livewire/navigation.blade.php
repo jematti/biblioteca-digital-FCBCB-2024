@@ -96,7 +96,7 @@ x-data="{open:false,menu:false, lokasi:false}">
 
       </div>
       {{-- fin barra de navegacion principal --}}
-      <hr>
+      <hr class="text-custom-400">
       {{-- segunda Barra de navegacion --}}
       <div class="mt-1 py-3 -mx-1  items-end  hidden lg:block text-white  rounded-md">
 
@@ -148,7 +148,7 @@ x-data="{open:false,menu:false, lokasi:false}">
                     </a>
                     <form action="{{route('logout')}}" method="POST" class="md:w-1/2">
                         @csrf
-                        <button type="submit" class="block w-full mx-2 my-2 px-1 py-2  rounded text-center text-sm bg-custom-200 font-medium text-white leading-5 hover:bg-red-400 md:mx-2 md:px-10 md:w-auto "  >Cerrar Sesión</button>
+                        <button type="submit" class="block w-full mx-2 my-2 px-1 py-2  rounded text-center text-sm bg-custom-200 font-medium text-white leading-5 hover:bg-red-400 md:mx-2 md:px-10 md:w-auto">Cerrar Sesión</button>
                     </form>
                 </div>
                 @endcan

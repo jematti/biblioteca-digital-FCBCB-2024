@@ -68,7 +68,8 @@ Route::post('/logout',[LogoutController::class, 'store'])->name('logout');
 
 //Rutas de prueba
 Route::get('/pruebas',function(){
-    return view('pruebas.prueba2');
+    // return view('pruebas.prueba2');
+    Cart::destroy();
 });
 
 

@@ -9,10 +9,11 @@ module.exports = {
       extend: {
         colors:{
             custom:{
-                100:'#7F1B1B',
+                100:'#090D2A',
                 200:'#BA5047',
                 300:'#FCF0C8',
                 400:'#59A9FF',
+                500:'#A07760'
             }
         },
 

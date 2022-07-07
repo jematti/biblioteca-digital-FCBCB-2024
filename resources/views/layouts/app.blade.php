@@ -74,10 +74,8 @@
 </head>
 
     <body>
-        @livewire('navigation')
         {{-- seccion barra de navegacion --}}
-
-
+        @livewire('navigation')
         {{-- fin barra  de navegacion --}}
 
 
