@@ -8,7 +8,7 @@ function cantidad($book_id){
 
     $book = Book::find($book_id);
 
-    $cantidad=$book->cantidad;
+    $cantidad = $book->cantidad;
 
     return $cantidad;
 }

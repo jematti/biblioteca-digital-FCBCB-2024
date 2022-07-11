@@ -46,6 +46,7 @@
                 @endcan
 
                 @can('nav.users')
+
                 @livewire('dropdown-cart')
                 <div class="hidden lg:flex lg:ml-2">
 
@@ -75,7 +76,6 @@
                         <a class="block w-1/2 px-3 py-2 mx-1 rounded text-center text-sm bg-custom-400 font-medium text-white leading-5 hover:bg-blue-500 md:mx-0 md:w-auto" href="{{ route('register') }}">Registrate</a>
                     </div>
                 </div>
-
                 @endguest
 
                 {{-- icono de menu desplegable movil --}}

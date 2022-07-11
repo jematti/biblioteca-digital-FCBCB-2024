@@ -56,20 +56,6 @@ class Book extends Model
         return $this->belongsTo(Repository::class); // FK de esta tabla
     }
 
-/*
-    // Obtiene la información del usuario via FK
-    public function author()
-    {
-        return $this->belongsTo(Author::class); // FK de esta tabla
-    }
-
-    public function category()
-    {
-        return $this->belongsTo(Category::class); // FK de esta tabla
-    }
-
-
-*/
 
 
 }

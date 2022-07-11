@@ -14,7 +14,8 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\EditorialController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\RepositoryController;
-use App\Http\Livewire\ShoppingCart;
+use App\Http\Controllers\ShoppingCartController;
+use App\Http\Controllers\CreateOrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,15 +52,20 @@ Route::group(['middleware' => ['auth','verified']], function(){
     //actualizar contraseña
     Route::get('/changepassword', [PerfilController::class, 'changePassword'])->name('changepassword');
     Route::post('/change-password', [PerfilController::class, 'updatePassword'])->name('updatepassword');
+
+
+    //ruta de carrito de compras
+    Route::resource('shopping-cart',ShoppingCartController::class)->names('shopping-cart');
+
+    //ruta de ordenes
+    Route::get('/orderscreate', [CreateOrderController::class, 'index'])->name('orderscreate.index');
+
 });
 
 //CRUD libros
 Route::resource('books',BookController::class);
 //Ruta de la Barra de Busqueda Principal Busqueda
 Route::get('search',SearchController::class)->name('search');
-
-//ruta de carrito de compras
-Route::get('shopping-cart', ShoppingCart::class)->name('shopping-cart');
 
 //Rutas para el registro
 Route::get('/register',[RegisterController::class, 'index'])->name('register');
@@ -72,7 +78,7 @@ Route::post('/logout',[LogoutController::class, 'store'])->name('logout');
 //Rutas de prueba
 Route::get('/pruebas',function(){
     // return view('pruebas.prueba2');
-    // Cart::destroy();
+     Cart::destroy();
 });
 
 

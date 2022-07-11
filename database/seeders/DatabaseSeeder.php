@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
         $this->call(BookSeeder::class);
         $this->call(RoleSeeder::class);
         $this->call(UserSeeder::class);
+        $this->call(CitySeeder::class);
 
         // User::factory(10)->create()->each(function($user){
         //     $user->assignRole('usuario');

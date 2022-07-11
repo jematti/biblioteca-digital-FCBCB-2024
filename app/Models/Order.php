@@ -1,0 +1,35 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Order extends Model
+{
+    use HasFactory;
+
+    //estado del producto en pendiente hasta que se ejecute el pago
+    const PENDIENTE = 1;
+    //el usuario ha generado la orden y lo ha pagado
+    const RECIBIDO = 2;
+    // el producto esta en camino
+    const ENVIADO = 3;
+    // cuando se entrego el producto
+    const ENTREGADO = 4;
+    // producto que se ha generado la orden pero nose a pagado (Pasa de Pendiente a Anulado)
+    const ANULADO = 5;
+
+    // fillable inverso campo que no requieren en asignacion masiva
+    protected $guarded = ['id','created_at','updated_at','status'];
+
+    // relacion uno a muchos inversa
+    public function city(){
+        return $this->belongsTo(City::class);
+    }
+
+    public function  user(){
+        return $this->belongsTo(User::class);
+    }
+
+}
