@@ -71,18 +71,82 @@
 </head>
 
 <body class="bg-gray-200">
-    <p
-    x-data="{ isCollapsed: false, maxLength: 20, originalContent: '', content: '' }"
-    x-init="originalContent = $el.firstElementChild.textContent.trim(); content = originalContent.slice(0, maxLength)"
-    >
-     <span x-text="isCollapsed ? originalContent : content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
-     <button
-       @click="isCollapsed = !isCollapsed"
-       x-show="originalContent.length > maxLength"
-       x-text="isCollapsed ? 'Show less' : 'Show more'"
-     class="bg-white"></button>
-   </p>
 
+    <div class="space-y-4">
+        <div x-data="{ activeAccordion: true }">
+          <h3>
+            <button
+              :aria-expanded="activeAccordion"
+              aria-controls="accordion-panel-1"
+              @click="activeAccordion = !activeAccordion"
+              class="flex items-center justify-between w-full p-6 text-white bg-black rounded-lg"
+            >
+              <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit?</h2>
+
+              <span
+                :class="{ '-rotate-180': activeAccordion }"
+                class="transition"
+                aria-hidden="true"
+              >
+                👇
+              </span>
+            </button>
+          </h3>
+
+          <section
+            id="accordion-panel-1"
+            aria-labelledby="accordion-header-1"
+            :hidden="! activeAccordion"
+            class="mt-4"
+          >
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. At dolorum
+              tenetur aut doloribus iste? Recusandae ipsam quod modi eligendi
+              perspiciatis voluptatibus fugit, similique tenetur quos quasi impedit
+              totam beatae iure, dolor unde voluptas a veniam adipisci quibusdam qui
+              harum vel! Dolorem quaerat delectus in dignissimos libero, beatae itaque
+              repudiandae! Velit?
+            </p>
+          </section>
+        </div>
+
+        <div x-data="{ activeAccordion: false }">
+          <h3>
+            <button
+              :aria-expanded="activeAccordion"
+              aria-controls="accordion-panel-2"
+              @click="activeAccordion = !activeAccordion"
+              class="flex items-center justify-between w-full p-6 text-white bg-black rounded-lg"
+            >
+              <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit?</h2>
+
+              <span
+                :class="{ '-rotate-180': activeAccordion }"
+                class="transition"
+                aria-hidden="true"
+              >
+                👇
+              </span>
+            </button>
+          </h3>
+
+          <section
+            id="accordion-panel-2"
+            aria-labelledby="accordion-header-2"
+            class="mt-4"
+            :hidden="! activeAccordion"
+          >
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. At dolorum
+              tenetur aut doloribus iste? Recusandae ipsam quod modi eligendi
+              perspiciatis voluptatibus fugit, similique tenetur quos quasi impedit
+              totam beatae iure, dolor unde voluptas a veniam adipisci quibusdam qui
+              harum vel! Dolorem quaerat delectus in dignissimos libero, beatae itaque
+              repudiandae! Velit?
+            </p>
+          </section>
+        </div>
+      </div>
 
 
 </body>

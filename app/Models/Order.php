@@ -9,6 +9,14 @@ class Order extends Model
 {
     use HasFactory;
 
+    //metodos de pago
+
+    //pago mediante la banca movil QR
+    const BANCAMOVIL = 10;
+
+    //pago mediante deposito a la cuenta del banco
+    const DEPOSITO = 20;
+
     //estado del producto en pendiente hasta que se ejecute el pago
     const PENDIENTE = 1;
     //el usuario ha generado la orden y lo ha pagado

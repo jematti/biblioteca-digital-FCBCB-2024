@@ -1,4 +1,4 @@
-<div class="relative rounded-lg  px-1 pt-3 mx-1 mb-2" x-data="{dropdownMenu: false}">
+<div class="relative rounded-lg  px-1 pt-3 mx-1 mb-2  " x-data="{dropdownMenu: false}">
     <!-- boton de Dropdown -->
     <button x-on:click="dropdownMenu = !dropdownMenu" class="flex items-center text-white">
         <span class="relative inline-block cursor-pointer">
@@ -17,7 +17,7 @@
 
     <div
     x-show="dropdownMenu"
-    class="absolute right-0 py-2 mt-2 bg-white rounded-md shadow-xl w-72 ">
+    class="absolute right-0 py-2 mt-2 bg-white rounded-md shadow-xl w-72 h-96 overflow-y-auto">
         <div
         class="container"
         x-on:click.away="dropdownMenu = false">
