@@ -17,7 +17,7 @@
 
     <div
     x-show="dropdownMenu"
-    class="absolute right-0 py-2 mt-2 bg-white rounded-md shadow-xl w-72 h-96 overflow-y-auto">
+    class="absolute right-0 py-2 mt-2 bg-white rounded-md shadow-xl w-72 max-h-96 overflow-y-auto">
         <div
         class="container"
         x-on:click.away="dropdownMenu = false">
@@ -25,7 +25,7 @@
                     @forelse (Cart::content() as $item)
 
                     <li class="flex border-b border-gray-200">
-                        <img src="{{ asset('uploads').'/'.$item->options->imagen}}" alt="imagen de busqueda" class="w-16 h-12 m-2 object-cover">
+                        <img src="{{ asset('uploads').'/'.$item->options->imagen}}" alt="imagen de portada de libro" class="w-16 h-12 m-2 object-cover">
                         <article class="flex-1">
                             <h1 class="text-lg font-semibold">{{ $item->name}}</h1>
                             <p class="text-base  text-gray-500 font-medium">Cant: {{ $item->qty}}</p>

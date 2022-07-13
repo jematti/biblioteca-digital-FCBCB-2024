@@ -13,16 +13,18 @@
 
                         <input
                         type="text"
+                        wire:model.defer="nombre_contacto"
                         class="rounded-lg shadow-sm w-full text-sm p-2.5 border border-gray-500"
                         placeholder="Ingrese el nombre completo"
                         id="nombre_contacto"
+                        name="nombre_contacto"
                         @error('nombre_contacto')
                         border-red-500
                         @enderror
                         value="{{old('nombre_contacto')}}"
                          />
 
-                        @error('nombre')
+                        @error('nombre_contacto')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
                         @enderror
                     </div>
@@ -33,17 +35,19 @@
                         </label>
 
                         <input
-                        type="text"
+                        type="email"
+                        wire:model.defer="correo_contacto"
                         class="rounded-lg shadow-sm w-full text-sm p-2.5  border border-gray-500"
                         placeholder="Ingrese el su correo actual"
                         id="correo_contacto"
+                        name="correo_contacto"
                         @error('correo_contacto')
                         border-red-500
                         @enderror
                         value="{{old('correo_contacto')}}"
                          />
 
-                        @error('correo')
+                        @error('correo_contacto')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
                         @enderror
                     </div>
@@ -55,16 +59,18 @@
 
                         <input
                         type="text"
+                        wire:model.defer="telefono_contacto"
                         class="rounded-lg shadow-sm w-full text-sm p-2.5  border border-gray-500"
                         placeholder="Ingrese el su Telefono/Celular vigente"
                         id="telefono_contacto"
+                        name="telefono_contacto"
                         @error('telefono_contacto')
                         border-red-500
                         @enderror
                         value="{{old('telefono_contacto')}}"
                          />
 
-                        @error('telefono')
+                        @error('telefono_contacto')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
                         @enderror
                     </div>
@@ -81,6 +87,7 @@
                          Nombre y NIT para la factura
                         </label>
                         <textarea
+                        wire:model.defer="factura"
                         class="
                             form-control
                             block
@@ -119,34 +126,43 @@
 
 
         {{-- formulario de metodo de pago --}}
-        <div class="shadow-lg bg-white text-lg  p-2 rounded-lg  x-data="{tipo_pago: 0}"">
+        <div class="shadow-lg bg-white text-lg  p-2 rounded-lg"  x-data="{tipo_pago: @entangle('tipo_pago')}" >
             <p class="my-3 font-bold text-lg text-black">3) Elige Método de Pago </p>
              <div>
                 <label class=" px-3 py-2 flex items-center">
                     <input
                      x-model="tipo_pago"
+                     { old('tipo_pago.1')=="1" ? 'checked='.'"'.'checked'.'"' : '' } }
                      type="radio"
                      value="1"
-                     name="tipo_pago"
+                     name="tipo_pago[1]"
                      class="text-gray-600">
+                     @error('tipo_pago')
+                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
+                     @enderror
+
                     <span class="ml-2 text-gray-700">
                         Lector de Qr
                     </span>
                 </label>
             </div>
 
-            <div class="px-6 pb-6 mt-2 "  :class="{'hidden': tipo_pago != 0 }" >
-                ¿Qué es Lorem Ipsum?
-                Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.
-            </div>
+            <div class="px-6 pb-6 mt-2 hidden"  :class="{'hidden': tipo_pago != 1 }" >
+                <div class="flex items-center">
+                    <p class="font-semibold text-lg">Realiza pagos mediante el codigo QR "BANCO UNION"</p>
+                    <img class="rounded-xl h-24 px-2 align-middle w-24 " alt="codigo QR aplicacion wayruru" src="{{ asset('img/app-wayruru-qr.png')}}">
+                </div>
+           </div>
+
 
             <div >
                 <label class=" px-3 py-2 flex items-center">
                     <input
                     x-model="tipo_pago"
+                    { old('tipo_pago.2')=="2" ? 'checked='.'"'.'checked'.'"' : '' } }
                     type="radio"
                     value="2"
-                    name="tipo_pago"
+                    name="tipo_pago[2]"
                     class="text-gray-600">
 
                     <span class="ml-2 text-gray-700">
@@ -156,17 +172,30 @@
                 </label>
             </div>
 
-                <div class="px-6 pb-6 mt-2 "  >
-                    ¿Qué es Lorem Ipsum?
-                    Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.
+            <div class="px-6 pb-6 mt-2 hidden"  :class="{'hidden': tipo_pago != 2 }">
+                <div class="flex items-center flex-wrap ">
+                    <p class="font-semibold text-lg">Deposito al "BANCO UNION"</p>
+                    <p class="text-sm">
+                    Los datos para las transferencias bancarias son: <br>
+                    -Nombre: Fundacion BCB <br>
+                    -NIT: 000 000 000<br>
+                    Cajas de ahorro en moneda Nacional:<br>
+                    Banco Unión: 000 - 000 - 000 - 000 - 00<br>
+                    <br>
+                    Una vez hecha la transferencia, envíanos una foto del comprobante al chat en vivo,<br>
+                    al número de Whatsapp +591 777 77 777 o al correo:
+                    fundacion@fundacionculturalbcb.gob.bo con tu número de pedido para enviártelo.
+                    </p>
                 </div>
+            </div>
+
 
         </div>
 
         {{-- lista de resumen de pedidos --}}
         <div class="shadow-lg bg-white text-lg  p-4 rounded-lg row-span-2 ">
             <p class="my-3 font-bold text-lg text-black">5) Resumen de tu pedido</p>
-            <div class="h-80 overflow-y-auto">
+            <div class="max-h-80 overflow-y-auto">
                 <ul>
                     @forelse (Cart::content() as $item)
 
@@ -195,20 +224,40 @@
 
                 <p class="flex justify-between items-center">
                     Envio
-                    <span class="font-semibold">Gratis</span>
+                    <span class="font-semibold">
+                        @if ($tipo_envio != 1 || $costo_envio == 0)
+                            Gratis
+                        @else
+                            {{  $costo_envio }} Bs
+                        @endif
+
+                    </span>
                 </p>
 
                 <hr class="mt-4 mb-3">
 
                 <p class="flex justify-between items-center font-semibold">
                     Total
-                    <span class="text-lg">{{ Cart::subtotal() }} Bs</span>
+                    <span class="text-lg">
+                    @if ($tipo_envio != 1)
+                        {{ Cart::subtotal() }} Bs
+                    @else
+                    {{ Cart::subtotal() + $costo_envio}} Bs
+                    @endif
+                    </span>
                 </p>
 
             </div>
-            <button onclick="location.href = '{{ route('orderscreate.index') }}'" class="w-full px-16 bg-red-500 hover:bg-red-400 text-white font-bold py-2 mt-15 rounded-lg ">
+
+            {{-- boton para confirmar pedido --}}
+            <button
+                wire:loading.attr="disabled"
+                wire:target="create_order"
+                wire:click="create_order"
+                class="w-full px-16 bg-red-500 hover:bg-red-400 text-white font-bold py-2 mt-15 rounded-lg ">
                 Realizar Pedido
             </button>
+            {{-- fin de seccion boton de confirmar pedido --}}
         </div>
 
         {{-- formulario de envio  --}}
@@ -216,7 +265,7 @@
             <p class="my-3 font-bold text-lg text-black">4) Envío </p>
             <div>
                 <label class="px-3 py-2 flex items-center">
-                    <input x-model="tipo_envio" type="radio" value="1" name="tipo_envio" class="text-gray-600">
+                    <input x-model="tipo_envio"  type="radio" value="1" name="tipo_envio" class="text-gray-600">
                     <span class="ml-2 text-gray-700">
                         Envío a domicilio
                     </span>
@@ -249,6 +298,7 @@
                         "
                         id="direccion"
                         name="direccion"
+                        wire:model.defer="direccion"
                         placeholder="Dirección donde le llegara el pedido"
                         @error('direccion')
                         border-red-500
@@ -270,24 +320,25 @@
 
                         <select
                         class=" w-full border border-gray-500  rounded  focus:outline-none focus:bg-white focus:border-gray-500"
+                        wire:model="ciudad_id"
                         id="ciudad_entrega"
                         name="ciudad_entrega">
-                            {{ $ciudad="" }}
-                            <option value="">-Seleccione tu ciudad- </option>
-                            <option value="la-paz" {{ old('ciudad',$ciudad)=='la paz' ? 'selected' : ''  }}>La Paz</option>
-                            <option value="chuquisaca" {{ old('ciudad',$ciudad)=='chuquisaca' ? 'selected' : ''  }}>Chuquisaca</option>
-                            <option value="potosi" {{ old('ciudad',$ciudad)=='potosi' ? 'selected' : ''  }}>Potosi</option>
-                            <option value="oruro" {{ old('ciudad',$ciudad)=='oruro' ? 'selected' : ''  }}>Oruro</option>
-                            <option value="pando" {{ old('ciudad',$ciudad)=='pando' ? 'selected' : ''  }}>Pando</option>
-                            <option value="Beni" {{ old('ciudad',$ciudad)=='Beni' ? 'selected' : ''  }}>Beni</option>
-                            <option value="santa-cruz" {{ old('ciudad',$ciudad)=='santa-cruz' ? 'selected' : ''  }}>Santa Cruz</option>
-                            <option value="tarija" {{ old('ciudad',$ciudad)=='tarija' ? 'selected' : ''  }}>Tarija</option>
-                            <option value="cochabamba" {{ old('ciudad',$ciudad)=='cochabamba' ? 'selected' : ''  }}>Cochabamba</option>
+
+                            <option value="" disabled selected>- Selecciona tu Ciudad -</option>
+                            @foreach ( $ciudades as $ciudad )
+                                <option
+                                {{ old('ciudad_entrega') == $ciudad->id ? 'selected' : '' }}
+                                value="{{ $ciudad->id}}">
+                                {{ $ciudad->nombre_ciudad }}
+                                </option>
+                            @endforeach
+
+
                         </select>
                             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
                             </div>
-                        @error('cuidad_entrega')
+                        @error('ciudad_entrega')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
                         @enderror
                     </div>

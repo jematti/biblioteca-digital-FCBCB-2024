@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\RepositoryController;
 use App\Http\Controllers\ShoppingCartController;
 use App\Http\Controllers\CreateOrderController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,6 +60,9 @@ Route::group(['middleware' => ['auth','verified']], function(){
 
     //ruta de ordenes
     Route::get('/orderscreate', [CreateOrderController::class, 'index'])->name('orderscreate.index');
+
+    //ruta para confirmar orden
+    Route::get('orders/{order}/payment', [OrderController::class, 'payment'])->name('orders.payment');
 
 });
 

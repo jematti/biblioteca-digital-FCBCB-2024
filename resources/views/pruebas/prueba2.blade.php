@@ -148,6 +148,20 @@
         </div>
       </div>
 
+      <div  x-data="{ service: false, handover:false, parcel:false }">
+
+        Service<input id="service" type="checkbox" x-model="service"><br/>
+
+        date<input name="date" id="date" type="date"
+             x-bind:disabled="parcel || handover || service"
+             x-bind:required="(select == 1) ? true : false"/><br/>
+
+        Handover <input id="handover" type="checkbox" x-model="handover">  <br/>
+
+         Parcel<input id="parcel" type="checkbox" x-model="parcel"><br/>
+
+
+    </div>
 
 </body>
 <script src="{{ asset('js/app.js') }}" defer ></script>

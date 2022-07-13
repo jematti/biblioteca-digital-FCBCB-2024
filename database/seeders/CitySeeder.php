@@ -16,32 +16,32 @@ class CitySeeder extends Seeder
     public function run()
     {
         DB::table('cities')->insert([
-            'nombre_ciudad'=>'La Paz',
+            'nombre_ciudad'=>'la-paz',
             'costo' => '5'
         ]);
 
         DB::table('cities')->insert([
-            'nombre_ciudad'=>'Oruro',
+            'nombre_ciudad'=>'oruro',
             'costo' => '10'
         ]);
 
         DB::table('cities')->insert([
-            'nombre_ciudad'=>'Potosi',
+            'nombre_ciudad'=>'potosi',
             'costo' => '10'
         ]);
 
         DB::table('cities')->insert([
-            'nombre_ciudad'=>'Cobija',
+            'nombre_ciudad'=>'pando',
             'costo' => '10'
         ]);
 
         DB::table('cities')->insert([
-            'nombre_ciudad'=>'Beni',
+            'nombre_ciudad'=>'beni',
             'costo' => '20'
         ]);
 
         DB::table('cities')->insert([
-            'nombre_ciudad'=>'Santa Cruz',
+            'nombre_ciudad'=>'santa-cruz',
             'costo' => '20'
         ]);
 
@@ -51,7 +51,7 @@ class CitySeeder extends Seeder
         ]);
 
         DB::table('cities')->insert([
-            'nombre_ciudad'=>'Sucre',
+            'nombre_ciudad'=>'chuquisaca',
             'costo' => '5'
         ]);
 

@@ -21,15 +21,16 @@ return new class extends Migration
             $table->string('nombre_contacto');
             $table->string('correo_contacto');
             $table->string('telefono_contacto');
+            $table->string('factura');
             $table->enum('tipo_pago', [Order::BANCAMOVIL,Order::DEPOSITO]);
             $table->enum('estado',[Order::PENDIENTE,Order::RECIBIDO,Order::ENVIADO,Order::ENTREGADO,Order::ANULADO])->default(Order::PENDIENTE);
             $table->enum('tipo_envio',[1,2]);
-            $table->float('costo_final');
+            $table->float('costo_envio');
             $table->float('total');
             $table->json('content');
-            $table->unsignedBigInteger('city_id');
+            $table->unsignedBigInteger('city_id')->nullable();
             $table->foreign('city_id')->references('id')->on('cities');
-            $table->string('direccion');
+            $table->string('direccion')->nullable();
             $table->timestamps();
         });
     }

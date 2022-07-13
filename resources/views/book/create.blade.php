@@ -205,7 +205,7 @@
                 id="category"
                 name="category"
               >
-                <option disabled selected>- Seleccione una categoría -</option>
+                <option value="" disabled selected>- Seleccione una categoría -</option>
 
                 @foreach ($categories as $category)
                     <option
