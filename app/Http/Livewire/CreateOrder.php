@@ -63,9 +63,7 @@ class CreateOrder extends Component
     public function create_order(){
         $rules = $this->rules;
 
-        if ($this->tipo_envio== 1) {
 
-        }
 
         $this->validate($rules);
         //crear orden de compra
@@ -91,7 +89,7 @@ class CreateOrder extends Component
         $order->save();
 
         //limpiar carrito
-        Cart::destroy();
+        // Cart::destroy();
 
         return redirect()->route('orders.payment',$order);
 

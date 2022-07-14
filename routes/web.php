@@ -17,6 +17,7 @@ use App\Http\Controllers\RepositoryController;
 use App\Http\Controllers\ShoppingCartController;
 use App\Http\Controllers\CreateOrderController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PaymentOrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,13 +57,23 @@ Route::group(['middleware' => ['auth','verified']], function(){
 
 
     //ruta de carrito de compras
-    Route::resource('shopping-cart',ShoppingCartController::class)->names('shopping-cart');
+    Route::get('shopping-cart',[ShoppingCartController::class, 'index'])->name('shopping-cart');
 
     //ruta de ordenes
     Route::get('/orderscreate', [CreateOrderController::class, 'index'])->name('orderscreate.index');
 
-    //ruta para confirmar orden
-    Route::get('orders/{order}/payment', [OrderController::class, 'payment'])->name('orders.payment');
+
+    //para mostrar el pedido ya finalizado
+    Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
+
+    //ruta para resumen de orden
+    Route::get('orders/{order}/payment', [OrderController::class,'payment'])->name('orders.payment');
+
+    //ruta para confirmar la orden
+    Route::get('orders/{order}/pay', [OrderController::class,'pay'])->name('orders.pay');
+
+    //ruta para ver mis ordenes
+    Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
 
 });
 
@@ -82,7 +93,7 @@ Route::post('/logout',[LogoutController::class, 'store'])->name('logout');
 //Rutas de prueba
 Route::get('/pruebas',function(){
     // return view('pruebas.prueba2');
-     Cart::destroy();
+    // Cart::destroy();
 });
 
 
