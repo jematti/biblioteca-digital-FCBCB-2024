@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\ImagenController;
 use App\Http\Controllers\LogoutController;
@@ -12,12 +13,11 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\EditorialController;
-use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\RepositoryController;
-use App\Http\Controllers\ShoppingCartController;
 use App\Http\Controllers\CreateOrderController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\PaymentOrderController;
+use App\Http\Controllers\ShoppingCartController;
+use App\Http\Controllers\Admin\AdminOrderController;
+use App\Http\Controllers\Admin\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +42,10 @@ Route::group(['middleware' => ['auth','verified']], function(){
     Route::resource('editorial', EditorialController::class);
     //CRUD Repositorios
     Route::resource('repository', RepositoryController::class);
+    //Administrar Ordenes
+    Route::get('admin/orders',[AdminOrderController::class,'index'])->name('admin.orders.index');
+    Route::get('admin/orders/{order}',[AdminOrderController::class,'show'])->name('admin.orders.show');
+
 
     //Ruta para imagenes
     Route::post('/imagenes', [ImagenController::class, 'store'])->name('imagenes.store');
@@ -92,8 +96,7 @@ Route::post('/logout',[LogoutController::class, 'store'])->name('logout');
 
 //Rutas de prueba
 Route::get('/pruebas',function(){
-    // return view('pruebas.prueba2');
-    // Cart::destroy();
+     return view('pruebas.prueba2');
 });
 
 

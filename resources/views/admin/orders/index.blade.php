@@ -1,11 +1,12 @@
 @extends('ui.nav')
 
 @section('contenido-admin')
+
 <div class="container py-6">
     {{-- seccion de tarjetas con el resumen de compras echas por el usuario --}}
-    <section class="grid grid-cols-5 gap-5 text-white">
+    <section class="grid grid-cols-4 gap-5 text-white">
 
-        <a href="{{ route('orders.index') . "?estado=1" }} " class="bg-red-500 bg-opacity-75 rounded-lg px-12 pt-8 pb-4">
+        {{-- <a href="{{ route('admin.orders.index') . "?estado=1" }} " class="bg-red-500 bg-opacity-75 rounded-lg px-12 pt-8 pb-4">
             <p class="text-center text-2xl">
                 {{ $pendiente }}
             </p>
@@ -13,9 +14,9 @@
             <p class="text-center text-2xl mt-2">
                 <i class="fas fa-business-time"></i>
             </p>
-        </a>
+        </a> --}}
 
-        <a href="{{ route('orders.index') . "?estado=2" }} " class="bg-gray-500 bg-opacity-75 rounded-lg px-12 pt-8 pb-4">
+        <a href="{{ route('admin.orders.index') . "?estado=2" }} " class="bg-gray-500 bg-opacity-75 rounded-lg px-12 pt-8 pb-4">
             <p class="text-center text-2xl">
                 {{ $recibido }}
             </p>
@@ -26,7 +27,7 @@
         </a>
 
 
-        <a href="{{ route('orders.index') . "?estado=3" }} " class="bg-green-500 bg-opacity-75 rounded-lg px-12 pt-8 pb-4">
+        <a href="{{ route('admin.orders.index') . "?estado=3" }} " class="bg-green-500 bg-opacity-75 rounded-lg px-12 pt-8 pb-4">
             <p class="text-center text-2xl">
                 {{ $enviado }}
             </p>
@@ -36,7 +37,7 @@
             </p>
         </a>
 
-        <a href="{{ route('orders.index') . "?estado=4" }} " class="bg-blue-500 bg-opacity-75 rounded-lg px-12 pt-8 pb-4">
+        <a href="{{ route('admin.orders.index') . "?estado=4" }} " class="bg-blue-500 bg-opacity-75 rounded-lg px-12 pt-8 pb-4">
             <p class="text-center text-2xl">
                 {{ $entregado }}
             </p>
@@ -46,7 +47,7 @@
             </p>
         </a>
 
-        <a href="{{ route('orders.index') . "?estado=5" }} " class="bg-orange-500 bg-opacity-75 rounded-lg pt-8 pb-4">
+        <a href="{{ route('admin.orders.index') . "?estado=5" }} " class="bg-orange-500 bg-opacity-75 rounded-lg pt-8 pb-4">
             <p class="text-center text-2xl">
                 {{ $anulado }}
             </p>

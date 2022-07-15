@@ -12,6 +12,7 @@ class OrderController extends Controller
     {
         //realizamos la consulta a la base de datos segun el usuario
         $orders = Order::query()->where('user_id', auth()->id());
+        // $orders = Order::query()->orderBy('id','desc')->where('user_id', auth()->id());
 
         //preguntamos si recibimos una variable del estado de la orden
         if (request('estado')) {
@@ -24,9 +25,9 @@ class OrderController extends Controller
         //obtenemos la cantidad de ordenes por el estado de la orden
         $pendiente = Order::where('estado',1)->where('user_id', auth()->id())->count();
         $recibido = Order::where('estado',2)->where('user_id', auth()->id())->count();
-        $enviado = Order::where('estado',3)->where('user_id', auth()->id())->count();;
-        $entregado = Order::where('estado',4)->where('user_id', auth()->id())->count();;
-        $anulado = Order::where('estado',5)->where('user_id', auth()->id())->count();;
+        $enviado = Order::where('estado',3)->where('user_id', auth()->id())->count();
+        $entregado = Order::where('estado',4)->where('user_id', auth()->id())->count();
+        $anulado = Order::where('estado',5)->where('user_id', auth()->id())->count();
 
         return view('orders.index', compact('orders','pendiente','recibido','enviado','entregado','anulado'));
     }
@@ -51,7 +52,7 @@ class OrderController extends Controller
     public function pay(Order $order){
 
         $order->estado = 2;
-        Cart::destroy();
+
         $order->save();
         return redirect()->route('orders.show',$order);
     }

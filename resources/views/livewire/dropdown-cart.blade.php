@@ -1,4 +1,4 @@
-<div class="relative rounded-lg  px-1 pt-3 mx-1 mb-2  " x-data="{dropdownMenu: false}">
+<div class="relative rounded-lg  px-1 pt-3 mx-1 mb-2" x-cloak x-data="{dropdownMenu: false}">
     <!-- boton de Dropdown -->
     <button x-on:click="dropdownMenu = !dropdownMenu" class="flex items-center text-white">
         <span class="relative inline-block cursor-pointer">
@@ -17,15 +17,24 @@
 
     <div
     x-show="dropdownMenu"
-    class="absolute right-0 py-2 mt-2 bg-white rounded-md shadow-xl w-72 max-h-96 overflow-y-auto">
+    class="absolute right-0 py-2 mt-2 bg-white rounded-md shadow-xl w-80 max-h-96 overflow-y-auto">
         <div
         class="container"
         x-on:click.away="dropdownMenu = false">
+
+        @if (Cart::count())
+        <div class="p-2 mt-2">
+            <p class="text-lg text-gray-700 mb-2"><span class="font-bold">SubTotal : </span>Bs. {{ Cart::subtotal() }}</p>
+            <button onclick="location.href='{{ url('shopping-cart') }}'" class="w-full bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 ">
+                Ir al carrito de compras
+            </button>
+        </div>
+        @endif
                 <ul>
                     @forelse (Cart::content() as $item)
 
-                    <li class="flex border-b border-gray-200">
-                        <img src="{{ asset('uploads').'/'.$item->options->imagen}}" alt="imagen de portada de libro" class="w-16 h-12 m-2 object-cover">
+                    <li class="flex border-b border-gray-200 m-2">
+                        <img src="{{ asset('uploads').'/'.$item->options->imagen}}" alt="imagen de portada de libro" class="w-24 h-24  object-cover">
                         <article class="flex-1">
                             <h1 class="text-lg font-semibold">{{ $item->name}}</h1>
                             <p class="text-base  text-gray-500 font-medium">Cant: {{ $item->qty}}</p>
@@ -39,14 +48,12 @@
                     </div>
                     @endforelse
                 </ul>
-                @if (Cart::count())
-                <div class="p-2">
-                    <p class="text-lh text-gray-700 mb-1"><span class="font-bold">Total: </span>Bs. {{ Cart::subtotal() }}</p>
-                    <button onclick="location.href='{{ url('shopping-cart') }}'" class="w-full bg-custom-200 hover:bg-red-500 text-white font-bold py-2 px-4 rounded-lg">
-                        Ir al carrito de compras
-                    </button>
-                </div>
-                @endif
         </div>
     </div>
 </div>
+
+<style>
+    [x-cloak] {
+        display: none !important;
+     }
+  </style>

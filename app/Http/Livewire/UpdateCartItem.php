@@ -12,7 +12,7 @@ class UpdateCartItem extends Component
     public function mount(){
         $item = Cart::get($this->rowId);
         $this->cantidad = $item->qty;
-        $this->cantidad_stock = cantidad_disponible($item->id);
+        $this->cantidad_stock = cantidad($item->id);
     }
 
     public function decrement(){

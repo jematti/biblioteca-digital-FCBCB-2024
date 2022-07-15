@@ -88,8 +88,11 @@ class CreateOrder extends Component
 
         $order->save();
 
+        foreach (Cart::content() as $item) {
+            descontar($item);
+        }
         //limpiar carrito
-        // Cart::destroy();
+        Cart::destroy();
 
         return redirect()->route('orders.payment',$order);
 

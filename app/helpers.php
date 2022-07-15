@@ -33,3 +33,30 @@ function cantidad_add($book_id){
 function cantidad_disponible($book_id){
     return (cantidad($book_id) - cantidad_add($book_id));
 }
+
+
+//descuenta la cantidad de libros que ya fueron comprados
+
+function descontar($item) {
+    $book = Book::find($item->id);
+
+    $cantidad_disponible = cantidad_disponible($item->id);
+
+    $book->cantidad = $cantidad_disponible;
+
+    $book->save();
+
+}
+
+
+function incrementa($item) {
+
+    $book = Book::find($item->id);
+
+    $cantidad_actualizada= cantidad($item->id) + $item->qty;
+
+    $book->cantidad = $cantidad_actualizada;
+
+    $book->save();
+
+}

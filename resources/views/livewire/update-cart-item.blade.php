@@ -9,7 +9,7 @@
         -
     </button>
 
-    <span class="m-5">{{ $cantidad }},{{  $cantidad_stock }}</span>
+    <span class="m-5">{{ $cantidad }}</span>
 
     <button
     x-bind:disabled="$wire.cantidad >= $wire.cantidad_stock"

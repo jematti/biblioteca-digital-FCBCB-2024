@@ -79,14 +79,11 @@
       <hr>
       {{-- seccion ficha tecnica de libro --}}
       <section class="py-1 bg-blueGray-50">
+
         <div class="w-full xl:w-8/12 mb-24 xl:mb-0 px-4 mx-auto mt-10">
           <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
             <div class="rounded-t mb-0 px-4 py-3 border-0">
-              <div class="flex flex-wrap items-center">
-                <div class="relative w-full px-4 max-w-full flex-grow flex-1">
-                  <h3 class="font-semibold text-lg text-blueGray-700">Ficha técnica de {{ $book->titulo }}</h3>
-                </div>
-              </div>
+                <h3 class="font-semibold text-lg text-blueGray-700">Ficha técnica de {{ $book->titulo }}</h3>
             </div>
 
             <div class="block w-full overflow-x-auto">
@@ -185,9 +182,8 @@
             </div>
           </div>
         </div>
-
-      {{-- fin seccion ficha tecnica --}}
-      </section>
+    </section>
+    {{-- fin seccion ficha tecnica --}}
 
     {{-- Codigo Modal de ubicacion del libro--}}
     <div class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center " id="modal-id-lp">

@@ -1,18 +1,20 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+    <title>{{ config('app.name', 'Libreria Virtual FC-BCB') }}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    {{-- hojas de estilos diferentes --}}
-    @stack('styles')
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Biblioteca') }}</title>
-
+    {{-- hojas de estilos diferentes --}}
+    @stack('styles')
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    {{-- Styles Livewire --}}
+    @livewireStyles
+
+
     <style>
         .work-sans {
             font-family: 'Work Sans', sans-serif;
@@ -70,98 +72,56 @@
 
 </head>
 
-<body class="bg-gray-200">
+    <body>
+        {{-- seccion barra de navegacion --}}
+        @livewire('navigation')
 
-    <div class="space-y-4">
-        <div x-data="{ activeAccordion: true }">
-          <h3>
-            <button
-              :aria-expanded="activeAccordion"
-              aria-controls="accordion-panel-1"
-              @click="activeAccordion = !activeAccordion"
-              class="flex items-center justify-between w-full p-6 text-white bg-black rounded-lg"
-            >
-              <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit?</h2>
-
-              <span
-                :class="{ '-rotate-180': activeAccordion }"
-                class="transition"
-                aria-hidden="true"
-              >
-                👇
-              </span>
-            </button>
-          </h3>
-
-          <section
-            id="accordion-panel-1"
-            aria-labelledby="accordion-header-1"
-            :hidden="! activeAccordion"
-            class="mt-4"
-          >
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. At dolorum
-              tenetur aut doloribus iste? Recusandae ipsam quod modi eligendi
-              perspiciatis voluptatibus fugit, similique tenetur quos quasi impedit
-              totam beatae iure, dolor unde voluptas a veniam adipisci quibusdam qui
-              harum vel! Dolorem quaerat delectus in dignissimos libero, beatae itaque
-              repudiandae! Velit?
-            </p>
-          </section>
-        </div>
-
-        <div x-data="{ activeAccordion: false }">
-          <h3>
-            <button
-              :aria-expanded="activeAccordion"
-              aria-controls="accordion-panel-2"
-              @click="activeAccordion = !activeAccordion"
-              class="flex items-center justify-between w-full p-6 text-white bg-black rounded-lg"
-            >
-              <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit?</h2>
-
-              <span
-                :class="{ '-rotate-180': activeAccordion }"
-                class="transition"
-                aria-hidden="true"
-              >
-                👇
-              </span>
-            </button>
-          </h3>
-
-          <section
-            id="accordion-panel-2"
-            aria-labelledby="accordion-header-2"
-            class="mt-4"
-            :hidden="! activeAccordion"
-          >
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. At dolorum
-              tenetur aut doloribus iste? Recusandae ipsam quod modi eligendi
-              perspiciatis voluptatibus fugit, similique tenetur quos quasi impedit
-              totam beatae iure, dolor unde voluptas a veniam adipisci quibusdam qui
-              harum vel! Dolorem quaerat delectus in dignissimos libero, beatae itaque
-              repudiandae! Velit?
-            </p>
-          </section>
-        </div>
-      </div>
-
-      <div  x-data="{ service: false, handover:false, parcel:false }">
-
-        Service<input id="service" type="checkbox" x-model="service"><br/>
-
-        date<input name="date" id="date" type="date"
-             x-bind:disabled="parcel || handover || service"
-             x-bind:required="(select == 1) ? true : false"/><br/>
-
-        Handover <input id="handover" type="checkbox" x-model="handover">  <br/>
-
-         Parcel<input id="parcel" type="checkbox" x-model="parcel"><br/>
+        {{-- Seccion para introducir contenido --}}
+        <main class="max-w-7xl mx-auto">
+            @yield('contenido')
+        </main>
 
 
-    </div>
 
-</body>
-<script src="{{ asset('js/app.js') }}" defer ></script>
+    </body>
+
+        <!-- Scripts Livewire -->
+        @livewireScripts
+
+        {{-- enlace a archivos js --}}
+        <script src="{{ asset('js/app.js') }}" defer ></script>
+
+        {{-- Sweet Alert --}}
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+         {{-- jquery --}}
+        <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"> </script>
+
+
+
+        <script>
+            $('.actualizar').submit(function(e){
+            //previene el comportamiento por defecto del formulario
+            e.preventDefault();
+
+            Swal.fire({
+            title: '¿Esta Seguro de Actualizar estos Datos?',
+            text: "¡Esta accion no es reversible!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, estoy Seguro',
+            }).then((result) => {
+                if (result.value) {
+                    this.submit();
+                }
+                })
+            });
+        </script>
+
+        @yield('js')
+
+
+</html>

@@ -52,8 +52,8 @@
 
                     <div class="flex">
                         {{-- <a class="block w-1/2 px-3 py-2 mx-1 my-2 rounded text-center text-sm bg-white font-medium text-black leading-5 hover:bg-gray-600 hover:text-white md:mx-2 md:w-auto" href="#">
-                    Hola: <span class="font-normal">
-                    {{auth()->user()->name}}
+                         Hola: <span class="font-normal">
+                         {{auth()->user()->name}}
                         </span>
                         </a> --}}
                         <a class="block  px-3 py-2 mx-1 my-4 rounded text-center text-sm bg-custom-400 font-medium text-white leading-5 hover:bg-blue-500 md:mx-0 md:w-auto" href="{{route('perfil.index')}}">Ver Perfil</a>
@@ -97,6 +97,13 @@
             <div class="mt-1 py-3 -mx-1  items-end  hidden lg:block text-white  rounded-md">
 
                 <ul class="flex  text-base font-bold ">
+                    <li class="px-2 lg:px-3 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
+                        </svg>
+                        <a href="{{route('home')}}" class="truncate max-w-24 ">Pagina Principal</a>
+                    </li>
+
                     <li class="px-2 lg:px-3 flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
