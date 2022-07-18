@@ -25,7 +25,7 @@
         wire:click="addItem"
         wire:loadinf.attr="disabled"
         wire:target="addItem"
-        class="w-60 bg-custom-200 hover:bg-red-500 text-white font-bold py-2 px-4 rounded-lg">
+        class="w-60 bg-custom-500 hover:bg-orange-400 text-white font-bold py-2 px-4 rounded-lg">
             Agregar compra
         </button>
     </div>

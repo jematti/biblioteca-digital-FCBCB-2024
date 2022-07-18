@@ -67,7 +67,7 @@
             <ul class="divide-y">
                 @foreach ($orders as $order)
                 <li>
-                    <a href="{{ route('admin.orders.show',$order) }}" class="flex items-center py-2 px-4 hover:bg-gray-100">
+                    <a href="{{ route('orders.show',$order) }}" class="flex items-center py-2 px-4 hover:bg-gray-100">
                         <span class="w-12 text-center">
                             @switch($order->estado)
                             @case(1)

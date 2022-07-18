@@ -26,24 +26,24 @@
 
                 @auth
 
-                @can('nav.admin')
-                <div class="hidden lg:block lg:ml-2">
-                    <div class="flex">
-                        <a class="block w-1/2 px-3 py-2 mx-1 rounded text-center text-sm bg-white font-medium text-black leading-5 hover:bg-gray-600 hover:text-white md:mx-2 md:w-auto" href="#">
-                            Hola: <span class="font-normal">
-                                {{auth()->user()->name}}
-                            </span>
-                        </a>
-                        <a class="block w-1/2 px-3 py-2 mx-1 rounded text-center text-sm bg-custom-400 font-medium text-white leading-5 hover:bg-blue-600 md:mx-0 md:w-auto" href="{{route('admin.users.index')}}">Administrador</a>
-                        {{-- metodo para cerrar sesion --}}
-                        <form action="{{route('logout')}}" method="POST" class="mx-2">
-                            @csrf
-                            <button type="submit" class="block w-1/2 mx-2 px-1 py-2  rounded text-center text-sm bg-red-500 font-medium text-white leading-5 hover:bg-red-400 md:mx-0 md:w-auto ">Cerrar Sesión</button>
-                        </form>
+                    @can('nav.admin')
+                    <div class="hidden lg:block lg:ml-2">
+                        <div class="flex">
+                            <a class="block w-1/2 px-3 py-2 mx-1 rounded text-center text-sm bg-white font-medium text-black leading-5 hover:bg-gray-600 hover:text-white md:mx-2 md:w-auto" href="#">
+                                Hola: <span class="font-normal">
+                                    {{auth()->user()->name}}
+                                </span>
+                            </a>
+                            <a class="block w-1/2 px-3 py-2 mx-1 rounded text-center text-sm bg-custom-400 font-medium text-white leading-5 hover:bg-blue-600 md:mx-0 md:w-auto" href="{{route('admin.orders.index')}}">Administrador</a>
+                            {{-- metodo para cerrar sesion --}}
+                            <form action="{{route('logout')}}" method="POST" class="mx-2">
+                                @csrf
+                                <button type="submit" class="block w-1/2 mx-2 px-1 py-2  rounded text-center text-sm bg-red-500 font-medium text-white leading-5 hover:bg-red-400 md:mx-0 md:w-auto ">Cerrar Sesión</button>
+                            </form>
 
+                        </div>
                     </div>
-                </div>
-                @endcan
+                    @endcan
 
                 @can('nav.users')
 
@@ -56,7 +56,7 @@
                          {{auth()->user()->name}}
                         </span>
                         </a> --}}
-                        <a class="block  px-3 py-2 mx-1 my-4 rounded text-center text-sm bg-custom-400 font-medium text-white leading-5 hover:bg-blue-500 md:mx-0 md:w-auto" href="{{route('perfil.index')}}">Ver Perfil</a>
+                        <a class="block  px-3 py-2 mx-1 my-4 rounded text-center text-sm bg-custom-500 font-medium text-white leading-5 hover:bg-orange-400 md:mx-0 md:w-auto" href="{{route('orders.index')}}">Ver Perfil</a>
                         {{-- metodo para cerrar sesion --}}
                         <form action="{{route('logout')}}" method="POST" class="mx-2 mt-4">
                             @csrf
@@ -139,22 +139,22 @@
             </div>
             {{-- inicio y registro para modo celular --}}
             @auth
-            @can('nav.users')
-            <div class="block md:flex items-center py-2 -mx-1 md:mx-0 ">
-                <a class="block w-full mx-2 my-2  px-1 py-2  rounded text-center text-sm bg-white font-medium hover:text-white leading-5 hover:bg-gray-600 md:mx-2 md:w-1/2 " href="#">
-                    Hola: <span class="font-normal">
-                        {{auth()->user()->name}}
-                    </span>
-                </a>
-                <a class="block w-full mx-2 my-2 px-1 py-2 rounded text-center text-sm bg-custom-400 font-medium text-white leading-5 hover:bg-blue-500 md:mx-2 md:w-1/2" href="{{route('perfil.index')}}">
-                    Ver Perfil
-                </a>
-                <form action="{{route('logout')}}" method="POST" class="md:w-1/2">
-                    @csrf
-                    <button type="submit" class="block w-full mx-2 my-2 px-1 py-2  rounded text-center text-sm bg-custom-200 font-medium text-white leading-5 hover:bg-red-400 md:mx-2 md:px-10 md:w-auto">Cerrar Sesión</button>
-                </form>
-            </div>
-            @endcan
+                @can('nav.users')
+                <div class="block md:flex items-center py-2 -mx-1 md:mx-0 ">
+                    <a class="block w-full mx-2 my-2  px-1 py-2  rounded text-center text-sm bg-white font-medium hover:text-white leading-5 hover:bg-gray-600 md:mx-2 md:w-1/2 " href="#">
+                        Hola: <span class="font-normal">
+                            {{auth()->user()->name}}
+                        </span>
+                    </a>
+                    <a class="block w-full mx-2 my-2 px-1 py-2 rounded text-center text-sm bg-custom-400 font-medium text-white leading-5 hover:bg-blue-500 md:mx-2 md:w-1/2" href="{{route('orders.index')}}">
+                        Ver Perfil
+                    </a>
+                    <form action="{{route('logout')}}" method="POST" class="md:w-1/2">
+                        @csrf
+                        <button type="submit" class="block w-full mx-2 my-2 px-1 py-2  rounded text-center text-sm bg-custom-200 font-medium text-white leading-5 hover:bg-red-400 md:mx-2 md:px-10 md:w-auto">Cerrar Sesión</button>
+                    </form>
+                </div>
+                @endcan
             @endauth
 
             @guest

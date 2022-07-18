@@ -75,8 +75,8 @@
 
 {{-- mostrar libros de la base de datos --}}
 
-<section class="bg-white py-2">
-    <div class="max-w-screen-xl px-4 py-4 mx-auto sm:px-6  ">
+<section class=" py-2">
+    <div class="max-w-screen-xl px-2 py-2 mx-auto sm:px-6  ">
 
         <div class="grid grid-cols-2 gap-3 mt-4 sm:grid-cols-2 lg:grid-cols-5">
             {{-- seccion de libros --}}
@@ -86,14 +86,14 @@
                 <img loading="lazy" alt="imagen del post {{ $book->titulo }}" class="object-contain w-full sm:h-72 h-56 hover:grow hover:shadow-lg" src="{{ asset('uploads').'/'.$book->imagen}}" />
 
 
-                <div class="p-6">
+                <div class="p-2">
                     <div class="group cursor-pointer relative ">
-                        <p class="line-clamp-2 lg:text-justify mt-2 text-xl font-bold text-dark ">
+                        <p class="line-clamp-2 lg:text-justify mt-2 px-2 text-xl font-bold text-dark ">
                             {{ $book->titulo }}
 
                         </p>
                         {{-- detalles de Popup de descripcion --}}
-                        <div class="opacity-0 lg:w-60 sm:w-30 lg:ml-20  sm:ml-0d lg:px-3 sm:px-2   bg-black text-white text-center text-sm rounded-lg py-2 absolute z-10 group-hover:opacity-100 bottom-full  pointer-events-none">
+                        <div class="opacity-0 lg:w-60 sm:w-30 lg:ml-20  sm:ml-0d lg:px-1 sm:px-2   bg-black text-white text-center text-sm rounded-lg py-2 absolute z-10 group-hover:opacity-100 bottom-full  pointer-events-none">
                             {{ $book->titulo }}
                             <br>
                             {{ $book->author->nombre_autor }}
@@ -101,16 +101,16 @@
                         {{-- fin de detalle --}}
                     </div>
 
-                    <h5 class="truncate text-base font-medium text-gray-500">
+                    <h5 class="truncate px-2 text-base font-medium text-gray-500">
                         {{ $book->author->nombre_autor }}
                     </h5>
 
 
-                    <p class="mt-2 text-sm font-semibold ">
+                    <p class="mt-2 text-sm font-semibold px-2 ">
                         {{ $book->precio }}
                     </p>
 
-                    <button onclick="location.href ='{{ route('books.show', $book) }}' " name="add" type="button" class="flex items-center w-full justify-center p-2 sm:px-8 sm:py-4 sm:mt-4 text-white bg-custom-200  hover:bg-red-600 focus:outline-none focus:bg-red-600 rounded-sm">
+                    <button onclick="location.href ='{{ route('books.show', $book) }}' " name="add" type="button" class="flex items-center w-full justify-center p-2 sm:px-5 sm:py-3 sm:mt-2 text-white bg-custom-500  hover:bg-orange-400 focus:outline-none  rounded-lg">
                         <span class="text-sm font-medium">
                             Ver Libro
                         </span>

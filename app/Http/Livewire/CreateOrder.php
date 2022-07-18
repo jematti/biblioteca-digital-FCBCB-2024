@@ -27,26 +27,23 @@ class CreateOrder extends Component
         'telefono_contacto' => 'required',
         'factura' => 'required',
         'tipo_envio' => 'required',
-        'tipo_pago' => 'required',
+        'tipo_pago' => 'required'
     ];
 
     public function mount(){
         $this->ciudades = City::all();
     }
 
-    public function render()
-    {
-        return view('livewire.create-order');
-    }
+
 
     // resetar validacion de envios de productos
 
     public function updatedTipoEnvio($value)
     {
-        if ($value != 1) {
+        if ($value == 1) {
             $this->resetValidation([
-                'ciudad_entrega',
-                'direccion',
+                'ciudad_id' ,
+                'direccion'
             ]);
 
         }
@@ -63,7 +60,10 @@ class CreateOrder extends Component
     public function create_order(){
         $rules = $this->rules;
 
-
+        if($this->tipo_envio == 1){
+            $rules['ciudad_id'] = 'required';
+            $rules['direccion'] = 'required';
+        }
 
         $this->validate($rules);
         //crear orden de compra
@@ -97,5 +97,10 @@ class CreateOrder extends Component
         return redirect()->route('orders.payment',$order);
 
 
+    }
+
+    public function render()
+    {
+        return view('livewire.create-order');
     }
 }
