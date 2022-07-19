@@ -11,8 +11,8 @@
                 <div class="hidden lg:flex items-center px-2 lg:px-0">
 
                     <a class="flex-shrink-0" href="{{ route('home') }}">
-                        <img class="block lg:hidden h-12 w-16" src="{{ asset('img/logo1.jpg')}}" alt="Logo">
-                        <img class="hidden lg:block h-12 w-auto" src="{{ asset('img/logo1.jpg')}}" alt="Logo">
+                        <img class="block lg:hidden h-12 w-16" src="{{ asset('img/logo100.png')}}" alt="Logo">
+                        <img class="hidden lg:block h-12 w-auto" src="{{ asset('img/logo100.png')}}" alt="Logo">
                     </a>
 
                 </div>

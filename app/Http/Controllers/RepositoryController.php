@@ -115,8 +115,8 @@ class RepositoryController extends Controller
      */
     public function destroy(Repository $repository)
     {
-        $repository->delete();
-        return redirect()->route('repository.index')
-                        ->with('eliminar','ok');
+        // $repository->delete();
+        // return redirect()->route('repository.index')
+        //                 ->with('eliminar','ok');
     }
 }

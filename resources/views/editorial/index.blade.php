@@ -24,12 +24,7 @@
     </div>
   </div>
 
-{{-- mensaje de alerta --}}
-    {{-- @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
-        </div>
-    @endif --}}
+
 
     <!-- Table -->
         <div class="w-full mx-auto bg-white shadow-lg rounded-sm border border-gray-200">
@@ -54,9 +49,10 @@
                             <th class="p-2">
                                 <div class="font-semibold text-left">Editar </div>
                             </th>
-                            <th class="p-2">
+                            {{-- seccion eliminar --}}
+                            {{-- <th class="p-2">
                                 <div class="font-semibold text-center">Eliminar</div>
-                            </th>
+                            </th> --}}
                         </tr>
                     </thead>
 
@@ -98,7 +94,7 @@
                                 </td>
 
                               {{-- seccion eliminar --}}
-                                <td class="p-2">
+                                {{-- <td class="p-2">
                                     <form action="{{ route('editorial.destroy',$editorials->id) }}" method="POST" class="delete-editorial">
                                         <div class="flex justify-center">
                                             <button >
@@ -114,7 +110,7 @@
                                             </button>
                                         </div>
                                     </form>
-                                </td>
+                                </td> --}}
 
                             </tr>
                         @endforeach

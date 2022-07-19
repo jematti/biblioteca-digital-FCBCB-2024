@@ -97,8 +97,8 @@ class EditorialController extends Controller
      */
     public function destroy(Editorial $editorial)
     {
-        $editorial->delete();
-        return redirect()->route('editorial.index')
-                         ->with('eliminar','ok');
+        // $editorial->delete();
+        // return redirect()->route('editorial.index')
+        //                  ->with('eliminar','ok');
     }
 }

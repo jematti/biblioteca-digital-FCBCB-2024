@@ -99,10 +99,10 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        $category->delete();
+        // $category->delete();
 
-        return redirect()->route('category.index')
-                         ->with('eliminar','ok');
+        // return redirect()->route('category.index')
+        //                  ->with('eliminar','ok');
     }
 
 }
