@@ -2,64 +2,13 @@
 
 
 @section('contenido')
-<div class="bg-white">
-
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-
-        <div class="bg-white flex items-center rounded-lg shadow-lg px-6 py-6 mb-6">
-
-            {{-- Estado del pedido --}}
-            <div class="relative">
-                <div class="{{ $order->estado >= 2 && $order->estado != 5 ? 'bg-blue-400' : 'bg-gray-400'}} rounded-full h-12 w-12  flex items-center justify-center">
-                    <i class="fas fa-check text-white"></i>
-                </div>
-
-                <div class="absolute -left-1.5 mt-0.5">
-                    <p>Recibido</p>
-                </div>
-            </div>
-
-            <div class="{{ $order->estado >= 3 && $order->estado != 5 ? 'bg-blue-400' : 'bg-gray-400'}} h-1 flex-1 mx-2"></div>
-
-            <div class="relative">
-                <div class="{{ $order->estado >= 3 && $order->estado != 5 ? 'bg-blue-400' : 'bg-gray-400'}} rounded-full h-12 w-12 flex items-center justify-center">
-                    <i class="fas fa-truck text-white"></i>
-                </div>
-
-                <div class="absolute -left-1 mt-0.5">
-                    <p>Enviado</p>
-                </div>
-            </div>
-
-            <div class="{{ $order->estado >= 4 && $order->estado != 5 ? 'bg-blue-400' : 'bg-gray-400'}} h-1 flex-1 mx-2"></div>
-
-            <div class="relative">
-                <div class="{{ $order->estado >= 4 && $order->estado != 5 ? 'bg-blue-400' : 'bg-gray-400'}} rounded-full h-12 w-12 flex items-center justify-center">
-                    <i class="fas fa-check text-white"></i>
-                </div>
-
-                <div class="absolute -left-2 mt-0.5">
-                    <p>Entregado</p>
-                </div>
-            </div>
-
-        </div>
-
-
-        <div class="bg-white rounded-lg shadow-lg px-6 py-4 mb-6 flex items-center">
+<div class="grid lg:grid-cols-5 grid-cols-1  gap-6 container p-8 bg-white">
+    <div class="col-span-3">
+        <div class="bg-white rounded-lg shadow-lg px-6 py-4 mb-6">
             <p class="text-gray-700 uppercase">
                 <span class="font-semibold">Numero de Orden:</span>
                 {{ $order->id }}
             </p>
-            {{-- boton enlace para ir a pagar --}}
-            @if ($order->estado == 1)
-            <button
-                onclick="location.href = '{{ route('orders.payment',$order) }}'"
-                class="ml-auto px-16 bg-red-500 hover:bg-red-400 text-white font-bold py-2 rounded-lg ">
-                Adjuntar Pago
-            </button>
-            @endif
-
         </div>
 
         {{-- datos de contacto --}}
@@ -67,7 +16,7 @@
             <div class="grid grid-cols-2 gap-6">
                 <div>
                     <p class="text-lg font-semibold uppercase">Envío</p>
-                    @if ($order->tipo_envio == 2)
+                    @if ($order->envio_type > 1)
                     <p class="text-sm">Los Libros deben ser recogidos en tienda</p>
                     {{-- direccion de la tiendas donde se ubican los libros --}}
                     <p class="text-sm">Calle falsa 123</p>
@@ -121,6 +70,38 @@
                 </tbody>
             </table>
         </div>
+
+        <hr>
+
+    </div>
+    <div class="col-span-2">
+        {{-- finalizar pago --}}
+        <div class="bg-white rounded-lg shadow-lg p-6 my-5 flex border border-gray-500">
+            <div>
+                <p class="text-sm font-semibold">
+                    Subtotal: {{ $order->total - $order->costo_envio }} Bs
+                </p>
+                <p class="text-sm font-semibold">
+                    Envio: {{ $order->costo_envio }} Bs
+                </p>
+
+                <p class="text-lg font-semibold">
+                    Total: {{ $order->total }} Bs
+                </p>
+            </div>
+
+        </div>
+        <button
+                onclick="location.href = '{{ route('orders.pay',$order) }}'"
+                class="w-full px-16 bg-red-500 hover:bg-red-400 text-white font-bold py-2 rounded-lg ">
+                Confirmación de  Pedido
+        </button>
+
+        {{-- <button
+                onclick="location.href = '{{  URL::previous() }}'"
+                class="w-full px-16 bg-red-500 hover:bg-red-400 text-white font-bold py-2 mt-15 rounded-lg ">
+                cancelar
+        </button> --}}
     </div>
 </div>
 @endsection

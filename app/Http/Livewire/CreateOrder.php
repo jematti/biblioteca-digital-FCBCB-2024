@@ -34,8 +34,6 @@ class CreateOrder extends Component
         $this->ciudades = City::all();
     }
 
-
-
     // resetar validacion de envios de productos
 
     public function updatedTipoEnvio($value)
@@ -95,8 +93,6 @@ class CreateOrder extends Component
         Cart::destroy();
 
         return redirect()->route('orders.payment',$order);
-
-
     }
 
     public function render()

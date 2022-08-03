@@ -124,7 +124,7 @@
                             <span><i class="fab fa-youtube"></i></span>
                         </div>
                     </a>
-                    <a href="#" target="_blank" class="shadow-xl rounded-xl">
+                    <a href="https://play.google.com/store/apps/details?id=com.app.museos_app" target="_blank" class="shadow-xl rounded-xl">
                         <p class="mx-1 font-bold w-56 text-sm">¡Descarga Nuestra App Movil!</p>
                         <div class="flex items-center">
                             <img class="rounded-xl h-24 px-2 align-middle w-28 " alt="imagen de aplicacion wayruru" src="{{ asset('img/iconowayruru.png')}}">

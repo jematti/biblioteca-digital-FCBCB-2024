@@ -16,7 +16,7 @@
             <div class="grid grid-cols-2 gap-6">
                 <div>
                     <p class="text-lg font-semibold uppercase">Envío</p>
-                    @if ($order->envio_type != 1)
+                    @if ($order->tipo_envio == 2)
                     <p class="text-sm">Los Libros deben ser recogidos en tienda</p>
                     {{-- direccion de la tiendas donde se ubican los libros --}}
                     <p class="text-sm">Calle falsa 123</p>

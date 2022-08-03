@@ -194,7 +194,7 @@
                 <label class="px-3 py-2 flex items-center">
                     <input x-model="tipo_envio"  type="radio" value="1" name="tipo_envio" class="text-gray-600">
                     <span class="ml-2 text-gray-700">
-                        Envío a domicilio{{ $tipo_envio}}
+                        Envío a domicilio
                     </span>
                 </label>
 
