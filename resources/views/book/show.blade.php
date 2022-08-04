@@ -46,9 +46,12 @@
           </div>
           {{-- seccion de datos  de pago y envio del libro --}}
           <div class="lg:w-1/3 w-full lg:pl-2 lg:py-6 mt-6 lg:mt-0 lg:border-l border-gray-900 ">
+            <p class="text-gray-900 text-base title-font font-medium mb-1">Precio:</p>
             <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">{{ $book->precio }}bs</h1>
                 {{-- añadir al carro de compras --}}
+                @can('nav.users')
                    @livewire('add-cart-item',['book'=>$book])
+                @endcan
                 {{-- informacion de envio  --}}
                 <div class="p-2 text-left w-60"  role="alert">
 
