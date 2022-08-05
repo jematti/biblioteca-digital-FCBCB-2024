@@ -32,7 +32,6 @@
                     <p class="text-sm">Correo: {{ $order->correo_contacto }}</p>
                     <p class="text-sm">Telefono: {{ $order->telefono_contacto }}</p>
                     <p class="text-sm">Datos para la Factura: {{ $order->factura }}</p>
-
                 </div>
             </div>
         </div>

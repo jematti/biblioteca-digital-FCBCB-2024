@@ -9,7 +9,7 @@
             {{-- seccion de libros --}}
             @forelse($books as $book)
                 <a
-                href='{{ route('books.show', $book) }}'
+                href='{{ route('books.show', $book->id) }}'
                 class="relative block bg-white border border-gray-200"
                 >
                     <img
@@ -18,30 +18,30 @@
                         class="object-contain w-full sm:h-72 h-56 hover:grow hover:shadow-lg"
                         src="{{ asset('uploads').'/'.$book->imagen}}"
                     />
+                    {{-- <img loading="lazy" alt="imagen del post {{ $book->titulo }}" class="object-contain w-full sm:h-72 h-56 hover:grow hover:shadow-lg" src="{{ asset('img/portada3.jpg')}}" /> --}}
 
 
                     <div class="p-6">
                         <div class="group cursor-pointer relative ">
-                            <p class="truncate mt-2 text-xl font-medium text-dark ">
+                            <p class="line-clamp-2 lg:text-justify mt-2 px-2 text-xl font-bold text-dark ">
                                 {{ $book->titulo }}
 
                             </p>
-                            {{-- detalles de descripcion --}}
-                            <div class="opacity-0 w-60 bg-black text-white text-center text-sm rounded-lg py-4 absolute z-10 group-hover:opacity-100 bottom-full -left-1/4 ml-20 px-3 pointer-events-none">
+                            {{-- detalles de Popup de descripcion --}}
+                            <div class="opacity-0 lg:w-60 sm:w-30 lg:ml-20  sm:ml-0d lg:px-1 sm:px-2   bg-black text-white text-center text-sm rounded-lg py-2 absolute z-10 group-hover:opacity-100 bottom-full  pointer-events-none">
                                 {{ $book->titulo }}
                                 <br>
-                                {{ $book->author->nombre_autor }}
-
+                                {{ $book->nombre_autor }}
                             </div>
+                            {{-- fin de detalle --}}
                         </div>
 
-                        <h5 class="truncate text-lg font-bold">
-                            {{ $book->author->nombre_autor }}
+                        <h5 class="truncate px-2 text-base font-medium text-gray-500">
+                            {{ $book->nombre_autor }}
                         </h5>
 
-
-                        <p class="mt-2 text-sm font-medium text-gray-600">
-                            {{ $book->precio}}
+                        <p class="mt-2 text-sm font-semibold px-2 ">
+                           Precio: {{ $book->precio }} Bs.
                         </p>
 
                         <button
@@ -61,20 +61,19 @@
                         </button>
                     </div>
                 </a>
-
             @empty
-        </div>
-              <div class="p-4 rounded-lg shadow-lg flex">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <div class="p-4 rounded-lg shadow-lg flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
+                    </svg>
                     <p class="text-lg font-semibold text-gray-700">
                         Ningun Producto coincida con esos parametros
-                     </p>
-              </div>
+                    </p>
+                </div>
+             @endforelse
 
-            @endforelse
-            {{-- fin de seccion libros --}}
+        </div>
+        {{-- fin de seccion libros --}}
 
     </div>
 @endsection

@@ -147,7 +147,7 @@
             <div class="px-6 pb-6 mt-2 hidden"  :class="{'hidden': tipo_pago != 1 }" >
                 <div class="flex items-center">
                     <p class="font-semibold text-lg">Realiza pagos mediante el codigo QR "BANCO UNION"</p>
-                    <img class="rounded-xl h-24 px-2 align-middle w-24 " alt="codigo QR aplicacion wayruru" src="{{ asset('img/app-wayruru-qr.png')}}">
+                    <img class="rounded-xl h-40 px-2 align-middle w-40 " alt="codigo QR aplicacion wayruru" src="{{ asset('img/qrprueba.jpeg')}}">
                 </div>
            </div>
 
