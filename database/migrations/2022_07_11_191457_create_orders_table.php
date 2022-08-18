@@ -21,8 +21,12 @@ return new class extends Migration
             $table->string('nombre_contacto');
             $table->string('correo_contacto');
             $table->string('telefono_contacto');
-            $table->string('factura');
+            $table->string('nombre_factura');
+            $table->string('nit_factura');
+            $table->enum('estado_facturacion',[Order::FACTURADO,Order::NOFACTURADO])->default(Order::NOFACTURADO);
+            $table->string('nro_factura')->nullable();
             $table->enum('tipo_pago', [Order::BANCAMOVIL,Order::DEPOSITO]);
+            $table->string('imagen_deposito');
             $table->enum('estado',[Order::PENDIENTE,Order::RECIBIDO,Order::ENVIADO,Order::ENTREGADO,Order::ANULADO])->default(Order::PENDIENTE);
             $table->enum('tipo_envio',[1,2]);
             $table->float('costo_envio');
@@ -31,6 +35,7 @@ return new class extends Migration
             $table->unsignedBigInteger('city_id')->nullable();
             $table->foreign('city_id')->references('id')->on('cities');
             $table->string('direccion')->nullable();
+            $table->text('observacion')->nullable();
             $table->timestamps();
         });
     }

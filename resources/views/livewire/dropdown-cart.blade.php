@@ -17,7 +17,7 @@
 
     <div
     x-show="dropdownMenu"
-    class="absolute right-0 py-2 mt-2 bg-white rounded-md shadow-xl w-80 max-h-96 overflow-y-auto">
+    class="absolute right-0 py-2 mt-2 bg-white  shadow-xl w-80 max-h-96 overflow-y-auto">
         <div
         class="container"
         x-on:click.away="dropdownMenu = false">

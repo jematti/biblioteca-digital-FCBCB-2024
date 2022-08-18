@@ -2,15 +2,19 @@
 
 
 @section('contenido')
-<section class="bg-white py-2">
-    <div class="max-w-screen-xl px-4 py-4 mx-auto sm:px-6 lg:px-8 ">
+<section class="py-2">
+    <div class="max-w-screen-xl px-4 py-4 mx-auto sm:px-6 lg:px-8 bg-white">
         <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-2xl sm:truncate text-center">Resultados de la Busqueda :</h2>
         <div class="grid grid-cols-2 gap-3 mt-4 sm:grid-cols-2 lg:grid-cols-5 ">
             {{-- seccion de libros --}}
             @forelse($books as $book)
                 <a
                 href='{{ route('books.show', $book->id) }}'
+<<<<<<< HEAD
                 class="relative block bg-white border border-gray-200"
+=======
+                class="relative block bg-white border border-gray-200 rounded-lg"
+>>>>>>> modulo_agosto
                 >
                     <img
                         loading="lazy"
@@ -23,15 +27,24 @@
 
                     <div class="p-6">
                         <div class="group cursor-pointer relative ">
+<<<<<<< HEAD
                             <p class="line-clamp-2 lg:text-justify mt-2 px-2 text-xl font-bold text-dark ">
+=======
+                            <p class="line-clamp-2 mt-2 px-2 text-lg font-bold text-dark ">
+>>>>>>> modulo_agosto
                                 {{ $book->titulo }}
 
                             </p>
                             {{-- detalles de Popup de descripcion --}}
                             <div class="opacity-0 lg:w-60 sm:w-30 lg:ml-20  sm:ml-0d lg:px-1 sm:px-2   bg-black text-white text-center text-sm rounded-lg py-2 absolute z-10 group-hover:opacity-100 bottom-full  pointer-events-none">
                                 {{ $book->titulo }}
+<<<<<<< HEAD
                                 <br>
                                 {{ $book->nombre_autor }}
+=======
+                                {{-- <br>
+                                {{ $book->nombre_autor }} --}}
+>>>>>>> modulo_agosto
                             </div>
                             {{-- fin de detalle --}}
                         </div>
@@ -44,19 +57,14 @@
                            Precio: {{ $book->precio }} Bs.
                         </p>
 
-                        <button
-                            onclick="location.href ='{{ route('books.show', $book) }}' "
-                            name="add"
-                            type="button"
-                            class="flex items-center w-full justify-center p-2 sm:px-8 sm:py-4 sm:mt-4 text-white bg-red-500  hover:bg-red-400 focus:outline-none focus:bg-red-400 rounded-sm"
-                        >
-                        <span class="text-sm font-medium">
-                            Ver Libro
-                        </span>
+                        <button onclick="location.href ='{{ route('books.show', $book) }}' " name="add" type="button" class="flex items-center w-full justify-center p-2 sm:px-5 sm:py-3 sm:mt-2 text-white bg-custom-500  hover:bg-orange-400 focus:outline-none  rounded-lg">
+                            <span class="text-sm font-medium">
+                                Ver Libro
+                            </span>
 
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 ml-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                        </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 ml-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                            </svg>
 
                         </button>
                     </div>

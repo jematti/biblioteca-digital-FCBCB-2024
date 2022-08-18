@@ -4,22 +4,17 @@
 
     <h2 class="bg-white text-lg rounded-lg p-4 text-center font-bold border-2 border-sky-800">Categoría</h2>
 
+
     {{-- menu de navegacion para crear y editar categorias --}}
-    <div class="flex">
-        <div class="w-1/2 mt-5 p-2 ">
-            <button class="w-full uppercase h-10 px-5 bg-white text-red-500 transition-colors font-bold duration-150 border border-red-500  focus:shadow-outline hover:bg-red-500 hover:text-white py-2  rounded-lg inline-flex " onclick="location.href = '{{ route('category.create') }}'">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
-                  </svg>
-                  <span>Agregar Categoría</span>
+    <div class="md:grid grid-cols-2 gap-1  sm:flex-grow">
+        <div class="my-2 p-2 ">
+            <button class="w-full p-2 uppercase bg-sky-600 text-white font-bold hover:bg-sky-700 border border-gray-900  rounded-lg" onclick="location.href = '{{ route('category.create') }}'">
+                <i class="fa-solid fa-plus"></i><span class="px-2">Agregar Categoria</span>
             </button>
         </div>
-        <div class="w-1/2  mt-5 p-2 ">
-            <button class="w-full uppercase h-10 px-5 bg-white text-red-500 transition-colors font-bold duration-150 border border-red-500  focus:shadow-outline hover:bg-red-500 hover:text-white py-2  rounded-lg inline-flex " onclick="location.href = '{{ route('category.index') }}'">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                  </svg>
-                  <span>Listar Categorias</span>
+        <div class="my-2 p-2 ">
+            <button class="w-full p-2 uppercase bg-sky-600 text-white font-bold hover:bg-sky-700 border border-gray-900  rounded-lg" onclick="location.href = '{{ route('category.index') }}'">
+                <i class="fa-solid fa-angle-down"></i><span class="px-2">Listar Categorias</span>
             </button>
         </div>
    </div>
@@ -50,23 +45,40 @@
                 <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
             @enderror
 
-            <label for="descripcion" class="mb-2 block uppercase text-gray-500 font-bold">
-                Descripción de Categoría (Opcional)
-            </label>
-            <input
+            <label class="mb-2 block uppercase text-gray-500 font-bold" >
+                Descripción
+              </label>
+                <textarea
+                class="
+                    form-control
+                    block
+                    w-full
+                    px-3
+                    py-1.5
+                    text-base
+                    font-normal
+                    text-gray-700
+                    bg-white bg-clip-padding
+                    border border-solid border-gray-300
+                    rounded
+                    transition
+                    ease-in-out
+                    m-0
+                    focus:text-neutral-700 focus:bg-white focus:border-gray-600 focus:outline-none
+                "
                 id="descripcion"
-                type="text"
                 name="descripcion"
-                placeholder="Escribir descripción de la categoria"
-                class="border p-3 w-full rounded-lg"
+                placeholder="Descripción de la Categoría"
                 @error('descripcion')
-                    border-red-500
+                border-red-500
                 @enderror
                 value="{{old('descripcion')}}"
-            />
-            @error('descripcion')
+                rows="3"
+                ></textarea>
+
+                @error('descripcion')
                 <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
-            @enderror
+                @enderror
 
             <input
                 type="submit"

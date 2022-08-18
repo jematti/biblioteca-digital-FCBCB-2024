@@ -5,7 +5,7 @@
     {{-- seccion de tarjetas con el resumen de compras echas por el usuario --}}
     <section class="grid lg:grid-cols-5 gap-5 text-white">
 
-        <a href="{{ route('orders.index') . "?estado=1" }} " class="bg-red-500 bg-opacity-75 rounded-lg px-12 pt-8 pb-4">
+        <a href="{{ route('orders.index') . "?estado=1" }} " class="bg-orange-500 bg-opacity-75 rounded-lg px-12 pt-8 pb-4">
             <p class="text-center text-2xl">
                 {{ $pendiente }}
             </p>
@@ -46,7 +46,7 @@
             </p>
         </a>
 
-        <a href="{{ route('orders.index') . "?estado=5" }} " class="bg-orange-500 bg-opacity-75 rounded-lg pt-8 pb-4">
+        <a href="{{ route('orders.index') . "?estado=5" }} " class="bg-red-500 bg-opacity-75 rounded-lg pt-8 pb-4">
             <p class="text-center text-2xl">
                 {{ $anulado }}
             </p>
@@ -71,7 +71,7 @@
                         <span class="w-12 text-center">
                             @switch($order->estado)
                             @case(1)
-                            <i class="fas fa-business-time text-red-500 "></i>
+                            <i class="fas fa-business-time text-orange-500 "></i>
                             @break
                             @case(2)
                             <i class="fas fa-credit-card text-gray-500 "></i>
@@ -86,7 +86,7 @@
                             @break
 
                             @case(5)
-                            <i class="fas fa-times-circle text-orange-500 "></i>
+                            <i class="fas fa-times-circle text-red-500 "></i>
                             @break
                             @default
 

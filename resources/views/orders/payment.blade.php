@@ -2,12 +2,12 @@
 
 
 @section('contenido')
-<div class="grid lg:grid-cols-5 grid-cols-1  gap-6 container p-8 bg-white">
+<div class="container mx-auto grid lg:grid-cols-5 grid-cols-1  gap-6  p-8 bg-white ">
     <div class="col-span-3">
         <div class="bg-white rounded-lg shadow-lg px-6 py-4 mb-6">
             <p class="text-gray-700 uppercase">
                 <span class="font-semibold">Numero de Orden:</span>
-                {{ $order->id }}
+                {{$order->id}}
             </p>
         </div>
 
@@ -31,7 +31,15 @@
                     <p class="text-sm">Persona que recibira el libro: {{ $order->nombre_contacto }}</p>
                     <p class="text-sm">Correo: {{ $order->correo_contacto }}</p>
                     <p class="text-sm">Telefono: {{ $order->telefono_contacto }}</p>
+<<<<<<< HEAD
                     <p class="text-sm">Datos para la Factura: {{ $order->factura }}</p>
+=======
+                    <hr>
+                    <p class="text-lg font-semibold uppercase">Datos para la Factura: </p>
+                    <p class="text-base font-semibold">Nombre/Razon Social: {{ $order->nombre_factura}}</p>
+                    <p class="text-base font-semibold">NIT : {{ $order->nit_factura}}</p>
+
+>>>>>>> modulo_agosto
                 </div>
             </div>
         </div>

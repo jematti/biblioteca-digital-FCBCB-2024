@@ -56,4 +56,9 @@ class OrderController extends Controller
         $order->save();
         return redirect()->route('orders.show',$order);
     }
+
+    public function download($file){
+        $pathtoFile = public_path('depositos'.'/'.$file);
+        return response()->download($pathtoFile);
+    }
 }

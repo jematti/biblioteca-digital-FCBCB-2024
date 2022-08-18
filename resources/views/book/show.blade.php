@@ -11,8 +11,13 @@
           {{-- seccion de la imagen --}}
           <img
             alt="imagen del post {{ $book->titulo }}"
-            class="lg:w-1/4 max-w-screen-sm lg:h-72 h-64 object-cover object-center rounded"
+            class="lg:w-1/4 max-w-screen-sm h-80 lg:h-full object-cover mx-auto rounded"
             src="{{ asset('uploads').'/'.$book->imagen}}">
+            {{-- <img
+            alt="imagen del post {{ $book->titulo }}"
+            class="lg:w-1/4 max-w-screen-sm h-full object-cover object-center rounded"
+            src="{{ asset('img/libroa.jpg')}}"> --}}
+
           {{-- seccion informacion del libro --}}
           <div class="lg:w-2/5 w-full lg:pl-5 lg:py-6 lg:pr-2 mt-6 lg:mt-0 ">
             <h1 class="text-gray-900 text-xl title-font font-medium mb-1">{{ $book->titulo }}</h1>
@@ -35,7 +40,7 @@
                     x-text="isCollapsed ? 'Ver menos' : 'Ver mas'"
                     class="font-semibold text-gray-500 underline"
                     ></button>
-                </p>
+            </p>
 
 
             <hr class="mb-2">
@@ -112,12 +117,6 @@
                     </th>
                     <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-base whitespace-nowrap p-4">
                       {{ $book->numero_paginas }}
-                    </td>
-                    <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-base whitespace-nowrap p-4 text-left">
-                      Editorial :
-                    </th>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-base whitespace-nowrap p-4">
-                     {{ $book->editorial->nombre_editorial }}
                     </td>
                   </tr>
                   <tr>

@@ -14,7 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $data['category']= Category::orderBy('id','desc')->simplepaginate(5);
+        $data['category']= Category::orderBy('id','asc')->simplepaginate(5);
         return view('category.index',$data);
     }
 
@@ -44,8 +44,12 @@ class CategoryController extends Controller
 
         Category::create($request->all());
 
-        return redirect()->route('category.index')
-                        ->with('store','ok');
+        session()->flash('message', 'Post successfully updated.');
+
+        // return redirect()->route('category.index')
+        //                 ->with('store','ok');
+
+        return redirect()->route('category.index');
 
 
     }

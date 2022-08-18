@@ -19,7 +19,7 @@ class ImagenController extends Controller
         //almacenar la imagen en el servidor
         $imagenServidor = Image::make($imagen);
 
-        //efectos de intervention image
+        //efectos de intervention image (ancho,alto)
         $imagenServidor->fit(750,1050);
 
         $imagenPath = public_path('uploads').'/'. $nombreImagen;

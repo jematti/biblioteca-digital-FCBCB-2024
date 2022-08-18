@@ -22,7 +22,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        $data['book']= Book::orderBy('id','desc')->simplepaginate(8);
+        $data['book']= Book::orderBy('id','asc')->simplepaginate(8);
         return view('book.index',$data);
     }
 
@@ -34,13 +34,11 @@ class BookController extends Controller
     public function create()
     {
           $categories = Category::all();
-          $editorials = Editorial::all();
           $authors = Author::all();
           $repositories = Repository::all();
           return view('book.create')
                     ->with('categories',$categories)
                     ->with('authors',$authors)
-                    ->with('editorials',$editorials)
                     ->with('repositories',$repositories);
     }
 
@@ -57,19 +55,19 @@ class BookController extends Controller
         $this->validate($request,[
             'titulo' => 'required|max:255',
             'edicion' => 'required',
-            'numero_paginas' => 'required',
+            'numero_paginas' => 'required|numeric|regex:/^\d+$/',
             'fecha_publicacion' => 'required|date',
             'idioma' => 'required',
             'resumen' => 'required',
             'imagen' => 'required',
-            'precio' => 'required',
-            'author' => 'required',
-            'cantidad' => 'required',
+            'precio' => 'required|numeric|regex:/^[\d]{0,11}(\.[\d]{1,2})?$/',
+            'cantidad'=> 'required|numeric|regex:/^\d+$/',
+            'isbn',
             'ancho',
             'alto',
             'peso',
             'grueso',
-            'editorial'=> 'required',
+            'author' => 'required',
             'category'=> 'required',
             'ubicacion'=> 'required',
         ]);
@@ -85,13 +83,13 @@ class BookController extends Controller
         $book->imagen = $request->imagen;
         $book->precio = $request->precio;
         $book->cantidad = $request->cantidad;
+        $book->isbn = $request->isbn;
         $book->ancho = $request->ancho;
         $book->alto = $request->alto;
         $book->peso= $request->peso;
         $book->grueso= $request->grueso;
         $book->author_id = $request->author;
         $book->category_id = $request->category;
-        $book->editorial_id = $request->editorial;
         $book->repository_id = $request->ubicacion;
         $book->save();
 
@@ -118,14 +116,12 @@ class BookController extends Controller
     public function edit(Book $book)
     {
           $categories = Category::all();
-          $editorials = Editorial::all();
           $authors = Author::all();
           $repositories = Repository::all();
 
         return view('book.edit')
         ->with('categories',$categories)
         ->with('authors',$authors)
-        ->with('editorials',$editorials)
         ->with('repositories',$repositories)
         ->with('book',$book);;
     }
@@ -144,19 +140,19 @@ class BookController extends Controller
         $this->validate($request,[
             'titulo' => 'required|max:255',
             'edicion' => 'required',
-            'numero_paginas' => 'required',
+            'numero_paginas' => 'required|numeric|regex:/^\d+$/',
             'fecha_publicacion' => 'required|date',
             'idioma' => 'required',
             'resumen' => 'required',
             'imagen' => 'required',
-            'precio' => 'required',
-            'cantidad'=> 'required',
-            'ancho',
-            'alto',
-            'peso',
-            'grueso',
+            'precio' => 'required|numeric|regex:/^[\d]{0,11}(\.[\d]{1,2})?$/',
+            'cantidad'=> 'required|numeric|regex:/^\d+$/',
+            'isbn',
+            'ancho'=> 'numeric|regex:/^[\d]{0,11}(\.[\d]{1,2})?$/',
+            'alto'=> 'numeric|regex:/^[\d]{0,11}(\.[\d]{1,2})?$/',
+            'peso'=> 'numeric|regex:/^[\d]{0,11}(\.[\d]{1,2})?$/',
+            'grueso'=> 'numeric|regex:/^[\d]{0,11}(\.[\d]{1,2})?$/',
             'author' => 'required',
-            'editorial'=> 'required',
             'category'=> 'required',
             'ubicacion'=> 'required',
         ]);
@@ -172,13 +168,13 @@ class BookController extends Controller
         $book->imagen = $request->imagen;
         $book->precio = $request->precio;
         $book->cantidad = $request->cantidad;
+        $book->isbn = $request->isbn;
         $book->ancho = $request->ancho;
         $book->alto = $request->alto;
         $book->peso= $request->peso;
         $book->grueso= $request->grueso;
         $book->author_id = $request->author;
         $book->category_id = $request->category;
-        $book->editorial_id = $request->editorial;
         $book->repository_id = $request->ubicacion;
         $book->save();
 

@@ -77,12 +77,9 @@
         @livewire('navigation')
 
         {{-- Seccion para introducir contenido --}}
-        <main class="max-w-7xl mx-auto">
+        <main>
             @yield('contenido')
         </main>
-
-
-
     </body>
 
         <!-- Scripts Livewire -->

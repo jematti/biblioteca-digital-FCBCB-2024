@@ -69,7 +69,8 @@
                     class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     id="precio"
                     name="precio"
-                    type="text"
+                    type="number"
+                    min="1" pattern="^[0-9]+"
                     placeholder="Precio del Libro"
                     @error('precio')
                     border-red-500
@@ -82,14 +83,15 @@
                 @enderror
             </div>
             <div class="w-full md:w-1/2 px-3">
-                <label class="mb-2 block uppercase text-gray-500 font-bold" >
-                    Stock (Numero de copias del libro)
+                <label class="mb-2 block  text-gray-500 font-bold" >
+                    STOCK <span class=" font-medium">(numero de copias del libro)</span>
                   </label>
                   <input
                         class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="cantidad"
                         name="cantidad"
-                        type="text"
+                        type="number"
+                        min="1" pattern="^[0-9]+"
                         placeholder="Precio del Libro"
                         @error('cantidad')
                         border-red-500
@@ -168,35 +170,6 @@
         <div class="flex flex-wrap -mx-3 mb-6">
             <div class="w-full px-3">
               <label class="mb-2 block uppercase text-gray-500 font-bold" >
-                Editorial:
-              </label>
-
-              <select
-                class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                id="editorial"
-                name="editorial"
-              >
-                <option disabled selected>- Seleccione Editorial-</option>
-                @foreach ($editorials as $editorial)
-                    <option
-                        {{ old('editorial') == $editorial->id ? 'selected' : '' }}
-                        value="{{ $editorial->id }}"
-                    >
-                        {{$editorial->nombre_editorial}}
-                    </option>
-                @endforeach
-
-              </select>
-
-                @error('editorial')
-                <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
-                @enderror
-            </div>
-        </div>
-
-        <div class="flex flex-wrap -mx-3 mb-6">
-            <div class="w-full px-3">
-              <label class="mb-2 block uppercase text-gray-500 font-bold" >
                 Categoría:
               </label>
 
@@ -262,6 +235,7 @@
                 class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 id="numero_paginas"
                 type="number"
+                min="1" pattern="^[0-9]+"
                 name="numero_paginas"
                 placeholder="Nro de Páginas"
                 @error('numero_paginas')
@@ -296,7 +270,7 @@
         </div>
 
         <div class="flex flex-wrap -mx-3 mb-6">
-            <div class="w-full px-3">
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
               <label class="mb-2 block uppercase text-gray-500 font-bold" >
                 Fecha de Publicación
               </label>
@@ -316,13 +290,34 @@
                 <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
                 @enderror
             </div>
+
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label class="mb-2 block text-gray-500 font-bold" >
+                  ISBN <span class=" font-medium">(Si corresponde)</span>
+                </label>
+                <input
+                      class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                      id="isbn"
+                      name="isbn"
+                      type="text"
+                      placeholder="codigo ISBN del Libro"
+                      @error('isbn')
+                      border-red-500
+                      @enderror
+                      value="{{old('isbn')}}"
+                  />
+
+                  @error('isbn')
+                  <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
+                  @enderror
+              </div>
         </div>
 
         {{-- datos opcionales --}}
         <div class="flex flex-wrap -mx-3 mb-6">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <label class="block mb-2 uppercase text-gray-500 font-bold" for="grid-city">
-                    Ancho (opcional)
+                <label class="block mb-2  text-gray-500 font-bold" for="grid-city">
+                    ANCHO <span class=" font-medium">(opcional)</span>
                   </label>
                   <input
                     class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -335,8 +330,8 @@
             </div>
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
 
-                <label class="block mb-2 uppercase text-gray-500 font-bold" for="grid-city">
-                    Alto (opcional)
+                <label class="block mb-2  text-gray-500 font-bold" for="grid-city">
+                    ALTO <span class=" font-medium">(opcional)</span>
                   </label>
                   <input
                     class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -351,8 +346,8 @@
 
         <div class="flex flex-wrap -mx-3 mb-6">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <label class="block mb-2 uppercase text-gray-500 font-bold" for="grid-city">
-                    Peso (opcional)
+                <label class="block mb-2  text-gray-500 font-bold" for="grid-city">
+                    PESO<span class=" font-medium">(opcional)</span>
                   </label>
                   <input
                     class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -365,8 +360,8 @@
             </div>
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
 
-                <label class="block mb-2 uppercase text-gray-500 font-bold" for="grid-city">
-                    Grueso (opcional)
+                <label class="block mb-2  text-gray-500 font-bold" for="grid-city">
+                    GRUESO <span class=" font-medium">(opcional)</span>
                   </label>
                   <input
                     class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -381,6 +376,7 @@
         {{-- fin seccion datos opcionales --}}
         <div class="flex flex-wrap -mx-3 mb-6">
             <div class="w-full px-3">
+
               <label class="mb-2 block uppercase text-gray-500 font-bold" >
                 Resumen
               </label>

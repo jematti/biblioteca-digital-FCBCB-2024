@@ -43,9 +43,9 @@ class BookSeeder extends Seeder
             'cantidad' => '10',
             'precio' => '20',
             'author_id' => '1',
-            'editorial_id' => '1',
             'category_id' => '1',
             'repository_id' => '2',
+            'isbn' => '123456789',
         ]);
 
         DB::table('books')->insert([
@@ -76,9 +76,9 @@ class BookSeeder extends Seeder
             'precio' => '20',
             'cantidad' => '10',
             'author_id' => '1',
-            'editorial_id' => '1',
             'category_id' => '1',
             'repository_id' => '2',
+            'isbn' => '123456789',
         ]);
         DB::table('books')->insert([
             'titulo' => 'Piedra de Agua N° 3',
@@ -108,9 +108,9 @@ class BookSeeder extends Seeder
             'precio' => '20',
             'cantidad' => '10',
             'author_id' => '1',
-            'editorial_id' => '1',
             'category_id' => '1',
             'repository_id' => '2',
+            'isbn' => '123456789',
         ]);
         DB::table('books')->insert([
             'titulo' => 'Piedra de Agua N° 4',
@@ -140,9 +140,9 @@ class BookSeeder extends Seeder
             'precio' => '20',
             'cantidad' => '10',
             'author_id' => '1',
-            'editorial_id' => '1',
             'category_id' => '1',
             'repository_id' => '2',
+            'isbn' => '123456789',
         ]);
         DB::table('books')->insert([
             'titulo' => 'Piedra de Agua N° 5',
@@ -172,9 +172,9 @@ class BookSeeder extends Seeder
             'precio' => '20',
             'cantidad' => '10',
             'author_id' => '1',
-            'editorial_id' => '1',
             'category_id' => '1',
             'repository_id' => '2',
+            'isbn' => '123456789',
         ]);
         DB::table('books')->insert([
             'titulo' => 'Piedra de Agua N° 6',
@@ -204,9 +204,9 @@ class BookSeeder extends Seeder
             'precio' => '20',
             'cantidad' => '10',
             'author_id' => '1',
-            'editorial_id' => '1',
             'category_id' => '1',
             'repository_id' => '2',
+            'isbn' => '123456789',
         ]);
         DB::table('books')->insert([
             'titulo' => 'Piedra de Agua N° 7',
@@ -236,9 +236,9 @@ class BookSeeder extends Seeder
             'precio' => '20',
             'cantidad' => '10',
             'author_id' => '1',
-            'editorial_id' => '1',
             'category_id' => '1',
             'repository_id' => '2',
+            'isbn' => '123456789',
         ]);
         DB::table('books')->insert([
             'titulo' => 'Piedra de Agua N° 8',
@@ -268,9 +268,9 @@ class BookSeeder extends Seeder
             'precio' => '20',
             'cantidad' => '10',
             'author_id' => '1',
-            'editorial_id' => '1',
             'category_id' => '1',
             'repository_id' => '2',
+            'isbn' => '123456789',
         ]);
         DB::table('books')->insert([
             'titulo' => 'Piedra de Agua N° 9',
@@ -300,9 +300,9 @@ class BookSeeder extends Seeder
             'precio' => '20',
             'cantidad' => '10',
             'author_id' => '1',
-            'editorial_id' => '1',
             'category_id' => '1',
             'repository_id' => '2',
+            'isbn' => '123456789',
         ]);
         DB::table('books')->insert([
             'titulo' => 'Piedra de Agua N° 10',
@@ -332,9 +332,9 @@ class BookSeeder extends Seeder
             'precio' => '20',
             'cantidad' => '10',
             'author_id' => '1',
-            'editorial_id' => '1',
             'category_id' => '1',
             'repository_id' => '2',
+            'isbn' => '123456789',
         ]);
         DB::table('books')->insert([
             'titulo' => 'Piedra de Agua N° 11',
@@ -364,9 +364,9 @@ class BookSeeder extends Seeder
             'precio' => '20',
             'cantidad' => '10',
             'author_id' => '1',
-            'editorial_id' => '1',
             'category_id' => '1',
             'repository_id' => '2',
+            'isbn' => '123456789',
         ]);
         DB::table('books')->insert([
             'titulo' => 'Piedra de Agua N° 12',
@@ -396,9 +396,9 @@ class BookSeeder extends Seeder
             'precio' => '20',
             'cantidad' => '10',
             'author_id' => '1',
-            'editorial_id' => '1',
             'category_id' => '1',
             'repository_id' => '2',
+            'isbn' => '123456789',
         ]);
         DB::table('books')->insert([
             'titulo' => 'Piedra de Agua N° 13',
@@ -428,9 +428,9 @@ class BookSeeder extends Seeder
             'precio' => '20',
             'cantidad' => '10',
             'author_id' => '1',
-            'editorial_id' => '1',
             'category_id' => '1',
             'repository_id' => '2',
+            'isbn' => '123456789',
         ]);
         DB::table('books')->insert([
             'titulo' => 'Piedra de Agua N° 14',
@@ -460,9 +460,9 @@ class BookSeeder extends Seeder
             'precio' => '20',
             'cantidad' => '10',
             'author_id' => '1',
-            'editorial_id' => '1',
             'category_id' => '1',
             'repository_id' => '2',
+            'isbn' => '123456789',
         ]);
         DB::table('books')->insert([
             'titulo' => 'Piedra de Agua N° 15',
@@ -492,9 +492,9 @@ class BookSeeder extends Seeder
             'precio' => '20',
             'cantidad' => '10',
             'author_id' => '1',
-            'editorial_id' => '1',
             'category_id' => '1',
             'repository_id' => '2',
+            'isbn' => '123456789',
         ]);
         DB::table('books')->insert([
             'titulo' => 'Piedra de Agua N° 16',
@@ -524,9 +524,9 @@ class BookSeeder extends Seeder
             'precio' => '20',
             'cantidad' => '10',
             'author_id' => '1',
-            'editorial_id' => '1',
             'category_id' => '1',
             'repository_id' => '2',
+            'isbn' => '123456789',
         ]);
         DB::table('books')->insert([
             'titulo' => 'Piedra de Agua N° 17',
@@ -556,9 +556,9 @@ class BookSeeder extends Seeder
             'precio' => '20',
             'cantidad' => '10',
             'author_id' => '1',
-            'editorial_id' => '1',
             'category_id' => '1',
             'repository_id' => '2',
+            'isbn' => '123456789',
         ]);
         DB::table('books')->insert([
             'titulo' => 'Piedra de Agua N° 18',
@@ -588,9 +588,9 @@ class BookSeeder extends Seeder
             'precio' => '20',
             'cantidad' => '10',
             'author_id' => '1',
-            'editorial_id' => '1',
             'category_id' => '1',
             'repository_id' => '2',
+            'isbn' => '123456789',
         ]);
     }
 }

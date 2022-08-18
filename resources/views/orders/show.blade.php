@@ -2,10 +2,36 @@
 
 
 @section('contenido')
-<div class="bg-white">
+<div>
 
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 bg-white">
 
+        <div class="flex justify-center items-center text-lg font-bold">
+            Estado del pedido:
+            @switch($order->estado)
+            @case(1)
+               <span class="font-bold p-1  mx-2 text-white  rounded-lg bg-orange-500">Pendiente</span>
+            @break
+
+            @case(2)
+               <span class="font-bold p-1  mx-2 text-white rounded-lg bg-gray-500">Recibido</span>
+            @break
+
+            @case(3)
+                <span class="font-bold p-1 mx-2 text-white rounded-lg bg-yellow-500">Enviado</span>
+            @break
+
+            @case(4)
+                <span class="font-bold p-1 mx-2 text-white rounded-lg bg-blue-500">Entregado</span>
+            @break
+
+            @case(5)
+                <span class="font-bold p-1 mx-2 text-white rounded-lg bg-red-500">Anulado</span>
+            @break
+            @default
+
+            @endswitch
+        </div>
         <div class="bg-white flex items-center rounded-lg shadow-lg px-6 py-6 mb-6">
 
             {{-- Estado del pedido --}}
@@ -43,6 +69,27 @@
                 </div>
             </div>
 
+            <div class="relative ml-10">
+                <div class="{{ $order->estado == 5 ? 'bg-red-500' : 'bg-gray-400'}} rounded-full h-12 w-12 flex items-center justify-center">
+                    <i class="fa-solid fa-xmark text-white"></i>
+                </div>
+
+                <div class="absolute -left-2 mt-0.5">
+                    <p>Anulado</p>
+                </div>
+            </div>
+
+            <div class="relative ml-6">
+                <div class="{{ $order->estado == 1 ? 'bg-orange-400' : 'bg-gray-400'}} rounded-full h-12 w-12 flex items-center justify-center">
+                    <i class="fas fa-business-time text-white"></i>
+                </div>
+
+                <div class="absolute -left-2 mt-0.5">
+                    <p>Pendiente</p>
+                </div>
+            </div>
+
+
         </div>
 
 
@@ -59,8 +106,16 @@
                 Adjuntar Pago
             </button>
             @endif
-
         </div>
+
+        @if($order->estado == 1 || $order->estado == 5 || $order->observacion != "")
+        <div class="bg-white rounded-lg shadow-lg px-6 py-4 mb-6 border border-red-500">
+            <p class="text-gray-700 uppercase">
+                <span class="font-bold text-red-500">Observación:</span>
+                {{$order->observacion}}
+            </p>
+        </div>
+        @endif
 
         {{-- datos de contacto --}}
         <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
@@ -68,21 +123,41 @@
                 <div>
                     <p class="text-lg font-semibold uppercase">Envío</p>
                     @if ($order->tipo_envio == 2)
-                    <p class="text-sm">Los Libros deben ser recogidos en tienda</p>
+                    <p class="text-base">Los Libros deben ser recogidos en tienda</p>
                     {{-- direccion de la tiendas donde se ubican los libros --}}
-                    <p class="text-sm">Calle falsa 123</p>
+                    <p class="text-base">Calle falsa 123</p>
                     @else
-                    <p class="text-sm">Los Libros seran envíados a:</p>
-                    <p class="text-sm">{{ $order->direccion }}</p>
+                    <p class="text-base">Los Libros seran envíados a:</p>
+                    <p class="text-base">{{ $order->direccion }}</p>
                     @endif
+
+                    <hr>
+                    {{-- datos de pago total --}}
+                    <p class="text-lg font-semibold text-red-500 uppercase">
+                        Información de Pago
+                    </p>
+                    <p class="text-base font-semibold">
+                        Subtotal: {{ $order->total - $order->costo_envio }} Bs
+                    </p>
+                    <p class="text-base font-semibold">
+                        Envio: {{ $order->costo_envio }} Bs
+                    </p>
+
+                    <p class="text-xl font-semibold">
+                        Total: {{ $order->total }} Bs
+                    </p>
+                    {{-- fin de datos de pago total --}}
                 </div>
 
                 <div>
                     <p class="text-lg font-semibold uppercase">Datos de Contacto</p>
-                    <p class="text-sm">Persona que recibira el libro: {{ $order->nombre_contacto }}</p>
-                    <p class="text-sm">Correo: {{ $order->correo_contacto }}</p>
-                    <p class="text-sm">Telefono: {{ $order->telefono_contacto }}</p>
-                    <p class="text-sm">Datos para la Factura: {{ $order->factura }}</p>
+                    <p class="text-base">Persona que recibira el libro: {{ $order->nombre_contacto }}</p>
+                    <p class="text-base">Correo: {{ $order->correo_contacto }}</p>
+                    <p class="text-base">Telefono: {{ $order->telefono_contacto }}</p>
+                    <hr>
+                    <p class="text-lg font-semibold uppercase">Datos para la Factura: </p>
+                    <p class="text-base font-semibold">Nombre/Razon Social: {{ $order->nombre_factura}}</p>
+                    <p class="text-base font-semibold">NIT : {{ $order->nit_factura}}</p>
 
                 </div>
             </div>

@@ -1,11 +1,10 @@
-<div>
+<div class="container mx-auto">
     <div class="grid lg:grid-flow-col grid-rows-2 lg:grid-cols-3 md:grid-cols-1 gap-4 p-5 bg-gray-300 ">
         {{-- formulario de datos personales --}}
         <div class="shadow-lg text-lg text-left bg-white py-5 rounded-lg row-span-2">
             <div class="px-5">
                 <p class="my-2 font-bold text-lg text-black">1) Llena tus datos </p>
                 <hr>
-
                     <div class="mb-2">
                         <label class="mb-1 text-base " for="nombre_contacto">
                             Nombre Completo
@@ -77,47 +76,53 @@
 
                     {{-- dato para la factura --}}
 
-                    <p class="mb-2 mt-10 font-bold text-lg text-black">2) Datos para la Factura </p>
+                    <p class="mb-5 mt-10 font-bold text-lg text-black">2) Datos para la Factura </p>
                     <hr>
-                    <div class="mb-2">
-                        <label class="mb-1 text-base " for="factura">
-                         Nombre y NIT para la factura
+                    <div class="mb-2 mt-2">
+                        <label class="mb-1 text-base " for="nombre_factura">
+                            Nombre/Razon Social
                         </label>
-                        <textarea
-                        wire:model.defer="factura"
-                        class="
-                            form-control
-                            block
-                            w-full
-                            px-3
-                            py-1.5
-                            text-base
-                            font-normal
-                            text-gray-700
-                            bg-white bg-clip-padding
-                            border border-solid border-gray-300
-                            rounded
-                            transition
-                            ease-in-out
-                            m-0
-                            focus:text-neutral-700 focus:bg-white focus:border-gray-600 focus:outline-none
-                        "
-                        id="factura"
-                        name="factura"
-                        placeholder="Señor(es): ......NIT...."
-                        @error('factura')
+
+                        <input
+                        type="text"
+                        wire:model.defer="nombre_factura"
+                        class="rounded-lg block shadow-sm w-full text-sm p-2.5 border border-gray-500"
+                        placeholder="Ingresa el Nombre/Razon Social"
+                        id="nombre_factura"
+                        name="nombre_factura"
+                        @error('nombre_factura')
                         border-red-500
                         @enderror
-                        value="{{old('factura')}}"
-                        rows="3"
-                        ></textarea>
+                        value="{{old('nombre_factura')}}"
+                         />
 
-                        @error('factura')
+                        @error('nombre_factura')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
                         @enderror
-
                     </div>
 
+                    <div class="mb-2">
+                        <label class="mb-1 text-base " for="nit_factura">
+                            NIT
+                        </label>
+
+                        <input
+                        type="text"
+                        wire:model.defer="nit_factura"
+                        class="rounded-lg block shadow-sm w-full text-sm p-2.5 border border-gray-500"
+                        placeholder="Ingrese NIT"
+                        id="nit_factura"
+                        name="nit_factura"
+                        @error('nit_factura')
+                        border-red-500
+                        @enderror
+                        value="{{old('nit_factura')}}"
+                         />
+
+                        @error('nit_factura')
+                        <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
+                        @enderror
+                    </div>
             </div>
         </div>
 
@@ -183,6 +188,47 @@
                     fundacion@fundacionculturalbcb.gob.bo con tu número de pedido para enviártelo.
                     </p>
                 </div>
+            </div>
+            <hr>
+            <div class="mb-2">
+                <label class="mb-1 text-base " for="imagen_factura">
+                    <div class="flex my-2">
+                        <p class="font-bold text-lg text-black pl-2">Subir Comprobante de Pago</p>
+                        <div x-data="{ tooltip: false }" class="relative z-30 inline-flex">
+                            <div x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="rounded-md cursor-pointer fa-xl ml-2">
+                              <i class="fa-solid fa-circle-exclamation"></i>
+                            </div>
+                            <div class="relative" x-cloak x-show.transition.origin.top="tooltip">
+                              <div class="absolute top-0 z-10 w-64 p-2 -mt-1 text-sm leading-tight  transform -translate-x-1/2 -translate-y-full bg-gray-200 rounded-lg shadow-lg">
+                                <p class="font-bold border-b border-black">Información de Ayuda</p>
+
+                                <p>
+                                    - Puede subir imagenes en formato <span class="font-semibold">(.jpg, .png, .jpeg)</span> o un documento en formato <span class="font-semibold">(.pdf)</span><br>
+                                    - Asegurese que el deposito sea en la cuenta de la fundacion y que el monto sea el correcto.
+                                </p>
+                              </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </label>
+
+                <input
+                id="imagen_deposito"
+                name="imagen_deposito"
+                type="file"
+                wire:model.defer="imagen_deposito"
+                class="rounded-lg block shadow-sm w-full text-sm p-2 border border-gray-500"
+                @error('imagen_deposito')
+                border-red-500
+                @enderror
+                value="{{old('imagen_deposito')}}"
+                accept=".jpg, .jpeg, .png, .pdf"
+                 />
+
+                @error('imagen_deposito')
+                <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
+                @enderror
             </div>
 
         </div>
