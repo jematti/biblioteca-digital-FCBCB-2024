@@ -136,8 +136,8 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        //validacion de los inputs de la vista create de seccion "book"
-        $this->validate($request,[
+         //validacion de los inputs de la vista create de seccion "book"
+         $this->validate($request,[
             'titulo' => 'required|max:255',
             'edicion' => 'required',
             'numero_paginas' => 'required|numeric|regex:/^\d+$/',
@@ -148,10 +148,10 @@ class BookController extends Controller
             'precio' => 'required|numeric|regex:/^[\d]{0,11}(\.[\d]{1,2})?$/',
             'cantidad'=> 'required|numeric|regex:/^\d+$/',
             'isbn',
-            'ancho'=> 'numeric|regex:/^[\d]{0,11}(\.[\d]{1,2})?$/',
-            'alto'=> 'numeric|regex:/^[\d]{0,11}(\.[\d]{1,2})?$/',
-            'peso'=> 'numeric|regex:/^[\d]{0,11}(\.[\d]{1,2})?$/',
-            'grueso'=> 'numeric|regex:/^[\d]{0,11}(\.[\d]{1,2})?$/',
+            'ancho',
+            'alto',
+            'peso',
+            'grueso',
             'author' => 'required',
             'category'=> 'required',
             'ubicacion'=> 'required',

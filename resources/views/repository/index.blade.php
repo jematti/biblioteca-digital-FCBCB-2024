@@ -2,7 +2,7 @@
 
 @section('contenido-admin')
 
-    <h2 class="bg-white text-lg rounded-lg p-4 text-center font-bold border-2 border-sky-800">Repositorios</h2>
+    <h2 class="bg-custom-100 text-white uppercase text-lg rounded-lg p-4 text-center font-bold ">Repositorios</h2>
 
     {{-- menu de navegacion para crear y editar repositorios --}}
     <div class="md:grid grid-cols-2 gap-1  sm:flex-grow">
@@ -66,7 +66,7 @@
 
                         <!-- tabla de datos -->
                         @foreach ($repository as $repositories)
-                            <tr>
+                            <tr class="hover:bg-gray-100">
                                 <td class="p-2">
                                     <div class="font-semibold text-center">{{ $repositories->id }}</div>
                                 </td>
@@ -146,7 +146,7 @@
             </div>
 
             {{-- paginacion --}}
-            <div class="my-10">
+            <div class="m-5">
                 {{ $repository->links() }}
             </div>
 

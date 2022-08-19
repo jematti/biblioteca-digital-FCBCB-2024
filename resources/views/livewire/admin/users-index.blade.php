@@ -1,5 +1,5 @@
 <div>
-    <h2 class="bg-white text-lg rounded-lg p-4 text-center font-bold border-2 border-sky-800">Lista de Usuarios </h2>
+    <h2 class="bg-custom-100 text-white uppercase text-lg rounded-lg p-4 text-center font-bold ">Lista de Usuarios </h2>
     {{-- tabla de usuarios --}}
 
     <!-- component -->
@@ -46,7 +46,7 @@
                         <tbody>
 
                             @foreach ($users as $user)
-                            <tr>
+                            <tr class="hover:bg-gray-100">
                                 <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-base whitespace-nowrap p-4 text-left text-blueGray-700 ">
                                     {{-- {{ $user->id}} --}}
                                     <div class="font-semibold text-center">{{ $user->id }}</div>

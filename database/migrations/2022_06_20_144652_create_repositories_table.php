@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('repositories', function (Blueprint $table) {
             $table->id();
             $table->string('nombre_repositorio');
-            $table->string('sigla');
+            $table->string('sigla')->nullable();
             $table->string('ciudad');
             $table->string('correo');
             $table->string('nombre_encargado');
