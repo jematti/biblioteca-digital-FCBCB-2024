@@ -153,8 +153,6 @@
 </script>
 @endif
 
-
-
 {{-- solicitud de confirmacion de eliminacion --}}
 <script type="text/javascript">
     $('.delete-author').submit(function(e) {
@@ -178,6 +176,5 @@
     });
 
 </script>
-
 
 @endsection

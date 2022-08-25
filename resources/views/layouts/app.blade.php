@@ -73,6 +73,15 @@
 </head>
 
     <body>
+        {{-- Seccion de mensajes flash --}}
+        <div>
+            @if (session()->has('message'))
+                <div class="alert alert-success p-10 m-10 text-white">
+                    {{ session('message') }}
+                </div>
+            @endif
+        </div>
+        {{-- fin de seccion de mensajes flash --}}
         {{-- seccion barra de navegacion --}}
         @livewire('navigation')
 

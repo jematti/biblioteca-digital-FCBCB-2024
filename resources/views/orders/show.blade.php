@@ -32,7 +32,7 @@
 
             @endswitch
         </div>
-        <div class="bg-white flex items-center rounded-lg shadow-lg px-6 py-6 mb-6">
+        <div class="bg-white flex items-center rounded-lg  px-6 py-6 mb-6">
 
             {{-- Estado del pedido --}}
             <div class="relative">
@@ -93,8 +93,8 @@
         </div>
 
 
-        <div class="bg-white rounded-lg shadow-lg px-6 py-4 mb-6 flex items-center">
-            <p class="text-gray-700 uppercase">
+        <div class="bg-white rounded-lg shadow-lg px-6 py-4 mb-6 flex items-center border-2 border-custom-100">
+            <p class="text-gray-700 uppercase text-lg font-extrabold">
                 <span class="font-semibold">Numero de Orden:</span>
                 {{ $order->id }}
             </p>
@@ -118,22 +118,22 @@
         @endif
 
         {{-- datos de contacto --}}
-        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6 border-2 border-gray-400">
             <div class="grid grid-cols-2 gap-6">
                 <div>
-                    <p class="text-lg font-semibold uppercase">Envío</p>
+                    <p class="text-lg font-semibold text-blue-500 uppercase">Envío</p>
                     @if ($order->tipo_envio == 2)
                     <p class="text-base">Los Libros deben ser recogidos en tienda</p>
                     {{-- direccion de la tiendas donde se ubican los libros --}}
                     <p class="text-base">Calle falsa 123</p>
                     @else
-                    <p class="text-base">Los Libros seran envíados a:</p>
+                    <p class="text-base"><span class="font-semibold">Los Libros seran envíados a:</span> </p>
                     <p class="text-base">{{ $order->direccion }}</p>
                     @endif
 
                     <hr>
                     {{-- datos de pago total --}}
-                    <p class="text-lg font-semibold text-red-500 uppercase">
+                    <p class="text-lg font-semibold text-blue-500 uppercase">
                         Información de Pago
                     </p>
                     <p class="text-base font-semibold">
@@ -150,22 +150,22 @@
                 </div>
 
                 <div>
-                    <p class="text-lg font-semibold uppercase">Datos de Contacto</p>
-                    <p class="text-base">Persona que recibira el libro: {{ $order->nombre_contacto }}</p>
-                    <p class="text-base">Correo: {{ $order->correo_contacto }}</p>
-                    <p class="text-base">Telefono: {{ $order->telefono_contacto }}</p>
+                    <p class="text-lg font-semibold uppercase text-blue-500">Datos de Contacto</p>
+                    <p class="text-base"> <span class="font-semibold"> Persona que recibira el libro: </span>{{ $order->nombre_contacto }}</p>
+                    <p class="text-base"><span class="font-semibold">Correo: </span>{{ $order->correo_contacto }}</p>
+                    <p class="text-base"><span class="font-semibold">Telefono:</span> {{ $order->telefono_contacto }}</p>
                     <hr>
-                    <p class="text-lg font-semibold uppercase">Datos para la Factura: </p>
-                    <p class="text-base font-semibold">Nombre/Razon Social: {{ $order->nombre_factura}}</p>
-                    <p class="text-base font-semibold">NIT : {{ $order->nit_factura}}</p>
+                    <p class="text-lg uppercase font-semibold text-blue-500">Datos para la Factura :</p>
+                    <p class="text-base"><span class="font-semibold">Nombre/Razon Social :</span>{{ $order->nombre_factura}}</p>
+                    <p class="text-base"><span class="font-semibold">NIT :</span> {{ $order->nit_factura}}</p>
 
                 </div>
             </div>
         </div>
 
         {{-- detalles de la orden --}}
-        <div class="bg-white rounded-lg shadow-lg p-6 ">
-            <p class="text-xl font-semibold">Resumen</p>
+        <div class="bg-white rounded-lg shadow-lg p-6 border border-gray-500">
+            <p class="text-xl font-semibold text-red-500">Resumen</p>
             <table class="table-auto w-full">
                 <thead>
                     <tr>

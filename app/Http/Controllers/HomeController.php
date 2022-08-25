@@ -12,6 +12,7 @@ class HomeController extends Controller
     public function __invoke()
     {
 
+        session()->flash('message', 'Post successfully updated.');
         $books = Book::orderBy('id','desc')->simplepaginate(5);
         $categorias = Category::orderBy('id','desc')->simplepaginate(5);
         return view('home')->with('books',$books)

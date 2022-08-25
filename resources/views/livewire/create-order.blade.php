@@ -149,10 +149,10 @@
                 </label>
             </div>
 
-            <div class="px-6 pb-6 mt-2 hidden"  :class="{'hidden': tipo_pago != 1 }" >
-                <div class="flex items-center">
+            <div class="p-2 mt-2 hidden"  :class="{'hidden': tipo_pago != 1 }" >
+                <div class="flex flex-col items-center">
                     <p class="font-semibold text-lg">Realiza pagos mediante el codigo QR "BANCO UNION"</p>
-                    <img class="rounded-xl h-40 px-2 align-middle w-40 " alt="codigo QR aplicacion wayruru" src="{{ asset('img/qrprueba.jpeg')}}">
+                    <img class="rounded-xl h-52 px-2 align-middle w-60 " alt="codigo QR aplicacion wayruru" src="{{ asset('img/qrprueba.jpeg')}}">
                 </div>
            </div>
 

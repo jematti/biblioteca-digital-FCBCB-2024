@@ -329,16 +329,9 @@
                     </div>
                 </div>
             </div>
-
-
-
-
         </form>
     </div>
     {{-- fin de seccion de formulario de añadir libro --}}
 </div>
-
-
-
 
 @endsection

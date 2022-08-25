@@ -2,6 +2,7 @@
     <div class="bg-white ">
 
         <div class="max-w-full  px-4 sm:px-6 lg:px-8 py-12">
+            {{-- etiqueta de estado de pedido --}}
             <div class="flex justify-center items-center text-lg font-bold">
                 Estado del pedido:
                 @switch($order->estado)
@@ -28,9 +29,11 @@
 
                 @endswitch
             </div>
-            <div class="bg-white flex items-center rounded-lg shadow-lg px-6 py-6 mb-6">
+            {{-- fin de etiquetado de estado de pedido  --}}
 
-                {{-- Estado del pedido --}}
+            {{-- Iconos de Estado del pedido --}}
+            <div class="bg-white flex items-center rounded-lg  px-6 py-6 mb-6">
+
                 <div class="relative">
                     <div class="{{ $order->estado >= 2 && $order->estado != 5 ? 'bg-blue-400' : 'bg-gray-400'}} rounded-full h-12 w-12  flex items-center justify-center">
                         <i class="fas fa-check text-white"></i>
@@ -84,10 +87,8 @@
                         <p>Pendiente</p>
                     </div>
                 </div>
-
-                {{-- fin del estado de pedido --}}
-
             </div>
+            {{-- fin de iconose de estado de pedido --}}
 
             {{-- cambiar el estado de la orden --}}
             <div class="bg-white rounded-lg shadow-lg px-6 py-4 mb-6 border-2 border-blue-500">
@@ -95,7 +96,7 @@
                     <span class="font-semibold">Numero de Orden:</span>
                     {{ $order->id }}
                 </p>
-                <form wire:submit.prevent="actualizar">
+                <form wire:submit.prevent="actualizar" class="delete-author">
                     {{-- seccion de cambiar el estado de la orden --}}
                     <div class="flex space-x-3 mt-2">
                         <label for="estado">
@@ -159,14 +160,13 @@
             </div>
 
             {{-- seccion de facturacion y verificacion de pago --}}
-            <div class="bg-white rounded-lg shadow-lg px-6 py-4 mb-6 border-2 ">
+            <div class="bg-white rounded-lg shadow-lg px-6 py-4 mb-6 border border-gray-400">
                 <div class="grid grid-cols-2 gap-6">
                     {{-- seccion de datos para facturar --}}
                     <div>
                         <p class="text-lg font-semibold uppercase text-red-500">Datos para la Factura: </p>
-                        <p class="text-base font-semibold">Nombre/Razon Social: {{ $order->nombre_factura}}</p>
-                        <p class="text-base font-semibold">NIT : {{ $order->nit_factura}}</p>
-                        {{-- fin de seccion de datos para factura --}}
+                        <p class="text-base"><span class="font-semibold">Nombre/Razon Social :</span>  {{ $order->nombre_factura}}</p>
+                        <p class="text-base font-semibold"><span class="font-semibold">NIT :</span>  {{ $order->nit_factura}}</p>
 
                         {{-- estado de factura --}}
                         <p class="text-base font-semibold mb-2"> Estado de Facturación :
@@ -194,12 +194,16 @@
 
                             <div class="flex mt-2 ">
                                 <button class="ml-auto bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg">
-                                    Añadir Nro de Factura
+                                    @if($order->estado_facturacion == 100)
+                                    Añadir Nro. Factura
+                                    @else
+                                    Editar Nro. Factura
+                                    @endif
                                 </button>
                             </div>
                         </form>
                     </div>
-                    {{-- fin de proceso de facturacion --}}
+                    {{-- fin de datos para facturar --}}
 
                     {{-- seccion de verificacion de comprobante de pago --}}
                     <div class="ml-2 pl-2 border-l-2">
@@ -233,26 +237,26 @@
             {{-- fin de seccion de facturacion y verificacion de pago --}}
 
             {{-- Seccion de datos de contacto --}}
-            <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-6 border border-gray-400">
                 <div class="grid grid-cols-2 gap-6">
-                    <div>
-                        <p class="text-lg font-semibold uppercase">Envío</p>
+                    <div class="border-r border-gray-400">
+                        <p class="text-lg font-semibold uppercase text-blue-500">Envío</p>
                         @if ($order->tipo_envio == 2)
                         <p class="text-base">Los Libros deben ser recogidos en tienda</p>
                         {{-- direccion de la tiendas donde se ubican los libros --}}
                         <p class="text-base">Calle falsa 123</p>
                         @else
                         {{-- direccion donde se enviaran los pedidos --}}
-                        <p class="text-base">Los Libros seran envíados a:</p>
-                        <p class="text-lg font-semibold">{{ $order->direccion }}</p>
+                        <p class="text-base font-semibold">Los Libros seran envíados a:</p>
+                        <p class="text-lg ">{{ $order->direccion }}</p>
                         @endif
                     </div>
 
                     <div>
-                        <p class="text-lg font-semibold uppercase">Datos de Contacto</p>
-                        <p class="text-base">Persona que recibira el libro: {{ $order->nombre_contacto }}</p>
-                        <p class="text-base">Correo: {{ $order->correo_contacto }}</p>
-                        <p class="text-base">Telefono: {{ $order->telefono_contacto }}</p>
+                        <p class="text-lg font-semibold uppercase text-blue-500">Datos de Contacto</p>
+                        <p class="text-base"> <span class="font-semibold">Persona que recibira el libro: </span>{{ $order->nombre_contacto }}</p>
+                        <p class="text-base"><span class="font-semibold">Correo: </span>{{ $order->correo_contacto }}</p>
+                        <p class="text-base"><span class="font-semibold">Telefono: </span>{{ $order->telefono_contacto }}</p>
 
                     </div>
                 </div>
@@ -260,7 +264,7 @@
             {{-- fin de seccion de datos de contacto --}}
 
             {{-- seccion de inventario --}}
-            <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-6 ">
                 <div class="block w-full overflow-x-auto">
                     <table class="items-center bg-transparent w-full border-collapse ">
                         <thead>
@@ -332,6 +336,7 @@
                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                                             </svg>
                                         </a>
+
                                     </div>
                                 </td>
                             </tr>
@@ -341,8 +346,30 @@
                 </div>
             </div>
             {{-- fin de seccion de inventario --}}
-
-
         </div>
     </div>
 </div>
+
+{{-- solicitud de confirmacion de eliminacion --}}
+<script type="text/javascript">
+    $('.delete-author').submit(function(e) {
+
+        //previene el comportamiento por defecto del formulario
+        e.preventDefault();
+
+        Swal.fire({
+            title: '¿Esta Seguro de Eliminar este Author?'
+            , text: "¡Esta accion no es reversible!"
+            , icon: 'warning'
+            , showCancelButton: true
+            , confirmButtonColor: '#3085d6'
+            , cancelButtonColor: '#d33'
+            , confirmButtonText: 'Si, estoy Seguro'
+        , }).then((result) => {
+            if (result.value) {
+                this.submit();
+            }
+        })
+    });
+
+</script>

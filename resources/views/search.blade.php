@@ -10,11 +10,7 @@
             @forelse($books as $book)
                 <a
                 href='{{ route('books.show', $book->id) }}'
-<<<<<<< HEAD
-                class="relative block bg-white border border-gray-200"
-=======
                 class="relative block bg-white border border-gray-200 rounded-lg"
->>>>>>> modulo_agosto
                 >
                     <img
                         loading="lazy"
@@ -27,24 +23,14 @@
 
                     <div class="p-6">
                         <div class="group cursor-pointer relative ">
-<<<<<<< HEAD
-                            <p class="line-clamp-2 lg:text-justify mt-2 px-2 text-xl font-bold text-dark ">
-=======
                             <p class="line-clamp-2 mt-2 px-2 text-lg font-bold text-dark ">
->>>>>>> modulo_agosto
                                 {{ $book->titulo }}
-
                             </p>
                             {{-- detalles de Popup de descripcion --}}
                             <div class="opacity-0 lg:w-60 sm:w-30 lg:ml-20  sm:ml-0d lg:px-1 sm:px-2   bg-black text-white text-center text-sm rounded-lg py-2 absolute z-10 group-hover:opacity-100 bottom-full  pointer-events-none">
                                 {{ $book->titulo }}
-<<<<<<< HEAD
                                 <br>
                                 {{ $book->nombre_autor }}
-=======
-                                {{-- <br>
-                                {{ $book->nombre_autor }} --}}
->>>>>>> modulo_agosto
                             </div>
                             {{-- fin de detalle --}}
                         </div>
