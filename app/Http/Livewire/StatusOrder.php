@@ -47,6 +47,8 @@ class StatusOrder extends Component
         $this->validate($rules);
         $this->order->observacion = $this->observacion;
         $this->order->save();
+        session()->flash('message', $this->order->estado);
+
     }
     public function render()
     {

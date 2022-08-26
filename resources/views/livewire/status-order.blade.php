@@ -7,23 +7,23 @@
                 Estado del pedido:
                 @switch($order->estado)
                 @case(1)
-                   <span class="font-bold p-1  mx-2 text-white  rounded-lg bg-orange-500">Pendiente</span>
+                <span class="font-bold p-1  mx-2 text-white  rounded-lg bg-orange-500">Pendiente</span>
                 @break
 
                 @case(2)
-                   <span class="font-bold p-1  mx-2 text-white rounded-lg bg-gray-500">Recibido</span>
+                <span class="font-bold p-1  mx-2 text-white rounded-lg bg-gray-500">Recibido</span>
                 @break
 
                 @case(3)
-                    <span class="font-bold p-1 mx-2 text-white rounded-lg bg-yellow-500">Enviado</span>
+                <span class="font-bold p-1 mx-2 text-white rounded-lg bg-yellow-500">Enviado</span>
                 @break
 
                 @case(4)
-                    <span class="font-bold p-1 mx-2 text-white rounded-lg bg-blue-500">Entregado</span>
+                <span class="font-bold p-1 mx-2 text-white rounded-lg bg-blue-500">Entregado</span>
                 @break
 
                 @case(5)
-                    <span class="font-bold p-1 mx-2 text-white rounded-lg bg-red-500">Anulado</span>
+                <span class="font-bold p-1 mx-2 text-white rounded-lg bg-red-500">Anulado</span>
                 @break
                 @default
 
@@ -96,7 +96,66 @@
                     <span class="font-semibold">Numero de Orden:</span>
                     {{ $order->id }}
                 </p>
-                <form wire:submit.prevent="actualizar" class="delete-author">
+                <form  wire:submit.prevent="actualizar" >
+                    <div>
+                        @if (session()->has('message'))
+
+                        @switch(session('message'))
+                            @case(1)
+                            <div class="text-white bg-orange-500 border border-orange-400 px-4 py-1 rounded flex items-center" role="alert">
+                                <div class="mr-2">
+                                    <i class="text- fas fa-business-time text-white p-2 border border-white rounded-full"></i>
+                                </div>
+                                <span class="font-medium">Se ha cambiado el Estado de la Orden a </span>
+                                <span class="font-bold sm:inline">"PENDIENTE"</span>
+                            </div>
+                            @break
+
+                            @case(2)
+                            <div class="text-white bg-gray-500 border border-gray-400 px-4 py-1 rounded flex items-center" role="alert">
+                                <div class="mr-2">
+                                    <i class="text- fas fa-check text-white p-2 border border-white rounded-full"></i>
+                                </div>
+                                <span class="font-medium">Se ha cambiado el Estado de la Orden a </span>
+                                <span class="font-bold sm:inline">"RECIBIDO"</span>
+                            </div>
+                            @break
+
+                            @case(3)
+                            <div class="text-white bg-yellow-500 border border-yellow-400 px-4 py-1 rounded flex items-center" role="alert">
+                                <div class="mr-2">
+                                    <i class="text- fas fa-truck text-white p-2 border border-white rounded-full"></i>
+                                </div>
+                                <span class="font-medium">Se ha cambiado el Estado de la Orden a </span>
+                                <span class="font-bold sm:inline">"ENVIADO"</span>
+                            </div>
+                            @break
+
+                            @case(4)
+                            <div class="text-white bg-blue-500 border border-blue-400 px-4 py-1 rounded flex items-center" role="alert">
+                                <div class="mr-2">
+                                    <i class="text- fas fa-check text-white p-2 border border-white rounded-full"></i>
+                                </div>
+                                <span class="font-medium">Se ha cambiado el Estado de la Orden a </span>
+                                <span class="font-bold sm:inline">"ENTREGADO"</span>
+                            </div>
+                            @break
+
+                            @case(5)
+                            <div class="text-white bg-red-500 border border-red-400 px-4 py-1 rounded flex items-center" role="alert">
+                                <div class="mr-2">
+                                    <i class="text- fa-solid fa-xmark text-white p-2 border border-white rounded-full"></i>
+                                </div>
+                                <span class="font-medium">Se ha cambiado el Estado de la Orden a </span>
+                                <span class="font-bold sm:inline">"ANULADO"</span>
+                            </div>
+                            @break
+                            @default
+
+                        @endswitch
+
+                        @endif
+                    </div>
                     {{-- seccion de cambiar el estado de la orden --}}
                     <div class="flex space-x-3 mt-2">
                         <label for="estado">
@@ -132,16 +191,7 @@
                             <label class="mb-2 block uppercase text-red-500 font-semibold" for="observacion">
                                 Observación
                             </label>
-                            <textarea
-                            class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none"
-                            id="observacion"
-                            name="observacion"
-                            wire:model.defer="observacion"
-                            placeholder="Motivo de la Observacion/Anulación de la Orden"
-                            @error('observacion')
-                            border-red-500
-                            @enderror
-                            rows="3">
+                            <textarea class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none" id="observacion" name="observacion" wire:model.defer="observacion" placeholder="Motivo de la Observacion/Anulación de la Orden" @error('observacion') border-red-500 @enderror rows="3">
                             {{ $observacion}}
                             </textarea>
                             @error('observacion')
@@ -152,7 +202,7 @@
                     {{-- fin de seccion de caja  de texto --}}
 
                     <div class="flex mt-2 ">
-                        <button class="ml-auto bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg">
+                        <button class="ml-auto bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg ">
                             Actualizar orden
                         </button>
                     </div>
@@ -165,8 +215,8 @@
                     {{-- seccion de datos para facturar --}}
                     <div>
                         <p class="text-lg font-semibold uppercase text-red-500">Datos para la Factura: </p>
-                        <p class="text-base"><span class="font-semibold">Nombre/Razon Social :</span>  {{ $order->nombre_factura}}</p>
-                        <p class="text-base font-semibold"><span class="font-semibold">NIT :</span>  {{ $order->nit_factura}}</p>
+                        <p class="text-base"><span class="font-semibold">Nombre/Razon Social :</span> {{ $order->nombre_factura}}</p>
+                        <p class="text-base font-semibold"><span class="font-semibold">NIT :</span> {{ $order->nit_factura}}</p>
 
                         {{-- estado de factura --}}
                         <p class="text-base font-semibold mb-2"> Estado de Facturación :
@@ -346,30 +396,9 @@
                 </div>
             </div>
             {{-- fin de seccion de inventario --}}
+
+
         </div>
     </div>
 </div>
 
-{{-- solicitud de confirmacion de eliminacion --}}
-<script type="text/javascript">
-    $('.delete-author').submit(function(e) {
-
-        //previene el comportamiento por defecto del formulario
-        e.preventDefault();
-
-        Swal.fire({
-            title: '¿Esta Seguro de Eliminar este Author?'
-            , text: "¡Esta accion no es reversible!"
-            , icon: 'warning'
-            , showCancelButton: true
-            , confirmButtonColor: '#3085d6'
-            , cancelButtonColor: '#d33'
-            , confirmButtonText: 'Si, estoy Seguro'
-        , }).then((result) => {
-            if (result.value) {
-                this.submit();
-            }
-        })
-    });
-
-</script>
