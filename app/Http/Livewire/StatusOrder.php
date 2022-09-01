@@ -43,6 +43,7 @@ class StatusOrder extends Component
 
         if($this->estado == 5 || $this->estado == 1){
             $rules['observacion'] = 'required';
+            $rules['nro_factura'] = '';
         }
         $this->validate($rules);
         $this->order->observacion = $this->observacion;

@@ -104,7 +104,8 @@
          {{-- jquery --}}
         <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"> </script>
-
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/blitzer/jquery-ui.css" type="text/css" />
+        <script src="jquery.easy-confirm-dialog.js"></script>
 
 
         <script>

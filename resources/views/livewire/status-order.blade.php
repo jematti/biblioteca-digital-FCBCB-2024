@@ -202,7 +202,7 @@
                     {{-- fin de seccion de caja  de texto --}}
 
                     <div class="flex mt-2 ">
-                        <button class="ml-auto bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg ">
+                        <button   type="submit" class="ml-auto bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg ">
                             Actualizar orden
                         </button>
                     </div>
@@ -227,8 +227,8 @@
                             @endif
                         </p>
                         <hr>
-                        {{-- proceso de facturacion --}}
-                        <form wire:submit.prevent="facturacion">
+                        {{-- formulario de facturacion --}}
+                        <form wire:submit.prevent="facturacion" >
                             <div class="my-2">
                                 <label class="mb-1 text-base font-semibold" for="nro_factura">
                                     Nro de Factura
@@ -241,10 +241,12 @@
                                 @enderror
                             </div>
 
-
                             <div class="flex mt-2 ">
-                                <button class="ml-auto bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg">
-                                    @if($order->estado_facturacion == 100)
+                                <button
+                                    onclick="Confirmar(event)"
+                                    type="submit"
+                                    class="ml-auto bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg">
+                                     @if($order->estado_facturacion == 100)
                                     Añadir Nro. Factura
                                     @else
                                     Editar Nro. Factura
@@ -252,6 +254,7 @@
                                 </button>
                             </div>
                         </form>
+                        {{-- fin formulario de facturacion --}}
                     </div>
                     {{-- fin de datos para facturar --}}
 
@@ -402,3 +405,16 @@
     </div>
 </div>
 
+
+
+<script language="JavaScript">
+    function Confirmar(e){
+    var mensaje = "¿Esta Seguro de Registrar esta Factura?";
+
+        if (!confirm(mensaje)){
+        e.preventDefault();
+        location.reload();
+        }
+    }
+
+</script>

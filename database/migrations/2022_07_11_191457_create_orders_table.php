@@ -28,7 +28,6 @@ return new class extends Migration
             $table->enum('tipo_pago', [Order::BANCAMOVIL,Order::DEPOSITO]);
             $table->string('imagen_deposito');
             $table->enum('estado',[Order::PENDIENTE,Order::RECIBIDO,Order::ENVIADO,Order::ENTREGADO,Order::ANULADO])->default(Order::PENDIENTE);
-            $table->enum('tipo_envio',[1,2]);
             $table->float('costo_envio');
             $table->float('total');
             $table->json('content');

@@ -41,9 +41,9 @@
             <span>Repositorios</span>
         </a>
 
-        {{-- seccion de navegador lateral de libros     --}}
+        {{-- seccion de navegador lateral de libros --}}
         <div class="space-y-4 bg-white">
-            <div x-data="{ activeAccordion: false }">
+            <div x-data="{ activeAccordion: true }">
                 <h3>
                     <button @click="activeAccordion = !activeAccordion" class="flex items-center w-full p-6 text-white bg-custom-100 rounded-lg">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">

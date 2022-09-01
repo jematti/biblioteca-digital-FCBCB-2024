@@ -122,15 +122,8 @@
             <div class="grid grid-cols-2 gap-6">
                 <div>
                     <p class="text-lg font-semibold text-blue-500 uppercase">Envío</p>
-                    @if ($order->tipo_envio == 2)
-                    <p class="text-base">Los Libros deben ser recogidos en tienda</p>
-                    {{-- direccion de la tiendas donde se ubican los libros --}}
-                    <p class="text-base">Calle falsa 123</p>
-                    @else
                     <p class="text-base"><span class="font-semibold">Los Libros seran envíados a:</span> </p>
                     <p class="text-base">{{ $order->direccion }}</p>
-                    @endif
-
                     <hr>
                     {{-- datos de pago total --}}
                     <p class="text-lg font-semibold text-blue-500 uppercase">
@@ -196,6 +189,7 @@
                 </tbody>
             </table>
         </div>
+        {{-- fin detalles de la orden --}}
     </div>
 </div>
 @endsection

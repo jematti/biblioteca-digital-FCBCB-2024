@@ -51,11 +51,6 @@ class CitySeeder extends Seeder
         ]);
 
         DB::table('cities')->insert([
-            'nombre_ciudad'=>'chuquisaca',
-            'costo' => '5'
-        ]);
-
-        DB::table('cities')->insert([
             'nombre_ciudad'=>'tarija',
             'costo' => '20'
         ]);

@@ -16,14 +16,9 @@
             <div class="grid grid-cols-2 gap-6">
                 <div>
                     <p class="text-lg font-semibold  text-blue-500  uppercase">Envío</p>
-                    @if ($order->tipo_envio == 2)
-                    <p class="text-sm">Los Libros deben ser recogidos en tienda</p>
-                    {{-- direccion de la tiendas donde se ubican los libros --}}
-                    <p class="text-sm">Calle falsa 123</p>
-                    @else
+
                     <p class="text-sm">Los Libros seran envíados a:</p>
                     <p class="text-sm">{{ $order->direccion }}</p>
-                    @endif
                 </div>
 
                 <div>

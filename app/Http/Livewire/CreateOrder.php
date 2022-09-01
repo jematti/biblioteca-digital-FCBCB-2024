@@ -14,9 +14,7 @@ class CreateOrder extends Component
 {
     use WithFileUploads;
 
-    public $tipo_envio=1;
-
-    public $tipo_pago=1;
+   public $tipo_pago=1;
 
     public $costo_envio=0;
 
@@ -37,30 +35,19 @@ class CreateOrder extends Component
         'nombre_contacto'=> 'required',
         'correo_contacto' => 'required|email',
         'telefono_contacto' => 'required',
-        'tipo_envio' => 'required',
         'tipo_pago' => 'required',
         'imagen_deposito' => 'required',
         'nombre_factura' => 'required',
         'nit_factura' => 'required',
+        'ciudad_id'=> 'required',
+        'direccion'=> 'required',
+
     ];
 
     public function mount(){
         $this->ciudades = City::all();
     }
 
-    // resetar validacion de envios de productos
-
-    public function updatedTipoEnvio($value)
-    {
-        if ($value == 1) {
-            $this->resetValidation([
-                'ciudad_id' ,
-                'direccion'
-            ]);
-
-        }
-        $this->tipo_envio=$value;
-    }
 
     public function updatedCiudadId($value)
     {
@@ -72,11 +59,6 @@ class CreateOrder extends Component
     public function create_order(){
         $rules = $this->rules;
 
-        if($this->tipo_envio == 1){
-            $rules['ciudad_id'] = 'required';
-            $rules['direccion'] = 'required';
-        }
-
         $this->validate($rules);
         //crear orden de compra
         $order = new Order();
@@ -87,17 +69,14 @@ class CreateOrder extends Component
         $order->nombre_factura = $this->nombre_factura;
         $order->nit_factura = $this->nit_factura;
         $order->tipo_pago = $this->tipo_pago;
-        $order->tipo_envio = $this->tipo_envio;
         $order->costo_envio = 0;
         $order->total = $this->costo_envio + Cart::subtotal();
         $order->content = Cart::content();
-
         // si se selecciona el envio a domicilio se guarda los siguienes datos
-        if ($this->tipo_envio == 1) {
-            $order->city_id = $this->ciudad_id;
-            $order->direccion = $this->direccion;
-            $order->costo_envio = $this->costo_envio;
-        }
+        $order->city_id = $this->ciudad_id;
+        $order->direccion = $this->direccion;
+        $order->costo_envio = $this->costo_envio;
+
 
         //Seccion guardar imagen
 
