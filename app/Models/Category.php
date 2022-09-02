@@ -15,7 +15,6 @@ class Category extends Model
      */
     protected $fillable = [
         'nombre_categoria',
-        'descripcion'
     ];
     // relacion 1 a n una Categoria puede tener varios libro
     public function books()

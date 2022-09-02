@@ -5,6 +5,7 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrderController;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\ImagenController;
 use App\Http\Controllers\LogoutController;
@@ -13,11 +14,11 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\EditorialController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\RepositoryController;
 use App\Http\Controllers\CreateOrderController;
 use App\Http\Controllers\ShoppingCartController;
 use App\Http\Controllers\Admin\AdminOrderController;
-use App\Http\Controllers\Admin\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,10 +37,7 @@ Route::group(['middleware' => ['auth','verified']], function(){
     Route::resource('users',UserController::class)->names('admin.users');
     //CRUD Categoria
     Route::resource('category', CategoryController::class);
-    //CRUD Autor
-    Route::resource('author', AuthorController::class);
-    //CRUD Editorial
-    Route::resource('editorial', EditorialController::class);
+
     //CRUD Repositorios
     Route::resource('repository', RepositoryController::class);
     //Administrar Ordenes
@@ -66,7 +64,6 @@ Route::group(['middleware' => ['auth','verified']], function(){
     //ruta de ordenes
     Route::get('/orderscreate', [CreateOrderController::class, 'index'])->name('orderscreate.index');
 
-
     //para mostrar el pedido ya finalizado
     Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
 
@@ -79,8 +76,13 @@ Route::group(['middleware' => ['auth','verified']], function(){
     //ruta para ver mis ordenes
     Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
 
+    //descargar imagenes
+    Route::get('/download/{file}' , [OrderController::class, 'download'])->name('orders.download');
+
 });
 
+//CRUD Autor
+Route::resource('author', AuthorController::class);
 //CRUD libros
 Route::resource('books',BookController::class);
 //Ruta de la Barra de Busqueda Principal Busqueda
@@ -96,14 +98,9 @@ Route::post('/logout',[LogoutController::class, 'store'])->name('logout');
 
 //Rutas de prueba
 Route::get('/pruebas',function(){
-     return view('pruebas.prueba2');
+    //  return view('pruebas.prueba2');
+    Cart::destroy();
 });
-
-
-
-
-
-
 
 
 //Route::resource('books', LibroController::class);

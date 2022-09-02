@@ -1,10 +1,13 @@
 <div>
-    <h2 class="bg-white text-lg rounded-lg p-4 text-center font-bold border-2 border-sky-800">Lista de Usuarios </h2>
+    <h2 class="bg-custom-100 text-white uppercase text-lg rounded-lg p-4 text-center font-bold ">Lista de Usuarios </h2>
     {{-- tabla de usuarios --}}
+
     <!-- component -->
     <section class="py-1 bg-blueGray-50">
         <div class="w-full  mb-12 xl:mb-0 px-4 mx-auto mt-24">
             <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
+
+                {{-- barra de busqueda de usuarios --}}
                 <div class="rounded-t mb-0 px-4 py-3 border-0">
                     <div class="relative">
                         <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
@@ -16,10 +19,11 @@
 
                     </div>
                 </div>
+                {{-- fin de barra de busqueda de usuarios --}}
 
                 {{-- verificamos que haya usuarios --}}
-
                 @if ($users->count())
+                {{-- listado en tabla de usuarios --}}
                 <div class="block w-full overflow-x-auto">
                     <table class="items-center bg-transparent w-full border-collapse ">
                         <thead>
@@ -40,10 +44,12 @@
                         </thead>
 
                         <tbody>
+
                             @foreach ($users as $user)
-                            <tr>
+                            <tr class="hover:bg-gray-100">
                                 <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-base whitespace-nowrap p-4 text-left text-blueGray-700 ">
-                                    {{ $user->id}}
+                                    {{-- {{ $user->id}} --}}
+                                    <div class="font-semibold text-center">{{ $user->id }}</div>
                                 </th>
                                 <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-base whitespace-nowrap p-4 ">
                                     {{ $user->name }}
@@ -71,6 +77,7 @@
                 <div class="my-10">
                     {{ $users->links() }}
                 </div>
+                {{-- fin de listado de usuarios  --}}
                 @else
                 <h2 class="bg-white text-lg rounded-lg p-4 text-center font-bold border-2 border-sky-800">No hay registros</h2>
                 @endif

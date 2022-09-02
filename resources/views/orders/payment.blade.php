@@ -2,43 +2,43 @@
 
 
 @section('contenido')
-<div class="grid lg:grid-cols-5 grid-cols-1  gap-6 container p-8 bg-white">
+<div class="container mx-auto grid lg:grid-cols-5 grid-cols-1  gap-6  p-8 bg-white ">
     <div class="col-span-3">
-        <div class="bg-white rounded-lg shadow-lg px-6 py-4 mb-6">
-            <p class="text-gray-700 uppercase">
+        <div class="bg-white rounded-lg shadow-lg px-6 py-4 mb-6 border-2 border-custom-100">
+            <p class="text-gray-700 uppercase text-lg font-extrabold">
                 <span class="font-semibold">Numero de Orden:</span>
-                {{ $order->id }}
+                {{$order->id}}
             </p>
         </div>
 
         {{-- datos de contacto --}}
-        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6 border border-gray-400">
             <div class="grid grid-cols-2 gap-6">
                 <div>
-                    <p class="text-lg font-semibold uppercase">Envío</p>
-                    @if ($order->tipo_envio == 2)
-                    <p class="text-sm">Los Libros deben ser recogidos en tienda</p>
-                    {{-- direccion de la tiendas donde se ubican los libros --}}
-                    <p class="text-sm">Calle falsa 123</p>
-                    @else
+                    <p class="text-lg font-semibold  text-blue-500  uppercase">Envío</p>
+
                     <p class="text-sm">Los Libros seran envíados a:</p>
                     <p class="text-sm">{{ $order->direccion }}</p>
-                    @endif
                 </div>
 
                 <div>
-                    <p class="text-lg font-semibold uppercase">Datos de Contacto</p>
+                    <p class="text-lg font-semibold text-blue-500  uppercase">Datos de Contacto</p>
                     <p class="text-sm">Persona que recibira el libro: {{ $order->nombre_contacto }}</p>
                     <p class="text-sm">Correo: {{ $order->correo_contacto }}</p>
                     <p class="text-sm">Telefono: {{ $order->telefono_contacto }}</p>
-                    <p class="text-sm">Datos para la Factura: {{ $order->factura }}</p>
+                    <hr>
+                    <p class="text-lg font-semibold uppercase text-blue-500 ">Datos para la Factura: </p>
+                    <p class="text-base font-semibold">Nombre/Razon Social: {{ $order->nombre_factura}}</p>
+                    <p class="text-base font-semibold">NIT : {{ $order->nit_factura}}</p>
+
+
                 </div>
             </div>
         </div>
 
         {{-- detalles de la orden --}}
-        <div class="bg-white rounded-lg shadow-lg p-6 ">
-            <p class="text-xl font-semibold">Resumen</p>
+        <div class="bg-white rounded-lg shadow-lg p-6 border border-gray-400">
+            <p class="text-xl font-semibold text-red-500">Resumen</p>
             <table class="table-auto w-full">
                 <thead>
                     <tr>
@@ -75,16 +75,16 @@
     </div>
     <div class="col-span-2">
         {{-- finalizar pago --}}
-        <div class="bg-white rounded-lg shadow-lg p-6 my-5 flex border border-gray-500">
+        <div class="bg-white text-lg rounded-lg shadow-lg p-6 my-5 flex border border-gray-500">
             <div>
-                <p class="text-sm font-semibold">
+                <p class="font-semibold">
                     Subtotal: {{ $order->total - $order->costo_envio }} Bs
                 </p>
-                <p class="text-sm font-semibold">
+                <p class="font-semibold">
                     Envio: {{ $order->costo_envio }} Bs
                 </p>
 
-                <p class="text-lg font-semibold">
+                <p class=" text-xl font-semibold">
                     Total: {{ $order->total }} Bs
                 </p>
             </div>

@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Author;
 class AuthorController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth', ['except' => ['show']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +16,7 @@ class AuthorController extends Controller
      */
     public function index()
     {
-        $data['author']= Author::orderBy('id','desc')->simplepaginate(5);
+        $data['author']= Author::orderBy('id','asc')->simplepaginate(5);
         return view('author.index',$data);
 
     }

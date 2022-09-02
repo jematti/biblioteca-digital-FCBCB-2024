@@ -1,8 +1,8 @@
 @extends('ui.nav')
 
 @section('contenido-admin')
-
-    <h2 class="bg-white text-lg rounded-lg p-4 text-center font-bold border-2 border-sky-800">Autor</h2>
+<div class="max-w-5xl">
+    <h2 class="bg-custom-100 text-white uppercase text-lg rounded-lg p-4 text-center font-bold ">Autor</h2>
 
    {{-- formulario para agregar Autor --}}
     <form action="{{ route('author.update',$author->id) }}" method="POST" class="actualizar" novalidate>
@@ -31,17 +31,24 @@
             <label for="biografia" class="mb-2 block uppercase text-gray-500 font-bold">
                 Biografía
             </label>
-            <input
-                id="biografia"
-                type="text"
-                name="biografia"
-                placeholder="Escribir breve biografía del Autor"
-                class="border p-3 w-full rounded-lg"
-                @error('biografia')
-                    border-red-500
-                @enderror
-                value="{{$author->biografia}}"
-            />
+            <textarea class="
+            form-control
+            block
+            w-full
+            px-3
+            py-1.5
+            text-base
+            font-normal
+            text-gray-700
+            bg-white bg-clip-padding
+            border border-solid border-gray-300
+            rounded
+            transition
+            ease-in-out
+            m-0
+            focus:text-neutral-700 focus:bg-white focus:border-gray-600 focus:outline-none"
+           id="biografia" name="biografia" placeholder="Biografia del Autor" @error('biografia') border-red-500 @enderror value="{{$author->biografia}}" rows="3">{{$author->biografia}}</textarea>
+
             @error('biografia')
                 <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
             @enderror
@@ -60,7 +67,7 @@
 
 
     </form>
-
+</div>
 
 @endsection
 {{--

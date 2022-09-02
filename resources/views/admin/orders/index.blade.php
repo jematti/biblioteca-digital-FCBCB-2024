@@ -4,17 +4,7 @@
 
 <div class="container py-6">
     {{-- seccion de tarjetas con el resumen de compras echas por el usuario --}}
-    <section class="grid md:grid-cols-4 gap-5 text-white">
-
-        {{-- <a href="{{ route('admin.orders.index') . "?estado=1" }} " class="bg-red-500 bg-opacity-75 rounded-lg px-12 pt-8 pb-4">
-            <p class="text-center text-2xl">
-                {{ $pendiente }}
-            </p>
-            <p class="uppercase text-center">Pendiente</p>
-            <p class="text-center text-2xl mt-2">
-                <i class="fas fa-business-time"></i>
-            </p>
-        </a> --}}
+    <section class="grid md:grid-cols-5 gap-5 text-white">
 
         <a href="{{ route('admin.orders.index') . "?estado=2" }} " class="bg-gray-500 bg-opacity-75 rounded-lg px-12 pt-8 pb-4">
             <p class="text-center text-2xl">
@@ -47,13 +37,23 @@
             </p>
         </a>
 
-        <a href="{{ route('admin.orders.index') . "?estado=5" }} " class="bg-orange-500 bg-opacity-75 rounded-lg pt-8 pb-4">
+        <a href="{{ route('admin.orders.index') . "?estado=5" }} " class="bg-red-500 bg-opacity-75 rounded-lg pt-8 pb-4">
             <p class="text-center text-2xl">
                 {{ $anulado }}
             </p>
             <p class="uppercase text-center">Anulado</p>
             <p class="text-center text-2xl mt-2">
                 <i class="fas fa-times-circle"></i>
+            </p>
+        </a>
+
+        <a href="{{ route('admin.orders.index') . "?estado=1" }} " class="bg-orange-500 bg-opacity-75 rounded-lg px-12 pt-8 pb-4">
+            <p class="text-center text-2xl">
+                {{ $pendiente }}
+            </p>
+            <p class="uppercase text-center">Pendiente</p>
+            <p class="text-center text-2xl mt-2">
+                <i class="fas fa-business-time"></i>
             </p>
         </a>
     </section>
@@ -72,7 +72,7 @@
                         <span class="w-12 text-center">
                             @switch($order->estado)
                             @case(1)
-                            <i class="fas fa-business-time text-red-500 "></i>
+                            <i class="fas fa-business-time text-orange-500 "></i>
                             @break
                             @case(2)
                             <i class="fas fa-credit-card text-gray-500 "></i>
@@ -87,7 +87,7 @@
                             @break
 
                             @case(5)
-                            <i class="fas fa-times-circle text-orange-500 "></i>
+                            <i class="fas fa-times-circle text-red-500 "></i>
                             @break
                             @default
 

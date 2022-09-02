@@ -73,16 +73,23 @@
 </head>
 
     <body>
+        {{-- Seccion de mensajes flash --}}
+        {{-- <div>
+            @if (session()->has('message'))
+                <div class="alert alert-success p-10 m-10 text-white">
+                    {{ session('message') }}
+                </div>
+            @endif
+        </div> --}}
+        {{-- fin de seccion de mensajes flash --}}
+
         {{-- seccion barra de navegacion --}}
         @livewire('navigation')
 
         {{-- Seccion para introducir contenido --}}
-        <main class="max-w-7xl mx-auto">
+        <main>
             @yield('contenido')
         </main>
-
-
-
     </body>
 
         <!-- Scripts Livewire -->
@@ -97,7 +104,8 @@
          {{-- jquery --}}
         <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"> </script>
-
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/blitzer/jquery-ui.css" type="text/css" />
+        <script src="jquery.easy-confirm-dialog.js"></script>
 
 
         <script>

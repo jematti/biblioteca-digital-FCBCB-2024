@@ -14,7 +14,7 @@ class RepositoryController extends Controller
      */
     public function index()
     {
-        $data['repository']= Repository::orderBy('id','desc')->simplepaginate(5);
+        $data['repository']= Repository::orderBy('id','asc')->simplepaginate(5);
         return view('repository.index',$data);
 
     }
@@ -39,7 +39,7 @@ class RepositoryController extends Controller
     {
         $data = $request->validate([
             'nombre_repositorio' => 'required',
-            'sigla' => 'required',
+            'sigla',
             'ciudad' => 'required',
             'correo' => 'required|email',
             'nombre_encargado' => 'required',
@@ -89,7 +89,7 @@ class RepositoryController extends Controller
     {
         $request->validate([
             'nombre_repositorio' => 'required',
-            'sigla' => 'required',
+            'sigla',
             'ciudad' => 'required',
             'correo' => 'required|email',
             'nombre_encargado' => 'required',

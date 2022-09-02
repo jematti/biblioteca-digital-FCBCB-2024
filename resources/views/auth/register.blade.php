@@ -7,7 +7,7 @@
 </h2>
     <div class="md:flex md:justify-center md:gap md:items-center">
         <div class="md:w-6/12  p-5">
-            <img src="{{asset('img/registrar.jpg')}}" alt="Imagen de registro usuario">
+            <img src="{{asset('img/register.jpg')}}" alt="Imagen de registro usuario">
         </div>
 
 

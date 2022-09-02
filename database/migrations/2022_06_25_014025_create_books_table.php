@@ -24,12 +24,12 @@ return new class extends Migration
             $table->string('imagen');
             $table->decimal('precio', 8, 2);
             $table->integer('cantidad');
+            $table->string('isbn')->nullable();
             $table->double('alto', 8, 2)->nullable();
             $table->double('ancho', 8, 2)->nullable();
             $table->double('peso', 8, 2)->nullable();
             $table->double('grueso', 8, 2)->nullable();
             $table->foreignId('author_id')->constrained()->onDelete('cascade');
-            $table->foreignId('editorial_id')->constrained()->onDelete('cascade');
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->foreignId('repository_id')->constrained()->onDelete('cascade');
             $table->timestamps();

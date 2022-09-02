@@ -1,4 +1,4 @@
-<div class="container py-8 bg-gray-100 p-10">
+<div class="container mx-auto py-8 bg-gray-100 p-10">
 
     <div class="bg-white relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded ">
 

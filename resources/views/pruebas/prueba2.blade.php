@@ -15,61 +15,6 @@
     @livewireStyles
 
 
-    <style>
-        .work-sans {
-            font-family: 'Work Sans', sans-serif;
-        }
-
-        #menu-toggle:checked + #menu {
-            display: block;
-        }
-
-        .hover\:grow {
-            transition: all 0.3s;
-            transform: scale(1);
-        }
-
-        .hover\:grow:hover {
-            transform: scale(1.02);
-        }
-
-        .carousel-open:checked + .carousel-item {
-            position: static;
-            opacity: 100;
-        }
-
-        .carousel-item {
-            -webkit-transition: opacity 0.6s ease-out;
-            transition: opacity 0.6s ease-out;
-        }
-
-        #carousel-1:checked ~ .control-1,
-        #carousel-2:checked ~ .control-2,
-        #carousel-3:checked ~ .control-3 {
-            display: block;
-        }
-
-        .carousel-indicators {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            position: absolute;
-            bottom: 2%;
-            left: 0;
-            right: 0;
-            text-align: center;
-            z-index: 10;
-        }
-
-        #carousel-1:checked ~ .control-1 ~ .carousel-indicators li:nth-child(1) .carousel-bullet,
-        #carousel-2:checked ~ .control-2 ~ .carousel-indicators li:nth-child(2) .carousel-bullet,
-        #carousel-3:checked ~ .control-3 ~ .carousel-indicators li:nth-child(3) .carousel-bullet {
-            color: #000;
-            /*Set to match the Tailwind colour you want the active one to be */
-        }
-    </style>
-
-
 </head>
 
     <body>
@@ -77,9 +22,101 @@
         @livewire('navigation')
 
         {{-- Seccion para introducir contenido --}}
-        <main class="max-w-7xl mx-auto">
-            @yield('contenido')
-        </main>
+            <div class="p-20 flex flex-col space-y-10 bg-yellow-100">
+                <h2 class="text-2xl italic">Hoverable Dropdown Menu by KindaCode.com</h2>
+
+                <div>
+                    <button class="peer px-5 py-2 bg-green-600 hover:bg-green-700 text-white">Dropdown</button>
+
+                    <!-- the menu here -->
+                    <div class="hidden peer-hover:flex hover:flex
+                     w-[200px]
+                     flex-col bg-white drop-shadow-lg">
+                        <a class="px-5 py-3 hover:bg-gray-200" href="#">About Us</a>
+                        <a class="px-5 py-3 hover:bg-gray-200" href="#">Contact Us</a>
+                        <a class="px-5 py-3 hover:bg-gray-200" href="#">Privacy Policy</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-4 bg-white">
+                <div x-data="{ activeAccordion: false }">
+                  <h3>
+                    <button
+                      @click="activeAccordion = !activeAccordion"
+                      class="flex items-center justify-between w-full p-6 text-white bg-custom-100 rounded-lg"
+                    >
+                      <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit?</h2>
+
+                      <span
+                        :class="{ '-rotate-180': activeAccordion }"
+                        class="transition"
+                        aria-hidden="true"
+                      >
+                        👇
+                      </span>
+                    </button>
+                  </h3>
+
+                  <div x-show="activeAccordion" x-collapse class="mt-4">
+                    <ul>
+                        <li>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. At dolorum
+                            tenetur aut doloribus iste? Recusandae ipsam quod modi eligendi
+                            perspiciatis voluptatibus fugit, similique tenetur quos quasi impedit
+                            totam beatae iure, dolor unde voluptas a veniam adipisci quibusdam qui
+                            harum vel! Dolorem quaerat delectus in dignissimos libero, beatae itaque
+                            repudiandae! Velit?
+                        </li>
+                        <li>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. At dolorum
+                            tenetur aut doloribus iste? Recusandae ipsam quod modi eligendi
+                            perspiciatis voluptatibus fugit, similique tenetur quos quasi impedit
+                            totam beatae iure, dolor unde voluptas a veniam adipisci quibusdam qui
+                            harum vel! Dolorem quaerat delectus in dignissimos libero, beatae itaque
+                            repudiandae! Velit?
+                        </li>
+                        <li>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. At dolorum
+                            tenetur aut doloribus iste? Recusandae ipsam quod modi eligendi
+                            perspiciatis voluptatibus fugit, similique tenetur quos quasi impedit
+                            totam beatae iure, dolor unde voluptas a veniam adipisci quibusdam qui
+                            harum vel! Dolorem quaerat delectus in dignissimos libero, beatae itaque
+                            repudiandae! Velit?
+                        </li>
+
+                    </ul>
+                  </div>
+                </div>
+
+                <div x-data="{ activeAccordion: false }">
+                  <h3>
+                    <button
+                      @click="activeAccordion = !activeAccordion"
+                      class="flex items-center justify-between w-full p-6 text-white bg-custom-100 rounded-lg"
+                    >
+                      <h2>Lorem ipsum dolor sit amet?</h2>
+
+                      <span
+                        :class="{ '-rotate-180': activeAccordion }"
+                        class="transition"
+                        aria-hidden="true"
+                      >
+                        👇
+                      </span>
+                    </button>
+                  </h3>
+
+                  <div x-show="activeAccordion" x-collapse class="mt-4">
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Debitis vitae
+                      cum non labore itaque veniam exercitationem excepturi dolorum
+                      repellendus praesentium!
+                    </p>
+                  </div>
+                </div>
+              </div>
+
 
 
 
@@ -97,31 +134,6 @@
          {{-- jquery --}}
         <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"> </script>
-
-
-
-        <script>
-            $('.actualizar').submit(function(e){
-            //previene el comportamiento por defecto del formulario
-            e.preventDefault();
-
-            Swal.fire({
-            title: '¿Esta Seguro de Actualizar estos Datos?',
-            text: "¡Esta accion no es reversible!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Si, estoy Seguro',
-            }).then((result) => {
-                if (result.value) {
-                    this.submit();
-                }
-                })
-            });
-        </script>
-
-        @yield('js')
 
 
 </html>
