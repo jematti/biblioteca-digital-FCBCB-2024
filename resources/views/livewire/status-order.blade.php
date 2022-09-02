@@ -96,7 +96,7 @@
                     <span class="font-semibold">Numero de Orden:</span>
                     {{ $order->id }}
                 </p>
-                <form  wire:submit.prevent="actualizar" >
+                <form  wire:submit.prevent="actualizar"  >
                     <div>
                         @if (session()->has('message'))
 
@@ -191,7 +191,12 @@
                             <label class="mb-2 block uppercase text-red-500 font-semibold" for="observacion">
                                 Observación
                             </label>
-                            <textarea class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none" id="observacion" name="observacion" wire:model.defer="observacion" placeholder="Motivo de la Observacion/Anulación de la Orden" @error('observacion') border-red-500 @enderror rows="3">
+                            <textarea class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none
+                            @error('observacion')
+                            border-red-500
+                            @enderror"
+                            id="observacion" name="observacion" wire:model.defer="observacion" placeholder="Motivo de la Observacion/Anulación de la Orden"
+                            rows="3">
                             {{ $observacion}}
                             </textarea>
                             @error('observacion')
@@ -202,7 +207,7 @@
                     {{-- fin de seccion de caja  de texto --}}
 
                     <div class="flex mt-2 ">
-                        <button   type="submit" class="ml-auto bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg ">
+                        <button type="submit" class="ml-auto bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg ">
                             Actualizar orden
                         </button>
                     </div>

@@ -55,14 +55,15 @@
                                 font-normal
                                 text-gray-700
                                 bg-white bg-clip-padding
-                                border border-solid border-gray-300
+                                border border-solid
                                 rounded
                                 focus:text-neutral-700
-                                focus:border-gray-600"
-                                id="titulo" name="titulo" placeholder="Poner el título del Libro"
+                                focus:border-gray-600
                                 @error('titulo')
                                 border-red-500
-                                @enderror
+                                @enderror"
+                                id="titulo" name="titulo" placeholder="Poner el título del Libro"
+
                                 value="{{old('titulo')}}"
                                  rows="3"></textarea>
 
@@ -89,11 +90,12 @@
                                 font-normal
                                 text-gray-700
                                 bg-white bg-clip-padding
-                                border border-solid border-gray-300
+                                border border-solid
                                 rounded
                                 focus:text-neutral-700
-                                focus:border-gray-600"
-                                id="resumen" name="resumen" placeholder="Resumen del Libro" @error('resumen') border-red-500 @enderror value="{{old('resumen')}}" rows="5"></textarea>
+                                focus:border-gray-600
+                                @error('resumen') border-red-500 @enderror"
+                                id="resumen" name="resumen" placeholder="Resumen del Libro"  value="{{old('resumen')}}" rows="5"></textarea>
 
                             @error('resumen')
                             <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
@@ -204,7 +206,7 @@
                             <label class="mb-2 block uppercase text-gray-500 font-bold">
                                 Precio del Libro
                             </label>
-                            <input class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="precio" name="precio" type="number" min="1" pattern="^[0-9]+" placeholder="Precio del Libro" @error('precio') border-red-500 @enderror value="{{old('precio')}}" />
+                            <input class="appearance-none block w-full  text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 @error('precio') border-red-500 @enderror" id="precio" name="precio" type="number" min="1" pattern="^[0-9]+" placeholder="Precio del Libro"  value="{{old('precio')}}" />
 
                             @error('precio')
                             <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
@@ -214,7 +216,7 @@
                             <label class="mb-2 block  text-gray-500 font-bold">
                                 STOCK <span class=" font-medium">(Nro. de copias del libro)</span>
                             </label>
-                            <input class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="cantidad" name="cantidad" type="number" min="1" pattern="^[0-9]+" placeholder="Precio del Libro" @error('cantidad') border-red-500 @enderror value="{{old('cantidad')}}" />
+                            <input class="appearance-none block w-full  text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 @error('cantidad') border-red-500 @enderror" id="cantidad" name="cantidad" type="number" min="1" pattern="^[0-9]+" placeholder="Precio del Libro"  value="{{old('cantidad')}}" />
 
                             @error('cantidad')
                             <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
@@ -227,7 +229,7 @@
                             <label class="block mb-2 uppercase text-gray-500 font-bold" for="grid-city">
                                 Páginas
                             </label>
-                            <input class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="numero_paginas" type="number" min="1" pattern="^[0-9]+" name="numero_paginas" placeholder="Nro de Páginas" @error('numero_paginas') border-red-500 @enderror value="{{old('numero_paginas')}}">
+                            <input class="appearance-none block w-full  text-gray-700 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 @error('numero_paginas') border-red-500 @enderror" id="numero_paginas" type="number" min="1" pattern="^[0-9]+" name="numero_paginas" placeholder="Nro de Páginas"  value="{{old('numero_paginas')}}">
 
                             @error('numero_paginas')
                             <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
@@ -237,7 +239,7 @@
                             <label class="block mb-2 uppercase text-gray-500 font-bold" for="grid-city">
                                 Edición
                             </label>
-                            <input class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="edicion" name="edicion" type="text" placeholder="Ej: Primera Edición" @error('edicion') border-red-500 @enderror value="{{old('edicion')}}">
+                            <input class="appearance-none block w-full  text-gray-700 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 @error('edicion') border-red-500 @enderror" id="edicion" name="edicion" type="text" placeholder="Ej: Primera Edición"  value="{{old('edicion')}}">
                             @error('edicion')
                             <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
                             @enderror
@@ -249,7 +251,7 @@
                             <label class="mb-2 block uppercase text-gray-500 font-bold">
                                 Fecha de Publicación
                             </label>
-                            <input class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="fecha_publicacion" name="fecha_publicacion" type="date" placeholder="fecha de publicación del Libro" @error('fecha_publicacion') border-red-500 @enderror value="{{old('fecha_publicacion')}}" />
+                            <input class="appearance-none block w-full  text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 @error('fecha_publicacion') border-red-500 @enderror" id="fecha_publicacion" name="fecha_publicacion" type="date" placeholder="fecha de publicación del Libro"  value="{{old('fecha_publicacion')}}" />
 
                             @error('fecha_publicacion')
                             <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
@@ -260,7 +262,7 @@
                             <label class="mb-2 block text-gray-500 font-bold">
                                 ISBN <span class=" font-medium">(Si corresponde)</span>
                             </label>
-                            <input class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="isbn" name="isbn" type="text" placeholder="codigo ISBN del Libro" @error('isbn') border-red-500 @enderror value="{{old('isbn')}}" />
+                            <input class="appearance-none block w-full  text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="isbn" name="isbn" type="text" placeholder="codigo ISBN del Libro"  value="{{old('isbn')}}" />
 
                             @error('isbn')
                             <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>

@@ -30,7 +30,7 @@
                 Nombre de Categoría
             </label>
 
-            <input id="nombre_categoria" type="text" name="nombre_categoria" placeholder="Ingrese el nombre de la categoria" class="border p-3 w-full rounded-lg" @error('nombre_categoria') border-red-500 @enderror value="{{old('nombre_categoria')}}" />
+            <input id="nombre_categoria" type="text" name="nombre_categoria" placeholder="Ingrese el nombre de la categoria" class="border p-3 w-full rounded-lg @error('nombre_categoria') border-red-500 @enderror"  value="{{old('nombre_categoria')}}" />
             @error('nombre_categoria')
             <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
             @enderror

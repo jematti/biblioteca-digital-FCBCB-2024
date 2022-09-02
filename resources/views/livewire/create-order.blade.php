@@ -6,11 +6,11 @@
                 <p class="my-2 font-bold text-lg text-black">1) Llena tus datos </p>
                 <hr>
                 <div class="mb-2">
-                    <label class="mb-1 text-base " for="nombre_contacto">
+                    <label class="text-base " for="nombre_contacto">
                         Nombre Completo
                     </label>
 
-                    <input type="text" wire:model.defer="nombre_contacto" class="rounded-lg block shadow-sm w-full text-sm p-2.5 border border-gray-500" placeholder="Ingrese el nombre completo" id="nombre_contacto" name="nombre_contacto" @error('nombre_contacto') border-red-500 @enderror value="{{old('nombre_contacto')}}" />
+                    <input type="text" wire:model.defer="nombre_contacto" class="rounded-lg block shadow-sm w-full text-sm p-2.5 border @error('nombre_contacto') border-red-500 @enderror" placeholder="Ingrese el nombre completo" id="nombre_contacto" name="nombre_contacto"  value="{{old('nombre_contacto')}}" />
 
                     @error('nombre_contacto')
                     <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
@@ -18,11 +18,11 @@
                 </div>
 
                 <div class="mb-2">
-                    <label class="mb-1 text-base " for="correo_contacto">
-                        Correo electronico
+                    <label class="text-base " for="correo_contacto">
+                        Correo electronico. <span class="text-red-500 text-sm font-bold"> El correo electrónico será utilizado para recibir la facturación.*</span>
                     </label>
 
-                    <input type="email" wire:model.defer="correo_contacto" class="rounded-lg shadow-sm w-full text-sm p-2.5  border border-gray-500" placeholder="Ingrese el su correo actual" id="correo_contacto" name="correo_contacto" @error('correo_contacto') border-red-500 @enderror value="{{old('correo_contacto')}}" />
+                    <input type="email" wire:model.defer="correo_contacto" class="rounded-lg shadow-sm w-full text-sm p-2.5  border @error('correo_contacto') border-red-500 @enderror" placeholder="Ingrese el su correo actual" id="correo_contacto" name="correo_contacto"  value="{{old('correo_contacto')}}" />
 
                     @error('correo_contacto')
                     <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
@@ -30,11 +30,11 @@
                 </div>
 
                 <div class="mb-2">
-                    <label class="mb-1 text-base " for="telefono_contacto">
+                    <label class="text-base " for="telefono_contacto">
                         Telefono/Celular
                     </label>
 
-                    <input type="text" wire:model.defer="telefono_contacto" class="rounded-lg shadow-sm w-full text-sm p-2.5  border border-gray-500" placeholder="Ingrese el su Telefono/Celular vigente" id="telefono_contacto" name="telefono_contacto" @error('telefono_contacto') border-red-500 @enderror value="{{old('telefono_contacto')}}" />
+                    <input type="text" wire:model.defer="telefono_contacto" class="rounded-lg shadow-sm w-full text-sm p-2.5  border @error('telefono_contacto') border-red-500 @enderror" placeholder="Ingrese el su Telefono/Celular vigente" id="telefono_contacto" name="telefono_contacto"  value="{{old('telefono_contacto')}}" />
 
                     @error('telefono_contacto')
                     <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
@@ -46,11 +46,11 @@
                 <p class="mb-5 mt-10 font-bold text-lg text-black">2) Datos para la Factura </p>
                 <hr>
                 <div class="mb-2 mt-2">
-                    <label class="mb-1 text-base " for="nombre_factura">
-                        Nombre/Razon Social
+                    <label class="text-base " for="nombre_factura">
+                        Razon Social <span class="text-red-500 text-sm font-bold">(introduzca nombre para la factura)*</span>
                     </label>
 
-                    <input type="text" wire:model.defer="nombre_factura" class="rounded-lg block shadow-sm w-full text-sm p-2.5 border border-gray-500" placeholder="Ingresa el Nombre/Razon Social" id="nombre_factura" name="nombre_factura" @error('nombre_factura') border-red-500 @enderror value="{{old('nombre_factura')}}" />
+                    <input type="text" wire:model.defer="nombre_factura" class="rounded-lg block shadow-sm w-full text-sm p-2.5 border @error('nombre_factura') border-red-500 @enderror" placeholder="Ingresa el Nombre/Razon Social" id="nombre_factura" name="nombre_factura"  value="{{old('nombre_factura')}}" />
 
                     @error('nombre_factura')
                     <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
@@ -58,11 +58,11 @@
                 </div>
 
                 <div class="mb-2">
-                    <label class="mb-1 text-base " for="nit_factura">
+                    <label class="text-base " for="nit_factura">
                         NIT
                     </label>
 
-                    <input type="text" wire:model.defer="nit_factura" class="rounded-lg block shadow-sm w-full text-sm p-2.5 border border-gray-500" placeholder="Ingrese NIT" id="nit_factura" name="nit_factura" @error('nit_factura') border-red-500 @enderror value="{{old('nit_factura')}}" />
+                    <input type="text" wire:model.defer="nit_factura" class="rounded-lg block shadow-sm w-full text-sm p-2.5 border @error('nit_factura') border-red-500 @enderror " placeholder="Ingrese NIT" id="nit_factura" name="nit_factura" value="{{old('nit_factura')}}" />
 
                     @error('nit_factura')
                     <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
@@ -124,7 +124,7 @@
             </div>
             <hr>
             <div class="mb-2">
-                <label class="mb-1 text-base " for="imagen_factura">
+                <label class="text-base " for="imagen_factura">
                     <div class="flex my-2">
                         <p class="font-bold text-lg text-black pl-2">Subir Comprobante de Pago</p>
                         <div x-data="{ tooltip: false }" class="relative z-30 inline-flex">
@@ -146,7 +146,7 @@
                     </div>
                 </label>
 
-                <input id="imagen_deposito" name="imagen_deposito" type="file" wire:model.defer="imagen_deposito" class="rounded-lg block shadow-sm w-full text-sm p-2 border border-gray-500" @error('imagen_deposito') border-red-500 @enderror value="{{old('imagen_deposito')}}" accept=".jpg, .jpeg, .png, .pdf" />
+                <input id="imagen_deposito" name="imagen_deposito" type="file" wire:model.defer="imagen_deposito" class="rounded-lg block shadow-sm w-full text-sm p-2 border @error('imagen_deposito') border-red-500 @enderror"  value="{{old('imagen_deposito')}}" accept=".jpg, .jpeg, .png, .pdf" />
 
                 @error('imagen_deposito')
                 <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
@@ -164,7 +164,7 @@
                 <div class="px-6 pb-6 mt-2 ">
                     <hr>
                     <div class="mb-2">
-                        <label class="mb-1 text-base " for="direccion">
+                        <label class="text-base " for="direccion">
                             Dirección de Entrega (Detallada),
                         </label>
 
@@ -178,13 +178,14 @@
                             font-normal
                             text-gray-700
                             bg-white bg-clip-padding
-                            border border-solid border-gray-300
+                            border border-solid
                             rounded
                             transition
                             ease-in-out
                             m-0
                             focus:text-neutral-700 focus:bg-white focus:border-gray-600 focus:outline-none
-                        " id="direccion" name="direccion" wire:model.defer="direccion" placeholder="Dirección donde le llegara el pedido" @error('direccion') border-red-500 @enderror value="{{old('direccion')}}" rows="3"></textarea>
+                            @error('direccion') border-red-500 @enderror
+                        " id="direccion" name="direccion" wire:model.defer="direccion" placeholder="Dirección donde le llegara el pedido"  value="{{old('direccion')}}" rows="3"></textarea>
 
                         @error('direccion')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
@@ -193,7 +194,7 @@
                     </div>
 
                     <div class="mb-2">
-                        <label class="mb-1 text-base " for="ciudad_id">
+                        <label class="text-base " for="ciudad_id">
                             Ciudad donde vive actualmente
                         </label>
 

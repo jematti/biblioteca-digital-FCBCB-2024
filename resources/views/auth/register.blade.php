@@ -24,10 +24,10 @@
                         type="text"
                         name="name"
                         placeholder="Tu Nombre Completo"
-                        class="border p-3 w-full rounded-lg"
+                        class="border p-3 w-full rounded-lg
                         @error('name')
                             border-red-500
-                        @enderror
+                        @enderror"
                         value="{{old('name')}}"
                     />
                     @error('name')
@@ -41,10 +41,10 @@
                         type="email"
                         name="email"
                         placeholder="Tu correo electronico de registro"
-                        class="border p-3 w-full rounded-lg"
+                        class="border p-3 w-full rounded-lg
                         @error('email')
                         border-red-500
-                        @enderror
+                        @enderror"
                         value="{{old('email')}}"
                     />
                     @error('email')
@@ -58,10 +58,10 @@
                         type="password"
                         name="password"
                         placeholder="Escribe Contraseña de Registro"
-                        class="border p-3 w-full rounded-lg"
+                        class="border p-3 w-full rounded-lg
                         @error('password')
                         border-red-500
-                        @enderror
+                        @enderror"
                         value="{{old('password')}}"
 
                     />
@@ -77,7 +77,6 @@
                         name="password_confirmation"
                         placeholder="Repite Tu Contraseña"
                         class="border p-3 w-full rounded-lg"
-
                     />
 
                     <input

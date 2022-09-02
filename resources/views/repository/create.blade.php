@@ -33,7 +33,7 @@
                     <label for="nombre_repositorio" class="mb-2 block uppercase text-gray-500 font-bold">
                         Nombre del Repositorio
                     </label>
-                    <input id="nombre_repositorio" type="text" name="nombre_repositorio" placeholder="Nombre del Repositorio" class="border p-3 w-full rounded-lg" @error('nombre_repositorio') border-red-500 @enderror value="{{old('nombre_repositorio')}}" />
+                    <input id="nombre_repositorio" type="text" name="nombre_repositorio" placeholder="Nombre del Repositorio" class="border p-3 w-full rounded-lg @error('nombre_repositorio') border-red-500 @enderror " value="{{old('nombre_repositorio')}}" />
                     @error('nombre_repositorio')
                     <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
                     @enderror
@@ -45,7 +45,7 @@
                     <label for="correo" class="mb-2 block uppercase text-gray-500 font-bold">
                         Correo Electronico
                     </label>
-                    <input id="correo" type="text" name="correo" placeholder="correo electronico" class="border p-3 w-full rounded-lg" @error('correo') border-red-500 @enderror value="{{old('correo')}}" />
+                    <input id="correo" type="text" name="correo" placeholder="correo electronico" class="border p-3 w-full rounded-lg @error('correo') border-red-500 @enderror"  value="{{old('correo')}}" />
                     @error('correo')
                     <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
                     @enderror
@@ -57,7 +57,7 @@
                     <label for="nombre_encargado" class="mb-2 block uppercase text-gray-500 font-bold">
                         Nombre del Encargado del Repositorio
                     </label>
-                    <input id="nombre_encargado" type="text" name="nombre_encargado" placeholder="Nombre del Encargado del Repositorio" class="border p-3 w-full rounded-lg" @error('nombre_encargado') border-red-500 @enderror value="{{old('nombre_encargado')}}" />
+                    <input id="nombre_encargado" type="text" name="nombre_encargado" placeholder="Nombre del Encargado del Repositorio" class="border p-3 w-full rounded-lg @error('nombre_encargado') border-red-500 @enderror"  value="{{old('nombre_encargado')}}" />
                     @error('nombre_encargado')
                     <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
                     @enderror
@@ -69,7 +69,7 @@
                     <label for="direccion" class="mb-2 block uppercase text-gray-500 font-bold">
                         Dirección
                     </label>
-                    <input id="direccion" type="text" name="direccion" placeholder="Dirección Actual" class="border p-3 w-full rounded-lg" @error('direccion') border-red-500 @enderror value="{{old('direccion')}}" />
+                    <input id="direccion" type="text" name="direccion" placeholder="Dirección Actual" class="border p-3 w-full rounded-lg @error('direccion') border-red-500 @enderror"  value="{{old('direccion')}}" />
                     @error('direccion')
                     <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
                     @enderror
@@ -91,7 +91,7 @@
             <div class="flex flex-wrap -mx-3 mb-3">
                 <div class="w-full md:w-1/2 px-3 mb-3 md:mb-0">
                     <label for="sigla" class="mb-2 block uppercase text-gray-500 font-bold">
-                        Sigla de Repositorio
+                        Sigla de Repositorio(Opcional)
                     </label>
                     <input id="sigla" type="text" name="sigla" placeholder="Escribir la Sigla del Repositorio" class="border p-3 w-full rounded-lg" value="{{old('sigla')}}" />
 
@@ -126,7 +126,7 @@
                     <label for="horario_atencion" class="mb-2 block uppercase text-gray-500 font-bold">
                         Horario de Atención
                     </label>
-                    <input id="horario_atencion" type="text" name="horario_atencion" placeholder="Ej: Lunes a Viernes de 8:00 a 18:00" class="border p-3 w-full rounded-lg" @error('horario_atencion') border-red-500 @enderror value="{{old('horario_atencion')}}" />
+                    <input id="horario_atencion" type="text" name="horario_atencion" placeholder="Ej: Lunes a Viernes de 8:00 a 18:00" class="border p-3 w-full rounded-lg @error('horario_atencion') border-red-500 @enderror"  value="{{old('horario_atencion')}}" />
                     @error('horario_atencion')
                     <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
                     @enderror
@@ -139,7 +139,7 @@
                     <label for="telefono" class="mb-2 block uppercase text-gray-500 font-bold">
                         Telefono
                     </label>
-                    <input id="telefono" type="text" name="telefono" placeholder="Telefono o celular de referencia" class="border p-3 w-full rounded-lg" @error('telefono') border-red-500 @enderror value="{{old('telefono')}}" />
+                    <input id="telefono" type="text" name="telefono" placeholder="Telefono o celular de referencia" class="border p-3 w-full rounded-lg @error('telefono') border-red-500 @enderror"  value="{{old('telefono')}}" />
                     @error('telefono')
                     <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
                     @enderror
@@ -151,7 +151,7 @@
                     <label for="pagina_web" class="mb-2 block uppercase text-gray-500 font-bold">
                         Pagina Web del Repositorio(dirección web)
                     </label>
-                    <input id="pagina_web" type="text" name="pagina_web" placeholder="Direccion de la Pagina web Oficial" class="border p-3 w-full rounded-lg" @error('pagina_web') border-red-500 @enderror value="{{old('pagina_web')}}" />
+                    <input id="pagina_web" type="text" name="pagina_web" placeholder="Direccion de la Pagina web Oficial" class="border p-3 w-full rounded-lg @error('pagina_web') border-red-500 @enderror" value="{{old('pagina_web')}}" />
                     @error('pagina_web')
                     <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
                     @enderror

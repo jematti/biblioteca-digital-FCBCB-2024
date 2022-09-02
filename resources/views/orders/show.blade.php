@@ -88,10 +88,7 @@
                     <p>Pendiente</p>
                 </div>
             </div>
-
-
         </div>
-
 
         <div class="bg-white rounded-lg shadow-lg px-6 py-4 mb-6 flex items-center border-2 border-custom-100">
             <p class="text-gray-700 uppercase text-lg font-extrabold">
@@ -135,7 +132,6 @@
                     <p class="text-base font-semibold">
                         Envio: {{ $order->costo_envio }} Bs
                     </p>
-
                     <p class="text-xl font-semibold">
                         Total: {{ $order->total }} Bs
                     </p>
@@ -151,7 +147,6 @@
                     <p class="text-lg uppercase font-semibold text-blue-500">Datos para la Factura :</p>
                     <p class="text-base"><span class="font-semibold">Nombre/Razon Social :</span>{{ $order->nombre_factura}}</p>
                     <p class="text-base"><span class="font-semibold">NIT :</span> {{ $order->nit_factura}}</p>
-
                 </div>
             </div>
         </div>

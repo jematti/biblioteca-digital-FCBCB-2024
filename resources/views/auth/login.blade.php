@@ -28,10 +28,10 @@
                         type="email"
                         name="email"
                         placeholder="Tu correo electronico de registro"
-                        class="border p-3 w-full rounded-lg"
+                        class="border p-3 w-full rounded-lg
                         @error('email')
                         border-red-500
-                        @enderror
+                        @enderror"
                         value="{{old('email')}}"
                     />
                     @error('email')
@@ -45,10 +45,10 @@
                         type="password"
                         name="password"
                         placeholder="Escribe Contraseña de Registro"
-                        class="border p-3 w-full rounded-lg"
+                        class="border p-3 w-full rounded-lg
                         @error('password')
                         border-red-500
-                        @enderror
+                        @enderror"
                         value="{{old('password')}}"
 
                     />

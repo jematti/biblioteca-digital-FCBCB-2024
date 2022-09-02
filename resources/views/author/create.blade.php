@@ -29,7 +29,7 @@
             <label for="nombre_autor" class="mb-2 block uppercase text-gray-500 font-bold">
                 Nombre de Autor
             </label>
-            <input id="nombre_autor" type="text" name="nombre_autor" placeholder="Ingrese el nombre de la categoria" class="border p-3 w-full rounded-lg" @error('nombre_autor') border-red-500 @enderror value="{{old('nombre_autor')}}" />
+            <input id="nombre_autor" type="text" name="nombre_autor" placeholder="Ingrese el nombre de la categoria" class="border p-3 w-full rounded-lg @error('nombre_autor') border-red-500 @enderror" value="{{old('nombre_autor')}}" />
             @error('nombre_autor')
             <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
             @enderror
@@ -47,13 +47,14 @@
                     font-normal
                     text-gray-700
                     bg-white bg-clip-padding
-                    border border-solid border-gray-300
+                    border border-solid
                     rounded
                     transition
                     ease-in-out
                     m-0
                     focus:text-neutral-700 focus:bg-white focus:border-gray-600 focus:outline-none
-                " id="biografia" name="biografia" placeholder="Biografia del Autor" @error('biografia') border-red-500 @enderror value="{{old('biografia')}}" rows="3"></textarea>
+                    @error('biografia') border-red-500 @enderror
+                " id="biografia" name="biografia" placeholder="Biografia del Autor"  value="{{old('biografia')}}" rows="3"></textarea>
 
             @error('biografia')
             <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>

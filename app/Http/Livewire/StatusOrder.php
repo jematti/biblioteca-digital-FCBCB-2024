@@ -45,10 +45,11 @@ class StatusOrder extends Component
             $rules['observacion'] = 'required';
             $rules['nro_factura'] = '';
         }
-        $this->validate($rules);
-        $this->order->observacion = $this->observacion;
-        $this->order->save();
-        session()->flash('message', $this->order->estado);
+
+            $this->validate($rules);
+            $this->order->observacion = $this->observacion;
+            $this->order->save();
+            session()->flash('message', $this->order->estado);
 
     }
     public function render()

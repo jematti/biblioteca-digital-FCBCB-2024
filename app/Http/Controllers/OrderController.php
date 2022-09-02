@@ -35,7 +35,6 @@ class OrderController extends Controller
     public function show(Order $order)
     {
         $this->authorize('verifica_usuario',$order);
-
         $items = json_decode($order->content);
         return view('orders.show', compact('order','items'));
     }
@@ -52,7 +51,6 @@ class OrderController extends Controller
     public function pay(Order $order){
 
         $order->estado = 2;
-
         $order->save();
         return redirect()->route('orders.show',$order);
     }
