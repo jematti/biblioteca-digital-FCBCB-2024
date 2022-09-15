@@ -19,3 +19,12 @@ mix.js('resources/js/app.js', 'public/js')
         [require("tailwindcss")]
 
     );
+mix.webpackConfig({
+    stats: {
+        children: true,
+    },
+});
+
+
+
+mix.disableNotifications();

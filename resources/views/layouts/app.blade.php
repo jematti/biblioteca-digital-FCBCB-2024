@@ -9,66 +9,37 @@
 
     {{-- hojas de estilos diferentes --}}
     @stack('styles')
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+     <!-- Styles - Scripts -->
+     @vite(['resources/css/app.css', 'resources/js/app.js'])
     {{-- Styles Livewire --}}
     @livewireStyles
-
-
     <style>
-        .work-sans {
-            font-family: 'Work Sans', sans-serif;
-        }
+        .loader {
+	border-top-color: #3498db;
+	-webkit-animation: spinner 1.5s linear infinite;
+	animation: spinner 1.5s linear infinite;
+}
 
-        #menu-toggle:checked + #menu {
-            display: block;
-        }
+@-webkit-keyframes spinner {
+	0% {
+		-webkit-transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(360deg);
+	}
+}
 
-        .hover\:grow {
-            transition: all 0.3s;
-            transform: scale(1);
-        }
+@keyframes spinner {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
 
-        .hover\:grow:hover {
-            transform: scale(1.02);
-        }
-
-        .carousel-open:checked + .carousel-item {
-            position: static;
-            opacity: 100;
-        }
-
-        .carousel-item {
-            -webkit-transition: opacity 0.6s ease-out;
-            transition: opacity 0.6s ease-out;
-        }
-
-        #carousel-1:checked ~ .control-1,
-        #carousel-2:checked ~ .control-2,
-        #carousel-3:checked ~ .control-3 {
-            display: block;
-        }
-
-        .carousel-indicators {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            position: absolute;
-            bottom: 2%;
-            left: 0;
-            right: 0;
-            text-align: center;
-            z-index: 10;
-        }
-
-        #carousel-1:checked ~ .control-1 ~ .carousel-indicators li:nth-child(1) .carousel-bullet,
-        #carousel-2:checked ~ .control-2 ~ .carousel-indicators li:nth-child(2) .carousel-bullet,
-        #carousel-3:checked ~ .control-3 ~ .carousel-indicators li:nth-child(3) .carousel-bullet {
-            color: #000;
-            /*Set to match the Tailwind colour you want the active one to be */
-        }
     </style>
-
 
 </head>
 
@@ -82,6 +53,12 @@
             @endif
         </div> --}}
         {{-- fin de seccion de mensajes flash --}}
+
+        <div wire:loading class="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-gray-700 opacity-75 flex flex-col items-center justify-center">
+            <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div>
+            <h2 class="text-center text-white text-xl font-semibold">Loading...</h2>
+            <p class="w-1/3 text-center text-white">This may take a few seconds, please don't close this page.</p>
+        </div>
 
         {{-- seccion barra de navegacion --}}
         @livewire('navigation')

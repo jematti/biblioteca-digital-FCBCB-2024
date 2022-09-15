@@ -13,7 +13,7 @@
 
 
         <div class="md:w-4/12 bg-white p-6 rounded-lg shadow-xl">
-            <form action="{{route('register')}}" method="POST" novalidate>
+            <form action="{{route('register')}}" method="POST"  onsubmit="document.getElementById('submit').disabled=true; processFormData();" novalidate>
                 @csrf
                 <div class="mb-5">
                     <label for="name" class="mb-2 block uppercase text-gray-500 font-bold">
@@ -79,10 +79,16 @@
                         class="border p-3 w-full rounded-lg"
                     />
 
+                    <div class="flex justify-between my-5">
+                        <a class="underline text-sm text-gray-600  hover:text-gray-900" href='{{ route('login') }}'>Iniciar Sesión</a>
+                        <a class="underline text-sm text-gray-600  hover:text-gray-900" href='{{ route('password.request') }}'>Olvidaste tu Password</a>
+                    </div>
+
                     <input
+                        id="submit"
                         type="submit"
                         value="Crear Cuenta"
-                        class="bg-sky-600 hover:bg-sky-700 transition-colors cursor-pointer uppercase font-bold w-full text-white rounded-lg p-3 mt-5"
+                        class="disabled:opacity-25 bg-sky-600 hover:bg-sky-700 transition-colors cursor-pointer uppercase font-bold w-full text-white rounded-lg p-3 mt-5"
                     />
                 </div>
             </form>

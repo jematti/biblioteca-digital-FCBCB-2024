@@ -88,19 +88,14 @@ Route::resource('books',BookController::class);
 //Ruta de la Barra de Busqueda Principal Busqueda
 Route::get('search',SearchController::class)->name('search');
 
-//Rutas para el registro
-Route::get('/register',[RegisterController::class, 'index'])->name('register');
-Route::post('/register',[RegisterController::class, 'store']);
-//Rutas para el login
-Route::get('/login',[LoginController::class, 'index'])->name('login');
-Route::post('/login',[LoginController::class, 'store']);
-Route::post('/logout',[LogoutController::class, 'store'])->name('logout');
-
 //Rutas de prueba
 Route::get('/pruebas',function(){
     //  return view('pruebas.prueba2');
     Cart::destroy();
 });
+
+//Ruta para autenticación y registro
+require __DIR__.'/auth.php';
 
 
 //Route::resource('books', LibroController::class);

@@ -1,15 +1,25 @@
 import {Dropzone} from "dropzone";
+import '../css/app.css';
  //sweetalert2
 window.Swal = require('sweetalert2');
 
+//instalación de fontawesomw
+import '@fortawesome/fontawesome-free/scss/fontawesome.scss';
+import '@fortawesome/fontawesome-free/scss/brands.scss';
+import '@fortawesome/fontawesome-free/scss/regular.scss';
+import '@fortawesome/fontawesome-free/scss/solid.scss';
+import '@fortawesome/fontawesome-free/scss/v4-shims.scss';
+
+//dropzone
 Dropzone.autoDiscover = false;
 
+//Alpine
 import Alpine from 'alpinejs';
 window.Alpine = Alpine;
 
 Alpine.start();
 
-
+//dropzone clases
 window.addEventListener('DOMContentLoaded', () => {
 
 
