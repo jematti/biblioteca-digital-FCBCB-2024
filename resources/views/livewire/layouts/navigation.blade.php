@@ -64,14 +64,11 @@
 
                                 {{-- seccion de icono de perfil de usuario --}}
                                 <div class="relative" x-cloak x-data="{ open: false } ">
-
-
                                         <a href="#" @click="open = !open" :class="{ 'font-bold text-custom-100': open === true }" class="flex  px-3 py-2 mx-1 my-4 rounded text-center text-sm bg-custom-500 font-medium text-white leading-5 hover:bg-orange-400 md:mx-0 md:w-auto">Ver Perfil
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                             </svg>
                                         </a>
-
                                     <ul x-show="open" @click.away="open = false" class="border border-gray-200 text-gray-600 text-sm  bg-white shadow-md py-1 absolute w-44 right-0 mr-2 divide-y">
                                       <li><a href="{{ route('orders.index') }}" class="block px-2 py-1 hover:bg-indigo-100 hover:text-custom-100"> Ordenes de Compra <i class="fa-solid fa-bag-shopping ml-2"></i></a></li>
                                       <li><a href="{{ route('perfil.index') }}" class="block px-2 py-1 hover:bg-indigo-100 hover:text-custom-100">Datos Personales<i class="fa-solid fa-pencil ml-2"></i></a></li>

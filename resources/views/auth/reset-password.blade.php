@@ -15,7 +15,6 @@
 
             <form method="POST" action="{{ route('password.update') }}"  onsubmit="document.getElementById('submit').disabled=true; processFormData();" >
                 @csrf
-
                 <!-- Password Reset Token -->
                 <input type="hidden" name="token" value="{{ $request->route('token') }}">
 

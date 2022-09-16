@@ -48,9 +48,7 @@ Route::group(['middleware' => ['auth','verified']], function(){
     //Ruta para imagenes
     Route::post('/imagenes', [ImagenController::class, 'store'])->name('imagenes.store');
 
-    //Rutas para el Perfil de usario
-    // Route::get('/editar-perfil',[PerfilController::class, 'index'])->name('perfil.index');
-    // Route::post('/editar-perfil',[PerfilController::class, 'store'])->name('perfil.store');
+    //Rutas para Actualizar Perfil de usuario
     Route::resource('perfil', PerfilController::class);
 
     //actualizar contraseña
