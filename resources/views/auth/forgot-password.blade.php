@@ -10,7 +10,7 @@
         <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
 
             <div class="mb-4 text-sm text-gray-600">
-                ¿Olvidaste tu Password? coloca tu email de registro y enviaremos un enlace para que puedas crear uno nuevo
+                ¿Olvidaste tu Contraseña? coloca tu email de registro y enviaremos un enlace para que puedas crear uno nuevo
             </div>
 
             <!-- Session Status -->

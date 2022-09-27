@@ -56,9 +56,9 @@
                                 <div class="font-semibold text-left">Editar </div>
                             </th>
                             {{-- seccion eliminar --}}
-                            {{-- <th class="p-2">
+                            <th class="p-2">
                                 <div class="font-semibold text-center">Eliminar</div>
-                            </th> --}}
+                            </th>
                         </tr>
                     </thead>
 
@@ -120,7 +120,7 @@
                                 </td>
 
                               {{-- seccion eliminar --}}
-                                {{-- <td class="p-2">
+                                <td class="p-2">
                                     <form  class="delete-repository" action="{{ route('repository.destroy',$repositories->id) }}" method="POST">
                                         <div class="flex justify-center">
                                             <button >
@@ -136,7 +136,7 @@
                                             </button>
                                         </div>
                                     </form>
-                                </td> --}}
+                                </td>
 
                             </tr>
                         @endforeach

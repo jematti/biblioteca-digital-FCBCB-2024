@@ -44,7 +44,6 @@ Route::group(['middleware' => ['auth','verified']], function(){
     Route::get('admin/orders',[AdminOrderController::class,'index'])->name('admin.orders.index');
     Route::get('admin/orders/{order}',[AdminOrderController::class,'show'])->name('admin.orders.show');
 
-
     //Ruta para imagenes
     Route::post('/imagenes', [ImagenController::class, 'store'])->name('imagenes.store');
 

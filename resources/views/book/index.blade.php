@@ -2,7 +2,7 @@
 
 @section('contenido-admin')
 
-    <h2 class="bg-custom-100 text-white uppercase text-lg rounded-lg p-4 text-center font-bold ">Lista de Categorias</h2>
+    <h2 class="bg-custom-100 text-white uppercase text-lg rounded-lg p-4 text-center font-bold ">Lista de Productos</h2>
 
    {{-- menu de navegacion para crear y editar categorias --}}
    <div class="md:grid grid-cols-2 gap-1  sm:flex-grow">

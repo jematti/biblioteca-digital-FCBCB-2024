@@ -37,9 +37,9 @@
                             <div class="font-semibold text-left">Editar </div>
                         </th>
                         {{-- sección de eliminar --}}
-                        {{-- <th class="p-2">
+                        <th class="p-2">
                                 <div class="font-semibold text-center">Eliminar</div>
-                            </th> --}}
+                            </th>
                     </tr>
                 </thead>
 
@@ -72,7 +72,7 @@
                         </td>
 
                         {{-- seccion eliminar --}}
-                        {{-- <td class="p-2">
+                        <td class="p-2">
                                     <form action="{{ route('category.destroy',$categories->id) }}" method="POST" class="delete-category">
                         <div class="flex justify-center">
                             <button>
@@ -85,7 +85,7 @@
                             </button>
                         </div>
                         </form>
-                        </td> --}}
+                        </td>
 
                     </tr>
                     @endforeach

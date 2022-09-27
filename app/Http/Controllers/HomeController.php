@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use App\Models\Category;
+use App\Models\Repository;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -14,9 +15,11 @@ class HomeController extends Controller
 
         session()->flash('message', 'Post successfully updated.');
         $books = Book::orderBy('id','desc')->simplepaginate(5);
-        $categorias = Category::orderBy('id','desc')->simplepaginate(5);
+        $categories = Category::orderBy('id','desc')->simplepaginate(5);
+        $repositories = Repository::orderBy('id','desc')->get();
         return view('home')->with('books',$books)
-                            ->with('categorias',$categorias);
+                            ->with('categories',$categories)
+                            ->with('repositories',$repositories);
     }
 
 }

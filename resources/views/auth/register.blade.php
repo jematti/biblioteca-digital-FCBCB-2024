@@ -3,14 +3,12 @@
 
 @section('contenido')
 <h2 class="font-black text-center text-3xl mb-10 mt-10 text-white">
-    Regístrate en la Biblioteca Virtual
+    Regístrate en la Tienda Virtual FC-BCB
 </h2>
     <div class="md:flex md:justify-center md:gap md:items-center">
         <div class="md:w-6/12  p-5">
             <img src="{{asset('img/register.jpg')}}" alt="Imagen de registro usuario">
         </div>
-
-
 
         <div class="md:w-4/12 bg-white p-6 rounded-lg shadow-xl">
             <form action="{{route('register')}}" method="POST"  onsubmit="document.getElementById('submit').disabled=true; processFormData();" novalidate>

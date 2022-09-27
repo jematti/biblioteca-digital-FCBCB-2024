@@ -41,84 +41,127 @@
 
     </article>
 
-    {{-- mostrar libros de la base de datos --}}
-
-    <section class=" py-2">
-        <div class="max-w-screen-xl px-2 py-2 mx-auto sm:px-6  ">
-
-            <div class="grid grid-cols-2 gap-3 mt-4 sm:grid-cols-2 lg:grid-cols-5">
-
-                {{-- listar categorias --}}
-                {{-- @foreach ($categorias as $categoria)
-            <div class="bg-slate-500">
-                <p class="font-semibold text-lg text-white">
-                    {{ $categoria->nombre_categoria}}
+    <section class="py-2">
+        {{-- mostrar catalogo de libros --}}
+        <div class="max-w-screen-xl px-2 py-2 mx-auto sm:px-6 my-5 bg-white border border-gray-200 rounded-lg">
+            <div class="flex flex-wrap items-center">
+                <p class="font-bold pr-5 text-xl my-2">
+                    CATALOGO DE LIBROS
+                </p>
+                <p class="font-semibold text-lg  my-2">
+                    <a href="{{route('category.show', $books)}}" class="text-orange-500 hover:text-orange-400 underline"> Ver más</a>
                 </p>
             </div>
-            @endforeach --}}
-                {{-- fin lista de categorias --}}
+            {{-- listado  --}}
+            <div class="grid grid-cols-2 gap-3 mt-4 sm:grid-cols-2 lg:grid-cols-5 ">
 
                 {{-- seccion de libros --}}
                 @foreach ($books as $book)
-                    <a href='{{ route('books.show', $book) }}'
-                        class="relative block bg-white border border-gray-200 rounded-lg">
+                        <a href='{{ route('books.show', $book) }}'
+                            class="relative block bg-white border border-gray-200 rounded-lg">
 
-                        <img loading="lazy" alt="imagen del post {{ $book->titulo }}"
-                            class="object-contain w-full sm:h-72 mt-2 h-56 hover:grow hover:shadow-lg"
-                            src="{{ asset('uploads') . '/' . $book->imagen }}" />
+                            <img loading="lazy" alt="imagen del post {{ $book->titulo }}"
+                                class="object-contain w-full sm:h-72 mt-2 h-56 hover:grow hover:shadow-lg"
+                                src="{{ asset('uploads') . '/' . $book->imagen }}" />
 
 
-                        <div class="p-2">
-                            <div class="group cursor-pointer relative ">
-                                <p class="line-clamp-2 mt-2 px-2 text-lg font-bold text-dark ">
-                                    {{ $book->titulo }}
+                            <div class="p-2">
+                                <div class="group cursor-pointer relative ">
+                                    <p class="line-clamp-2 mt-2 px-2 text-lg font-bold text-dark ">
+                                        {{ $book->titulo }}
 
-                                </p>
-                                {{-- detalles de Popup de descripcion --}}
-                                <div
-                                    class="opacity-0 lg:w-60 sm:w-30 lg:ml-20  sm:ml-0d lg:px-1 sm:px-2   bg-black text-white text-center text-sm rounded-lg py-2 absolute z-10 group-hover:opacity-100 bottom-full  pointer-events-none">
-                                    {{ $book->titulo }}
-                                    <br>
-                                    {{ $book->author->nombre_autor }}
+                                    </p>
+                                    {{-- detalles de Popup de descripcion --}}
+                                    <div
+                                        class="opacity-0 lg:w-60 sm:w-30 lg:ml-20  sm:ml-0d lg:px-1 sm:px-2   bg-black text-white text-center text-sm rounded-lg py-2 absolute z-10 group-hover:opacity-100 bottom-full  pointer-events-none">
+                                        {{ $book->titulo }}
+                                        <br>
+                                        {{ $book->author->nombre_autor }}
+                                    </div>
+                                    {{-- fin de detalle --}}
                                 </div>
-                                {{-- fin de detalle --}}
+
+                                <h5 class="truncate px-2 text-base font-medium text-gray-500">
+                                    {{ $book->author->nombre_autor }}
+                                </h5>
+
+
+                                <p class="mt-2 text-lg font-semibold px-2 ">
+                                    Bs. {{ $book->precio }}
+                                </p>
+
+                                <button onclick="location.href ='{{ route('books.show', $book) }}' " name="add"
+                                    type="button"
+                                    class="flex items-center w-full justify-center p-2 sm:px-5 sm:py-3 sm:mt-2 text-white bg-custom-500  hover:bg-orange-400 focus:outline-none  rounded-lg">
+                                    <span class="text-sm font-medium">
+                                        Ver Libro
+                                    </span>
+
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 ml-1.5" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                                    </svg>
+
+                                </button>
                             </div>
-
-                            <h5 class="truncate px-2 text-base font-medium text-gray-500">
-                                {{ $book->author->nombre_autor }}
-                            </h5>
-
-
-                            <p class="mt-2 text-lg font-semibold px-2 ">
-                                Bs. {{ $book->precio }}
-                            </p>
-
-                            <button onclick="location.href ='{{ route('books.show', $book) }}' " name="add"
-                                type="button"
-                                class="flex items-center w-full justify-center p-2 sm:px-5 sm:py-3 sm:mt-2 text-white bg-custom-500  hover:bg-orange-400 focus:outline-none  rounded-lg">
-                                <span class="text-sm font-medium">
-                                    Ver Libro
-                                </span>
-
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 ml-1.5" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                                </svg>
-
-                            </button>
-                        </div>
-                    </a>
+                        </a>
                 @endforeach
                 {{-- fin de seccion libros --}}
-
             </div>
+            {{-- fin listado --}}
 
             {{-- paginacion --}}
             <div class="my-10">
                 {{ $books->links() }}
             </div>
         </div>
+        {{-- fin de catalogo de libros --}}
+
+        {{-- repositorios --}}
+        <div class="max-w-screen-xl px-2 py-2 mx-auto sm:px-6 bg-white border border-gray-200 rounded-lg">
+            <div class="grid grid-cols-2 gap-3 mt-4 sm:grid-cols-2 lg:grid-cols-3">
+
+                {{-- seccion de libros --}}
+                @foreach ($repositories as $repository)
+                        <a href='{{ route('repository.show', $repository) }}'
+                            class="relative block bg-white border border-gray-200 rounded-lg mx-10 mt-2">
+
+                            <img loading="lazy" alt="imagen del repositorio"
+                                class="object-contain w-full sm:h-72 mt-2 h-56 hover:grow hover:shadow-lg"
+                                src="" />
+
+                            <div class="p-2">
+                                <div class="group cursor-pointer relative ">
+                                    <p class="line-clamp-2 mt-2 px-2 text-center text-lg font-bold text-dark ">
+                                        {{ $repository->nombre_repositorio }}
+                                    </p>
+                                </div>
+
+                                <h5 class="truncate px-2 text-base text-center font-medium text-gray-500">
+                                    ({{ $repository->sigla }})
+                                </h5>
+
+                                <button onclick="location.href ='{{ route('repository.show', $repository) }}' " name="add"
+                                    type="button"
+                                    class="flex items-center w-full justify-center p-2 sm:px-5 sm:py-3 sm:mt-2 text-white bg-custom-500  hover:bg-orange-400 focus:outline-none  rounded-lg">
+                                    <span class="text-lg font-medium">
+                                        Ver Repositorio
+                                    </span>
+
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </a>
+
+                @endforeach
+                {{-- fin de seccion libros --}}
+            </div>
+        </div>
+        {{-- fin repositorios --}}
+
     </section>
 
 
