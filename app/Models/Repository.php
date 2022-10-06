@@ -19,12 +19,13 @@ class Repository extends Model
         'ubicacion',
         'horario_atencion',
         'telefono',
-        'pagina_web'
+        'pagina_web',
+        'imagen_repositorio'
     ];
 
     // relacion 1 a n una Categoria puede tener varios libro
-    public function books()
+    public function products()
     {
-        return $this->hasMany(Book::class);
+        return $this->hasMany(Product::class);
     }
 }

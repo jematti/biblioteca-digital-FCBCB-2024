@@ -21,7 +21,7 @@
 
 
 {{-- formulario para agregar repositorio --}}
-<form action="{{ route('repository.store') }}" method="POST" novalidate>
+<form action="{{ route('repository.store') }}" enctype="multipart/form-data" method="POST" novalidate>
 
     @csrf
     <div class="grid grid-cols-2 gap-5 border-t-2 ">
@@ -35,6 +35,19 @@
                     </label>
                     <input id="nombre_repositorio" type="text" name="nombre_repositorio" placeholder="Nombre del Repositorio" class="border p-3 w-full rounded-lg @error('nombre_repositorio') border-red-500 @enderror " value="{{old('nombre_repositorio')}}" />
                     @error('nombre_repositorio')
+                    <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
+                    @enderror
+                </div>
+            </div>
+            {{-- icono de imagen de repositorio --}}
+            <div class="flex flex-wrap -mx-3 mb-3">
+                <div class="w-full px-3">
+                    <label for="imagen_repositorio" class="mb-2 block uppercase text-gray-500 font-bold">
+                        Imagen de Portada Repositorio
+                    </label>
+                    <input id="imagen_repositorio" name="imagen_repositorio" type="file" class="rounded-lg block shadow-sm w-full text-sm p-2 border @error('imagen_repositorio') border-red-500 @enderror"  value="{{old('imagen_repositorio')}}" accept=".jpg, .jpeg, .png, .pdf" />
+
+                    @error('imagen_repositorio')
                     <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
                     @enderror
                 </div>

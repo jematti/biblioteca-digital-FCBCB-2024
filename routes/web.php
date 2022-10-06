@@ -1,23 +1,21 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BookController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrderController;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\ImagenController;
-use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\FilterController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\EditorialController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\RepositoryController;
 use App\Http\Controllers\CreateOrderController;
 use App\Http\Controllers\ShoppingCartController;
+use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\AdminOrderController;
 
 /*
@@ -29,20 +27,22 @@ use App\Http\Controllers\Admin\AdminOrderController;
 
 // Página de inicio
 
-Route::get('/',HomeController::class)->name('home');
+Route::get('/', HomeController::class)->name('home');
 
 
-Route::group(['middleware' => ['auth','verified']], function(){
-
-    Route::resource('users',UserController::class)->names('admin.users');
+Route::group(['middleware' => ['auth', 'verified']], function () {
+    //Admin-Usuarios
+    Route::resource('users', UserController::class)->names('admin.users');
+    //CRUD Roles
+    Route::resource('roles', RoleController::class)->names('admin.roles');
     //CRUD Categoria
     Route::resource('category', CategoryController::class);
 
     //CRUD Repositorios
     Route::resource('repository', RepositoryController::class);
     //Administrar Ordenes
-    Route::get('admin/orders',[AdminOrderController::class,'index'])->name('admin.orders.index');
-    Route::get('admin/orders/{order}',[AdminOrderController::class,'show'])->name('admin.orders.show');
+    Route::get('admin/orders', [AdminOrderController::class, 'index'])->name('admin.orders.index');
+    Route::get('admin/orders/{order}', [AdminOrderController::class, 'show'])->name('admin.orders.show');
 
     //Ruta para imagenes
     Route::post('/imagenes', [ImagenController::class, 'store'])->name('imagenes.store');
@@ -56,7 +56,7 @@ Route::group(['middleware' => ['auth','verified']], function(){
 
 
     //ruta de carrito de compras
-    Route::get('shopping-cart',[ShoppingCartController::class, 'index'])->name('shopping-cart');
+    Route::get('shopping-cart', [ShoppingCartController::class, 'index'])->name('shopping-cart');
 
     //ruta de ordenes
     Route::get('/orderscreate', [CreateOrderController::class, 'index'])->name('orderscreate.index');
@@ -65,34 +65,35 @@ Route::group(['middleware' => ['auth','verified']], function(){
     Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
 
     //ruta para resumen de orden
-    Route::get('orders/{order}/payment', [OrderController::class,'payment'])->name('orders.payment');
+    Route::get('orders/{order}/payment', [OrderController::class, 'payment'])->name('orders.payment');
 
     //ruta para confirmar la orden
-    Route::get('orders/{order}/pay', [OrderController::class,'pay'])->name('orders.pay');
+    Route::get('orders/{order}/pay', [OrderController::class, 'pay'])->name('orders.pay');
 
     //ruta para ver mis ordenes
     Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
 
     //descargar imagenes
-    Route::get('/download/{file}' , [OrderController::class, 'download'])->name('orders.download');
-
+    Route::get('/download/{file}', [OrderController::class, 'download'])->name('orders.download');
 });
 
 //CRUD Autor
 Route::resource('author', AuthorController::class);
 //CRUD libros
-Route::resource('books',BookController::class);
+Route::resource('products', ProductController::class);
+//Filtro de busqueda
+Route::resource('filter', FilterController::class);
 //Ruta de la Barra de Busqueda Principal Busqueda
-Route::get('search',SearchController::class)->name('search');
+Route::get('search', SearchController::class)->name('search');
 
 //Rutas de prueba
-Route::get('/pruebas',function(){
+Route::get('/pruebas', function () {
     //  return view('pruebas.prueba2');
     Cart::destroy();
 });
 
 //Ruta para autenticación y registro
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 
 //Route::resource('books', LibroController::class);

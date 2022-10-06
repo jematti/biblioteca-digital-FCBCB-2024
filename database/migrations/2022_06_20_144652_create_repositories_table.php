@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('horario_atencion');
             $table->string('telefono');
             $table->string('pagina_web');
+            $table->string('imagen_repositorio')->nullable();
             $table->timestamps();
         });
     }

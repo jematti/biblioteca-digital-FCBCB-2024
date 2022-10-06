@@ -24,10 +24,10 @@ class DatabaseSeeder extends Seeder
         $this->call(RepositoriesSeeder::class);
         $this->call(CategorySeeder::class);
         $this->call(AuthorSeeder::class);
-        $this->call(BookSeeder::class);
         $this->call(RoleSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(CitySeeder::class);
+        $this->call(ProductSeeder::class);
 
         // User::factory(10)->create()->each(function($user){
         //     $user->assignRole('usuario');

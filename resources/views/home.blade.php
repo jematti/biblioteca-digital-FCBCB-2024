@@ -42,59 +42,59 @@
     </article>
 
     <section class="py-2">
-        {{-- mostrar catalogo de libros --}}
+        {{-- mostrar catalogo de productos --}}
         <div class="max-w-screen-xl px-2 py-2 mx-auto sm:px-6 my-5 bg-white border border-gray-200 rounded-lg">
             <div class="flex flex-wrap items-center">
                 <p class="font-bold pr-5 text-xl my-2">
                     CATALOGO DE LIBROS
                 </p>
                 <p class="font-semibold text-lg  my-2">
-                    <a href="{{route('category.show', $books)}}" class="text-orange-500 hover:text-orange-400 underline"> Ver más</a>
+                    <a href="{{route('filter.index')}}" class="text-orange-500 hover:text-orange-400 underline"> Ver más</a>
                 </p>
             </div>
-            {{-- listado  --}}
+            {{-- listado productos--}}
             <div class="grid grid-cols-2 gap-3 mt-4 sm:grid-cols-2 lg:grid-cols-5 ">
 
                 {{-- seccion de libros --}}
-                @foreach ($books as $book)
-                        <a href='{{ route('books.show', $book) }}'
+                @foreach ($products as $product)
+                        <a href='{{ route('products.show', $product) }}'
                             class="relative block bg-white border border-gray-200 rounded-lg">
 
-                            <img loading="lazy" alt="imagen del post {{ $book->titulo }}"
+                            <img loading="lazy" alt="imagen del post {{ $product->titulo }}"
                                 class="object-contain w-full sm:h-72 mt-2 h-56 hover:grow hover:shadow-lg"
-                                src="{{ asset('uploads') . '/' . $book->imagen }}" />
+                                src="{{ asset('uploads') . '/' . $product->imagen }}" />
 
 
                             <div class="p-2">
                                 <div class="group cursor-pointer relative ">
                                     <p class="line-clamp-2 mt-2 px-2 text-lg font-bold text-dark ">
-                                        {{ $book->titulo }}
+                                        {{ $product->titulo }}
 
                                     </p>
                                     {{-- detalles de Popup de descripcion --}}
                                     <div
                                         class="opacity-0 lg:w-60 sm:w-30 lg:ml-20  sm:ml-0d lg:px-1 sm:px-2   bg-black text-white text-center text-sm rounded-lg py-2 absolute z-10 group-hover:opacity-100 bottom-full  pointer-events-none">
-                                        {{ $book->titulo }}
+                                        {{ $product->titulo }}
                                         <br>
-                                        {{ $book->author->nombre_autor }}
+                                        {{ $product->author->nombre_autor }}
                                     </div>
                                     {{-- fin de detalle --}}
                                 </div>
 
                                 <h5 class="truncate px-2 text-base font-medium text-gray-500">
-                                    {{ $book->author->nombre_autor }}
+                                    {{ $product->author->nombre_autor }}
                                 </h5>
 
 
                                 <p class="mt-2 text-lg font-semibold px-2 ">
-                                    Bs. {{ $book->precio }}
+                                    Bs. {{ $product->precio }}
                                 </p>
 
-                                <button onclick="location.href ='{{ route('books.show', $book) }}' " name="add"
+                                <button onclick="location.href ='{{ route('products.show', $product) }}' " name="add"
                                     type="button"
                                     class="flex items-center w-full justify-center p-2 sm:px-5 sm:py-3 sm:mt-2 text-white bg-custom-500  hover:bg-orange-400 focus:outline-none  rounded-lg">
                                     <span class="text-sm font-medium">
-                                        Ver Libro
+                                        Ver Descripción
                                     </span>
 
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 ml-1.5" fill="none"
@@ -109,11 +109,11 @@
                 @endforeach
                 {{-- fin de seccion libros --}}
             </div>
-            {{-- fin listado --}}
+            {{-- fin listado productos--}}
 
             {{-- paginacion --}}
             <div class="my-10">
-                {{ $books->links() }}
+                {{ $products->links() }}
             </div>
         </div>
         {{-- fin de catalogo de libros --}}
@@ -129,7 +129,7 @@
 
                             <img loading="lazy" alt="imagen del repositorio"
                                 class="object-contain w-full sm:h-72 mt-2 h-56 hover:grow hover:shadow-lg"
-                                src="" />
+                                src="{{ asset('img/repositorio') . '/' . $repository->imagen_repositorio }}"  />
 
                             <div class="p-2">
                                 <div class="group cursor-pointer relative ">

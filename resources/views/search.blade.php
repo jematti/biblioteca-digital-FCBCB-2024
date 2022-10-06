@@ -7,43 +7,43 @@
         <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-2xl sm:truncate text-center">Resultados de la Busqueda :</h2>
         <div class="grid grid-cols-2 gap-3 mt-4 sm:grid-cols-2 lg:grid-cols-5 ">
             {{-- seccion de libros --}}
-            @forelse($books as $book)
+            @forelse($products as $product)
                 <a
-                href='{{ route('books.show', $book->id) }}'
+                href='{{ route('products.show', $product->id) }}'
                 class="relative block bg-white border border-gray-200 rounded-lg"
                 >
                     <img
                         loading="lazy"
-                        alt="imagen del post {{ $book->titulo }}"
+                        alt="imagen del post {{ $product->titulo }}"
                         class="object-contain w-full sm:h-72 h-56 hover:grow hover:shadow-lg"
-                        src="{{ asset('uploads').'/'.$book->imagen}}"
+                        src="{{ asset('uploads').'/'.$product->imagen}}"
                     />
-                    {{-- <img loading="lazy" alt="imagen del post {{ $book->titulo }}" class="object-contain w-full sm:h-72 h-56 hover:grow hover:shadow-lg" src="{{ asset('img/portada3.jpg')}}" /> --}}
+                    {{-- <img loading="lazy" alt="imagen del post {{ $product->titulo }}" class="object-contain w-full sm:h-72 h-56 hover:grow hover:shadow-lg" src="{{ asset('img/portada3.jpg')}}" /> --}}
 
 
                     <div class="p-6">
                         <div class="group cursor-pointer relative ">
                             <p class="line-clamp-2 mt-2 px-2 text-lg font-bold text-dark ">
-                                {{ $book->titulo }}
+                                {{ $product->titulo }}
                             </p>
                             {{-- detalles de Popup de descripcion --}}
                             <div class="opacity-0 lg:w-60 sm:w-30 lg:ml-20  sm:ml-0d lg:px-1 sm:px-2   bg-black text-white text-center text-sm rounded-lg py-2 absolute z-10 group-hover:opacity-100 bottom-full  pointer-events-none">
-                                {{ $book->titulo }}
+                                {{ $product->titulo }}
                                 <br>
-                                {{ $book->nombre_autor }}
+                                {{ $product->nombre_autor }}
                             </div>
                             {{-- fin de detalle --}}
                         </div>
 
                         <h5 class="truncate px-2 text-base font-medium text-gray-500">
-                            {{ $book->nombre_autor }}
+                            {{ $product->nombre_autor }}
                         </h5>
 
                         <p class="mt-2 text-sm font-semibold px-2 ">
-                           Precio: {{ $book->precio }} Bs.
+                           Precio: {{ $product->precio }} Bs.
                         </p>
 
-                        <button onclick="location.href ='{{ route('books.show', $book) }}' " name="add" type="button" class="flex items-center w-full justify-center p-2 sm:px-5 sm:py-3 sm:mt-2 text-white bg-custom-500  hover:bg-orange-400 focus:outline-none  rounded-lg">
+                        <button onclick="location.href ='{{ route('products.show', $product) }}' " name="add" type="button" class="flex items-center w-full justify-center p-2 sm:px-5 sm:py-3 sm:mt-2 text-white bg-custom-500  hover:bg-orange-400 focus:outline-none  rounded-lg">
                             <span class="text-sm font-medium">
                                 Ver Libro
                             </span>

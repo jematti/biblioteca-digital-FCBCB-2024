@@ -7,21 +7,21 @@
 <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
 @endpush
 
-<h2 class="bg-custom-100 text-white uppercase text-lg rounded-lg p-4 text-center font-bold ">Agregar Libro</h2>
+<h2 class="bg-custom-100 text-white uppercase text-lg rounded-lg p-4 text-center font-bold ">Editar Producto</h2>
 
 <div class="flex lg:flex-row md:flex-col">
 
      {{-- para ver errores  --}}
- @if($errors->any())
-    <div class="alert alert-danger">
-        <p><strong>Opps Something went wrong</strong></p>
-        <ul>
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
-        </ul>
-    </div>
-@endif
+    {{-- @if($errors->any())
+        <div class="alert alert-danger">
+            <p><strong>Opps Something went wrong</strong></p>
+            <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+            </ul>
+        </div>
+    @endif --}}
     <div class="mx-3 my-6">
         {{-- imagen de libro --}}
         <div class="mx-3 my-6">
@@ -39,13 +39,13 @@
 
     {{-- formulario de añadir libro --}}
     <div class="mx-3 my-6 flex-1">
-        <form action="{{ route('books.update', ['book' => $book->id]) }}" method="POST" class="w-full actualizar" novalidate>
+        <form action="{{ route('products.update', ['product' => $product->id]) }}" method="POST" class="w-full actualizar" novalidate>
             @csrf
             @method('PUT')
 
             {{-- input img  del libro --}}
             <div class="mb-5">
-                <input type="hidden" name="imagen" id="imagen" value="{{ $book->imagen }}">
+                <input type="hidden" name="imagen" id="imagen" value="{{ $product->imagen }}">
 
                 @error('imagen')
                 <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
@@ -79,8 +79,8 @@
                                 @error('titulo')
                                 border-red-500
                                 @enderror
-                                value="{{$book->titulo}}"
-                                rows="3">{{$book->titulo}}</textarea>
+                                value="{{$product->titulo}}"
+                                rows="3">{{$product->titulo}}</textarea>
 
 
                             @error('titulo')
@@ -110,7 +110,7 @@
                                 rounded
                                 focus:text-neutral-700
                                 focus:border-gray-600"
-                                id="resumen" name="resumen" placeholder="Resumen del Libro" @error('resumen') border-red-500 @enderror value="{{$book->resumen}}" rows="5">{{ $book->resumen }}</textarea>
+                                id="resumen" name="resumen" placeholder="Resumen del Libro" @error('resumen') border-red-500 @enderror value="{{$product->resumen}}" rows="5">{{ $product->resumen }}</textarea>
 
                             @error('resumen')
                             <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
@@ -128,7 +128,7 @@
                                 <option disabled selected>- Seleccione una Autor -</option>
 
                                 @foreach ($repositories as $repository)
-                                <option {{ $book->repository->id == $repository->id ? 'selected' : '' }} value="{{ $repository->id }}">
+                                <option {{ $product->repository->id == $repository->id ? 'selected' : '' }} value="{{ $repository->id }}">
                                     {{$repository->ciudad}} | {{$repository->nombre_repositorio}}
                                 </option>
                                 @endforeach
@@ -152,7 +152,7 @@
                                 <option disabled selected>- Seleccione una Autor -</option>
 
                                 @foreach ($authors as $author)
-                                <option {{ $book->author->id == $author->id ? 'selected' : '' }} value="{{ $author->id }}">
+                                <option {{ $product->author->id == $author->id ? 'selected' : '' }} value="{{ $author->id }}">
                                     {{$author->nombre_autor}}
                                 </option>
                                 @endforeach
@@ -176,7 +176,7 @@
                                 <option disabled selected>- Seleccione una categoría -</option>
 
                                 @foreach ($categories as $category)
-                                <option {{ $book->category->id == $category->id ? 'selected' : '' }} value="{{ $category->id }}">
+                                <option {{ $product->category->id == $category->id ? 'selected' : '' }} value="{{ $category->id }}">
                                     {{$category->nombre_categoria}}
                                 </option>
                                 @endforeach
@@ -200,10 +200,10 @@
 
                                 <option disabled selected>- Seleccione el idioma del Libro- </option>
 
-                                <option value="español" {{ ($book->idioma)=='español' ? 'selected' : ''  }}>Español</option>
-                                <option value="aymara" {{ ($book->idioma)=='aymara' ? 'selected' : ''  }}>Aymara</option>
-                                <option value="quechua" {{ ($book->idioma)=='quechua' ? 'selected' : ''  }}>Quechua</option>
-                                <option value="ingles" {{ ($book->idioma)=='ingles' ? 'selected' : ''  }}>Ingles</option>
+                                <option value="español" {{ ($product->idioma)=='español' ? 'selected' : ''  }}>Español</option>
+                                <option value="aymara" {{ ($product->idioma)=='aymara' ? 'selected' : ''  }}>Aymara</option>
+                                <option value="quechua" {{ ($product->idioma)=='quechua' ? 'selected' : ''  }}>Quechua</option>
+                                <option value="ingles" {{ ($product->idioma)=='ingles' ? 'selected' : ''  }}>Ingles</option>
 
                             </select>
                             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -222,7 +222,7 @@
                             <label class="mb-2 block uppercase text-gray-500 font-bold">
                                 Precio del Libro
                             </label>
-                            <input class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="precio" name="precio" type="number" min="1" pattern="^[0-9]+" placeholder="Precio del Libro" @error('precio') border-red-500 @enderror value="{{$book->precio}}" />
+                            <input class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="precio" name="precio" type="number" min="1" pattern="^[0-9]+" placeholder="Precio del Libro" @error('precio') border-red-500 @enderror value="{{$product->precio}}" />
 
                             @error('precio')
                             <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
@@ -232,7 +232,7 @@
                             <label class="mb-2 block  text-gray-500 font-bold">
                                 STOCK <span class="font-medium">(numero de copias del libro)</span>
                             </label>
-                            <input class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="cantidad" name="cantidad" type="number" min="1" pattern="^[0-9]+" Step=".01" placeholder="Precio del Libro" @error('cantidad') border-red-500 @enderror value="{{$book->cantidad}}" />
+                            <input class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="cantidad" name="cantidad" type="number" min="1" pattern="^[0-9]+" Step=".01" placeholder="Precio del Libro" @error('cantidad') border-red-500 @enderror value="{{$product->cantidad}}" />
 
                             @error('cantidad')
                             <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
@@ -246,7 +246,7 @@
                             <label class="block mb-2 uppercase text-gray-500 font-bold" for="grid-city">
                                 Páginas
                             </label>
-                            <input class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="numero_paginas" type="number" min="1" pattern="^[0-9]+" name="numero_paginas" placeholder="Nro de Páginas" @error('numero_paginas') border-red-500 @enderror value="{{ $book->numero_paginas }}">
+                            <input class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="numero_paginas" type="number" min="1" pattern="^[0-9]+" name="numero_paginas" placeholder="Nro de Páginas" @error('numero_paginas') border-red-500 @enderror value="{{ $product->numero_paginas }}">
 
                             @error('numero_paginas')
                             <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
@@ -256,7 +256,7 @@
                             <label class="block mb-2 uppercase text-gray-500 font-bold" for="grid-city">
                                 Edición
                             </label>
-                            <input class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="edicion" name="edicion" type="text" placeholder="Ej: Primera Edición" @error('edicion') border-red-500 @enderror value="{{$book->edicion}}">
+                            <input class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="edicion" name="edicion" type="text" placeholder="Ej: Primera Edición" @error('edicion') border-red-500 @enderror value="{{$product->edicion}}">
                             @error('edicion')
                             <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
                             @enderror
@@ -269,7 +269,7 @@
                             <label class="mb-2 block uppercase text-gray-500 font-bold">
                                 Fecha de Publicación
                             </label>
-                            <input class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="fecha_publicacion" name="fecha_publicacion" type="date" placeholder="fecha de publicación del Libro" @error('fecha_publicacion') border-red-500 @enderror value="{{$book->fecha_publicacion}}" />
+                            <input class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="fecha_publicacion" name="fecha_publicacion" type="date" placeholder="fecha de publicación del Libro" @error('fecha_publicacion') border-red-500 @enderror value="{{$product->fecha_publicacion}}" />
 
                             @error('fecha_publicacion')
                             <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
@@ -280,7 +280,7 @@
                             <label class="mb-2 block  text-gray-500 font-bold">
                                 ISBN <span class="font-medium">(Si corresponde)</span>
                             </label>
-                            <input class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="isbn" name="isbn" type="text" placeholder="codigo ISBN del Libro" @error('isbn') border-red-500 @enderror value="{{$book->isbn}}" />
+                            <input class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="isbn" name="isbn" type="text" placeholder="codigo ISBN del Libro" @error('isbn') border-red-500 @enderror value="{{$product->isbn}}" />
 
                             @error('isbn')
                             <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
@@ -294,14 +294,14 @@
                             <label class="block mb-2  text-gray-500 font-bold" for="grid-city">
                                 ANCHO <span class="font-medium">(opcional)</span>
                             </label>
-                            <input class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="ancho" type="number" min="1" pattern="^[0-9]+" name="ancho" placeholder="Ancho del libro en 'cm' (centimetros)" value="{{$book->ancho}}">
+                            <input class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="ancho" type="number" min="1" pattern="^[0-9]+" name="ancho" placeholder="Ancho del libro en 'cm' (centimetros)" value="{{$product->ancho}}">
                         </div>
                         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
 
                             <label class="block mb-2  text-gray-500 font-bold" for="grid-city">
                                 ALTO <span class="font-medium">(opcional)</span>
                             </label>
-                            <input class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="alto" type="number" min="1" pattern="^[0-9]+" name="alto" placeholder="altura del libro en 'cm' (centimetros)" value="{{$book->alto}}">
+                            <input class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="alto" type="number" min="1" pattern="^[0-9]+" name="alto" placeholder="altura del libro en 'cm' (centimetros)" value="{{$product->alto}}">
                         </div>
                     </div>
 
@@ -310,14 +310,14 @@
                             <label class="block mb-2  text-gray-500 font-bold" for="grid-city">
                                 PESO<span class=" font-medium">(opcional)</span>
                             </label>
-                            <input class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="peso" type="number" min="1" pattern="^[0-9]+" name="peso" placeholder="Peso del libro en 'gr' (gramos)" value="{{$book->ancho}}">
+                            <input class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="peso" type="number" min="1" pattern="^[0-9]+" name="peso" placeholder="Peso del libro en 'gr' (gramos)" value="{{$product->ancho}}">
                         </div>
                         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
 
                             <label class="block mb-2  text-gray-500 font-bold" for="grid-city">
                                 GRUESO <span class=" font-medium">(opcional)</span>
                             </label>
-                            <input class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grueso" type="number" min="1" pattern="^[0-9]+" name="grueso" placeholder="grueso del libro en 'cm' (centimetros)" value="{{$book->grueso}}">
+                            <input class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grueso" type="number" min="1" pattern="^[0-9]+" name="grueso" placeholder="grueso del libro en 'cm' (centimetros)" value="{{$product->grueso}}">
                         </div>
                     </div>
                     {{-- fin seccion datos opcionales --}}
@@ -325,7 +325,7 @@
                     {{-- botones de guardar - cancelar cambios --}}
                     <div class="flex flex-row-reverse  my-5 text-right">
                         <input type="submit" value="Guardar Cambios" class="w-1/2 text-white bg-sky-600 hover:bg-sky-700 uppercase font-bold focus:ring-4 font-lg rounded-lg text-sm px-5 py-2.5 text- mr-2 mb-2 " />
-                        <a class=" text-white bg-red-600 hover:bg-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 " href="{{ route('books.index') }}">Cancelar</a>
+                        <a class=" text-white bg-red-600 hover:bg-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 " href="{{ route('products.index') }}">Cancelar</a>
                     </div>
                 </div>
             </div>

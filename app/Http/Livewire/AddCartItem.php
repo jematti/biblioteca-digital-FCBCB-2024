@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Book;
+use App\Models\Product;
 use Livewire\Component;
 use App\Models\Repository;
 use Illuminate\Support\Facades\Storage;
@@ -10,7 +10,7 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 
 class AddCartItem extends Component
 {
-    public $book, $cantidad_stock;
+    public $product, $cantidad_stock;
 
     public $cantidad=1;
 
@@ -23,13 +23,13 @@ class AddCartItem extends Component
 
 
     public function mount(){
-        $this->cantidad_stock = cantidad_disponible($this->book->id);
-        $this->options['imagen'] = $this->book->imagen;
+        $this->cantidad_stock = cantidad_disponible($this->product->id);
+        $this->options['imagen'] = $this->product->imagen;
         $this->ubicacion[]=Repository::select('nombre_repositorio','sigla')
-                   ->where('id',$this->book->repository_id)
+                   ->where('id',$this->product->repository_id)
                    ->first();
-        $this->cantidad_libro[]=Book::select('cantidad')
-                   ->where('id',$this->book->id)
+        $this->cantidad_libro[]=Product::select('cantidad')
+                   ->where('id',$this->product->id)
                    ->first();
         $this->options['ubicacion'] = $this->ubicacion[0]->nombre_repositorio;
         $this->options['cantidad_libro'] = $this->cantidad_libro[0]->cantidad;
@@ -45,16 +45,16 @@ class AddCartItem extends Component
 
     public function addItem(){
 
-        Cart::add([ 'id' => $this->book->id,
-                     'name' => $this->book->titulo,
+        Cart::add([ 'id' => $this->product->id,
+                     'name' => $this->product->titulo,
                      'qty' => $this->cantidad,
-                     'price' => $this->book->precio,
+                     'price' => $this->product->precio,
                      'weight' => 550,
                      'options'=> $this->options
                   ]);
 
         //actualizar la cantida de productos disponibles
-        $this->cantidad_stock=cantidad_disponible($this->book->id);
+        $this->cantidad_stock=cantidad_disponible($this->product->id);
         //resetear la variable cantidad
         $this->reset('cantidad');
         //renderizar el componente dropdown para actualizar con el item agregado

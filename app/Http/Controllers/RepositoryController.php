@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\Repository;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
 class RepositoryController extends Controller
 {
@@ -14,7 +17,7 @@ class RepositoryController extends Controller
      */
     public function index()
     {
-        $data['repository']= Repository::orderBy('id','asc')->simplepaginate(5);
+        $data['repository']= Repository::orderBy('id','asc')->simplepaginate(15);
         return view('repository.index',$data);
 
     }
@@ -37,7 +40,7 @@ class RepositoryController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate([
+        $request->validate([
             'nombre_repositorio' => 'required',
             'sigla',
             'ciudad' => 'required',
@@ -47,10 +50,45 @@ class RepositoryController extends Controller
             'ubicacion',
             'horario_atencion' => 'required',
             'telefono' => 'required',
-            'pagina_web' => 'required'
+            'pagina_web' => 'required',
+            'imagen_repositorio' => 'required'
         ]);
 
-        Repository::create($request->all());
+        //creacion de repositorio
+        $repository = new Repository;
+
+        $repository->nombre_repositorio = $request->nombre_repositorio;
+        $repository->sigla = $request->sigla;
+        $repository->ciudad = $request->ciudad;
+        $repository->correo = $request->correo;
+        $repository->nombre_encargado = $request->nombre_encargado;
+        $repository->direccion = $request->direccion;
+        $repository->ubicacion = $request->ubicacion;
+        $repository->horario_atencion = $request->horario_atencion;
+        $repository->telefono = $request->telefono;
+        $repository->pagina_web = $request->pagina_web;
+
+
+        //seccion guardar imagen
+        $imagen = $request->file('imagen_repositorio');
+        //uuid para el nombre del archivo unico
+        $nombreImagen = Str::uuid() . '.' . $imagen->extension();
+
+        //almacenar la imagen en el servidor
+        $imagenServidor = Image::make($imagen);
+
+        //efectos de intervention image (ancho,alto)
+        $imagenServidor->fit(750,1050);
+
+        $imagenPath = public_path('img/repositorio').'/'. $nombreImagen;
+        //solo guarda la ruta en la base de datos y no la imagen
+        $imagenServidor->save($imagenPath);
+
+        //fin de seccion guardar imagen
+
+        //guardar datos
+        $repository->imagen_repositorio = $nombreImagen;
+        $repository->save();
 
         return redirect()->route('repository.index')
                          ->with('store','ok');
@@ -64,7 +102,12 @@ class RepositoryController extends Controller
      */
     public function show(Repository $repository)
     {
-        return view('repository.show',compact('repository'));
+        $products = Product::join("repositories","products.repository_id","=","repositories.id")
+        ->where('products.repository_id',$repository->id)
+        ->select('products.id','products.imagen','products.titulo','products.precio','repositories.nombre_repositorio')
+        ->take(10)
+        ->get();
+        return view('repository.show',compact('repository','products'));
     }
 
     /**
@@ -100,7 +143,43 @@ class RepositoryController extends Controller
             'pagina_web' => 'required'
         ]);
 
-        $repository->update($request->all());
+        //Editar repositorio
+
+        $repository->nombre_repositorio = $request->nombre_repositorio;
+        $repository->sigla = $request->sigla;
+        $repository->ciudad = $request->ciudad;
+        $repository->correo = $request->correo;
+        $repository->nombre_encargado = $request->nombre_encargado;
+        $repository->direccion = $request->direccion;
+        $repository->ubicacion = $request->ubicacion;
+        $repository->horario_atencion = $request->horario_atencion;
+        $repository->telefono = $request->telefono;
+        $repository->pagina_web = $request->pagina_web;
+
+        //seccion guardar imagen
+        if ($request->imagen_repositorio) {
+            $imagen = $request->file('imagen_repositorio');
+
+            //uuid para el nombre del archivo unico
+            $nombreImagen = Str::uuid() . '.' . $imagen->extension();
+
+            //almacenar la imagen en el servidor
+            $imagenServidor = Image::make($imagen);
+
+            //efectos de intervention image (ancho,alto)
+            $imagenServidor->fit(750,1050);
+
+            $imagenPath = public_path('img/repositorio').'/'. $nombreImagen;
+            //solo guarda la ruta en la base de datos y no la imagen
+            $imagenServidor->save($imagenPath);
+
+            //fin de seccion guardar imagen
+
+            //guardar datos
+            $repository->imagen_repositorio = $nombreImagen;
+        }
+
+        $repository->save();
 
         return redirect()->route('repository.index')
                          ->with('update','ok');

@@ -1,10 +1,7 @@
 <div>
-    <h2 class="bg-custom-100 text-white uppercase text-lg rounded-lg p-4 text-center font-bold ">Lista de Usuarios </h2>
-    {{-- tabla de usuarios --}}
-
-    <!-- component -->
-    <section class="py-1 bg-blueGray-50">
-        <div class="w-full  mb-12 xl:mb-0 px-4 mx-auto mt-24">
+    {{-- Seccion de usuarios de sistema--}}
+    <div class="max-w-7xl mb-12 xl:mb-0 px-4 ">
+            <h2 class="bg-custom-100 text-white uppercase text-lg rounded-lg p-4 text-center font-bold ">Lista de Usuarios </h2>
             <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
 
                 {{-- barra de busqueda de usuarios --}}
@@ -58,7 +55,7 @@
                                     {{ $user->email }}
                                 </td>
                                 <td class="border-t-0 px-2 align-middle border-l-0 border-r-0 text-base whitespace-nowrap p-2">
-                                    <div class="flex justify-center text-red-500">
+                                    <div class="flex text-red-500">
                                         {{-- editar --}}
                                         <p class="px-2">Editar</p>
                                         <a href="{{ route('admin.users.edit', $user->id) }}">
@@ -85,6 +82,6 @@
             </div>
         </div>
 
-    </section>
+
     {{-- fin de tabla de usuarios --}}
 </div>

@@ -6,14 +6,12 @@
 <h2 class="bg-custom-100 text-white uppercase text-lg rounded-lg p-4 text-center font-bold ">Editar Repositorio</h2>
 
 {{-- formulario para agregar repositorio --}}
-<form action="{{ route('repository.update',['repository'=>$repository->id]) }}" method="POST" novalidate class="actualizar">
+<form action="{{ route('repository.update',['repository'=>$repository->id]) }}" enctype="multipart/form-data" method="POST" novalidate class="actualizar">
 
     @csrf
     @method('PUT')
     <div class="grid grid-cols-2 gap-5 border-t-2 ">
         <div class="mt-5">
-
-
             {{-- nombre de repositorio --}}
             <div class="flex flex-wrap -mx-3 mb-3">
                 <div class="w-full px-3">
@@ -26,9 +24,30 @@
                     @enderror
                 </div>
             </div>
+            {{-- icono de imagen de repositorio --}}
+            <div class="flex flex-wrap -mx-3 mb-3">
+                <div class="w-full px-3 form-group">
+                    <label for="imagen_repositorio" class="mb-2 block uppercase text-gray-500 font-bold">
+                        Imagen de Portada Repositorio:
+                    </label>
+                    <img loading="lazy" alt="imagen del post {{ $repository->nombre_repositorio }}"
+                                class="object-contain w-full sm:h-60 mt-2 h-48 hover:grow hover:shadow-lg"
+                                src="{{ asset('img/repositorio') . '/' . $repository->imagen_repositorio }}" />
+                    <p class="underline font-semibold">¡Subir nueva imagen de portada!</p>
+                    <input
+                    id="imagen_repositorio"
+                    name="imagen_repositorio"
+                    type="file"
+                    value="{{$repository->imagen_repositorio}}"
+                    accept=".jpg, .jpeg, .png, .pdf"
+                    class="rounded-lg block shadow-sm w-full text-sm p-2 border" >
+
+
+                </div>
+            </div>
             {{-- correo electronico de repositorio --}}
             <div class="flex flex-wrap -mx-3 mb-3">
-                <div class="w-full px-3">
+                <div class="w-full px-3 ">
                     <label for="correo" class="mb-2 block uppercase text-gray-500 font-bold">
                         Correo Electronico
                     </label>
@@ -50,6 +69,10 @@
                     @enderror
                 </div>
             </div>
+
+        </div>
+
+        <div class="mt-5">
             {{-- direccion de repositorio --}}
             <div class="flex flex-wrap -mx-3 mb-3">
                 <div class="w-full px-3">
@@ -71,9 +94,6 @@
                     <input id="ubicacion" type="text" name="ubicacion" placeholder="Insertar desde el Mapa de Google Maps" class="border p-3 w-full rounded-lg" value="{{$repository->ubicacion}}" />
                 </div>
             </div>
-        </div>
-
-        <div class="mt-5">
             {{-- sigla y ciudad de repositorio --}}
             <div class="flex flex-wrap -mx-3 mb-3">
                 <div class="w-full md:w-1/2 px-3 mb-3 md:mb-0">

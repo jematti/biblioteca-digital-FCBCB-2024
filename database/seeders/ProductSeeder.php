@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class BookSeeder extends Seeder
+class ProductSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +15,7 @@ class BookSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('books')->insert([
+        DB::table('products')->insert([
             'titulo' => 'Piedra de Agua N° 1',
             'edicion' => 'Primera',
             'numero_paginas' => '32',
@@ -48,7 +48,7 @@ class BookSeeder extends Seeder
             'isbn' => '123456789',
         ]);
 
-        DB::table('books')->insert([
+        DB::table('products')->insert([
             'titulo' => 'Piedra de Agua N° 2',
             'edicion' => 'Primera',
             'numero_paginas' => '32',
@@ -80,7 +80,7 @@ class BookSeeder extends Seeder
             'repository_id' => '2',
             'isbn' => '123456789',
         ]);
-        DB::table('books')->insert([
+        DB::table('products')->insert([
             'titulo' => 'Piedra de Agua N° 3',
             'edicion' => 'Primera',
             'numero_paginas' => '32',
@@ -112,7 +112,7 @@ class BookSeeder extends Seeder
             'repository_id' => '2',
             'isbn' => '123456789',
         ]);
-        DB::table('books')->insert([
+        DB::table('products')->insert([
             'titulo' => 'Piedra de Agua N° 4',
             'edicion' => 'Primera',
             'numero_paginas' => '32',
@@ -144,7 +144,7 @@ class BookSeeder extends Seeder
             'repository_id' => '2',
             'isbn' => '123456789',
         ]);
-        DB::table('books')->insert([
+        DB::table('products')->insert([
             'titulo' => 'Piedra de Agua N° 5',
             'edicion' => 'Primera',
             'numero_paginas' => '32',
@@ -176,7 +176,7 @@ class BookSeeder extends Seeder
             'repository_id' => '2',
             'isbn' => '123456789',
         ]);
-        DB::table('books')->insert([
+        DB::table('products')->insert([
             'titulo' => 'Piedra de Agua N° 6',
             'edicion' => 'Primera',
             'numero_paginas' => '32',
@@ -208,7 +208,7 @@ class BookSeeder extends Seeder
             'repository_id' => '2',
             'isbn' => '123456789',
         ]);
-        DB::table('books')->insert([
+        DB::table('products')->insert([
             'titulo' => 'Piedra de Agua N° 7',
             'edicion' => 'Primera',
             'numero_paginas' => '32',
@@ -240,7 +240,7 @@ class BookSeeder extends Seeder
             'repository_id' => '2',
             'isbn' => '123456789',
         ]);
-        DB::table('books')->insert([
+        DB::table('products')->insert([
             'titulo' => 'Piedra de Agua N° 8',
             'edicion' => 'Primera',
             'numero_paginas' => '32',
@@ -272,7 +272,7 @@ class BookSeeder extends Seeder
             'repository_id' => '2',
             'isbn' => '123456789',
         ]);
-        DB::table('books')->insert([
+        DB::table('products')->insert([
             'titulo' => 'Piedra de Agua N° 9',
             'edicion' => 'Primera',
             'numero_paginas' => '32',
@@ -304,7 +304,7 @@ class BookSeeder extends Seeder
             'repository_id' => '2',
             'isbn' => '123456789',
         ]);
-        DB::table('books')->insert([
+        DB::table('products')->insert([
             'titulo' => 'Piedra de Agua N° 10',
             'edicion' => 'Primera',
             'numero_paginas' => '32',
@@ -336,7 +336,7 @@ class BookSeeder extends Seeder
             'repository_id' => '2',
             'isbn' => '123456789',
         ]);
-        DB::table('books')->insert([
+        DB::table('products')->insert([
             'titulo' => 'Piedra de Agua N° 11',
             'edicion' => 'Primera',
             'numero_paginas' => '32',
@@ -368,7 +368,7 @@ class BookSeeder extends Seeder
             'repository_id' => '2',
             'isbn' => '123456789',
         ]);
-        DB::table('books')->insert([
+        DB::table('products')->insert([
             'titulo' => 'Piedra de Agua N° 12',
             'edicion' => 'Primera',
             'numero_paginas' => '32',
@@ -400,7 +400,7 @@ class BookSeeder extends Seeder
             'repository_id' => '2',
             'isbn' => '123456789',
         ]);
-        DB::table('books')->insert([
+        DB::table('products')->insert([
             'titulo' => 'Piedra de Agua N° 13',
             'edicion' => 'Primera',
             'numero_paginas' => '32',
@@ -432,7 +432,7 @@ class BookSeeder extends Seeder
             'repository_id' => '2',
             'isbn' => '123456789',
         ]);
-        DB::table('books')->insert([
+        DB::table('products')->insert([
             'titulo' => 'Piedra de Agua N° 14',
             'edicion' => 'Primera',
             'numero_paginas' => '32',
@@ -464,7 +464,7 @@ class BookSeeder extends Seeder
             'repository_id' => '2',
             'isbn' => '123456789',
         ]);
-        DB::table('books')->insert([
+        DB::table('products')->insert([
             'titulo' => 'Piedra de Agua N° 15',
             'edicion' => 'Primera',
             'numero_paginas' => '32',
@@ -496,7 +496,7 @@ class BookSeeder extends Seeder
             'repository_id' => '2',
             'isbn' => '123456789',
         ]);
-        DB::table('books')->insert([
+        DB::table('products')->insert([
             'titulo' => 'Piedra de Agua N° 16',
             'edicion' => 'Primera',
             'numero_paginas' => '32',
@@ -528,7 +528,7 @@ class BookSeeder extends Seeder
             'repository_id' => '2',
             'isbn' => '123456789',
         ]);
-        DB::table('books')->insert([
+        DB::table('products')->insert([
             'titulo' => 'Piedra de Agua N° 17',
             'edicion' => 'Primera',
             'numero_paginas' => '32',
@@ -560,7 +560,7 @@ class BookSeeder extends Seeder
             'repository_id' => '2',
             'isbn' => '123456789',
         ]);
-        DB::table('books')->insert([
+        DB::table('products')->insert([
             'titulo' => 'Piedra de Agua N° 18',
             'edicion' => 'Primera',
             'numero_paginas' => '32',

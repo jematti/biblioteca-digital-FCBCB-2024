@@ -7,7 +7,7 @@
                     <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
                 </svg>
             </button>
-            <input wire:model="search_main" name="book_search" type="text" placeholder="Buscar libro por palabra clave / titulo / autor " class="z-50 block w-full pl-10 pr-3 py-2 h-12 border border-transparent rounded-md leading-5 bg-white text-gray-300 placeholder-gray-400 focus:outline-none focus:bg-white focus:text-gray-900 sm:text-sm transition duration-150 ease-in-out" placeholder="Search">
+            <input wire:model="search_main" name="product_search" type="text" placeholder="Buscar libro por palabra clave / titulo / autor / ISBN  " class="z-50 block w-full pl-10 pr-3 py-2 h-12 border border-transparent rounded-md leading-5 bg-white text-gray-300 placeholder-gray-400 focus:outline-none focus:bg-white focus:text-gray-900 sm:text-sm transition duration-150 ease-in-out" placeholder="Search">
         </form>
     </div>
 
@@ -16,12 +16,12 @@
         <div class="bg-white rounded-lg shadow-lg mt-1">
             <div class="px-4 py-3">
                 {{-- listar datos del la consulta del controlador SearchMain --}}
-                @forelse ($books as $book)
-                <a href="{{ route('books.show', $book) }}" class="flex">
-                    <img src="{{ asset('uploads').'/'.$book->imagen}}" alt="imagen de busqueda" class="w-16 h-12 object-cover">
+                @forelse ($products as $product)
+                <a href="{{ route('products.show', $product) }}" class="flex">
+                    <img src="{{ asset('uploads').'/'.$product->imagen}}" alt="imagen de busqueda" class="w-16 h-12 object-cover">
                     <div class="ml-4 ">
-                        <p class="text-lg font-semibold">{{ $book->titulo }}</p>
-                        <p class="text-base  text-gray-500 font-medium">{{ $book->nombre_autor}}</p>
+                        <p class="text-lg font-semibold">{{ $product->titulo }}</p>
+                        <p class="text-base  text-gray-500 font-medium">{{ $product->nombre_autor}}</p>
                     </div>
                 </a>
                 <hr>

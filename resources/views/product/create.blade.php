@@ -26,7 +26,7 @@
 
     {{-- formulario de añadir libro --}}
     <div class="mx-3 my-6 flex-1">
-        <form action="{{ route('books.store') }}" method="POST" class="w-full " novalidate>
+        <form action="{{ route('products.store') }}" method="POST" class="w-full " novalidate>
             @csrf
             {{-- input imagen --}}
             <div>

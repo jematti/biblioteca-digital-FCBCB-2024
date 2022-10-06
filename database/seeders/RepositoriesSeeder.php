@@ -25,7 +25,8 @@ class RepositoriesSeeder extends Seeder
             'direccion' => 'Calle René Moreno # 369, Santa Cruz de la Cierra',
             'horario_atencion' => 'Lunes y Viernes de 08:00 a 16:00',
             'telefono' => '(+591) 3356905 – 3356941',
-            'pagina_web' => 'https://ccp.gob.bo/'
+            'pagina_web' => 'https://ccp.gob.bo/',
+            'imagen_repositorio' => 'ccp.jpg'
         ]);
 
         DB::table('repositories')->insert([
@@ -38,7 +39,8 @@ class RepositoriesSeeder extends Seeder
             'direccion' => 'Calle Comercio Esq. Socabaya La Paz - Bolivia',
             'horario_atencion' => 'Lunes - Viernes: 08:30 a 16:30 Sabado - Domingos: Cerrado',
             'telefono' => '2 2408600',
-            'pagina_web' => 'https://museonacionaldearte.gob.bo/'
+            'pagina_web' => 'https://museonacionaldearte.gob.bo/',
+            'imagen_repositorio' => 'mna.jpg'
         ]);
 
 
@@ -52,7 +54,8 @@ class RepositoriesSeeder extends Seeder
             'direccion' => 'Calle Ingavi N° 916 - La Paz',
             'horario_atencion' => 'Lunes - Viernes: 8:30 a 16:00 ',
             'telefono' => '(591-2) 2408640- 2406030',
-            'pagina_web' => 'http://musef.org.bo/'
+            'pagina_web' => 'http://musef.org.bo/',
+            'imagen_repositorio' => 'musef.jpg'
         ]);
 
 
@@ -80,7 +83,8 @@ class RepositoriesSeeder extends Seeder
             'direccion' => 'Calle Ayacucho s/n, Villa Imperial de Potosí',
             'horario_atencion' => 'Lunes a Sabado 09:00 am - 15:00 pm',
             'telefono' => '(+591) 6222777 ',
-            'pagina_web' => 'http://www.casanacionaldemoneda.bo/'
+            'pagina_web' => 'http://www.casanacionaldemoneda.bo/',
+            'imagen_repositorio' => 'cnm.jpg'
         ]);
 
         DB::table('repositories')->insert([
@@ -93,7 +97,8 @@ class RepositoriesSeeder extends Seeder
             'direccion' => 'Plaza 25 de Mayo, Sucre',
             'horario_atencion' => 'De lunes a viernes, de 8:00 a 16:00 Domingos, de 8:00 a 12:00 Sábados y feriados el museo está cerrado. Las visitas guiadas se realizan cada hora. Última admisión : 1 Hr. antes del cierre.',
             'telefono' => '(591-4) 6454200',
-            'pagina_web' => 'https://www.casadelalibertad.org.bo/'
+            'pagina_web' => 'https://www.casadelalibertad.org.bo/',
+            'imagen_repositorio' => 'cdl.jpg'
         ]);
 
         DB::table('repositories')->insert([
@@ -106,7 +111,8 @@ class RepositoriesSeeder extends Seeder
             'direccion' => 'Dalence 4, Sucre',
             'horario_atencion' => 'Lunes a Sabado 08:30 am - 18:30 pm',
             'telefono' => '(+591) 4 6452246 ',
-            'pagina_web' => 'https://www.archivoybibliotecanacionales.org.bo/'
+            'pagina_web' => 'https://www.archivoybibliotecanacionales.org.bo/',
+            'imagen_repositorio' => 'abnb.jpg'
         ]);
 
     }

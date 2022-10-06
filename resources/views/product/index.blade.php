@@ -7,13 +7,13 @@
    {{-- menu de navegacion para crear y editar categorias --}}
    <div class="md:grid grid-cols-2 gap-1  sm:flex-grow">
     <div class="my-2 p-2 ">
-        <button class="w-full p-2 uppercase bg-sky-600 text-white font-bold hover:bg-sky-700 border border-gray-900  rounded-lg " onclick="location.href = '{{ route('books.create') }}'">
-            <i class="fa-solid fa-plus"></i><span class="px-2">Agregar Libro</span>
+        <button class="w-full p-2 uppercase bg-sky-600 text-white font-bold hover:bg-sky-700 border border-gray-900  rounded-lg " onclick="location.href = '{{ route('products.create') }}'">
+            <i class="fa-solid fa-plus"></i><span class="px-2">Agregar Producto</span>
         </button>
     </div>
     <div class="my-2 p-2 ">
-        <button class="w-full p-2 uppercase bg-sky-600 text-white font-bold hover:bg-sky-700 border border-gray-900  rounded-lg" onclick="location.href = '{{ route('books.index') }}'">
-            <i class="fa-solid fa-angle-down"></i><span class="px-2">Listar Libro</span>
+        <button class="w-full p-2 uppercase bg-sky-600 text-white font-bold hover:bg-sky-700 border border-gray-900  rounded-lg" onclick="location.href = '{{ route('products.index') }}'">
+            <i class="fa-solid fa-angle-down"></i><span class="px-2">Listar Productos</span>
         </button>
     </div>
 </div>
@@ -37,7 +37,7 @@
                         <tr>
                             <th class="p-2"></th>
                             <th class="p-2">
-                                <div class="font-semibold text-left">Libro</div>
+                                <div class="font-semibold text-left">Producto</div>
                             </th>
                             <th class="p-2">
                                 <div class="font-semibold text-left">Edición</div>
@@ -55,29 +55,29 @@
                         <!-- tabla de datos -->
 
 
-                        @foreach ($book as $books)
+                        @foreach ($product as $products)
                             <tr class="hover:bg-gray-100">
                                 <td class="p-2">
-                                    <div class="font-semibold text-center">{{ $books->id}}</div>
+                                    <div class="font-semibold text-center">{{ $products->id}}</div>
                                 </td>
                                 <td class="p-2">
                                     <div class="text-left font-medium text-gray-800">
-                                        {{ $books->titulo }}
+                                        {{ $products->titulo }}
                                     </div>
                                 </td>
                                 <td class="p-2">
                                     <div class="text-left">
-                                       {{ $books->edicion }}
+                                       {{ $products->edicion }}
                                     </div>
                                 </td>
                                 <td class="p-2">
                                     <div class="text-left">
-                                       {{ $books->repository->nombre_repositorio }}
+                                       {{ $products->repository->nombre_repositorio }}
                                     </div>
                                 </td>
                                 <td class="p-2">
                                     <div class="text-left">
-                                      {{ $books->author->nombre_autor }}
+                                      {{ $products->author->nombre_autor }}
                                     </div>
                                 </td>
 
@@ -86,7 +86,7 @@
                                         <div class="flex justify-center">
 
                                             {{-- editar --}}
-                                            <a href="{{ route('books.edit',$books->id) }}">
+                                            <a href="{{ route('products.edit',$products->id) }}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                                     <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                                                 </svg>
@@ -97,7 +97,7 @@
 
                               {{-- seccion eliminar --}}
                                 <td class="p-2">
-                                    <form action="{{ route('books.destroy',$books->id) }}" method="POST" class="delete-book">
+                                    <form action="{{ route('products.destroy',$products->id) }}" method="POST" class="delete-product">
                                         <div class="flex justify-center">
                                             <button >
                                                 @csrf
@@ -123,7 +123,7 @@
 
              {{-- paginacion --}}
              <div class="m-10">
-                {{ $book->links() }}
+                {{ $product->links() }}
             </div>
 @endsection
 
@@ -172,7 +172,7 @@
 <script type="text/javascript">
 
 
-    $('.delete-book').submit(function(e){
+    $('.delete-product').submit(function(e){
 
       //previene el comportamiento por defecto del formulario
       e.preventDefault();
