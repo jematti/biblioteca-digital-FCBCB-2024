@@ -7,7 +7,7 @@
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 bg-white">
 
         <div class="flex justify-center items-center text-lg font-bold">
-            Estado del pedido:
+            Estado de la Orden de Compra:
             @switch($order->estado)
             @case(1)
                <span class="font-bold p-1  mx-2 text-white  rounded-lg bg-orange-500">Pendiente</span>

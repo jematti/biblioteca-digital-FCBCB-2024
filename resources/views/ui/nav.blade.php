@@ -38,7 +38,7 @@
             </svg>
 
 
-            <span>Ordenes</span>
+            <span>Pedidos</span>
         </a>
 
         <a href="{{ route('repository.index') }}" class="flex items-center space-x-1 rounded-md px-2 py-3 hover:bg-gray-100 hover:text-blue-600">
@@ -98,32 +98,6 @@
                 </div>
             </div>
             {{-- fin de seccion de libros --}}
-
-            {{-- souvenirs --}}
-            {{-- <div x-data="{ activeAccordion: false }">
-                    <h3>
-                        <button @click="activeAccordion = !activeAccordion" class="flex items-center w-full p-6 text-white bg-custom-100 rounded-lg">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
-                            </svg>
-                            <h2 class="px-2">Souvenirs</h2>
-
-                            <span :class="{ '-rotate-180': activeAccordion }" class="transition" aria-hidden="true">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                                </svg>
-                            </span>
-                        </button>
-                    </h3>
-
-                    <div x-show="activeAccordion" x-collapse class="mt-4">
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Debitis vitae
-                            cum non labore itaque veniam exercitationem excepturi dolorum
-                            repellendus praesentium!
-                        </p>
-                    </div>
-                </div> --}}
         </div>
 
     </div>

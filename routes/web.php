@@ -88,8 +88,8 @@ Route::get('search', SearchController::class)->name('search');
 
 //Rutas de prueba
 Route::get('/pruebas', function () {
-    //  return view('pruebas.prueba2');
-    Cart::destroy();
+     return view('pruebas.prueba2');
+    // Cart::destroy();
 });
 
 //Ruta para autenticación y registro

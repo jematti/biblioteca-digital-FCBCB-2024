@@ -93,7 +93,7 @@
         <button
                 onclick="location.href = '{{ route('orders.pay',$order) }}'"
                 class="w-full px-16 bg-red-500 hover:bg-red-400 text-white font-bold py-2 rounded-lg ">
-                Confirmación de  Pedido
+                Confirmación de Compra
         </button>
 
         {{-- <button

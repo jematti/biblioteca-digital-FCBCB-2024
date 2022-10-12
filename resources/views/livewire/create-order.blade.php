@@ -225,7 +225,7 @@
 
         {{-- lista de resumen de pedidos --}}
         <div class="shadow-lg bg-white text-lg  p-4 rounded-lg row-span-2 ">
-            <p class="my-3 font-bold text-lg text-black">5) Resumen de tu pedido</p>
+            <p class="my-3 font-bold text-lg text-black">5) Resumen de tu Orden de Compra</p>
             <div class="max-h-80 overflow-y-auto">
                 <ul>
                     @forelse (Cart::content() as $item)
@@ -273,7 +273,7 @@
 
             {{-- boton para confirmar pedido --}}
             <button wire:loading.attr="disabled" wire:target="create_order" wire:click="create_order" class="w-full px-16 bg-red-500 hover:bg-red-400 text-white font-bold py-2 mt-15 rounded-lg ">
-                Realizar Pedido
+                Realizar Compra
             </button>
             {{-- fin de seccion boton de confirmar pedido --}}
         </div>
