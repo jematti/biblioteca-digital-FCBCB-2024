@@ -95,10 +95,11 @@
                 <span class="font-semibold">Numero de Orden:</span>
                 {{ $order->id }}
             </p>
+            <button onclick="location.href = '{{ route('orderscreate.edit',$order->id) }}'" class="btn btn-sm btn-outline-danger py-0">Edit</button>
             {{-- boton enlace para ir a pagar --}}
             @if ($order->estado == 1)
             <button
-                onclick="location.href = '{{ route('orders.payment',$order) }}'"
+                onclick="location.href = '{{ route('orders.payment',$order->id) }}'"
                 class="ml-auto px-16 bg-red-500 hover:bg-red-400 text-white font-bold py-2 rounded-lg ">
                 Adjuntar Pago
             </button>

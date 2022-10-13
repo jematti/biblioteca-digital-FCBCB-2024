@@ -90,6 +90,16 @@
             </div>
             {{-- fin de iconose de estado de pedido --}}
 
+
+         @if($order->estado_facturacion == 100 and ( $order->estado == 3 || $order->estado == 4))
+
+         <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative my-2" role="alert">
+            <strong class="font-bold">¡Alerta!</strong><br>
+            <span class="block sm:inline">El proceso de facturación no fue realizado (Debe llenarse el Nro. de factura)</span>
+          </div>
+         @endif
+
+
             {{-- cambiar el estado de la orden --}}
             <div class="bg-white rounded-lg shadow-lg px-6 py-4 mb-6 border-2 border-blue-500">
                 <p class="text-gray-700 uppercase font-bold">
@@ -195,7 +205,7 @@
                             @error('observacion')
                             border-red-500
                             @enderror"
-                            id="observacion" name="observacion" wire:model.defer="observacion" placeholder="Motivo de la Observacion/Anulación de la Orden"
+                            id="observacion" name="observacion" wire:model.defer="observacion" placeholder="Motivo de la Observacion /Anulación / de la Orden"
                             rows="3">
                             {{ $observacion}}
                             </textarea>
@@ -207,7 +217,7 @@
                     {{-- fin de seccion de caja  de texto --}}
 
                     <div class="flex mt-2 ">
-                        <button type="submit" class="ml-auto bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg ">
+                        <button type="submit" class="ml-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg ">
                             Actualizar orden
                         </button>
                     </div>
@@ -299,15 +309,11 @@
                 <div class="grid grid-cols-2 gap-6">
                     <div class="border-r border-gray-400">
                         <p class="text-lg font-semibold uppercase text-blue-500">Envío</p>
-                        @if ($order->tipo_envio == 2)
-                        <p class="text-base">Los Libros deben ser recogidos en tienda</p>
-                        {{-- direccion de la tiendas donde se ubican los libros --}}
-                        <p class="text-base">Calle falsa 123</p>
-                        @else
+
                         {{-- direccion donde se enviaran los pedidos --}}
                         <p class="text-base font-semibold">Los Libros seran envíados a:</p>
                         <p class="text-lg ">{{ $order->direccion }}</p>
-                        @endif
+
                     </div>
 
                     <div>

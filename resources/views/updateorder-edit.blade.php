@@ -3,6 +3,6 @@
 
 @section('contenido')
 
-    @livewire('create-order')
+    @livewire('edit-order',['order' => $order])
 
 @endsection

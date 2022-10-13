@@ -60,6 +60,8 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 
     //ruta de ordenes
     Route::get('/orderscreate', [CreateOrderController::class, 'index'])->name('orderscreate.index');
+    Route::get('/orderscreate/{order}/edit', [CreateOrderController::class, 'edit'])->name('orderscreate.edit');
+    // Route::post('/subjects/update/{id}', 'SubjectsController@update')->name('orderscreate.update');
 
     //para mostrar el pedido ya finalizado
     Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
