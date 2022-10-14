@@ -62,7 +62,7 @@
                         NIT
                     </label>
 
-                    <input type="text" wire:model.defer="tipo_pago" class="rounded-lg block shadow-sm w-full text-sm p-2.5 border @error('nit_factura') border-red-500 @enderror " placeholder="Ingrese NIT" id="nit_factura" name="nit_factura" value="{{old('nit_factura')}}" />
+                    <input type="text" wire:model.defer="nit_factura" class="rounded-lg block shadow-sm w-full text-sm p-2.5 border @error('nit_factura') border-red-500 @enderror " placeholder="Ingrese NIT" id="nit_factura" name="nit_factura" value="{{old('nit_factura')}}" />
 
                     @error('nit_factura')
                     <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
@@ -146,9 +146,9 @@
                     </div>
                 </label>
 
-                <input id="imagen_deposito" name="imagen_deposito" type="file" wire:model.defer="imagen_deposito" class="rounded-lg block shadow-sm w-full text-sm p-2 border @error('imagen_deposito') border-red-500 @enderror"  value="{{old('imagen_deposito')}}" accept=".jpg, .jpeg, .png, .pdf" />
+                <input id="imagen_nueva" name="imagen_nueva" type="file" wire:model.defer="imagen_nueva" class="rounded-lg block shadow-sm w-full text-sm p-2 border @error('imagen_nueva') border-red-500 @enderror"  value="{{old('imagen_nueva')}}" accept=".jpg, .jpeg, .png, .pdf" />
 
-                @error('imagen_deposito')
+                @error('imagen_nueva')
                 <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
                 @enderror
             </div>
@@ -200,14 +200,14 @@
 
                         <select class=" w-full border border-gray-500  rounded  focus:outline-none focus:bg-white focus:border-gray-500" wire:model="ciudad_id" id="ciudad_id" name="ciudad_id">
 
-                            <option value="" disabled selected>- Selecciona tu Ciudad -</option>
-                            @foreach ( $ciudades as $ciudad )
-                            <option {{ old('ciudad_id') == $ciudad->id ? 'selected' : '' }} value="{{ $ciudad->id}}">
-                                {{ $ciudad->nombre_ciudad }}
-                            </option>
-                            @endforeach
+                            <option  disabled selected>- Selecciona tu Ciudad -</option>
 
+                                @foreach ( $ciudades as $ciudad_edit )
 
+                                <option {{ $ciudad_id == $ciudad_edit->id ? 'selected' : '' }} value="{{ $ciudad_edit->id}}">
+                                    {{ $ciudad_edit->nombre_ciudad }}
+                                </option>
+                                @endforeach
                         </select>
                         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                             <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -228,7 +228,7 @@
             <p class="my-3 font-bold text-lg text-black">5) Resumen de tu Orden de Compra</p>
             <div class="max-h-80 overflow-y-auto">
                 <ul>
-                    @forelse (Cart::content() as $item)
+                    @forelse ($items as $item)
 
                     <li class="flex  border-gray-200">
                         <img src="{{ asset('uploads').'/'.$item->options->imagen}}" alt="imagen de busqueda" class="w-16 h-12 m-2 object-cover">
@@ -250,13 +250,13 @@
             <div class="text-gray-700 p-2">
                 <p class="flex justify-between items-center">
                     Subtotal
-                    <span class="font-semibold">{{ Cart::subtotal() }} Bs</span>
+                    <span class="font-semibold">{{ $subtotal }} Bs</span>
                 </p>
 
                 <p class="flex justify-between items-center">
                     Envio
-                    <span class="font-semibold">
-                        {{ $costo_envio }} Bs
+                    <span class="font-semibold" >
+                         {{ $costo_envio}}
                     </span>
                 </p>
 
@@ -265,15 +265,15 @@
                 <p class="flex justify-between items-center font-semibold">
                     Total
                     <span class="text-lg">
-                        {{ Cart::subtotal() + $costo_envio}} Bs
+                        {{ $subtotal + $costo_envio}} Bs
                     </span>
                 </p>
 
             </div>
 
             {{-- boton para confirmar pedido --}}
-            <button wire:loading.attr="disabled" wire:target="create_order" wire:click="create_order" class="w-full px-16 bg-red-500 hover:bg-red-400 text-white font-bold py-2 mt-15 rounded-lg ">
-                Realizar Compra
+            <button wire:loading.attr="disabled" wire:target="editOrder" wire:click="editOrder" class="w-full px-16 bg-red-500 hover:bg-red-400 text-white font-bold py-2 mt-15 rounded-lg ">
+                Confirmar Compra
             </button>
             {{-- fin de seccion boton de confirmar pedido --}}
         </div>

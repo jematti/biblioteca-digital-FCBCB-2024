@@ -160,7 +160,6 @@
         <div class="shadow-lg bg-white text-lg  p-2 rounded-lg">
             <p class="my-3 font-bold text-lg text-black">4) Envío a domicilio</p>
             <div>
-
                 <div class="px-6 pb-6 mt-2 ">
                     <hr>
                     <div class="mb-2">
@@ -206,7 +205,6 @@
                                 {{ $ciudad->nombre_ciudad }}
                             </option>
                             @endforeach
-
 
                         </select>
                         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
