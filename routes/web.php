@@ -75,8 +75,12 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     //ruta para ver mis ordenes
     Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
 
-    //descargar imagenes
+    //descargar imagenes de depositos
     Route::get('/download/{file}', [OrderController::class, 'download'])->name('orders.download');
+
+    //descargar imagen  de QR
+    Route::get('/download', [CreateOrderController::class, 'download'])->name('qr.download');
+
 });
 
 //CRUD Autor

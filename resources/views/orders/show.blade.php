@@ -95,22 +95,19 @@
                 <span class="font-semibold">Numero de Orden:</span>
                 {{ $order->id }}
             </p>
-            <button onclick="location.href = '{{ route('orderscreate.edit',$order->id) }}'" class="btn btn-sm btn-outline-danger py-0">Edit</button>
-            {{-- boton enlace para ir a pagar --}}
-            @if ($order->estado == 1)
-            <button
-                onclick="location.href = '{{ route('orders.payment',$order->id) }}'"
-                class="ml-auto px-16 bg-red-500 hover:bg-red-400 text-white font-bold py-2 rounded-lg ">
-                Adjuntar Pago
-            </button>
-            @endif
+
         </div>
 
         @if($order->estado == 1 || $order->estado == 5 || $order->observacion != "")
         <div class="bg-white rounded-lg shadow-lg px-6 py-4 mb-6 border border-red-500">
-            <p class="text-gray-700 uppercase">
+            <p class="text-gray-700 ">
                 <span class="font-bold text-red-500">Observación:</span>
-                {{$order->observacion}}
+                @if ($order->observacion)
+                    {{$order->observacion}}
+                @else
+                    NINGUNA
+                @endif
+
             </p>
         </div>
         @endif

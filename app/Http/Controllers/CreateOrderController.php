@@ -17,4 +17,9 @@ class CreateOrderController extends Controller
     {
        return view('updateorder-edit',['order' => $order]);
     }
+
+    public function download(){
+        $pathtoFile = public_path('img/qrprueba.jpeg');
+        return response()->download($pathtoFile);
+    }
 }

@@ -10,7 +10,7 @@
                         Nombre Completo
                     </label>
 
-                    <input type="text" wire:model.defer="nombre_contacto" class="rounded-lg block shadow-sm w-full text-sm p-2.5 border @error('nombre_contacto') border-red-500 @enderror" placeholder="Ingrese el nombre completo" id="nombre_contacto" name="nombre_contacto"  value="{{old('nombre_contacto')}}" />
+                    <input type="text" wire:model.defer="nombre_contacto" class="rounded-lg block shadow-sm w-full text-sm p-2.5 border @error('nombre_contacto') border-red-500 @enderror" placeholder="Ingrese el nombre completo" id="nombre_contacto" name="nombre_contacto" value="{{old('nombre_contacto')}}" />
 
                     @error('nombre_contacto')
                     <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
@@ -22,7 +22,7 @@
                         Correo electronico. <span class="text-red-500 text-sm font-bold"> El correo electrónico será utilizado para recibir la facturación.*</span>
                     </label>
 
-                    <input type="email" wire:model.defer="correo_contacto" class="rounded-lg shadow-sm w-full text-sm p-2.5  border @error('correo_contacto') border-red-500 @enderror" placeholder="Ingrese el su correo actual" id="correo_contacto" name="correo_contacto"  value="{{old('correo_contacto')}}" />
+                    <input type="email" wire:model.defer="correo_contacto" class="rounded-lg shadow-sm w-full text-sm p-2.5  border @error('correo_contacto') border-red-500 @enderror" placeholder="Ingrese el su correo actual" id="correo_contacto" name="correo_contacto" value="{{old('correo_contacto')}}" />
 
                     @error('correo_contacto')
                     <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
@@ -34,7 +34,7 @@
                         Telefono/Celular
                     </label>
 
-                    <input type="text" wire:model.defer="telefono_contacto" class="rounded-lg shadow-sm w-full text-sm p-2.5  border @error('telefono_contacto') border-red-500 @enderror" placeholder="Ingrese el su Telefono/Celular vigente" id="telefono_contacto" name="telefono_contacto"  value="{{old('telefono_contacto')}}" />
+                    <input type="text" wire:model.defer="telefono_contacto" class="rounded-lg shadow-sm w-full text-sm p-2.5  border @error('telefono_contacto') border-red-500 @enderror" placeholder="Ingrese el su Telefono/Celular vigente" id="telefono_contacto" name="telefono_contacto" value="{{old('telefono_contacto')}}" />
 
                     @error('telefono_contacto')
                     <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
@@ -50,7 +50,7 @@
                         Razon Social <span class="text-red-500 text-sm font-bold">(introduzca nombre para la factura)*</span>
                     </label>
 
-                    <input type="text" wire:model.defer="nombre_factura" class="rounded-lg block shadow-sm w-full text-sm p-2.5 border @error('nombre_factura') border-red-500 @enderror" placeholder="Ingresa el Nombre/Razon Social" id="nombre_factura" name="nombre_factura"  value="{{old('nombre_factura')}}" />
+                    <input type="text" wire:model.defer="nombre_factura" class="rounded-lg block shadow-sm w-full text-sm p-2.5 border @error('nombre_factura') border-red-500 @enderror" placeholder="Ingresa el Nombre/Razon Social" id="nombre_factura" name="nombre_factura" value="{{old('nombre_factura')}}" />
 
                     @error('nombre_factura')
                     <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
@@ -77,52 +77,57 @@
             <p class="my-3 font-bold text-lg text-black">3) Elige Método de Pago </p>
             <div>
                 <label class="px-3 py-2 flex items-center">
-                    <input x-model="tipo_pago" { old('tipo_pago.1')=="1" ? 'checked=' .'"'.'checked'.'"' : '' }  type="radio" value="1" name="tipo_pago[1]" class="text-gray-600">
+                    <input x-model="tipo_pago" { old('tipo_pago.1')=="1" ? 'checked=' .'"'.'checked'.'"' : '' } type="radio" value="1" name="tipo_pago[1]" class="text-gray-600">
                     @error('tipo_pago')
                     <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
                     @enderror
 
                     <span class="ml-2 text-gray-700">
-                        Lector de Qr
+                        QR-SIMPLE
                     </span>
                 </label>
             </div>
 
             <div class="p-2 mt-2 hidden" :class="{'hidden': tipo_pago != 1 }">
-                <div class="flex flex-col items-center">
-                    <p class="font-semibold text-lg">Realiza pagos mediante el codigo QR "BANCO UNION"</p>
-                    <img class="rounded-xl h-52 px-2 align-middle w-60 " alt="codigo QR aplicacion wayruru" src="{{ asset('img/qrprueba.jpeg')}}">
+                <div class="flex items-center ml-3">
+                    <p class="font-semibold text-base">
+                        <i class="fa-solid fa-chevron-right"></i>
+                        Info. Codigo QR
+                    </p>
+                    <button class="ml-2 bg-transparent hover:bg-green-600 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-700 hover:border-transparent rounded" type="button" onclick="toggleModal('modal-id-qr')">
+                        <i class="fa-solid fa-qrcode fa-xl"></i>
+                        Pago QR
+                    </button>
                 </div>
             </div>
 
             <div>
                 <label class="px-3 py-2 flex items-center">
-                    <input x-model="tipo_pago" { old('tipo_pago.2')=="2" ? 'checked=' .'"'.'checked'.'"' : '' }  type="radio" value="2" name="tipo_pago[2]" class="text-gray-600">
+                    <input x-model="tipo_pago" { old('tipo_pago.2')=="2" ? 'checked=' .'"'.'checked'.'"' : '' } type="radio" value="2" name="tipo_pago[2]" class="text-gray-600">
 
                     <span class="ml-2 text-gray-700">
-                        Deposito
+                        Deposito Banco Union
                     </span>
 
                 </label>
             </div>
 
-            <div class="px-6 pb-6 mt-2 hidden " :class="{'hidden': tipo_pago != 2 }">
-                <div class="flex items-center flex-wrap ">
-                    <p class="font-semibold text-lg">Deposito al "BANCO UNION"</p>
-                    <p class="text-sm">
-                        Los datos para las transferencias bancarias son: <br>
-                        -Nombre: Fundacion BCB <br>
-                        -NIT: 000 000 000<br>
-                        Cajas de ahorro en moneda Nacional:<br>
-                        Banco Unión: 000 - 000 - 000 - 000 - 00<br>
-                        <br>
-                        Una vez hecha la transferencia, envíanos una foto del comprobante al chat en vivo,<br>
-                        al número de Whatsapp +591 777 77 777 o al correo:
-                        fundacion@fundacionculturalbcb.gob.bo con tu número de pedido para enviártelo.
+            <div class="p-2 mt-2 hidden " :class="{'hidden': tipo_pago != 2 }">
+                <div class="flex items-center ml-3">
+                    <p class="font-semibold text-base">
+                        <i class="fa-solid fa-chevron-right"></i>
+                        Info. Deposito
                     </p>
+                    <button class="ml-2 bg-transparent hover:bg-green-600 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-700 hover:border-transparent rounded" type="button" onclick="toggleModal('modal-id-deposito')">
+                        <i class="fa-sharp fa-solid fa-money-bill-1-wave fa-xl"></i>
+                        Efectuar Deposito
+                    </button>
                 </div>
             </div>
             <hr>
+
+            <p class="text-red-500 text-center font-semibold italic text-sm"><i class="fa-solid fa-circle-info"></i>¡Una vez hecha la transferencia, suba el comprobante de pago!</p>
+            {{-- subir imagen de comprobante de pago --}}
             <div class="mb-2">
                 <label class="text-base " for="imagen_factura">
                     <div class="flex my-2">
@@ -146,12 +151,13 @@
                     </div>
                 </label>
 
-                <input id="imagen_deposito" name="imagen_deposito" type="file" wire:model.defer="imagen_deposito" class="rounded-lg block shadow-sm w-full text-sm p-2 border @error('imagen_deposito') border-red-500 @enderror"  value="{{old('imagen_deposito')}}" accept=".jpg, .jpeg, .png, .pdf" />
+                <input id="imagen_deposito" name="imagen_deposito" type="file" wire:model.defer="imagen_deposito" class="rounded-lg block shadow-sm w-full text-sm p-2 border @error('imagen_deposito') border-red-500 @enderror" value="{{old('imagen_deposito')}}" accept=".jpg, .jpeg, .png, .pdf" />
 
                 @error('imagen_deposito')
                 <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
                 @enderror
             </div>
+            {{-- fin de seccion de comprobante de pago --}}
 
         </div>
         {{-- fin formulario de metodo de pago --}}
@@ -184,7 +190,7 @@
                             m-0
                             focus:text-neutral-700 focus:bg-white focus:border-gray-600 focus:outline-none
                             @error('direccion') border-red-500 @enderror
-                        " id="direccion" name="direccion" wire:model.defer="direccion" placeholder="Dirección donde le llegara el pedido"  value="{{old('direccion')}}" rows="3"></textarea>
+                        " id="direccion" name="direccion" wire:model.defer="direccion" placeholder="Dirección donde le llegara el pedido" value="{{old('direccion')}}" rows="3"></textarea>
 
                         @error('direccion')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
@@ -277,4 +283,103 @@
         </div>
         {{-- fin lista de resumen de pedidos --}}
     </div>
+
+
+    {{-- Codigo Modal para el pago con codigo QR--}}
+    <div class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center " id="modal-id-qr">
+        <div class="relative mx-auto ">
+            <!--content modal-->
+            <div class="border-0 rounded-lg shadow-lg relative flex flex-col bg-white outline-none focus:outline-none">
+
+                <!--body modal-->
+                <div class="md:flex ">
+                    <div class="w-96 px-2 text-justify">
+                        <img class="align-middle md:max-w-md md:w-full w-32 " alt="codigo QR aplicacion wayruru" src="{{ asset('img/bancounionlogo.png')}}">
+                        <p>
+                            Ahora puede escanear el código QR para realizar el pago desde la aplicación móvil de su Entidad Financiera.
+                        </p>
+                        <br>
+                        Se procederá a realizar el siguiente pago.
+                        <p class="text-3xl my-4">
+                            Total a Pagar: <span class="font-semibold">
+                                {{ Cart::subtotal() + $costo_envio}} Bs
+                            </span>
+                        </p>
+                        <a class=" bg-sky-500 hover:bg-sky-700 text-center text-white font-bold py-2 px-4 rounded-lg" href="{{ route('qr.download')}}" target="_blank" rel="noopener noreferrer">
+                            DESCARGAR QR
+                        </a>
+                        <p class="font-semibold py-2 text-center text-red-500 italic">¡Una vez hecha la transferencia, Guarda el comprobante de pago y súbalo en el formulario!</p>
+                    </div>
+                    <div class="md:mt-0 mt-5 object-center">
+                        <img class="md:object-cover  md:max-w-md h-56 w-56  md:h-full md:w-full align-middle " alt="codigo QR aplicacion wayruru" src="{{ asset('img/qrprueba.jpeg')}}">
+                    </div>
+                </div>
+
+
+                <!--footer del modal-->
+                <div class="flex items-center justify-end p-2 border-t border-solid border-slate-200 rounded-b">
+
+                    <button class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" onclick="toggleModal('modal-id-qr')">
+                        Cerrar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id-qr-backdrop"></div>
+    {{-- fin modal de pago QR--}}
+
+    {{-- Codigo Modal para el pago con DEPOSITO--}}
+    <div class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center " id="modal-id-deposito">
+        <div class="relative mx-auto ">
+            <!--content modal-->
+            <div class="border-0 rounded-lg shadow-lg relative flex flex-col bg-white outline-none focus:outline-none">
+
+                <!--body modal-->
+                <div class="md:flex">
+                    <div class="w-96 px-2">
+                        <img class="align-middle md:max-w-md md:w-full w-32 " alt="codigo QR aplicacion wayruru" src="{{ asset('img/bancounionlogo.png')}}">
+                        <div class="flex items-center flex-wrap text-lg">
+                            <p class="font-bold text-center text-xl">Deposito "BANCO UNION"</p> <br>
+                            <p> Los datos para las transferencias bancarias son: </p>
+                            <p><span class="font-bold"> Nombre:</span>Fundacion Cultural BCB</p>
+                            <p><span class="font-bold">NIT:</span> 000 000 000</p>
+                            <p><span class="font-bold">Cajas de ahorro en moneda Nacional "Banco Unión":</span> 000 - 000 - 000 - 000 - 00</p>
+                            <p><span class="font-bold">Correo de Contacto:</span>
+                                fundacion@fundacionculturalbcb.gob.bo </p>
+                            <p><span class="font-bold">Telefono:</span>(+591) 2 424148 - 2 418419</p>
+                        </div>
+                        <p class="text-3xl my-4 border-t-2 border-black">
+                            Total a Pagar: <span class="font-semibold">
+                                {{ Cart::subtotal() + $costo_envio}} Bs
+                            </span>
+                            <p class="border-y-2 text-red-500 text-center border-black font-semibold italic">¡Una vez hecha el deposito, Guarda el comprobante de pago y súbalo en el formulario!</p>
+                        </p>
+
+                    </div>
+                </div>
+
+
+                <!--footer del modal-->
+                <div class="flex items-center justify-end p-2 border-t border-solid border-slate-200 rounded-b">
+
+                    <button class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" onclick="toggleModal('modal-id-deposito')">
+                        Cerrar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id-deposito-backdrop"></div>
+    {{-- fin modal de pago DEPOSITO--}}
 </div>
+
+<script type="text/javascript">
+    function toggleModal(modalID) {
+        document.getElementById(modalID).classList.toggle("hidden");
+        document.getElementById(modalID + "-backdrop").classList.toggle("hidden");
+        document.getElementById(modalID).classList.toggle("flex");
+        document.getElementById(modalID + "-backdrop").classList.toggle("flex");
+    }
+
+</script>
