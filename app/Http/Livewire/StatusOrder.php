@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 
 use Livewire\Component;
+use App\Notifications\OrderNotification;
 
 class StatusOrder extends Component
 {
@@ -46,7 +47,8 @@ class StatusOrder extends Component
         $this->validate($rules);
         $this->order->observacion = $this->observacion;
         $this->order->save();
-        session()->flash('message', $this->order->estado);
+        $this->order->user->notify(new OrderNotification($this->order->id,$this->order->user_id));
+        // session()->flash('message', $this->order->estado);
 
     }
     public function render()

@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\City;
 use App\Models\Order;
+use App\Notifications\OrderNotification;
 use Livewire\Component;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
@@ -116,6 +117,9 @@ class CreateOrder extends Component
         }
         //limpiar carrito
         Cart::destroy();
+
+        //crear notificación de orden de compra
+        $order->user->notify(new OrderNotification($order->id,$order->user_id));
 
         return redirect()->route('orders.payment',$order);
     }

@@ -17,6 +17,7 @@ use App\Http\Controllers\CreateOrderController;
 use App\Http\Controllers\ShoppingCartController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\AdminOrderController;
+use App\Http\Controllers\NotificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -80,6 +81,9 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 
     //descargar imagen  de QR
     Route::get('/download', [CreateOrderController::class, 'download'])->name('qr.download');
+
+    //Notificaciones
+    Route::get('/noti', [NotificationController::class])->name('noti');
 
 });
 
