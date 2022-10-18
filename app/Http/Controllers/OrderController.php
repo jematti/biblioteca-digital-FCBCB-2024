@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use App\Notifications\OrderNotification;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
 class OrderController extends Controller
@@ -52,6 +54,11 @@ class OrderController extends Controller
 
         $order->estado = 2;
         $order->save();
+        //crear notificación de orden de compra para administración
+        $admin = User::find(1);
+        $admin->notify(new OrderNotification($order->id,1,$order->estado));
+        // crear notificacion para el usuario de orden recibida
+        $order->user->notify(new OrderNotification($order->id,$order->user_id,$order->estado));
         return redirect()->route('orders.show',$order);
     }
 

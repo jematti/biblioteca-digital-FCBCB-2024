@@ -83,7 +83,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/download', [CreateOrderController::class, 'download'])->name('qr.download');
 
     //Notificaciones
-    Route::get('/noti', [NotificationController::class])->name('noti');
+    Route::get('/notification', NotificationController::class)->name('notification');
 
 });
 

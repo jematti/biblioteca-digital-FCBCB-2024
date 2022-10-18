@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\City;
+use App\Models\User;
 use App\Models\Order;
 use Livewire\Component;
 use Illuminate\Support\Str;
@@ -47,8 +48,7 @@ class EditOrder extends Component
         'nombre_factura' => 'required',
         'nit_factura' => 'required',
         'ciudad_id'=> 'required',
-        'direccion'=> 'required',
-        'imagen_nueva' => 'required'
+        'direccion'=> 'required'
     ];
 
     public function mount(Order $order){
@@ -56,7 +56,7 @@ class EditOrder extends Component
         $this->order_id = $order->id;
         $this->ciudades = City::all();
         $this->nombre_contacto = $order->nombre_contacto;
-        $this->correo_contacto = $order->correo_contacto;
+        $this->correo_contacto = auth()->user()->email;
         $this->telefono_contacto = $order->telefono_contacto;
         $this->nombre_factura = $order->nombre_factura;
         $this->nit_factura = $order->nit_factura;
@@ -82,30 +82,11 @@ class EditOrder extends Component
 
         $datos = $this->validate($rules);
 
-        // si hay una nueva imagen
-        $imagen=$this->imagen_nueva;
-
-        //uuid para el nombre del archivo unico
-        $nombreImagen = Str::uuid() . '.' . $imagen->extension();
-
-        //almacenar la imagen en el servidor
-        $imagenServidor = Image::make($imagen);
-
-        //efectos de intervention image
-        $imagenServidor->fit(750,1050);
-
-        $imagenPath = public_path('depositos').'/'. $nombreImagen;
-        //solo guarda la ruta en la base de datos y no la imagen
-        $imagenServidor->save($imagenPath);
-
-        // fin de seccion guardar imagen
-
         //encontrar la vacante a editar
         $order = Order::find($this->order_id);
 
         //asignar los valores
         $order->nombre_contacto = $datos['nombre_contacto'];
-        $order->correo_contacto = $datos['correo_contacto'];
         $order->telefono_contacto = $datos['telefono_contacto'];
         $order->nombre_factura = $datos['nombre_contacto'];
         $order->nit_factura = $datos['nit_factura'];
@@ -115,10 +96,36 @@ class EditOrder extends Component
         $order->city_id = $datos['ciudad_id'];
         $order->direccion = $datos['direccion'];
 
-        //guardar ruta de la imagen en la base de datos
-        $order->imagen_deposito = $nombreImagen;
+        if ($this->imagen_nueva) {
+         // si hay una nueva imagen
+         $imagen=$this->imagen_nueva;
+
+         //uuid para el nombre del archivo unico
+         $nombreImagen = Str::uuid() . '.' . $imagen->extension();
+
+         //almacenar la imagen en el servidor
+         $imagenServidor = Image::make($imagen);
+
+         //efectos de intervention image
+         $imagenServidor->fit(750,1050);
+
+         $imagenPath = public_path('depositos').'/'. $nombreImagen;
+         //solo guarda la ruta en la base de datos y no la imagen
+         $imagenServidor->save($imagenPath);
+         // fin de seccion guardar imagen
+
+         //guardar ruta de la imagen en la base de datos
+         $order->imagen_deposito = $nombreImagen;
+        }
+
 
         $order->save();
+
+        //actualizar correo si es necesario
+        $usuario = User::find(auth()->user()->id);
+        $usuario->email = $datos['correo_contacto'];;
+        $usuario->save();
+
         //redireccionar
         return redirect()->route('orders.index');
 

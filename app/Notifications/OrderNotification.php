@@ -16,10 +16,11 @@ class OrderNotification extends Notification
      *
      * @return void
      */
-    public function __construct($id_order, $usuario_id)
+    public function __construct($id_order, $usuario_id,$estado)
     {
         $this->id_order = $id_order;
         $this->usuario_id = $usuario_id;
+        $this->estado = $estado;
     }
 
     /**
@@ -41,11 +42,47 @@ class OrderNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        $url = url('/candidatos/'.$this->id_order);
-        return (new MailMessage)
-                    ->line('Has recibido una nueva orden de compra en la tienda.')
-                    ->action('Ver Notificaciones',$url)
-                    ->line('Gracias por utilizar la Tienda Virtual de la FC-BCB');
+        if ($this->usuario_id == 1) {
+            $url = url('/admin/orders/'.$this->id_order);
+        }else{
+            $url = url('/orders/'.$this->id_order);
+        }
+
+
+        switch ($this->estado) {
+                case 1:
+                    //pendiente
+                    return (new MailMessage)
+                        ->line('')
+                        ->action('Ver Estado de Orde de Compra',$url)
+                        ->line('Gracias por utilizar la Tienda Virtual de la FC-BCB');
+                    break;
+
+                case 2:
+                    //recibido
+                    return (new MailMessage)
+                        ->line('Se ha recibido una nueva orden de compra en la Tienda Virtual de la FC-BCB.')
+                        ->action('Ver Estado de Orden de Compra',$url)
+                        ->line('Gracias por utilizar la Tienda Virtual de la FC-BCB');
+                    break;
+                case 4:
+                    //enviado
+                    return (new MailMessage)
+                        ->line('¡Su orden de compra ha sido enviada!')
+                        ->action('Ver Estado de Orden de Compra',$url)
+                        ->line('Gracias por utilizar la Tienda Virtual de la FC-BCB');
+                    break;
+                case 5:
+                    //anulado
+                    return (new MailMessage)
+                        ->line('!Su orden de Compra ha sido Cancelada¡')
+                        ->action('Ver Estado de Orden de Compra',$url)
+                        ->line('Gracias por utilizar la Tienda Virtual de la FC-BCB');
+                     break;
+            default:
+                break;
+        }
+
     }
 
     /**
@@ -66,7 +103,8 @@ class OrderNotification extends Notification
     {
         return [
             'id_order' => $this->id_order,
-            'usuario_id' => $this->usuario_id
+            'usuario_id' => $this->usuario_id,
+            'estado' => $this->estado
         ];
     }
 }

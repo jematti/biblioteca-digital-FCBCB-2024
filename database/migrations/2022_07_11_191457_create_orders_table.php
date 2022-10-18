@@ -19,7 +19,6 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('nombre_contacto');
-            $table->string('correo_contacto');
             $table->string('telefono_contacto');
             $table->string('nombre_factura');
             $table->string('nit_factura');

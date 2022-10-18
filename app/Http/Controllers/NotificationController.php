@@ -14,10 +14,14 @@ class NotificationController extends Controller
      */
     public function __invoke(Request $request)
     {
-        dd('desde');
-        // $notifications = auth()->user()->unreadNotifications;
-        // return view('notifications.index',[
-        //     'notifications' => $notifications
-        // ]);
+
+        $notifications = auth()->user()->unreadNotifications;
+
+        //limpiar notificaciones
+        auth()->user()->unreadNotifications->markAsRead();
+
+        return view('notifications.index',[
+            'notifications' => $notifications
+        ]);
     }
 }

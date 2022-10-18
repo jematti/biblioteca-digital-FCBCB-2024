@@ -24,7 +24,7 @@
         </div>
     </div>
     @empty
-    <p class="text-center text-gray-600"> No hay Notificaciones Nuevas</p>
+    <p class="text-center text-xl text-gray-600 mt-10  rounded-lg uppercase font-bold"><i class="fa-solid fa-circle-exclamation"></i>No hay Notificaciones Nuevas</p>
     @endforelse
 </div>
 @endsection
