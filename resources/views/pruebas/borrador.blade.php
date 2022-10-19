@@ -308,3 +308,106 @@ x-data="{open:false,menu:false, lokasi:false}">
            </div>
     </div>
   </nav>
+
+
+  /////CREATE ORDER
+  // public function edit($id){
+    //     $order = Order::where('id',$id)->first();
+
+    //     $this->order_id= $id;
+    //     $this->nombre_contacto = $order->nombre_contacto;
+    //     $this->correo_contacto = $order->nombre_contacto;
+    //     $this->telefono_contacto = $order->telefono_contacto;
+    //     $this->nombre_factura = $order->nombre_factura;
+    //     $this->nit_factura = $order->nit_factura;
+    //     $this->tipo_pago = $order->tipo_pago;
+    //     $this->costo_envio = $order->costo_envio;
+    //     $this->total = $order->costo_total;
+    //     $this->content = $order->content;
+    //     $this->ciudad_id = $order->city_id ;
+    //     $this->direccion = $order->direccion ;
+    //     $this->costo_envio = $order->costo_envio ;
+
+    //     //Seccion guardar imagen
+
+    //     $imagen = $order->imagen_deposito ;
+
+    //     //uuid para el nombre del archivo unico
+    //     $nombreImagen = Str::uuid() . '.' . $imagen->extension();
+
+    //     //almacenar la imagen en el servidor
+    //     $imagenServidor = Image::make($imagen);
+
+    //     //efectos de intervention image
+    //     $imagenServidor->fit(750,1050);
+
+    //     $imagenPath = public_path('depositos').'/'. $nombreImagen;
+    //     //solo guarda la ruta en la base de datos y no la imagen
+    //     $imagenServidor->save($imagenPath);
+
+    //     // fin de seccion guardar imagen
+
+    //     //guardar ruta de la imagen en la base de datos
+    //     $order->imagen_deposito = $nombreImagen;
+    // }
+
+    // public function update()
+    // {
+    //     $rules = $this->rules;
+
+    //     $this->validate($rules);
+    //     $order = Order::find($this->order_id);
+    //     $order->user_id = auth()->user()->id;
+    //     $order->nombre_contacto = $this->nombre_contacto;
+    //     $order->telefono_contacto = $this->telefono_contacto;
+    //     $order->nombre_factura = $this->nombre_factura;
+    //     $order->nit_factura = $this->nit_factura;
+    //     $order->tipo_pago = $this->tipo_pago;
+    //     $order->costo_envio = 0;
+    //     $order->total = $this->costo_envio + Cart::subtotal();
+    //     $order->content = Cart::content();
+    //     // si se selecciona el envio a domicilio se guarda los siguienes datos
+    //     $order->city_id = $this->ciudad_id;
+    //     $order->direccion = $this->direccion;
+    //     $order->costo_envio = $this->costo_envio;
+
+
+    //     //Seccion guardar imagen
+
+    //     $imagen = $this->imagen_deposito;
+
+    //     //uuid para el nombre del archivo unico
+    //     $nombreImagen = Str::uuid() . '.' . $imagen->extension();
+
+    //     //almacenar la imagen en el servidor
+    //     $imagenServidor = Image::make($imagen);
+
+    //     //efectos de intervention image
+    //     $imagenServidor->fit(750,1050);
+
+    //     $imagenPath = public_path('depositos').'/'. $nombreImagen;
+    //     //solo guarda la ruta en la base de datos y no la imagen
+    //     $imagenServidor->save($imagenPath);
+
+    //     // fin de seccion guardar imagen
+
+    //     //guardar ruta de la imagen en la base de datos
+    //     $order->imagen_deposito = $nombreImagen;
+
+    //     //guardar orden en la base de datos
+    //     $order->save();
+
+    //     //actualizar correo si es necesario
+    //     $usuario = User::find(auth()->user()->id)->first();
+    //     $usuario->email = $this->correo_contacto;
+    //     $usuario->save();
+
+
+    //     foreach (Cart::content() as $item) {
+    //         descontar($item);
+    //     }
+    //     //limpiar carrito
+    //     Cart::destroy();
+
+    //     return redirect()->route('orders.payment',$order);
+    // }

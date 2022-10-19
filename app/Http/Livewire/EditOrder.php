@@ -9,6 +9,7 @@ use Livewire\Component;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
 use Intervention\Image\Facades\Image;
+use App\Notifications\OrderNotification;
 
 class EditOrder extends Component
 {
@@ -26,7 +27,7 @@ class EditOrder extends Component
 
     public $ciudad_id="";
 
-    public $city_id="";
+    //public $city_id="";
 
     //datos para realizar la orden de compra
     public $nombre_contacto,$correo_contacto,$telefono_contacto,$direccion,$total,$costo_envio_edit;
@@ -36,7 +37,6 @@ class EditOrder extends Component
 
     //img del deposito
     public $imagen;
-    public $imagen_deposito;
 
     public $imagen_nueva;
 
@@ -48,7 +48,8 @@ class EditOrder extends Component
         'nombre_factura' => 'required',
         'nit_factura' => 'required',
         'ciudad_id'=> 'required',
-        'direccion'=> 'required'
+        'direccion'=> 'required',
+        'imagen_nueva' => 'nullable|image'
     ];
 
     public function mount(Order $order){
@@ -60,13 +61,14 @@ class EditOrder extends Component
         $this->telefono_contacto = $order->telefono_contacto;
         $this->nombre_factura = $order->nombre_factura;
         $this->nit_factura = $order->nit_factura;
-        $this->tipo_pago= $order->tipo_pago;
-        $this->costo_envio_edit= $order->costo_envio;
+        $this->tipo_pago = $order->tipo_pago;
+        $this->costo_envio_edit = $order->costo_envio;
         $this->total = $order->total;
         $this->content = $order->content;
         $this->ciudad_id = $order->city_id ;
         $this->direccion = $order->direccion ;
         $this->costo_envio = $order->costo_envio ;
+        $this->imagen_deposito= $order->imagen_deposito;
 
         $this->subtotal= $order->total - $order->costo_envio;
     }
@@ -88,7 +90,7 @@ class EditOrder extends Component
         //asignar los valores
         $order->nombre_contacto = $datos['nombre_contacto'];
         $order->telefono_contacto = $datos['telefono_contacto'];
-        $order->nombre_factura = $datos['nombre_contacto'];
+        $order->nombre_factura = $datos['nombre_factura'];
         $order->nit_factura = $datos['nit_factura'];
         $order->tipo_pago = $datos['tipo_pago'];
         $order->costo_envio = $this->costo_envio;
@@ -101,23 +103,23 @@ class EditOrder extends Component
          $imagen=$this->imagen_nueva;
 
          //uuid para el nombre del archivo unico
-         $nombreImagen = Str::uuid() . '.' . $imagen->extension();
+         $datos['imagen_nueva'] = Str::uuid() . '.' . $imagen->extension();
 
          //almacenar la imagen en el servidor
          $imagenServidor = Image::make($imagen);
 
-         //efectos de intervention image
-         $imagenServidor->fit(750,1050);
 
-         $imagenPath = public_path('depositos').'/'. $nombreImagen;
+         $imagenPath = public_path('depositos').'/'. $datos['imagen_nueva'];
          //solo guarda la ruta en la base de datos y no la imagen
          $imagenServidor->save($imagenPath);
          // fin de seccion guardar imagen
-
-         //guardar ruta de la imagen en la base de datos
-         $order->imagen_deposito = $nombreImagen;
         }
 
+        //guardar ruta de la imagen en la base de datos
+        $order->imagen_deposito = $datos['imagen_nueva'] ?? $order->imagen_deposito;
+
+        //cambiar el estado del pedido a recibido
+        $order->estado = 2;
 
         $order->save();
 
@@ -125,10 +127,13 @@ class EditOrder extends Component
         $usuario = User::find(auth()->user()->id);
         $usuario->email = $datos['correo_contacto'];;
         $usuario->save();
-
         //redireccionar
         return redirect()->route('orders.index');
-
+        //crear notificación de orden de compra para administración
+        $admin = User::find(1);
+        $admin->notify(new OrderNotification($order->id,1,$order->estado));
+        // crear notificacion para el usuario de orden recibida
+        $order->user->notify(new OrderNotification($order->id,$order->user_id,$order->estado));
     }
 
     public function render()

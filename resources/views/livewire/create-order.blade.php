@@ -19,7 +19,9 @@
 
                 <div class="mb-2">
                     <label class="text-base " for="correo_contacto">
-                        Correo electronico. <span class="text-red-500 text-sm font-bold"> El correo electrónico será utilizado para recibir la facturación.*</span>
+                        Confirmación de Correo electronico.
+                        <span class="text-gray-500 text-sm font-semibold italic"> (En caso de cambiar de correo,  Estos cambios se aplicara a su cuenta personal)</span><br>
+                        <span class="text-red-500 text-sm font-bold"> El correo electrónico será utilizado para recibir la facturación.*</span><br>
                     </label>
 
                     <input type="email" wire:model.defer="correo_contacto" class="rounded-lg shadow-sm w-full text-sm p-2.5  border @error('correo_contacto') border-red-500 @enderror" placeholder="Ingrese el su correo actual" id="correo_contacto" name="correo_contacto" value="{{old('correo_contacto')}}" />
@@ -125,7 +127,6 @@
                 </div>
             </div>
             <hr>
-
             <p class="text-red-500 text-center font-semibold italic text-sm"><i class="fa-solid fa-circle-info"></i>¡Una vez hecha la transferencia, suba el comprobante de pago!</p>
             {{-- subir imagen de comprobante de pago --}}
             <div class="mb-2">
@@ -283,7 +284,6 @@
         </div>
         {{-- fin lista de resumen de pedidos --}}
     </div>
-
 
     {{-- Codigo Modal para el pago con codigo QR--}}
     <div class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center " id="modal-id-qr">

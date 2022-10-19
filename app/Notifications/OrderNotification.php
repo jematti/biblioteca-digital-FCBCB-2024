@@ -53,7 +53,7 @@ class OrderNotification extends Notification
                 case 1:
                     //pendiente
                     return (new MailMessage)
-                        ->line('')
+                        ->line('Tiene una notificación de Orden de Compra pendiente')
                         ->action('Ver Estado de Orde de Compra',$url)
                         ->line('Gracias por utilizar la Tienda Virtual de la FC-BCB');
                     break;
@@ -65,7 +65,7 @@ class OrderNotification extends Notification
                         ->action('Ver Estado de Orden de Compra',$url)
                         ->line('Gracias por utilizar la Tienda Virtual de la FC-BCB');
                     break;
-                case 4:
+                case 3:
                     //enviado
                     return (new MailMessage)
                         ->line('¡Su orden de compra ha sido enviada!')
@@ -75,7 +75,7 @@ class OrderNotification extends Notification
                 case 5:
                     //anulado
                     return (new MailMessage)
-                        ->line('!Su orden de Compra ha sido Cancelada¡')
+                        ->line('¡Su orden de Compra ha sido Cancelada!')
                         ->action('Ver Estado de Orden de Compra',$url)
                         ->line('Gracias por utilizar la Tienda Virtual de la FC-BCB');
                      break;
