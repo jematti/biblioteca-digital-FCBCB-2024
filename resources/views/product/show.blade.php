@@ -79,7 +79,7 @@
         {{-- seccion ficha tecnica de libro --}}
         <section class="py-1 bg-blueGray-50">
             <div class="w-full xl:w-8/12 mb-24 xl:mb-0 px-4 mx-auto mt-10">
-                <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
+                <div class="flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
                     <div class="rounded-t mb-0 px-4 py-3 border-0">
                         <h3 class="font-semibold text-lg text-blueGray-700">Ficha técnica de {{ $product->titulo }}</h3>
                     </div>

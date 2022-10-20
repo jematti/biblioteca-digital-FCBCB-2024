@@ -58,7 +58,7 @@
                 {{-- seccion de libros --}}
                 @foreach ($products as $product)
                         <a href='{{ route('products.show', $product) }}'
-                            class="relative block bg-white border border-gray-200 rounded-lg">
+                            class="block bg-white border border-gray-200 rounded-lg">
 
                             <img loading="lazy" alt="imagen del post {{ $product->titulo }}"
                                 class="object-contain w-full sm:h-72 mt-2 h-56 hover:grow hover:shadow-lg"

@@ -115,5 +115,19 @@ class RepositoriesSeeder extends Seeder
             'imagen_repositorio' => 'abnb.jpg'
         ]);
 
+        DB::table('repositories')->insert([
+            'nombre_repositorio' => 'Tienda de Productos',
+            'sigla' => 'TIENDA',
+            'ciudad' => 'La Paz',
+            'correo' => 'correo@correo.com',
+            'nombre_encargado' => 'Jhon smith',
+            'ubicacion' => '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.3371657876173!2d-65.26294438463171!3d-19.048907887103468!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x93fbcf36391e3a57%3A0x7f4eb2228f30a49!2sArchivo%20y%20Biblioteca%20Nacionales%20de%20Bolivia!5e0!3m2!1ses-419!2sbo!4v1656939881156!5m2!1ses-419!2sbo" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>',
+            'direccion' => 'La Paz',
+            'horario_atencion' => 'No Especifica',
+            'telefono' => '0 ',
+            'pagina_web' => 'http://www.fundacionculturalbcb.gob.bo/',
+            'imagen_repositorio' => 'fcbcb.jfif'
+        ]);
+
     }
 }

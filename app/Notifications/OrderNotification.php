@@ -3,14 +3,15 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
+use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
-use Illuminate\Notifications\Notification;
 
-class OrderNotification extends Notification
+class OrderNotification extends Notification  implements ShouldQueue
 {
     use Queueable;
 
+    public $id_order,$usuario_id,$estado;
     /**
      * Create a new notification instance.
      *
@@ -47,6 +48,7 @@ class OrderNotification extends Notification
         }else{
             $url = url('/orders/'.$this->id_order);
         }
+
 
 
         switch ($this->estado) {

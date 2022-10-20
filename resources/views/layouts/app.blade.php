@@ -20,6 +20,7 @@
 </head>
 
     <body>
+
         {{-- Seccion de mensajes flash --}}
         {{-- <div>
             @if (session()->has('message'))
@@ -30,6 +31,10 @@
         </div> --}}
         {{-- fin de seccion de mensajes flash --}}
 
+        <div class="pt-10" id="loadingDiv">
+            <div class="loader">Loading...
+            </div>
+        </div>
 
         {{-- seccion barra de navegacion --}}
         @livewire('navigation')
@@ -38,10 +43,17 @@
         <main>
             @yield('contenido')
         </main>
+
+
+
+
+
     </body>
 
         <!-- Scripts Livewire -->
         @livewireScripts
+
+
 
         {{-- enlace a archivos js --}}
         <script src="{{ asset('js/app.js') }}" defer ></script>
@@ -77,6 +89,18 @@
             });
         </script>
 
+        <script>
+        //    $('body').append('<div style="" id="loadingDiv"><div class="loader">Loading...</div></div>');
+            $(window).on('load', function(){
+            setTimeout(removeLoader, 2000); //wait for page load PLUS two seconds.
+            });
+            function removeLoader(){
+                $( "#loadingDiv" ).fadeOut(500, function() {
+                // fadeOut complete. Remove the loading div
+                $( "#loadingDiv" ).remove(); //makes page more lightweight
+            });
+            }
+        </script>
         @yield('js')
 
 
