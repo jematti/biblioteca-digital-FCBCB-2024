@@ -31,22 +31,22 @@
         </div> --}}
         {{-- fin de seccion de mensajes flash --}}
 
-        <div class="pt-10" id="loadingDiv">
+        {{-- seccion de carga --}}
+        {{-- <div class="pt-10" id="loadingDiv">
             <div class="loader">Loading...
             </div>
-        </div>
+        </div> --}}
+        {{-- fin de seccion de carga --}}
 
         {{-- seccion barra de navegacion --}}
         @livewire('navigation')
+        {{-- fin de seccion de barra de navegacion --}}
 
         {{-- Seccion para introducir contenido --}}
         <main>
             @yield('contenido')
         </main>
-
-
-
-
+        {{-- fin de seccion de introducir contenido --}}
 
     </body>
 

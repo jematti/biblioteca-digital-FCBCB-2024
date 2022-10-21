@@ -85,6 +85,10 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     //Notificaciones
     Route::get('/notification', NotificationController::class)->name('notification');
 
+    //Generar Pdf's
+    Route::get('order/pdf', [OrderController::class, 'report'])->name('order.pdf');
+    Route::get('report/pdf', [OrderController::class, 'pdf'])->name('report.pdf');
+
 });
 
 //CRUD Autor

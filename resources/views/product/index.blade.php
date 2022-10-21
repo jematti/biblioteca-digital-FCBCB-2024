@@ -6,17 +6,17 @@
 
    {{-- menu de navegacion para crear y editar categorias --}}
    <div class="md:grid grid-cols-2 gap-1  sm:flex-grow">
-    <div class="my-2 p-2 ">
-        <button class="w-full p-2 uppercase bg-sky-600 text-white font-bold hover:bg-sky-700 border border-gray-900  rounded-lg " onclick="location.href = '{{ route('products.create') }}'">
-            <i class="fa-solid fa-plus"></i><span class="px-2">Agregar Producto</span>
-        </button>
+        <div class="my-2 p-2 ">
+            <button class="w-full p-2 uppercase bg-sky-600 text-white font-bold hover:bg-sky-700 border border-gray-900  rounded-lg " onclick="location.href = '{{ route('products.create') }}'">
+                <i class="fa-solid fa-plus"></i><span class="px-2">Agregar Producto</span>
+            </button>
+        </div>
+        <div class="my-2 p-2 ">
+            <button class="w-full p-2 uppercase bg-sky-600 text-white font-bold hover:bg-sky-700 border border-gray-900  rounded-lg" onclick="location.href = '{{ route('products.index') }}'">
+                <i class="fa-solid fa-angle-down"></i><span class="px-2">Listar Productos</span>
+            </button>
+        </div>
     </div>
-    <div class="my-2 p-2 ">
-        <button class="w-full p-2 uppercase bg-sky-600 text-white font-bold hover:bg-sky-700 border border-gray-900  rounded-lg" onclick="location.href = '{{ route('products.index') }}'">
-            <i class="fa-solid fa-angle-down"></i><span class="px-2">Listar Productos</span>
-        </button>
-    </div>
-</div>
 
 {{-- mensaje de alerta --}}
     {{-- @if ($message = Session::get('success'))

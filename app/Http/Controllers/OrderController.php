@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Author;
+use App\Models\Category;
 use App\Models\User;
 use App\Models\Order;
+use App\Models\Product;
+use App\Models\Repository;
 use Illuminate\Http\Request;
 use App\Notifications\OrderNotification;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class OrderController extends Controller
 {
@@ -66,4 +71,31 @@ class OrderController extends Controller
         $pathtoFile = public_path('depositos'.'/'.$file);
         return response()->download($pathtoFile);
     }
+
+    public function report()
+    {
+        $orders = Order::paginate();
+        $repositories = Repository::all();
+        $products = Product::all();
+        $categories = Category::all();
+        $authors = Author::all();
+
+        return view('orders.report')->with('products',$products)
+                                    ->with('categories',$categories)
+                                    ->with('repositories',$repositories)
+                                    ->with('authors',$authors)
+                                    ->with('orders',$orders);
+    }
+
+    public function pdf()
+    {
+        $orders = Order::paginate();
+
+        $pdf = Pdf::loadView('order.report', ['orders' =>$orders]);
+        return $pdf->stream();
+        // return $pdf->download('invoice.pdf');
+        // return view('report.order_report',compact('orders'));
+    }
+
+
 }
