@@ -74,7 +74,7 @@ class OrderController extends Controller
 
     public function report()
     {
-        $orders = Order::paginate();
+        $orders = Order::all();
         $repositories = Repository::all();
         $products = Product::all();
         $categories = Category::all();
@@ -87,11 +87,51 @@ class OrderController extends Controller
                                     ->with('orders',$orders);
     }
 
-    public function pdf()
+    public function pdf(Request $request)
     {
-        $orders = Order::paginate();
+        $this->validate($request,[
+            'fecha_inicio' => 'required',
+            'fecha_fin' => 'required'
+        ]);
+        $products_search = $request->product_id;
+        $categories_search = $request->category_id;
+        $repositories_search = $request->repository_id;
+        $authors_search = $request->author_id;
 
-        $pdf = Pdf::loadView('order.report', ['orders' =>$orders]);
+        $products=[];
+
+        if ($request->product_id) {
+            $products = Product::query()->where('id',$products_search);
+
+            if ($request->category_id) {
+                $products->where('category_id',$categories_search);
+            }
+            if ($request->repository_id) {
+                $products->where('repository_id',$repositories_search);
+            }
+            if ($request->author_id) {
+                $products->where('author_id',$authors_search);
+            }
+
+        }else {
+            $products = Product::query()->all();
+            if ($request->category_id) {
+                $products->where('category_id',$categories_search);
+            }
+            if ($request->repository_id) {
+                $products->where('repository_id',$repositories_search);
+            }
+            if ($request->author_id) {
+                $products->where('author_id',$authors_search);
+            }
+        }
+
+        $fecha_inicio = $request->fecha_inicio;
+        $fecha_fin = $request->fecha_fin;
+
+        $orders = Order::whereBetween('created_at',[$fecha_inicio,$fecha_fin])->get();
+
+        $pdf = Pdf::loadView('report.order_report', ['orders' =>$orders,'products' =>$products]);
         return $pdf->stream();
         // return $pdf->download('invoice.pdf');
         // return view('report.order_report',compact('orders'));

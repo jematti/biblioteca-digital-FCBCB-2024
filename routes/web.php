@@ -86,8 +86,8 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/notification', NotificationController::class)->name('notification');
 
     //Generar Pdf's
-    Route::get('order/pdf', [OrderController::class, 'report'])->name('order.pdf');
-    Route::get('report/pdf', [OrderController::class, 'pdf'])->name('report.pdf');
+    Route::get('report/pdf', [OrderController::class, 'report'])->name('report_order.pdf');
+    Route::post('/orders/pdf', [OrderController::class, 'pdf'])->name('order.pdf');
 
 });
 
