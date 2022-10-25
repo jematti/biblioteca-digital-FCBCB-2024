@@ -4,128 +4,88 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-     <!-- Styles - Scripts -->
-     <link rel="stylesheet" href="{{ public_path('css/app.css') }}" type="text">
+    <!-- Styles - Scripts -->
+
+    <link rel="stylesheet" href="{{ public_path('css/app.css') }}" type="text">
+    <style>
+        .grid-container {
+  display: grid;
+  gap: 50px;
+}
+.item1 {
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+
+    </style>
 </head>
 <body>
-   <!-- Table -->
-   <div class="w-full  mx-auto bg-white shadow-lg rounded-sm border border-gray-200">
-    <header class="px-5 py-4 border-b border-gray-100">
-        <div class="font-semibold text-gray-800">Ordenes</div>
-    </header>
+    <div class="grid-container">
+        <div class="grid-item">1</div>
+        <div class="grid-item">2</div>
+        <div class="grid-item">3</div>
+        <div class="grid-item">4</div>
+        <div class="grid-item">5</div>
+        <div class="grid-item">6</div>
+        <div class="grid-item">7</div>
+        <div class="grid-item">8</div>
+        <div class="grid-item">9</div>
+    </div>
 
-    <div class="overflow-x-auto p-3">
-        <table class="table-auto w-full">
-            <thead class="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
+
+    <div class="col-span-1"></div>
+    @foreach ($orders as $order)
+    <div class="grid grid-cols-3 gap-4">
+        <div class="col-span-3"></div>
+
+        <div class="col-span-1">FC-BCB</div>
+        <div class="col-span-1">Reporte de Ordenes de Compra: Entregados</div>
+        <div class="col-span-1">Fecha: </div>
+
+        <div class="col-span-1">Nro de Orden: {{ $order->id }} </div>
+        <div class="col-span-2">Estado: {{ $order->estado }}</div>
+
+        <div class="col-span-1">Nro. Factura: {{ $order->nro_factura }}</div>
+        <div class="col-span-1">Nombre/Razon Social: {{ $order->nombre_factura }}</div>
+        <div class="col-span-1">NIT: {{ $order->nit_factura }}</div>
+
+        <div class="col-span-1">Total: {{ $order->total }}</div>
+        <div class="col-span-1">Subtotal {{ $order->total - $order->costo_envio }}</div>
+        <div class="col-span-1">Envío: {{ $order->costo_envio }}</div>
+
+        <div class="col-span-1">Enviado a: {{ $order->nombre_contacto }}</div>
+        <div class="col-span-1">Correo: {{ $order->user->email }}</div>
+        <div class="col-span-1">Tel/cel: {{ $order->telefono_contacto }}</div>
+
+    </div>
+    <!-- Table -->
+    <div>
+        <table class="table-auto border-separate border border-green-900">
+            <thead>
                 <tr>
-                    <th></th>
-                    <th class="p-2">
-                        <div class="font-semibold text-left">Nro. Orden</div>
-                    </th>
-                    <th class="p-2">
-                        <div class="font-semibold text-left">Total</div>
-                    </th>
-                    <th class="p-2">
-                        <div class="font-semibold text-left">Nro Productos</div>
-                    </th>
-                    <th class="p-2">
-                        <div class="font-semibold text-left">Correo</div>
-                    </th>
-
+                    <th class="border ">ID</th>
+                    <th class="border">Título</th>
+                    <th class="border ">Ubicación</th>
+                    <th class="border ">Precio</th>
+                    <th class="border ">Ejemplares solicitados</th>
+                    <th class="border ">Total</th>
                 </tr>
             </thead>
-
-            <tbody class="text-sm divide-y divide-gray-100">
-
-                <!-- tabla de datos -->
-                @foreach ($orders as $order)
-
-
-                    <tr class="hover:bg-gray-100">
-                        <td class="p-2">
-                            <div class="font-semibold text-center">{{ $order->id }}</div>
-                        </td>
-                        <td class="p-2">
-                            <div class="font-medium text-gray-800 w-64">
-                                {{ $order->total }}
-                            </div>
-                        </td>
-                        <td class="p-2">
-                            <div class="text-left">
-                               {{ $order->costo_envio}}
-                            </div>
-                        </td>
-                        <td class="p-2">
-                            <div class="text-left">
-                               {{ $order->nombre_contacto}}
-                            </div>
-                        </td>
-                    </tr>
-
-                    <div class="bg-white rounded-lg shadow-lg p-6 mb-6 ">
-                        <div class="block w-full overflow-x-auto">
-                            <table class="items-center bg-transparent w-full border-collapse ">
-                                <thead>
-                                    <tr>
-                                        <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-base border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                                            Titulo del Libro
-                                        </th>
-                                        <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-base border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                                            Ubicacion del libro
-                                        </th>
-                                        <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-base border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                                            Precio
-                                        </th>
-                                        <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-base border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                                            Nro. Ejemplares <br> Solicitados
-                                        </th>
-                                        <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-base border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                                            Stock Disponible
-                                        </th>
-                                        <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-base border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                                            Stock Actualizado
-                                        </th>
-                                        <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-base border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                                            Total
-                                        </th>
-                                        <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-base border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                                            Revision
-                                        </th>
-                                    </tr>
-                                </thead>
-
-                                <tbody class="divide-y divide-gray-200">
-                                    @foreach (json_decode($order->content) as $item)
-                                    <tr>
-                                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-base whitespace-nowrap p-4 ">
-                                            {{ $item->options->ubicacion}}
-                                        </td>
-                                        <td class="border-t-0 px-6 align-center border-l-0 border-r-0 text-base whitespace-nowrap p-4">
-                                            {{ $item->price }}
-                                        </td>
-                                        <td class="border-t-0 px-6 align-center border-l-0 border-r-0 text-base whitespace-nowrap p-4">
-                                            {{ $item->qty }}
-                                        </td>
-                                        <td class="border-t-0 px-6 align-center border-l-0 border-r-0 text-base whitespace-nowrap p-4">
-                                            {{ $item->options->cantidad_libro }}
-                                        </td>
-                                        <td class="border-t-0 px-6 align-center border-l-0 border-r-0 text-base whitespace-nowrap p-4">
-                                            {{ ($item->options->cantidad_libro) - ($item->qty) }}
-                                        </td>
-                                        <td class="border-t-0 px-6 align-center border-l-0 border-r-0 text-base whitespace-nowrap p-4">
-                                            {{ $item->price * $item->qty }} Bs
-                                        </td>>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-
-                        </table>
-                        </div>
-                    </div>
+            <tbody>
+                @foreach (json_decode($order->content) as $item)
+                <tr>
+                    <td class="border">{{ $item->id }}</td>
+                    <td class="border">{{ $item->name }}</td>
+                    <td class="border">{{ $item->options->ubicacion }}</td>
+                    <td class="border">{{ $item->price }}</td>
+                    <td class="border">{{ $item->qty}}</td>
+                    <td class="border"> {{ $item->price * $item->qty }} Bs</td>
+                </tr>
                 @endforeach
-
             </tbody>
         </table>
+    </div>
+    @endforeach
     </div>
 
 </body>

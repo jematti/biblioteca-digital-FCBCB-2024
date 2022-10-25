@@ -27,38 +27,38 @@
            <br> <hr> <br>
            <div class="grid grid-cols-2 gap-3 mt-4 sm:grid-cols-2 lg:grid-cols-5">
                 {{-- seccion de libros --}}
-                @foreach ( ($author->books) as $book)
+                @foreach ( ($author->products) as $product)
                     <a
-                    href='{{ route('books.show', $book) }}'
+                    href='{{ route('products.show', $product) }}'
                     class="relative block bg-white border border-gray-200"
                     >
 
 
                     <img
                         loading="lazy"
-                        alt="imagen del post {{ $book->titulo }}"
+                        alt="imagen del post {{ $product->titulo }}"
                         class="object-contain w-full sm:h-72 h-56 hover:grow hover:shadow-lg"
-                        src="{{ asset('uploads').'/'.$book->imagen}}"
+                        src="{{ asset('uploads').'/'.$product->imagen}}"
                     />
 
 
                     <div class="p-6">
                         <div class="group cursor-pointer relative ">
                             <p class="truncate mt-2 text-xl font-medium text-dark ">
-                                {{ $book->titulo }}
+                                {{ $product->titulo }}
 
                             </p>
                             {{-- detalles de descripcion --}}
                             <div class="opacity-0 w-60 bg-black text-white text-center text-sm rounded-lg py-4 absolute z-10 group-hover:opacity-100 bottom-full -left-1/4 ml-20 px-3 pointer-events-none">
-                                {{ $book->titulo }}
+                                {{ $product->titulo }}
                                 <br>
-                                {{ $book->author->nombre_autor }}
+                                {{ $product->author->nombre_autor }}
 
                             </div>
                         </div>
 
                         <h5 class="truncate text-lg font-bold">
-                            {{ $book->author->nombre_autor }}
+                            {{ $product->author->nombre_autor }}
                         </h5>
 
 
@@ -67,10 +67,10 @@
                         </p>
 
                         <button
-                            onclick="location.href ='{{ route('books.show', $book) }}' "
+                            onclick="location.href ='{{ route('products.show', $product) }}' "
                             name="add"
                             type="button"
-                            class="flex items-center w-full justify-center p-2 sm:px-8 sm:py-4 sm:mt-4 text-white bg-red-500  hover:bg-red-400 focus:outline-none focus:bg-red-400 rounded-sm"
+                            class="flex items-center w-full justify-center p-2 sm:px-8 sm:py-4 sm:mt-4 text-white bg-custom-500 focus:outline-none  rounded-sm"
                         >
                         <span class="text-sm font-medium">
                             Ver Libro

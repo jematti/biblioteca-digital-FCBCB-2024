@@ -258,6 +258,5 @@
         </script>
 </main>
 
-{{-- Seccion para el footer --}}
-@livewire('footer')
+
 @endsection
