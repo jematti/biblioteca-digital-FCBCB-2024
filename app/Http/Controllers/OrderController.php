@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use App\Notifications\OrderNotification;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Carbon\Carbon;
 
 class OrderController extends Controller
 {
@@ -91,50 +92,116 @@ class OrderController extends Controller
     {
         $this->validate($request,[
             'fecha_inicio' => 'required',
-            'fecha_fin' => 'required'
+            'fecha_fin' => 'required',
+            'order_type' => 'required'
         ]);
-        $products_search = $request->product_id;
-        $categories_search = $request->category_id;
-        $repositories_search = $request->repository_id;
-        $authors_search = $request->author_id;
-
-        $products=[];
-
-        if ($request->product_id) {
-            $products = Product::query()->where('id',$products_search);
-
-            if ($request->category_id) {
-                $products->where('category_id',$categories_search);
-            }
-            if ($request->repository_id) {
-                $products->where('repository_id',$repositories_search);
-            }
-            if ($request->author_id) {
-                $products->where('author_id',$authors_search);
-            }
-
-        }else {
-            $products = Product::query()->all();
-            if ($request->category_id) {
-                $products->where('category_id',$categories_search);
-            }
-            if ($request->repository_id) {
-                $products->where('repository_id',$repositories_search);
-            }
-            if ($request->author_id) {
-                $products->where('author_id',$authors_search);
-            }
-        }
-
+        //tipo de orden de compra solicitada
+        $order_type = $request->order_type;
         $fecha_inicio = $request->fecha_inicio;
         $fecha_fin = $request->fecha_fin;
 
         $orders = Order::whereBetween('created_at',[$fecha_inicio,$fecha_fin])->get();
 
-        $pdf = Pdf::loadView('report.order_report', ['orders' =>$orders,'products' =>$products]);
+        //adquirir la fecha
+        $now = Carbon::now();
+
+        $pdf = Pdf::loadView('report.order_report',
+        ['orders' =>$orders,
+        'now'=>$now,
+        'fecha_inicio'=>$fecha_inicio,
+        'fecha_fin'=>$fecha_fin,
+        'order_type' => $order_type]);
         return $pdf->stream();
         // return $pdf->download('invoice.pdf');
-        // return view('report.order_report',compact('orders'));
+    }
+
+    public function sale()
+    {
+        $orders = Order::all();
+        $repositories = Repository::all();
+        $products = Product::all();
+        $categories = Category::all();
+        $authors = Author::all();
+
+        return view('orders.sale')->with('products',$products)
+                                    ->with('categories',$categories)
+                                    ->with('repositories',$repositories)
+                                    ->with('authors',$authors)
+                                    ->with('orders',$orders);
+    }
+
+    public function sale_pdf(Request $request)
+    {
+        $this->validate($request,[
+            // 'fecha_inicio' => 'required',
+            // 'fecha_fin' => 'required'
+        ]);
+        $products_search = $request->product_id;
+        $categories_search = $request->category_id;
+        $repositories_search = $request->repository_id;
+        $authors_search = $request->author_id;
+        $order_number = $request->order_number;
+
+
+        $products=[];
+
+        // if (Order::find($request->order_number)) {
+            if ($request->product_id) {
+                $products = Product::query()->where('id',$products_search);
+                $products = $products->get();
+            }
+
+            if ($request->category_id) {
+
+                $products = Product::query()->where('category_id',$categories_search);
+
+
+                if ($request->repository_id) {
+                    $products->where('repository_id',$repositories_search);
+                }
+
+                if ($request->author_id) {
+                    $products->where('author_id',$authors_search);
+                }
+                $products = $products->get();
+            }
+
+            // else {
+            //     $products = Product::query()->all();
+            //     if ($request->category_id) {
+            //         $products->where('category_id',$categories_search);
+            //     }
+            //     if ($request->repository_id) {
+            //         $products->where('repository_id',$repositories_search);
+            //     }
+            //     if ($request->author_id) {
+            //         $products->where('author_id',$authors_search);
+            //     }
+            // }
+
+            $fecha_inicio = $request->fecha_inicio;
+            $fecha_fin = $request->fecha_fin;
+
+            $orders = Order::whereBetween('created_at',[$fecha_inicio,$fecha_fin])->get();
+
+            //adquirir la fecha
+            $now = Carbon::now();
+
+            // $pdf = Pdf::loadView('report.sales_report',
+            // ['orders' =>$orders,
+            // 'products' =>$products,
+            // 'now'=>$now,
+            // 'fecha_inicio'=>$fecha_inicio,
+            // 'fecha_fin'=>$fecha_fin]);
+            // return $pdf->stream();
+            // return $pdf->download('invoice.pdf')
+            return view('report.sales_report')->with('products',$products);
+        // } else {
+
+        //     return redirect()->route('report_sale.pdf')->with('info', '¡El Numero de Orden de Compra Ingresado No Existe!');
+        // }
+
+
     }
 
 

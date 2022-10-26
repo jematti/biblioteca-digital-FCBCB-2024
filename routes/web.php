@@ -86,8 +86,13 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/notification', NotificationController::class)->name('notification');
 
     //Generar Pdf's
-    Route::get('report/pdf', [OrderController::class, 'report'])->name('report_order.pdf');
+    //reporte de ordenes de compra
+    Route::get('/report/pdf', [OrderController::class, 'report'])->name('report_order.pdf');
     Route::post('/orders/pdf', [OrderController::class, 'pdf'])->name('order.pdf');
+    //reporte de ventas en general
+    Route::get('/sale/pdf', [OrderController::class, 'sale'])->name('report_sale.pdf');
+    Route::post('/sales/pdf', [OrderController::class, 'sale_pdf'])->name('sale.pdf');
+
 
 });
 

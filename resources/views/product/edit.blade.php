@@ -269,7 +269,7 @@
                             <label class="mb-2 block uppercase text-gray-500 font-bold">
                                 Fecha de Publicación
                             </label>
-                            <input class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="fecha_publicacion" name="fecha_publicacion" type="date" placeholder="fecha de publicación del Libro" @error('fecha_publicacion') border-red-500 @enderror value="{{$product->fecha_publicacion}}" />
+                            <input class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="fecha_publicacion" name="fecha_publicacion" type="date" placeholder="fecha de publicación del Libro @error('fecha_publicacion') border-red-500 @enderror" value="{{$product->fecha_publicacion}}" />
 
                             @error('fecha_publicacion')
                             <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>

@@ -7,29 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+     //pago mediante la banca movil QR
+     const HABILITADO = 1;
+
+     //pago mediante deposito a la cuenta del banco
+     const INHABILITADO = 0;
+
     use HasFactory;
 
-    protected $fillable = [
-        'titulo',
-        'edicion',
-        'numero_paginas',
-        'fecha_publicacion',
-        'idioma',
-        'resumen',
-        'imagen',
-        'precio',
-        'ancho',
-        'alto',
-        'grueso',
-        'peso',
-        'cantidad',
-        'author_id',
-        'editorial_id',
-        'category_id',
-        'repository_id',
-        'isbn',
+    protected $guarded = ['id','created_at','updated_at','habilitado'];
 
-    ];
     // relacion n a 1 un libro solo puede tener una editorial/categoria/autor/repositorio
 
 
