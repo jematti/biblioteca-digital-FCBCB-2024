@@ -37,7 +37,7 @@
             <div class="mb-5">
                 <label class="block mb-1 text-sm text-gray-700 uppercase font-bold">Productos</label>
                 <select class="border-gray-300 p-2 w-full" id="product_id" name="product_id">
-                    <option>--Seleccione Productos--</option>
+                    <option value="" >--Seleccione Productos--</option>
 
                     @foreach ($products as $product )
                     <option value="{{ $product->id }}">{{ $product->titulo }}</option>
@@ -48,7 +48,7 @@
             <div class="mb-5">
                 <label class="block mb-1 text-sm text-gray-700 uppercase font-bold">Categoría</label>
                 <select class="border-gray-300 p-2 w-full" id="categor_id" name="category_id">
-                    <option>--Seleccione Categoria--</option>
+                    <option value="">--Seleccione Categoria--</option>
 
                     @foreach ($categories as $category )
                     <option value="{{ $category->id }}">{{ $category->nombre_categoria }}</option>
@@ -59,7 +59,7 @@
             <div class="mb-5">
                 <label class="block mb-1 text-sm text-gray-700 uppercase font-bold">Repositorios</label>
                 <select class="border-gray-300 p-2 w-full" id="repository_id" name="repository_id">
-                    <option>-- Seleccione Repositorio--</option>
+                    <option value="">-- Seleccione Repositorio--</option>
                     @foreach ($repositories as $repository)
                     <option value="{{ $repository->id }}">{{$repository->nombre_repositorio}}</option>
                     @endforeach
@@ -69,7 +69,7 @@
             <div class="mb-5">
                 <label class="block mb-1 text-sm text-gray-700 uppercase font-bold">Autores</label>
                 <select class="border-gray-300 p-2 w-full" id="author_id" name="author_id">
-                    <option>-- Seleccione Autores--</option>
+                    <option value="">-- Seleccione Autores--</option>
 
                     @foreach ($authors as $author)
                     <option value="{{ $author->id }}">{{$author->nombre_autor}}</option>

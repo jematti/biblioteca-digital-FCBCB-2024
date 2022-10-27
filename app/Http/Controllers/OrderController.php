@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Author;
-use App\Models\Category;
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Order;
+use App\Models\Author;
 use App\Models\Product;
+use App\Models\Category;
 use App\Models\Repository;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\DB;
 use App\Notifications\OrderNotification;
 use Gloudemans\Shoppingcart\Facades\Cart;
-use Barryvdh\DomPDF\Facade\Pdf;
-use Carbon\Carbon;
 
 class OrderController extends Controller
 {
@@ -130,77 +131,41 @@ class OrderController extends Controller
                                     ->with('orders',$orders);
     }
 
+
     public function sale_pdf(Request $request)
     {
         $this->validate($request,[
             // 'fecha_inicio' => 'required',
             // 'fecha_fin' => 'required'
         ]);
+
+
         $products_search = $request->product_id;
         $categories_search = $request->category_id;
         $repositories_search = $request->repository_id;
         $authors_search = $request->author_id;
-        $order_number = $request->order_number;
 
+        //rango de fechas para el reporte
+        $fecha_inicio = $request->fecha_inicio;
+        $fecha_fin = $request->fecha_fin;
 
-        $products=[];
-
-        // if (Order::find($request->order_number)) {
-            if ($request->product_id) {
-                $products = Product::query()->where('id',$products_search);
-                $products = $products->get();
-            }
-
-            if ($request->category_id) {
-
-                $products = Product::query()->where('category_id',$categories_search);
-
-
-                if ($request->repository_id) {
-                    $products->where('repository_id',$repositories_search);
-                }
-
-                if ($request->author_id) {
-                    $products->where('author_id',$authors_search);
-                }
-                $products = $products->get();
-            }
-
-            // else {
-            //     $products = Product::query()->all();
-            //     if ($request->category_id) {
-            //         $products->where('category_id',$categories_search);
-            //     }
-            //     if ($request->repository_id) {
-            //         $products->where('repository_id',$repositories_search);
-            //     }
-            //     if ($request->author_id) {
-            //         $products->where('author_id',$authors_search);
-            //     }
-            // }
-
-            $fecha_inicio = $request->fecha_inicio;
-            $fecha_fin = $request->fecha_fin;
-
-            $orders = Order::whereBetween('created_at',[$fecha_inicio,$fecha_fin])->get();
+        $orders = Order::whereBetween('created_at',[$fecha_inicio,$fecha_fin])->where('estado',4)->get();
 
             //adquirir la fecha
             $now = Carbon::now();
 
-            // $pdf = Pdf::loadView('report.sales_report',
-            // ['orders' =>$orders,
-            // 'products' =>$products,
-            // 'now'=>$now,
-            // 'fecha_inicio'=>$fecha_inicio,
-            // 'fecha_fin'=>$fecha_fin]);
-            // return $pdf->stream();
-            // return $pdf->download('invoice.pdf')
-            return view('report.sales_report')->with('products',$products);
-        // } else {
-
-        //     return redirect()->route('report_sale.pdf')->with('info', '¡El Numero de Orden de Compra Ingresado No Existe!');
-        // }
-
+            $pdf = Pdf::loadView('report.sales_report',
+            ['orders' =>$orders,
+            'products_search'=> $products_search,
+            'categories_search'=> $categories_search,
+            'repositories_search' => $repositories_search,
+            'authors_search' => $authors_search,
+            'now'=>$now,
+            'fecha_inicio'=>$fecha_inicio,
+            'fecha_fin'=>$fecha_fin]);
+            return $pdf->stream();
+            return $pdf->download('invoice.pdf');
+            // return view('report.sales_report')->with('products',$products)->with('products_search',$products_search);
 
     }
 
