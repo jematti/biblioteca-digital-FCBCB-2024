@@ -51,7 +51,7 @@
                     <option value="">--Seleccione Categoria--</option>
 
                     @foreach ($categories as $category )
-                    <option value="{{ $category->id }}">{{ $category->nombre_categoria }}</option>
+                    <option value="{{ $category->nombre_categoria }}">{{ $category->nombre_categoria }}</option>
                     @endforeach
                 </select>
             </div>
@@ -61,7 +61,7 @@
                 <select class="border-gray-300 p-2 w-full" id="repository_id" name="repository_id">
                     <option value="">-- Seleccione Repositorio--</option>
                     @foreach ($repositories as $repository)
-                    <option value="{{ $repository->id }}">{{$repository->nombre_repositorio}}</option>
+                    <option value="{{ $repository->nombre_repositorio }}">{{$repository->nombre_repositorio}}</option>
                     @endforeach
                 </select>
             </div>
@@ -72,7 +72,7 @@
                     <option value="">-- Seleccione Autores--</option>
 
                     @foreach ($authors as $author)
-                    <option value="{{ $author->id }}">{{$author->nombre_autor}}</option>
+                    <option value="{{ $author->nombre_autor }}">{{$author->nombre_autor}}</option>
                     @endforeach
                 </select>
             </div>

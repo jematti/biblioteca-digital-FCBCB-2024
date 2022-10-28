@@ -17,7 +17,12 @@ class AddCartItem extends Component
     //array de variables para agregar al carrito de compras
     public $options = [];
 
-    public $ubicacion=[];
+    public $repositorio=[];
+
+    public $categoria=[];
+
+    public $autor=[];
+
 
     public $cantidad_libro=[];
 
@@ -25,13 +30,12 @@ class AddCartItem extends Component
     public function mount(){
         $this->cantidad_stock = cantidad_disponible($this->product->id);
         $this->options['imagen'] = $this->product->imagen;
-        $this->ubicacion[]=Repository::select('nombre_repositorio','sigla')
-                   ->where('id',$this->product->repository_id)
-                   ->first();
         $this->cantidad_libro[]=Product::select('cantidad')
                    ->where('id',$this->product->id)
                    ->first();
-        $this->options['ubicacion'] = $this->ubicacion[0]->nombre_repositorio;
+        $this->options['repositorio'] = $this->product->repository->nombre_repositorio;
+        $this->options['autor'] =  $this->product->author->nombre_autor;
+        $this->options['categoria'] = $this->product->category->nombre_categoria;
         $this->options['cantidad_libro'] = $this->cantidad_libro[0]->cantidad;
     }
 

@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\City;
 use App\Models\Order;
+use App\Models\Sale;
 use App\Models\User;
 use Livewire\Component;
 use Illuminate\Support\Str;
@@ -117,9 +118,23 @@ class CreateOrder extends Component
         $usuario->email = $this->correo_contacto;
         $usuario->save();
 
+        //guardamos en la tabla de ventas (sale)
         foreach (Cart::content() as $item) {
+            $sale = new Sale();
+            $sale->product_id = $item->id;
+            $sale->order_id = $order->id;
+            $sale->qty = $item->qty;
+            $sale->repository = $item->options->repositorio;
+            $sale->author = $item->options->autor;
+            $sale->category= $item->options->categoria;
+            $sale->save();
             descontar($item);
         }
+
+        //descontamos los productos de la tabla productos
+        // foreach (Cart::content() as $item) {
+        //     descontar($item);
+        // }
         //limpiar carrito
         Cart::destroy();
 

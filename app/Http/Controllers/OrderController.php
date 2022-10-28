@@ -9,11 +9,10 @@ use App\Models\Author;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Repository;
+use App\Models\Sale;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
-use Illuminate\Support\Facades\DB;
 use App\Notifications\OrderNotification;
-use Gloudemans\Shoppingcart\Facades\Cart;
 
 class OrderController extends Controller
 {
@@ -149,17 +148,43 @@ class OrderController extends Controller
         $fecha_inicio = $request->fecha_inicio;
         $fecha_fin = $request->fecha_fin;
 
-        $orders = Order::whereBetween('created_at',[$fecha_inicio,$fecha_fin])->where('estado',4)->get();
+        //obtener lista de productos vendidos
+        // $sales = Sale::whereBetween('created_at',[$fecha_inicio,$fecha_fin]);
+        $sales = Sale::whereDate('created_at', '>=', $fecha_inicio)->whereDate('created_at', '<=', $fecha_fin);
 
+        if ($request->product_id) {
+
+            $sales->when($products_search,function($query,$products_search){
+                $query->where('product_id',$products_search);
+            });
+        }
+        if ($request->category_id) {
+
+            $sales->when($categories_search,function($query,$categories_search){
+                $query->where('category',$categories_search);
+            });
+        }
+
+        if ($request->repository_id) {
+
+            $sales->when($repositories_search,function($query,$repositories_search){
+                $query->where('repository',$repositories_search);
+            });
+        }
+        if ($request->author_id) {
+
+            $sales->when($authors_search,function($query,$authors_search){
+                $query->where('author',$authors_search);
+            });
+        }
+
+        //obtener productos del filtro
+        $sales=$sales->get();
             //adquirir la fecha
             $now = Carbon::now();
 
             $pdf = Pdf::loadView('report.sales_report',
-            ['orders' =>$orders,
-            'products_search'=> $products_search,
-            'categories_search'=> $categories_search,
-            'repositories_search' => $repositories_search,
-            'authors_search' => $authors_search,
+            ['sales' =>$sales,
             'now'=>$now,
             'fecha_inicio'=>$fecha_inicio,
             'fecha_fin'=>$fecha_fin]);

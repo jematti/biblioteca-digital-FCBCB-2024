@@ -45,16 +45,6 @@
 
     </div>
     <!-- Tabla de productos -->
-
-
-    @if ($products_search)
-    true ********************************
-    @else
-    false!!!!!!!!!!!!!!!
-    @endif
-
-
-
     <div>
         <table class="table-auto text-xs ">
             <thead>
@@ -69,19 +59,15 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($orders as $order)
-                    @foreach (json_decode($order->content) as $item)
-                    @if ($products_search == $item->id AND $categories_search == 1 AND $repositories_search == 1 AND $authors_search == 1)
+                @foreach ($sales as $item)
                     <tr>
                         <td>{{ $item->id }}</td>
-                        <td>{{ $item->name }}</td>
-                        <td>{{ $item->options->ubicacion }}</td>
-                        <td>{{ $item->price }}</td>
+                        <td>{{ $item->product_id }}</td>
+
                         <td>{{ $item->qty}}</td>
-                        <td> {{ $item->price * $item->qty }} Bs</td>
-                        <td>{{ $order->id }}</td>
+                        <td>{{ $item->order_id }}</td>
+
                     </tr>
-                    @endforeach
 
                 @endforeach
             </tbody>
