@@ -270,8 +270,8 @@
                 <p class="flex justify-between items-center font-semibold">
                     Total
                     <span class="text-lg">
-                        {{-- {{ Cart::subtotal() + $costo_envio}} Bs --}}
-                        {{ Cart::subtotal() }}
+                        {{ str_replace( ',', '', Cart::subtotal() ) + $costo_envio}} Bs
+
                     </span>
                 </p>
 
@@ -303,8 +303,11 @@
                         Se procederá a realizar el siguiente pago.
                         <p class="text-3xl my-4">
                             Total a Pagar: <span class="font-semibold">
-                                {{-- {{ Cart::subtotal() + $costo_envio}} Bs --}}
-                                {{ Cart::subtotal() }}
+
+                                {{ str_replace( ',', '', Cart::subtotal() ) + $costo_envio}}
+
+
+
                             </span>
                         </p>
                         <a class=" bg-sky-500 hover:bg-sky-700 text-center text-white font-bold py-2 px-4 rounded-lg" href="{{ route('qr.download')}}" target="_blank" rel="noopener noreferrer">
@@ -353,8 +356,7 @@
                         </div>
                         <p class="text-3xl my-4 border-t-2 border-black">
                             Total a Pagar: <span class="font-semibold">
-                                {{-- {{ Cart::subtotal() + $costo_envio}} Bs --}}
-                                {{ Cart::subtotal()}}
+                                {{ str_replace( ',', '', Cart::subtotal() ) + $costo_envio}}
                             </span>
                             <p class="border-y-2 text-red-500 text-center border-black font-semibold italic">¡Una vez hecha el deposito, Guarda el comprobante de pago y súbalo en el formulario!</p>
                         </p>

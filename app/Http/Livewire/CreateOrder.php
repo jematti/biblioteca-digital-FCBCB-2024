@@ -81,9 +81,8 @@ class CreateOrder extends Component
         $order->nombre_factura = $this->nombre_factura;
         $order->nit_factura = $this->nit_factura;
         $order->tipo_pago = $this->tipo_pago;
-
-        // $order->costo_envio = 0;
-        $order->total = $this->costo_envio + Cart::subtotal();
+        $order->costo_envio = 0;
+        $order->total = $this->costo_envio + str_replace( ',', '', Cart::subtotal() );
         $order->content = Cart::content();
         // si se selecciona el envio a domicilio se guarda los siguienes datos
         $order->city_id = $this->ciudad_id;
@@ -124,14 +123,14 @@ class CreateOrder extends Component
             $sale->product_id = $item->id;
             $sale->order_id = $order->id;
             $sale->qty = $item->qty;
-            $sale->repository = $item->options->repositorio;
-            $sale->author = $item->options->autor;
-            $sale->category= $item->options->categoria;
+            $sale->repositorio = $item->options->repositorio;
+            $sale->autor = $item->options->autor;
+            $sale->categoria= $item->options->categoria;
             $sale->save();
             descontar($item);
         }
 
-        //descontamos los productos de la tabla productos
+        // // descontamos los productos de la tabla productos
         // foreach (Cart::content() as $item) {
         //     descontar($item);
         // }

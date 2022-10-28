@@ -106,7 +106,7 @@
                     <span class="font-semibold">Numero de Orden:</span>
                     {{ $order->id }}
                 </p>
-                <form  wire:submit.prevent="actualizar"  >
+                <form  wire:submit.prevent="actualizar" >
                     <div>
                         @if (session()->has('message'))
 
@@ -215,12 +215,21 @@
                         </div>
                     </div>
                     {{-- fin de seccion de caja  de texto --}}
+                    @if ($order->estado != 5)
+                        <div class="flex mt-2 ">
+                            <button type="submit" class="ml-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg ">
+                                Actualizar orden
+                            </button>
+                        </div>
+                    @endif
 
-                    <div class="flex mt-2 ">
-                        <button type="submit" class="ml-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg ">
-                            Actualizar orden
-                        </button>
-                    </div>
+                    @if ($order->estado == 5)
+                        <div class="flex mt-2 ">
+                            <button type="submit" class="ml-auto bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg ">
+                                Enviar Observación
+                            </button>
+                        </div>
+                    @endif
                 </form>
             </div>
 
@@ -374,7 +383,7 @@
                                     </div>
                                 </th>
                                 <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-base whitespace-nowrap p-4 ">
-                                    {{ $item->options->ubicacion}}
+                                    {{ $item->options->repositorio}}
                                 </td>
                                 <td class="border-t-0 px-6 align-center border-l-0 border-r-0 text-base whitespace-nowrap p-4">
                                     {{ $item->price }}

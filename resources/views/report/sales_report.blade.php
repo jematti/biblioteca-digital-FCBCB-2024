@@ -51,21 +51,25 @@
                 <tr>
                     <th>ID</th>
                     <th>Título</th>
-                    <th>Ubicación</th>
+                    <th>Repositorio</th>
                     <th>Precio</th>
-                    <th>Ejemplares solicitados</th>
+                    <th>Cantidad</th>
                     <th>Total</th>
                     <th>Nro. Orden</th>
+                    <th>Factura</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($sales as $item)
                     <tr>
                         <td>{{ $item->id }}</td>
-                        <td>{{ $item->product->resumen }}</td>
-
-                        <td>{{ $item->qty}}</td>
-                        <td>{{ $item->order_id }}</td>
+                        <td>{{ $item->product->titulo }}</td>
+                        <td>{{ $item->repositorio}}</td>
+                        <td>{{ $item->product->precio }}</td>
+                        <td>{{ $item->qty }}</td>
+                        <td>{{ $item->qty * $item->product->precio }} </td>
+                        <td>{{ $item->order_id}}</td>
+                        <td>{{ $item->order->nit_factura }}</td>
 
                     </tr>
 

@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use App\Models\Sale;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -20,9 +21,10 @@ return new class extends Migration
             $table->unsignedBigInteger('order_id');
             $table->foreign('order_id')->references('id')->on('orders');
             $table->integer('qty');
-            $table->string('repository');
-            $table->string('author');
-            $table->string('category');
+            $table->string('repositorio');
+            $table->string('autor');
+            $table->string('categoria');
+            $table->enum('estado_producto',[Sale::PENDIENTE,Sale::RECIBIDO,Sale::ENVIADO,Sale::ENTREGADO,Sale::ANULADO])->default(Sale::PENDIENTE);
             $table->timestamps();
         });
     }

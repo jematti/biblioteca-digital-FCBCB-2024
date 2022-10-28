@@ -20,15 +20,17 @@
                     <span class="font-bold p-1  mx-2 text-white rounded-lg bg-gray-500">Recibido</span>
                     @break
 
-                    {{-- @case(3)
-                    <p>Tiene una notificación de Orden de Compra </p>
-                    <i class="fas fa-truck fa-2xl text-yellow-400 "></i>
-                    @break --}}
-
                     @case(3)
                     <i class="fas fa-truck fa-2xl mx-5  text-yellow-400"></i>
                     <p class="px-2 pt-1">Tiene una notificación de Orden de Compra </p>
                     <span class="font-bold p-1 mx-2 text-white rounded-lg bg-yellow-500">Enviado</span>
+                    @break
+
+
+                    @case(4)
+                    <i class="fas fa-truck fa-2xl mx-5  text-blue-400"></i>
+                    <p class="px-2 pt-1">Tiene una notificación de Orden de Compra </p>
+                    <span class="font-bold p-1 mx-2 text-white rounded-lg bg-blue-500">Entregado</span>
                     @break
 
                     @case(5)

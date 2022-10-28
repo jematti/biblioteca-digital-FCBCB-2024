@@ -134,8 +134,8 @@ class OrderController extends Controller
     public function sale_pdf(Request $request)
     {
         $this->validate($request,[
-            // 'fecha_inicio' => 'required',
-            // 'fecha_fin' => 'required'
+            'fecha_inicio' => 'required',
+            'fecha_fin' => 'required'
         ]);
 
 
@@ -149,8 +149,7 @@ class OrderController extends Controller
         $fecha_fin = $request->fecha_fin;
 
         //obtener lista de productos vendidos
-        // $sales = Sale::whereBetween('created_at',[$fecha_inicio,$fecha_fin]);
-        $sales = Sale::whereDate('created_at', '>=', $fecha_inicio)->whereDate('created_at', '<=', $fecha_fin);
+        $sales = Sale::whereDate('created_at', '>=', $fecha_inicio)->whereDate('created_at', '<=', $fecha_fin)->where('estado_producto',4);
 
         if ($request->product_id) {
 
