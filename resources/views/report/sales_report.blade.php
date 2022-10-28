@@ -62,7 +62,7 @@
                 @foreach ($sales as $item)
                     <tr>
                         <td>{{ $item->id }}</td>
-                        <td>{{ $item->product_id }}</td>
+                        <td>{{ $item->product->resumen }}</td>
 
                         <td>{{ $item->qty}}</td>
                         <td>{{ $item->order_id }}</td>
