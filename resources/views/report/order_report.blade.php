@@ -111,7 +111,7 @@
                 <tr>
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->name }}</td>
-                    <td>{{ $item->options->repository }}</td>
+                    <td>{{ $item->options->repositorio }}</td>
                     <td>{{ $item->price }}</td>
                     <td>{{ $item->qty}}</td>
                     <td> {{ $item->price * $item->qty }} Bs</td>

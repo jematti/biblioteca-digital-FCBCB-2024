@@ -100,7 +100,7 @@ class OrderController extends Controller
         $fecha_inicio = $request->fecha_inicio;
         $fecha_fin = $request->fecha_fin;
 
-        $orders = Order::whereBetween('created_at',[$fecha_inicio,$fecha_fin])->get();
+        $orders = Order::whereDate('created_at', '>=', $fecha_inicio)->whereDate('created_at', '<=', $fecha_fin)->get();
 
         //adquirir la fecha
         $now = Carbon::now();
@@ -160,20 +160,20 @@ class OrderController extends Controller
         if ($request->category_id) {
 
             $sales->when($categories_search,function($query,$categories_search){
-                $query->where('category',$categories_search);
+                $query->where('categoria',$categories_search);
             });
         }
 
         if ($request->repository_id) {
 
             $sales->when($repositories_search,function($query,$repositories_search){
-                $query->where('repository',$repositories_search);
+                $query->where('repositorio',$repositories_search);
             });
         }
         if ($request->author_id) {
 
             $sales->when($authors_search,function($query,$authors_search){
-                $query->where('author',$authors_search);
+                $query->where('autor',$authors_search);
             });
         }
 

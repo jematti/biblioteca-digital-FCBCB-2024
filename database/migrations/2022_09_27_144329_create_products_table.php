@@ -24,7 +24,7 @@ return new class extends Migration
             $table->text('resumen');
             $table->string('imagen');
             $table->decimal('precio', 8, 2);
-            $table->integer('cantidad');
+            $table->integer('cantidad')->nullable();;
             $table->string('isbn')->nullable();
             $table->double('alto', 8, 2)->nullable();
             $table->double('ancho', 8, 2)->nullable();
