@@ -1,5 +1,5 @@
 import {Dropzone} from "dropzone";
-import '../css/app.css';
+// import '../css/app.css';
  //sweetalert2
 window.Swal = require('sweetalert2');
 
