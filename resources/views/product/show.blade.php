@@ -41,11 +41,18 @@
                 <div class="lg:w-1/3 w-full lg:pl-2 lg:py-6 mt-6 lg:mt-0 lg:border-l border-gray-900 ">
                     <p class="text-gray-900 text-base title-font font-medium mb-1">Precio:</p>
                     <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">{{ $product->precio }}bs</h1>
-                    {{-- añadir al carro de compras --}}
-                    @can('nav.users')
-                    @livewire('add-cart-item',['product'=>$product])
-                    @endcan
-                    {{-- fin de seccion de añadir al carro de compras --}}
+                    @if (Auth::guest())
+                        <button onclick="location.href = '{{ route('register') }}'" class="bg-blue-600 text-white font-bold uppercase text-sm px-3 py-3 rounded-lg shadow mr-1 mb-1 " type="button" onclick="">
+                            <i class="fa-solid fa-right-to-bracket"></i>
+                            ¡Registrate y Realiza tu Compra!
+                        </button>
+                    @else
+                        {{-- añadir al carro de compras --}}
+                        @can('nav.users')
+                        @livewire('add-cart-item',['product'=>$product])
+                        @endcan
+                        {{-- fin de seccion de añadir al carro de compras --}}
+                    @endif
 
                     {{-- informacion de envio  --}}
                     <div class="p-2 text-left w-60" role="alert">

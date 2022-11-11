@@ -10,6 +10,9 @@ use Intervention\Image\Facades\Image;
 
 class RepositoryController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth', ['except' => ['show']]);
+    }
      /**
      * Display a listing of the resource.
      *
@@ -105,8 +108,7 @@ class RepositoryController extends Controller
         $products = Product::join("repositories","products.repository_id","=","repositories.id")
         ->where('products.repository_id',$repository->id)
         ->select('products.id','products.imagen','products.titulo','products.precio','repositories.nombre_repositorio')
-        ->take(10)
-        ->get();
+        ->simplepaginate(10);
         return view('repository.show',compact('repository','products'));
     }
 
