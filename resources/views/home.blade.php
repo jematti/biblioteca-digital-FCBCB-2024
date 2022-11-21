@@ -53,7 +53,7 @@
                 </p>
             </div>
             {{-- listado productos--}}
-            <div class="grid grid-cols-2 gap-3 mt-4 sm:grid-cols-2 lg:grid-cols-5 ">
+            <div class="grid grid-cols-2 gap-3 gap-x-9 mt-4  md:grid-cols-3 lg:grid-cols-5 ">
 
                 {{-- seccion de libros --}}
                 @foreach ($products as $product)
@@ -61,9 +61,8 @@
                             class="block bg-white border border-gray-200 rounded-lg">
 
                             <img loading="lazy" alt="imagen del post {{ $product->titulo }}"
-                                class="object-contain w-full sm:h-72 mt-2 h-56 hover:grow hover:shadow-lg"
+                                class="object-contain w-full h-64 mt-2  hover:grow hover:shadow-lg"
                                 src="{{ asset('uploads') . '/' . $product->imagen }}" />
-
 
                             <div class="p-2">
                                 <div class="group cursor-pointer relative ">

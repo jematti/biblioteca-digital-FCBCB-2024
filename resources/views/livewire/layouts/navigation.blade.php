@@ -143,7 +143,7 @@
 
                     <li class="px-2 lg:px-3 flex items-center bg-custom-500 rounded-lg p-2">
                         <i class="fa-solid fa-magnifying-glass-plus fa-lg px-2"></i>
-                        <a href="{{route('home')}}" class="truncate max-w-24 ">Filtro de Busqueda Avanzada</a>
+                        <a href="{{route('filter.index')}}" class="truncate max-w-24 ">Filtro de Busqueda Avanzada</a>
                     </li>
 
 
