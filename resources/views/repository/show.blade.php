@@ -5,7 +5,7 @@
 <section class="py-2">
     <div class="max-w-screen-xl px-4 py-4 mx-auto sm:px-6 lg:px-8 bg-white">
         <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-2xl sm:truncate text-center">{{$repository->nombre_repositorio}}</h2>
-        <div class="grid grid-cols-2 gap-3 mt-4 sm:grid-cols-2 lg:grid-cols-5 ">
+        <div class="grid grid-cols-2 gap-3 gap-x-9 mt-4  md:grid-cols-3 lg:grid-cols-5  ">
             {{-- seccion de libros --}}
             @forelse($products as $product)
                 <a
@@ -48,7 +48,7 @@
 
                         </button>
                     </div>
-                </a>
+            </a>
             @empty
                 <div class="p-4 rounded-lg shadow-lg flex">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -59,9 +59,14 @@
                     </p>
                 </div>
              @endforelse
+              {{-- paginacion --}}
+                <div class="m-10">
+                    {{ $products->links() }}
+                </div>
 
         </div>
         {{-- fin de seccion libros --}}
+
 
     </div>
 @endsection

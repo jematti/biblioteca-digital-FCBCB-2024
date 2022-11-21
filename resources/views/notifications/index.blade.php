@@ -50,12 +50,21 @@
                 {{ $notification->created_at->diffForHumans() }}
             </span>
         </div>
-
+        @can('nav.admin')
+        <div class="mt-5 lg:mt-0">
+            <a href="{{ url("/admin/orders/{$notification->data['id_order'] }") }}" class="bg-teal-400 p-3 uppercase font-bold text-white rounded-lg">
+                Ver Orden
+            </a>
+        </div>
+        @endcan
+        @can('nav.users')
         <div class="mt-5 lg:mt-0">
             <a href="{{ url("/orders/{$notification->data['id_order'] }") }}" class="bg-teal-400 p-3 uppercase font-bold text-white rounded-lg">
                 Ver Orden
             </a>
         </div>
+        @endcan
+
     </div>
     @empty
     <p class="text-center text-xl text-gray-600 mt-10  rounded-lg uppercase font-bold"><i class="fa-solid fa-circle-exclamation"></i>No hay Notificaciones Nuevas</p>

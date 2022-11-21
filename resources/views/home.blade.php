@@ -53,7 +53,7 @@
                 </p>
             </div>
             {{-- listado productos--}}
-            <div class="grid grid-cols-2 gap-3 mt-4 sm:grid-cols-2 lg:grid-cols-5 ">
+            <div class="grid grid-cols-2 gap-3 gap-x-9 mt-4  md:grid-cols-3 lg:grid-cols-5 ">
 
                 {{-- seccion de libros --}}
                 @foreach ($products as $product)
@@ -61,13 +61,12 @@
                             class="block bg-white border border-gray-200 rounded-lg">
 
                             <img loading="lazy" alt="imagen del post {{ $product->titulo }}"
-                                class="object-contain w-full sm:h-72 mt-2 h-56 hover:grow hover:shadow-lg"
+                                class="object-contain w-full h-64 mt-2  hover:grow hover:shadow-lg"
                                 src="{{ asset('uploads') . '/' . $product->imagen }}" />
-
 
                             <div class="p-2">
                                 <div class="group cursor-pointer relative ">
-                                    <p class="line-clamp-2 mt-2 px-2 text-lg font-bold text-dark ">
+                                    <p class="line-clamp-2 mt-2 px-2 text-md font-bold text-dark ">
                                         {{ $product->titulo }}
 
                                     </p>
@@ -120,20 +119,20 @@
 
         {{-- repositorios --}}
         <div class="max-w-screen-xl px-2 py-2 mx-auto sm:px-6 bg-white border border-gray-200 rounded-lg">
-            <div class="grid grid-cols-2 gap-3 mt-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div class="md:grid flex flex-wrap gap-3 mt-4 md:grid-cols-2 lg:grid-cols-3">
 
                 {{-- seccion de libros --}}
                 @foreach ($repositories as $repository)
                         <a href='{{ route('repository.show', $repository) }}'
-                            class="relative block bg-white border border-gray-200 rounded-lg mx-10 mt-2">
+                            class="relative block bg-white border border-gray-200 rounded-lg mx-auto mt-2">
 
                             <img loading="lazy" alt="imagen del repositorio"
-                                class="object-contain w-full sm:h-72 mt-2 h-56 hover:grow hover:shadow-lg"
+                                class="w-52 md:object-contain mx-auto md:w-full sm:h-72 mt-2 h-56 hover:grow hover:shadow-lg"
                                 src="{{ asset('img/repositorio') . '/' . $repository->imagen_repositorio }}"  />
 
                             <div class="p-2">
                                 <div class="group cursor-pointer relative ">
-                                    <p class="line-clamp-2 mt-2 px-2 text-center text-lg font-bold text-dark ">
+                                    <p class="max-w-fit mx-auto mt-2 px-2 text-center text-sm md:text-lg font-bold text-dark ">
                                         {{ $repository->nombre_repositorio }}
                                     </p>
                                 </div>

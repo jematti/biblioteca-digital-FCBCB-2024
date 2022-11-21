@@ -16,43 +16,43 @@ class CitySeeder extends Seeder
     public function run()
     {
         DB::table('cities')->insert([
-            'nombre_ciudad'=>'la-paz',
-            'costo' => '5'
+            'nombre_ciudad'=>'La Paz',
+            'costo' => '0'
         ]);
 
         DB::table('cities')->insert([
-            'nombre_ciudad'=>'oruro',
-            'costo' => '10'
+            'nombre_ciudad'=>'Oruro',
+            'costo' => '0'
         ]);
 
         DB::table('cities')->insert([
-            'nombre_ciudad'=>'potosi',
-            'costo' => '10'
+            'nombre_ciudad'=>'Potosi',
+            'costo' => '0'
         ]);
 
         DB::table('cities')->insert([
-            'nombre_ciudad'=>'pando',
-            'costo' => '10'
+            'nombre_ciudad'=>'Pando',
+            'costo' => '0'
         ]);
 
         DB::table('cities')->insert([
-            'nombre_ciudad'=>'beni',
-            'costo' => '20'
+            'nombre_ciudad'=>'Beni',
+            'costo' => '0'
         ]);
 
         DB::table('cities')->insert([
-            'nombre_ciudad'=>'santa-cruz',
-            'costo' => '20'
+            'nombre_ciudad'=>'Santa Cruz',
+            'costo' => '0'
         ]);
 
         DB::table('cities')->insert([
-            'nombre_ciudad'=>'chuquisaca',
-            'costo' => '10'
+            'nombre_ciudad'=>'Chuquisaca',
+            'costo' => '0'
         ]);
 
         DB::table('cities')->insert([
-            'nombre_ciudad'=>'tarija',
-            'costo' => '20'
+            'nombre_ciudad'=>'Tarija',
+            'costo' => '0'
         ]);
 
 

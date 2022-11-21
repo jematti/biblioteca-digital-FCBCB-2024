@@ -11,7 +11,8 @@
     @stack('styles')
 
      <!-- Styles - Scripts -->
-     @vite(['resources/css/app.css', 'resources/js/app.js'])
+     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+     <script src="{{ mix('js/app.js') }}" defer></script>
 
     {{-- Styles Livewire --}}
     @livewireStyles
@@ -20,23 +21,6 @@
 </head>
 
     <body>
-
-        {{-- Seccion de mensajes flash --}}
-        {{-- <div>
-            @if (session()->has('message'))
-                <div class="alert alert-success p-10 m-10 text-white">
-                    {{ session('message') }}
-                </div>
-            @endif
-        </div> --}}
-        {{-- fin de seccion de mensajes flash --}}
-
-        {{-- seccion de carga --}}
-        {{-- <div class="pt-10" id="loadingDiv">
-            <div class="loader">Loading...
-            </div>
-        </div> --}}
-        {{-- fin de seccion de carga --}}
 
         {{-- seccion barra de navegacion --}}
         @livewire('navigation')
@@ -87,19 +71,6 @@
                 }
                 })
             });
-        </script>
-
-        <script>
-        //    $('body').append('<div style="" id="loadingDiv"><div class="loader">Loading...</div></div>');
-            $(window).on('load', function(){
-            setTimeout(removeLoader, 2000); //wait for page load PLUS two seconds.
-            });
-            function removeLoader(){
-                $( "#loadingDiv" ).fadeOut(500, function() {
-                // fadeOut complete. Remove the loading div
-                $( "#loadingDiv" ).remove(); //makes page more lightweight
-            });
-            }
         </script>
         @yield('js')
 
