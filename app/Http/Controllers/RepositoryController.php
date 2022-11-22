@@ -107,6 +107,7 @@ class RepositoryController extends Controller
     {
         $products = Product::join("repositories","products.repository_id","=","repositories.id")
         ->where('products.repository_id',$repository->id)
+        ->where('products.habilitado',1)
         ->select('products.id','products.imagen','products.titulo','products.precio','repositories.nombre_repositorio')
         ->paginate(10);
         return view('repository.show',compact('repository','products'));

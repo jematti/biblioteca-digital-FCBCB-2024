@@ -20,8 +20,8 @@
                 <a href="{{ route('products.show', $product) }}" class="flex">
                     <img src="{{ asset('uploads').'/'.$product->imagen}}" alt="imagen de busqueda" class="w-16 h-12 object-cover">
                     <div class="ml-4 ">
-                        <p class="text-lg font-semibold">{{ $product->titulo }}</p>
-                        <p class="text-base  text-gray-500 font-medium">{{ $product->nombre_autor}}</p>
+                        <p class="text-base font-semibold">{{ $product->titulo }}</p>
+                        <p class="text-sm  text-gray-500 font-medium">{{ $product->nombre_autor}}</p>
                     </div>
                 </a>
                 <hr>

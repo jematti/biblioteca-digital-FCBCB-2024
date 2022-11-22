@@ -112,10 +112,6 @@ class CreateOrder extends Component
         //guardar orden en la base de datos
         $order->save();
 
-        //actualizar correo si es necesario
-        $usuario = User::find(auth()->user()->id);
-        $usuario->email = $this->correo_contacto;
-        $usuario->save();
 
         //guardamos en la tabla de ventas (sale)
         foreach (Cart::content() as $item) {
@@ -130,10 +126,7 @@ class CreateOrder extends Component
             descontar($item);
         }
 
-        // // descontamos los productos de la tabla productos
-        // foreach (Cart::content() as $item) {
-        //     descontar($item);
-        // }
+
         //limpiar carrito
         Cart::destroy();
 

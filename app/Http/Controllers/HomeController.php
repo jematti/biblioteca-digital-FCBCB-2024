@@ -14,7 +14,7 @@ class HomeController extends Controller
     {
 
         session()->flash('message', 'Post successfully updated.');
-        $products = Product::orderBy('id','desc')->paginate(10);
+        $products = Product::orderBy('id','desc')->where('habilitado',1)->paginate(10);
         $categories = Category::orderBy('id','desc')->simplepaginate(10);
         $repositories = Repository::orderBy('id','desc')->get();
         return view('home')->with('products',$products)

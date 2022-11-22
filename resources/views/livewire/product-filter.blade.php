@@ -49,9 +49,9 @@
             </ul>
 
             {{-- Precios por Fechas Novedades --}}
-
+            <h2 class="font-semibold text-center mt-4 mb-2">Fecha de Publicación</h2>
+            {{-- ascendente --}}
             <ul class="divide-y divide-gray-200">
-                {{-- ascendente --}}
                 <li class="py-2 text-sm">
                     <a class="cursor-pointer
                            hover:font-bold capitalize

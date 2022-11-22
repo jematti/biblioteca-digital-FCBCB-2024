@@ -34,11 +34,11 @@
                     @forelse (Cart::content() as $item)
 
                     <li class="flex border-b border-gray-200 m-2">
-                        <img src="{{ asset('uploads').'/'.$item->options->imagen}}" alt="imagen de portada de libro" class="w-24 h-24  object-cover">
+                        <img src="{{ asset('uploads').'/'.$item->options->imagen}}" alt="imagen de portada de libro" class="w-24 h-24 p-2 object-cover">
                         <article class="flex-1">
-                            <h1 class="text-lg font-semibold">{{ $item->name}}</h1>
-                            <p class="text-base  text-gray-500 font-medium">Cant: {{ $item->qty}}</p>
-                            <p class="text-base  text-gray-500 font-medium">Bs: {{ $item->price}}</p>
+                            <h1 class="text-sm font-semibold">{{ $item->name}}</h1>
+                            <p class="text-sm  text-gray-500 font-medium">Cant: {{ $item->qty}}</p>
+                            <p class="text-sm  text-gray-500 font-medium">Bs: {{ $item->price}}</p>
                         </article>
                     </li>
 

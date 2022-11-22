@@ -20,11 +20,11 @@
                 <div class="mb-2">
                     <label class="text-base " for="correo_contacto">
                         Confirmación de Correo electronico.
-                        <span class="text-gray-500 text-sm font-semibold italic"> (En caso de cambiar de correo,  Estos cambios se aplicara a su cuenta personal)</span><br>
+                        <span class="text-gray-500 text-sm font-semibold italic"> (Para el cambio de correo se realiza en la sección Ver Perfil -> Datos personales)</span><br>
                         <span class="text-red-500 text-sm font-bold"> El correo electrónico será utilizado para recibir la facturación.*</span><br>
                     </label>
 
-                    <input type="email" wire:model.defer="correo_contacto" class="rounded-lg shadow-sm w-full text-sm p-2.5  border @error('correo_contacto') border-red-500 @enderror" placeholder="Ingrese el su correo actual" id="correo_contacto" name="correo_contacto" value="{{old('correo_contacto')}}" />
+                    <input readonly type="email" wire:model.defer="correo_contacto"  class="block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-gray-100 bg-clip-padding border-solid rounded border @error('correo_contacto') border-red-500 @enderror" placeholder="Ingrese el su correo actual" id="correo_contacto" name="correo_contacto" value="{{old('correo_contacto')}}" />
 
                     @error('correo_contacto')
                     <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
@@ -191,7 +191,7 @@
                             m-0
                             focus:text-neutral-700 focus:bg-white focus:border-gray-600 focus:outline-none
                             @error('direccion') border-red-500 @enderror
-                        " id="direccion" name="direccion" wire:model.defer="direccion" placeholder="Dirección donde le llegara el pedido" value="{{old('direccion')}}" rows="3"></textarea>
+                        " id="direccion" name="direccion" wire:model.defer="direccion" placeholder="Zona/Calle o Avenida/Nro de Casa/Información Adicional" value="{{old('direccion')}}" rows="3"></textarea>
 
                         @error('direccion')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>

@@ -28,7 +28,7 @@
 
                 @can('nav.admin')
                 {{-- seccion de barra de neavegacion superior para el administrador  --}}
-                <div class="hidden lg:flex lg:ml-2">
+                <div class="hidden md:flex lg:ml-2">
                     <div class="flex">
                         <button onclick="location.href = '{{ route('notification') }}'" class="flex items-center w-1/2 px-3 py-1 mx-1 rounded text-center text-sm bg-white font-medium text-black leading-5 hover:bg-gray-600 hover:text-white md:mx-2 md:w-auto">
                             Hola: {{auth()->user()->name}}
@@ -146,7 +146,6 @@
                         <a href="{{route('filter.index')}}" class="truncate max-w-24 ">Filtro de Busqueda Avanzada</a>
                     </li>
 
-
                 </ul>
             </div>
             {{-- fin segunda barra de navegacion --}}
@@ -157,8 +156,17 @@
 
         <div x-show="menu" class="block lg:hidden">
             <div class="px-2 ">
-                <a href="{{route('home')}}" class="text-center mt-1 block px-3 py-2 rounded-md text-white font-semibold hover:bg-yellow-500 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Pagina Principal</a>
-                <a href="{{route('home')}}" class="text-center mt-1 block px-3 py-2 rounded-md text-white font-semibold hover:bg-yellow-500 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Productos Populares</a>
+                <a href="{{route('home')}}" class="text-center mt-1 block px-3 py-2 rounded-md text-white font-semibold hover:bg-yellow-500 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">  <i class="fa-solid fa-house fa-md px-2"></i>Pagina Principal</a>
+                <a href="{{route('filter.index')}}" class="text-center mt-1 block px-3 py-2 rounded-md text-white font-semibold hover:bg-yellow-500 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out"><i class="fa-solid fa-magnifying-glass-plus fa-md px-2"></i>Filtro de Busqueda Avanzada</a>
+                @auth
+                    @can('nav.admin')
+                    <a href="{{route('admin.orders.index')}}" class="text-center mt-1 block px-3 py-2 rounded-md text-white font-semibold hover:bg-yellow-500 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out"><i class="fa-solid fa-screwdriver-wrench px-2"></i>Administración</a>
+                    <form action="{{route('logout')}}" method="POST">
+                        @csrf
+                        <button type="submit" class="block w-full mx-2 my-2 px-1 py-2  rounded text-center text-sm bg-red-500 font-medium text-white leading-5 hover:bg-red-400 md:mx-2 md:px-10 ">Cerrar Sesión</button>
+                    </form>
+                    @endcan
+                @endauth
             </div>
             {{-- inicio y registro para modo celular para el usuario--}}
             @auth
@@ -199,12 +207,13 @@
                 </form>
             </div>
             @endcan
+
             @endauth
 
             @guest
-            <div class="flex items-center py-2 -mx-1 md:mx-0">
-                <a class="block w-1/2 px-3 py-2 mx-1 rounded text-center text-sm font-medium hover:text-white leading-5 bg-white hover:bg-gray-600 md:mx-2 md:w-auto" href="{{ route('login') }}">Unete</a>
-                <a class="block w-1/2 px-3 py-2 mx-1 rounded text-center text-sm bg-blue-500 font-medium text-white leading-5 hover:bg-blue-600 md:mx-0 md:w-auto" href="{{ route('register') }}">Registrate</a>
+            <div class="p-2 ">
+                <a class="text-center text-sm mt-1 block px-3 py-2 rounded-md bg-white text-black font-semibold focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out" href="{{ route('login') }}"> <i class="fa-solid fa-right-to-bracket"></i> INGRESA</a>
+                <a class="text-center text-sm mt-1 block px-3 py-2 rounded-md bg-blue-400 text-white font-semibold focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out" href="{{ route('register') }}"><i class="fa-regular fa-address-card"></i> REGISTRATE</a>
             </div>
             @endguest
         </div>

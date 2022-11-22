@@ -12,22 +12,20 @@ class SearchController extends Controller
         $product_search = $request->product_search;
 
 
-        // $products =  product::join("authors","products.author_id","=","authors.id")
-        //                             ->where('products.titulo','LIKE',"%". $product_search."%")
-        //                             ->orWhere('authors.nombre_autor', 'LIKE' , '%' .$product_search. '%')
-        //                             ->take(5)
-        //                             ->distinct()
-        //                             ->get();
+        //busqueda de autor y titulos
+        // $products = product::join("authors","products.author_id","=","authors.id")
+        //                     ->where('products.habilitado',1)
+        //                     ->where('products.titulo','LIKE',"%". $product_search ."%")
+        //                     ->orWhere('authors.nombre_autor', 'LIKE' , '%' .$product_search. '%')
+        //                     ->select('products.id','products.imagen','products.titulo','products.precio','authors.nombre_autor')
+        //                     ->take(10)
+        //                     ->get();
+
 
         // busqueda solo titulos
-        // $products = product::where('titulo', 'LIKE' ,'%' . $product_search . '%')
-        // ->paginate(5);
-
-        $products = product::join("authors","products.author_id","=","authors.id")
-                            ->where('products.titulo','LIKE',"%". $product_search ."%")
-                            ->orWhere('authors.nombre_autor', 'LIKE' , '%' .$product_search. '%')
-                            ->select('products.id','products.imagen','products.titulo','products.precio','authors.nombre_autor')
-                            ->take(10)
+        $products = product::where('titulo', 'LIKE' ,'%' . $product_search . '%')
+                            ->where('habilitado',1)
+                            ->take(20)
                             ->get();
 
 
