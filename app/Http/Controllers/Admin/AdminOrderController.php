@@ -8,6 +8,10 @@ use App\Http\Controllers\Controller;
 
 class AdminOrderController extends Controller
 {
+    public function __construct() {
+        $this->middleware('can:admin.users.index')->only('index','show');
+    }
+
     public function index(){
 
         //realizamos la consulta a la base de datos segun el usuario

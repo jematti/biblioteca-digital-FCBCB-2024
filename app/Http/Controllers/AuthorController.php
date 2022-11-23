@@ -7,13 +7,12 @@ use App\Models\Author;
 class AuthorController extends Controller
 {
     public function __construct() {
-        $this->middleware('auth', ['except' => ['show']]);
+        $this->middleware('can:admin.categories.index')->only('index');
+        $this->middleware('can:admin.categories.create')->only('create');
+        $this->middleware('can:admin.categories.edit')->only('edit','update');
+        $this->middleware('can:admin.categories.destroy')->only('destroy');
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $data['author']= Author::orderBy('id','asc')->simplepaginate(5);
@@ -21,22 +20,13 @@ class AuthorController extends Controller
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         return view('author.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         $data = $request->validate([
@@ -50,35 +40,19 @@ class AuthorController extends Controller
                          ->with('store','ok');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(Author $author)
     {
         return view('author.show',compact('author'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit(Author $author)
     {
         return view('author.edit',compact('author'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, Author $author)
     {
         $request->validate([
@@ -93,12 +67,6 @@ class AuthorController extends Controller
     }
 
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Author $author)
     {
         $author->delete();

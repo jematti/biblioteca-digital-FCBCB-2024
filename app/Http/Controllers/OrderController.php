@@ -16,6 +16,13 @@ use App\Notifications\OrderNotification;
 
 class OrderController extends Controller
 {
+    public function __construct() {
+        // $this->middleware('can:admin.orders.index')->only('index');
+        $this->middleware('can:admin.orders.create')->only('create');
+        $this->middleware('can:admin.reports.orders')->only('report');
+        $this->middleware('can:admin.reports.sales')->only('sale');
+    }
+
     public function index()
     {
         //realizamos la consulta a la base de datos segun el usuario

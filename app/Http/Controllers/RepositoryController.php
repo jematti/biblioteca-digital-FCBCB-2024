@@ -11,7 +11,10 @@ use Intervention\Image\Facades\Image;
 class RepositoryController extends Controller
 {
     public function __construct() {
-        $this->middleware('auth', ['except' => ['show']]);
+        $this->middleware('can:admin.repositories.index')->only('index');
+        $this->middleware('can:admin.repositories.create')->only('create');
+        $this->middleware('can:admin.repositories.edit')->only('edit','update');
+        $this->middleware('can:admin.repositories.destroy')->only('destroy');
     }
      /**
      * Display a listing of the resource.

@@ -11,24 +11,19 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     public function __construct() {
-        $this->middleware('auth', ['except' => ['show']]);
+        $this->middleware('can:admin.products.index')->only('index');
+        $this->middleware('can:admin.products.create')->only('create');
+        $this->middleware('can:admin.products.edit')->only('edit','update');
+        $this->middleware('can:admin.products.destroy')->only('destroy');
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $data['product']= Product::orderBy('id','asc')->simplepaginate(8);
         return view('product.index',$data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         $categories = Category::all();
@@ -40,12 +35,6 @@ class ProductController extends Controller
                   ->with('repositories',$repositories);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
           //validacion de los inputs de la vista create de seccion "product"
@@ -93,23 +82,12 @@ class ProductController extends Controller
         return redirect()->route('products.index')->with('store','ok');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
     public function show(Product $product)
     {
         return view('product.show', compact('product'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit(Product $product)
     {
         $categories = Category::all();
@@ -123,13 +101,7 @@ class ProductController extends Controller
         ->with('product',$product);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, Product $product)
     {
          //validacion de los inputs de la vista create de seccion "product"
@@ -177,12 +149,6 @@ class ProductController extends Controller
         return redirect()->route('products.index')->with('update','ok');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Product $product)
     {
          // $product->delete();

@@ -34,13 +34,12 @@ Route::get('/', HomeController::class)->name('home');
 Route::group(['middleware' => ['auth', 'verified']], function () {
     //Admin-Usuarios
     Route::resource('users', UserController::class)->names('admin.users');
-    //CRUD Roles
-    Route::resource('roles', RoleController::class)->names('admin.roles');
+
     //CRUD Categoria
     Route::resource('category', CategoryController::class);
+    //CRUD Roles
+    Route::resource('roles', RoleController::class)->names('admin.roles');
 
-    //CRUD Repositorios
-    Route::resource('repository', RepositoryController::class);
     //Administrar Ordenes
     Route::get('admin/orders', [AdminOrderController::class, 'index'])->name('admin.orders.index');
     Route::get('admin/orders/{order}', [AdminOrderController::class, 'show'])->name('admin.orders.show');
@@ -100,6 +99,8 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 Route::resource('author', AuthorController::class);
 //CRUD libros
 Route::resource('products', ProductController::class);
+//CRUD Repositorios
+Route::resource('repository', RepositoryController::class);
 //Filtro de busqueda
 Route::resource('filter', FilterController::class);
 //Ruta de la Barra de Busqueda Principal Busqueda
