@@ -23,7 +23,7 @@ class RepositoryController extends Controller
      */
     public function index()
     {
-        $data['repository']= Repository::orderBy('id','asc')->simplepaginate(15);
+        $data['repository']= Repository::orderBy('id','asc')->paginate(15);
         return view('repository.index',$data);
 
     }

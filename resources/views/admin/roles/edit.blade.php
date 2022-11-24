@@ -1,6 +1,7 @@
 @extends('ui.nav')
 
 @section('contenido-admin')
+@can('admin.roles.edit')
     <!-- Editar rol -->
     <div class="max-w-5xl">
 
@@ -54,4 +55,5 @@
         </div>
 
     </div>
+@endcan
 @endsection

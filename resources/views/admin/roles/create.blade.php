@@ -1,6 +1,7 @@
 @extends('ui.nav')
 
 @section('contenido-admin')
+@can('admin.roles.create')
     <!-- Crear Nuevo Rol -->
     <div class="max-w-5xl">
 
@@ -57,4 +58,5 @@
 
         </div>
     </div>
+@endcan
 @endsection

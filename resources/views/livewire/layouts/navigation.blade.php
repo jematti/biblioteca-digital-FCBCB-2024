@@ -26,7 +26,7 @@
 
                 @auth
 
-                @can('nav.admin')
+                @canany(['nav.admin','nav.admin_tienda'])
                 {{-- seccion de barra de neavegacion superior para el administrador  --}}
                 <div class="hidden md:flex lg:ml-2">
                     <div class="flex">
@@ -36,7 +36,14 @@
                                 {{ Auth::user()->unreadNotifications->count() }}
                             </span>
                         </button>
-                        <a class="block w-1/2 px-3 py-2 mx-1 rounded text-center text-sm bg-custom-400 font-medium text-white leading-5 hover:bg-red-600 md:mx-0 md:w-auto" href="{{route('admin.orders.index')}}">Administrador</a>
+                        <a class="block w-1/2 px-3 py-2 mx-1 rounded text-center text-sm bg-custom-400 font-medium text-white leading-5 hover:bg-red-600 md:mx-0 md:w-auto" href="{{route('admin.orders.index')}}">
+                            @can('nav.admin')
+                            <i class="fa-solid fa-screwdriver-wrench"></i> Administrador
+                            @endcan
+                            @can('nav.admin_tienda')
+                            <i class="fa-solid fa-shop"></i> Tienda
+                            @endcan
+                        </a>
                         {{-- metodo para cerrar sesion --}}
                         <form action="{{route('logout')}}" method="POST" class="mx-2">
                             @csrf
@@ -57,12 +64,6 @@
                 {{-- seccion barra de navegacion superior para el usuario --}}
                 <div class="hidden lg:flex lg:ml-2">
                     <div class="flex">
-                        {{-- <a class="block w-1/2 px-3 py-2 mx-1 my-2 rounded text-center text-sm bg-white font-medium text-black leading-5 hover:bg-gray-600 hover:text-white md:mx-2 md:w-auto" href="#">
-                                Hola: <span class="font-normal">
-                                {{auth()->user()->name}}
-                        </span>
-                        </a> --}}
-
                         {{-- seccion de icono de perfil de usuario --}}
                         <div class="relative" x-cloak x-data="{ open: false } ">
                             <button @click="open = !open" :class="{ 'font-bold text-custom-100': open === true }" class="flex  px-3 py-2 mx-2  my-4  rounded text-center text-sm bg-custom-500 font-medium text-white leading-5 hover:bg-orange-400 md:mx-0 md:w-auto">

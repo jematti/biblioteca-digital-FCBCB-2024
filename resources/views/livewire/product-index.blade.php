@@ -99,6 +99,7 @@
                                  </td>
 
                                {{-- seccion eliminar --}}
+                               @can('admin.products.destroy')
                                  <td class="p-2">
                                      <form action="{{ route('products.destroy',$product->id) }}" method="POST" class="delete-product">
                                          <div class="flex justify-center">
@@ -116,6 +117,7 @@
                                          </div>
                                      </form>
                                  </td>
+                                 @endcan
 
                              </tr>
                          @endforeach

@@ -120,6 +120,7 @@
                                 </td>
 
                               {{-- seccion eliminar --}}
+                              @can('admin.repositories.destroy')
                                 <td class="p-2">
                                     <form  class="delete-repository" action="{{ route('repository.destroy',$repositories->id) }}" method="POST">
                                         <div class="flex justify-center">
@@ -137,6 +138,7 @@
                                         </div>
                                     </form>
                                 </td>
+                              @endcan
 
                             </tr>
                         @endforeach

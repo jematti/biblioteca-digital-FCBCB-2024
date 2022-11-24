@@ -9,7 +9,8 @@ use App\Http\Controllers\Controller;
 class AdminOrderController extends Controller
 {
     public function __construct() {
-        $this->middleware('can:admin.users.index')->only('index','show');
+        $this->middleware('can:admin.orders.index')->only('index');
+        $this->middleware('can:admin.orders.index')->only('show');
     }
 
     public function index(){

@@ -30,8 +30,8 @@ use App\Http\Controllers\NotificationController;
 
 Route::get('/', HomeController::class)->name('home');
 
-
-Route::group(['middleware' => ['auth', 'verified']], function () {
+// Route::group(['middleware' => ['auth', 'verified']], function () {
+Route::group(['middleware' => ['auth']], function () {
     //Admin-Usuarios
     Route::resource('users', UserController::class)->names('admin.users');
 

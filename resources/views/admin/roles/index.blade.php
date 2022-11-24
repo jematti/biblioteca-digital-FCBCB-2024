@@ -1,10 +1,9 @@
 @extends('ui.nav')
 
 @section('contenido-admin')
-<!-- Listar RoLES -->
+@can('admin.roles.index')
+<!-- Listar Roles -->
 <div class="max-w-5xl">
-
-
     {{-- menu de navegacion para Listar y editar Roles --}}
     <div class="md:grid grid-cols-2 gap-1 my-4  sm:flex-grow">
         <div>
@@ -63,23 +62,22 @@
                             </a>
                         </div>
                     </td>
+                    @can('admin.roles.destroy')
                     <td class="border-t-0 px-2 align-middle border-l-0 border-r-0 text-base whitespace-nowrap p-2">
                         <form action="{{ route('admin.roles.destroy',$role->id) }}" method="POST" class="delete-product">
                             <div class="flex justify-center">
-                                <button >
+                                <button>
                                     @csrf
                                     @method('DELETE')
-                                    <svg class="w-8 h-8 hover:text-blue-600 rounded-full hover:bg-gray-100 p-1"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
+                                    <svg class="w-8 h-8 hover:text-blue-600 rounded-full hover:bg-gray-100 p-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
                                         </path>
                                     </svg>
                                 </button>
                             </div>
                         </form>
                     </td>
+                    @endcan
                 </tr>
                 @endforeach
             </tbody>
@@ -87,32 +85,31 @@
     </div>
     {{-- fin de listado de roles --}}
 </div>
-
+@endcan
 @endsection
 
 @section('js')
-    {{-- solicitud de confirmacion de eliminacion --}}
-    <script type="text/javascript">
-
-
-        $('.delete-product').submit(function(e){
+{{-- solicitud de confirmacion de eliminacion --}}
+<script type="text/javascript">
+    $('.delete-product').submit(function(e) {
 
         //previene el comportamiento por defecto del formulario
         e.preventDefault();
 
         Swal.fire({
-        title: '¿Esta Seguro de Eliminar este ROL?',
-        text: "¡Esta accion no es reversible!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Si, estoy Seguro',
-        }).then((result) => {
+            title: '¿Esta Seguro de Eliminar este ROL?'
+            , text: "¡Esta accion no es reversible!"
+            , icon: 'warning'
+            , showCancelButton: true
+            , confirmButtonColor: '#3085d6'
+            , cancelButtonColor: '#d33'
+            , confirmButtonText: 'Si, estoy Seguro'
+        , }).then((result) => {
             if (result.value) {
                 this.submit();
             }
-            })
-        });
-    </script>
+        })
+    });
+
+</script>
 @endsection
