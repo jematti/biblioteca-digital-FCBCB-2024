@@ -193,7 +193,7 @@ class OrderController extends Controller
             'fecha_inicio'=>$fecha_inicio,
             'fecha_fin'=>$fecha_fin]);
             return $pdf->stream();
-            return $pdf->download('invoice.pdf');
+            // return $pdf->download('invoice.pdf');
             // return view('report.sales_report')->with('products',$products)->with('products_search',$products_search);
 
     }
