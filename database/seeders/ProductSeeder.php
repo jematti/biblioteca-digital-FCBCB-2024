@@ -28,17 +28,7 @@ class ProductSeeder extends Seeder
             Banco Central de Bolivia que promueve la interacción de la sociedad,
             desarrollando medios que posibilitan la participación y el acceso de la
             comunidad a las expresiones culturales, artísticas y científicas
-            en cada uno de los Centros Culturales a su cargo.
-            A través de los diferentes programas que desarrollan
-            nuestros Centros Culturales se hace posible el rescate y registro
-            del patrimonio nacional, la difusión especializada de la
-            herencia histórica, cultural y documental; la apertura a las diferentes
-            manifestaciones artísticas y de encuentro, creando y
-            ampliando los espacios posibles y, también, lo supuestamente
-            imposible; así como la promoción a un mayor acceso de la
-            población a nuestros repositorios a través de sus exposiciones
-            itinerantes y de sus diferentes programas de difusión que
-            llevan el museo más allá de su espacio físico',
+            en cada uno de los Centros Culturales a su cargo.',
             'imagen' => 'PA1.png',
             'cantidad' => '10',
             'precio' => '20',
@@ -61,17 +51,7 @@ class ProductSeeder extends Seeder
             Banco Central de Bolivia que promueve la interacción de la sociedad,
             desarrollando medios que posibilitan la participación y el acceso de la
             comunidad a las expresiones culturales, artísticas y científicas
-            en cada uno de los Centros Culturales a su cargo.
-            A través de los diferentes programas que desarrollan
-            nuestros Centros Culturales se hace posible el rescate y registro
-            del patrimonio nacional, la difusión especializada de la
-            herencia histórica, cultural y documental; la apertura a las diferentes
-            manifestaciones artísticas y de encuentro, creando y
-            ampliando los espacios posibles y, también, lo supuestamente
-            imposible; así como la promoción a un mayor acceso de la
-            población a nuestros repositorios a través de sus exposiciones
-            itinerantes y de sus diferentes programas de difusión que
-            llevan el museo más allá de su espacio físico',
+            en cada uno de los Centros Culturales a su cargo.',
             'imagen' => 'PA2.png',
             'precio' => '20',
             'cantidad' => '10',
@@ -93,17 +73,7 @@ class ProductSeeder extends Seeder
             Banco Central de Bolivia que promueve la interacción de la sociedad,
             desarrollando medios que posibilitan la participación y el acceso de la
             comunidad a las expresiones culturales, artísticas y científicas
-            en cada uno de los Centros Culturales a su cargo.
-            A través de los diferentes programas que desarrollan
-            nuestros Centros Culturales se hace posible el rescate y registro
-            del patrimonio nacional, la difusión especializada de la
-            herencia histórica, cultural y documental; la apertura a las diferentes
-            manifestaciones artísticas y de encuentro, creando y
-            ampliando los espacios posibles y, también, lo supuestamente
-            imposible; así como la promoción a un mayor acceso de la
-            población a nuestros repositorios a través de sus exposiciones
-            itinerantes y de sus diferentes programas de difusión que
-            llevan el museo más allá de su espacio físico',
+            en cada uno de los Centros Culturales a su cargo.',
             'imagen' => 'PA3.png',
             'precio' => '20',
             'cantidad' => '10',
@@ -125,17 +95,7 @@ class ProductSeeder extends Seeder
             Banco Central de Bolivia que promueve la interacción de la sociedad,
             desarrollando medios que posibilitan la participación y el acceso de la
             comunidad a las expresiones culturales, artísticas y científicas
-            en cada uno de los Centros Culturales a su cargo.
-            A través de los diferentes programas que desarrollan
-            nuestros Centros Culturales se hace posible el rescate y registro
-            del patrimonio nacional, la difusión especializada de la
-            herencia histórica, cultural y documental; la apertura a las diferentes
-            manifestaciones artísticas y de encuentro, creando y
-            ampliando los espacios posibles y, también, lo supuestamente
-            imposible; así como la promoción a un mayor acceso de la
-            población a nuestros repositorios a través de sus exposiciones
-            itinerantes y de sus diferentes programas de difusión que
-            llevan el museo más allá de su espacio físico',
+            en cada uno de los Centros Culturales a su cargo.',
             'imagen' => 'PA4.png',
             'precio' => '20',
             'cantidad' => '10',
@@ -157,17 +117,7 @@ class ProductSeeder extends Seeder
             Banco Central de Bolivia que promueve la interacción de la sociedad,
             desarrollando medios que posibilitan la participación y el acceso de la
             comunidad a las expresiones culturales, artísticas y científicas
-            en cada uno de los Centros Culturales a su cargo.
-            A través de los diferentes programas que desarrollan
-            nuestros Centros Culturales se hace posible el rescate y registro
-            del patrimonio nacional, la difusión especializada de la
-            herencia histórica, cultural y documental; la apertura a las diferentes
-            manifestaciones artísticas y de encuentro, creando y
-            ampliando los espacios posibles y, también, lo supuestamente
-            imposible; así como la promoción a un mayor acceso de la
-            población a nuestros repositorios a través de sus exposiciones
-            itinerantes y de sus diferentes programas de difusión que
-            llevan el museo más allá de su espacio físico',
+            en cada uno de los Centros Culturales a su cargo.',
             'imagen' => 'PA5.png',
             'precio' => '20',
             'cantidad' => '10',
@@ -189,17 +139,7 @@ class ProductSeeder extends Seeder
             Banco Central de Bolivia que promueve la interacción de la sociedad,
             desarrollando medios que posibilitan la participación y el acceso de la
             comunidad a las expresiones culturales, artísticas y científicas
-            en cada uno de los Centros Culturales a su cargo.
-            A través de los diferentes programas que desarrollan
-            nuestros Centros Culturales se hace posible el rescate y registro
-            del patrimonio nacional, la difusión especializada de la
-            herencia histórica, cultural y documental; la apertura a las diferentes
-            manifestaciones artísticas y de encuentro, creando y
-            ampliando los espacios posibles y, también, lo supuestamente
-            imposible; así como la promoción a un mayor acceso de la
-            población a nuestros repositorios a través de sus exposiciones
-            itinerantes y de sus diferentes programas de difusión que
-            llevan el museo más allá de su espacio físico',
+            en cada uno de los Centros Culturales a su cargo.',
             'imagen' => 'PA6.png',
             'precio' => '20',
             'cantidad' => '10',
@@ -221,17 +161,7 @@ class ProductSeeder extends Seeder
             Banco Central de Bolivia que promueve la interacción de la sociedad,
             desarrollando medios que posibilitan la participación y el acceso de la
             comunidad a las expresiones culturales, artísticas y científicas
-            en cada uno de los Centros Culturales a su cargo.
-            A través de los diferentes programas que desarrollan
-            nuestros Centros Culturales se hace posible el rescate y registro
-            del patrimonio nacional, la difusión especializada de la
-            herencia histórica, cultural y documental; la apertura a las diferentes
-            manifestaciones artísticas y de encuentro, creando y
-            ampliando los espacios posibles y, también, lo supuestamente
-            imposible; así como la promoción a un mayor acceso de la
-            población a nuestros repositorios a través de sus exposiciones
-            itinerantes y de sus diferentes programas de difusión que
-            llevan el museo más allá de su espacio físico',
+            en cada uno de los Centros Culturales a su cargo.',
             'imagen' => 'PA7.png',
             'precio' => '20',
             'cantidad' => '10',
@@ -253,17 +183,7 @@ class ProductSeeder extends Seeder
             Banco Central de Bolivia que promueve la interacción de la sociedad,
             desarrollando medios que posibilitan la participación y el acceso de la
             comunidad a las expresiones culturales, artísticas y científicas
-            en cada uno de los Centros Culturales a su cargo.
-            A través de los diferentes programas que desarrollan
-            nuestros Centros Culturales se hace posible el rescate y registro
-            del patrimonio nacional, la difusión especializada de la
-            herencia histórica, cultural y documental; la apertura a las diferentes
-            manifestaciones artísticas y de encuentro, creando y
-            ampliando los espacios posibles y, también, lo supuestamente
-            imposible; así como la promoción a un mayor acceso de la
-            población a nuestros repositorios a través de sus exposiciones
-            itinerantes y de sus diferentes programas de difusión que
-            llevan el museo más allá de su espacio físico',
+            en cada uno de los Centros Culturales a su cargo.',
             'imagen' => 'PA8.png',
             'precio' => '20',
             'cantidad' => '10',
@@ -285,17 +205,7 @@ class ProductSeeder extends Seeder
             Banco Central de Bolivia que promueve la interacción de la sociedad,
             desarrollando medios que posibilitan la participación y el acceso de la
             comunidad a las expresiones culturales, artísticas y científicas
-            en cada uno de los Centros Culturales a su cargo.
-            A través de los diferentes programas que desarrollan
-            nuestros Centros Culturales se hace posible el rescate y registro
-            del patrimonio nacional, la difusión especializada de la
-            herencia histórica, cultural y documental; la apertura a las diferentes
-            manifestaciones artísticas y de encuentro, creando y
-            ampliando los espacios posibles y, también, lo supuestamente
-            imposible; así como la promoción a un mayor acceso de la
-            población a nuestros repositorios a través de sus exposiciones
-            itinerantes y de sus diferentes programas de difusión que
-            llevan el museo más allá de su espacio físico',
+            en cada uno de los Centros Culturales a su cargo.',
             'imagen' => 'PA9.png',
             'precio' => '20',
             'cantidad' => '10',
@@ -317,17 +227,7 @@ class ProductSeeder extends Seeder
             Banco Central de Bolivia que promueve la interacción de la sociedad,
             desarrollando medios que posibilitan la participación y el acceso de la
             comunidad a las expresiones culturales, artísticas y científicas
-            en cada uno de los Centros Culturales a su cargo.
-            A través de los diferentes programas que desarrollan
-            nuestros Centros Culturales se hace posible el rescate y registro
-            del patrimonio nacional, la difusión especializada de la
-            herencia histórica, cultural y documental; la apertura a las diferentes
-            manifestaciones artísticas y de encuentro, creando y
-            ampliando los espacios posibles y, también, lo supuestamente
-            imposible; así como la promoción a un mayor acceso de la
-            población a nuestros repositorios a través de sus exposiciones
-            itinerantes y de sus diferentes programas de difusión que
-            llevan el museo más allá de su espacio físico',
+            en cada uno de los Centros Culturales a su cargo.',
             'imagen' => 'PA10.png',
             'precio' => '20',
             'cantidad' => '10',
@@ -349,17 +249,7 @@ class ProductSeeder extends Seeder
             Banco Central de Bolivia que promueve la interacción de la sociedad,
             desarrollando medios que posibilitan la participación y el acceso de la
             comunidad a las expresiones culturales, artísticas y científicas
-            en cada uno de los Centros Culturales a su cargo.
-            A través de los diferentes programas que desarrollan
-            nuestros Centros Culturales se hace posible el rescate y registro
-            del patrimonio nacional, la difusión especializada de la
-            herencia histórica, cultural y documental; la apertura a las diferentes
-            manifestaciones artísticas y de encuentro, creando y
-            ampliando los espacios posibles y, también, lo supuestamente
-            imposible; así como la promoción a un mayor acceso de la
-            población a nuestros repositorios a través de sus exposiciones
-            itinerantes y de sus diferentes programas de difusión que
-            llevan el museo más allá de su espacio físico',
+            en cada uno de los Centros Culturales a su cargo.',
             'imagen' => 'PA11.png',
             'precio' => '20',
             'cantidad' => '10',
@@ -381,17 +271,7 @@ class ProductSeeder extends Seeder
             Banco Central de Bolivia que promueve la interacción de la sociedad,
             desarrollando medios que posibilitan la participación y el acceso de la
             comunidad a las expresiones culturales, artísticas y científicas
-            en cada uno de los Centros Culturales a su cargo.
-            A través de los diferentes programas que desarrollan
-            nuestros Centros Culturales se hace posible el rescate y registro
-            del patrimonio nacional, la difusión especializada de la
-            herencia histórica, cultural y documental; la apertura a las diferentes
-            manifestaciones artísticas y de encuentro, creando y
-            ampliando los espacios posibles y, también, lo supuestamente
-            imposible; así como la promoción a un mayor acceso de la
-            población a nuestros repositorios a través de sus exposiciones
-            itinerantes y de sus diferentes programas de difusión que
-            llevan el museo más allá de su espacio físico',
+            en cada uno de los Centros Culturales a su cargo.',
             'imagen' => 'PA12.png',
             'precio' => '20',
             'cantidad' => '10',
@@ -413,17 +293,7 @@ class ProductSeeder extends Seeder
             Banco Central de Bolivia que promueve la interacción de la sociedad,
             desarrollando medios que posibilitan la participación y el acceso de la
             comunidad a las expresiones culturales, artísticas y científicas
-            en cada uno de los Centros Culturales a su cargo.
-            A través de los diferentes programas que desarrollan
-            nuestros Centros Culturales se hace posible el rescate y registro
-            del patrimonio nacional, la difusión especializada de la
-            herencia histórica, cultural y documental; la apertura a las diferentes
-            manifestaciones artísticas y de encuentro, creando y
-            ampliando los espacios posibles y, también, lo supuestamente
-            imposible; así como la promoción a un mayor acceso de la
-            población a nuestros repositorios a través de sus exposiciones
-            itinerantes y de sus diferentes programas de difusión que
-            llevan el museo más allá de su espacio físico',
+            en cada uno de los Centros Culturales a su cargo.',
             'imagen' => 'PA13.png',
             'precio' => '20',
             'cantidad' => '10',
@@ -445,17 +315,7 @@ class ProductSeeder extends Seeder
             Banco Central de Bolivia que promueve la interacción de la sociedad,
             desarrollando medios que posibilitan la participación y el acceso de la
             comunidad a las expresiones culturales, artísticas y científicas
-            en cada uno de los Centros Culturales a su cargo.
-            A través de los diferentes programas que desarrollan
-            nuestros Centros Culturales se hace posible el rescate y registro
-            del patrimonio nacional, la difusión especializada de la
-            herencia histórica, cultural y documental; la apertura a las diferentes
-            manifestaciones artísticas y de encuentro, creando y
-            ampliando los espacios posibles y, también, lo supuestamente
-            imposible; así como la promoción a un mayor acceso de la
-            población a nuestros repositorios a través de sus exposiciones
-            itinerantes y de sus diferentes programas de difusión que
-            llevan el museo más allá de su espacio físico',
+            en cada uno de los Centros Culturales a su cargo.',
             'imagen' => 'PA14.png',
             'precio' => '20',
             'cantidad' => '10',
@@ -477,17 +337,7 @@ class ProductSeeder extends Seeder
             Banco Central de Bolivia que promueve la interacción de la sociedad,
             desarrollando medios que posibilitan la participación y el acceso de la
             comunidad a las expresiones culturales, artísticas y científicas
-            en cada uno de los Centros Culturales a su cargo.
-            A través de los diferentes programas que desarrollan
-            nuestros Centros Culturales se hace posible el rescate y registro
-            del patrimonio nacional, la difusión especializada de la
-            herencia histórica, cultural y documental; la apertura a las diferentes
-            manifestaciones artísticas y de encuentro, creando y
-            ampliando los espacios posibles y, también, lo supuestamente
-            imposible; así como la promoción a un mayor acceso de la
-            población a nuestros repositorios a través de sus exposiciones
-            itinerantes y de sus diferentes programas de difusión que
-            llevan el museo más allá de su espacio físico',
+            en cada uno de los Centros Culturales a su cargo.',
             'imagen' => 'PA15.png',
             'precio' => '20',
             'cantidad' => '10',
@@ -509,17 +359,7 @@ class ProductSeeder extends Seeder
             Banco Central de Bolivia que promueve la interacción de la sociedad,
             desarrollando medios que posibilitan la participación y el acceso de la
             comunidad a las expresiones culturales, artísticas y científicas
-            en cada uno de los Centros Culturales a su cargo.
-            A través de los diferentes programas que desarrollan
-            nuestros Centros Culturales se hace posible el rescate y registro
-            del patrimonio nacional, la difusión especializada de la
-            herencia histórica, cultural y documental; la apertura a las diferentes
-            manifestaciones artísticas y de encuentro, creando y
-            ampliando los espacios posibles y, también, lo supuestamente
-            imposible; así como la promoción a un mayor acceso de la
-            población a nuestros repositorios a través de sus exposiciones
-            itinerantes y de sus diferentes programas de difusión que
-            llevan el museo más allá de su espacio físico',
+            en cada uno de los Centros Culturales a su cargo.',
             'imagen' => 'PA16.png',
             'precio' => '20',
             'cantidad' => '10',
@@ -541,17 +381,7 @@ class ProductSeeder extends Seeder
             Banco Central de Bolivia que promueve la interacción de la sociedad,
             desarrollando medios que posibilitan la participación y el acceso de la
             comunidad a las expresiones culturales, artísticas y científicas
-            en cada uno de los Centros Culturales a su cargo.
-            A través de los diferentes programas que desarrollan
-            nuestros Centros Culturales se hace posible el rescate y registro
-            del patrimonio nacional, la difusión especializada de la
-            herencia histórica, cultural y documental; la apertura a las diferentes
-            manifestaciones artísticas y de encuentro, creando y
-            ampliando los espacios posibles y, también, lo supuestamente
-            imposible; así como la promoción a un mayor acceso de la
-            población a nuestros repositorios a través de sus exposiciones
-            itinerantes y de sus diferentes programas de difusión que
-            llevan el museo más allá de su espacio físico',
+            en cada uno de los Centros Culturales a su cargo.',
             'imagen' => 'PA17.png',
             'precio' => '20',
             'cantidad' => '10',
@@ -573,19 +403,207 @@ class ProductSeeder extends Seeder
             Banco Central de Bolivia que promueve la interacción de la sociedad,
             desarrollando medios que posibilitan la participación y el acceso de la
             comunidad a las expresiones culturales, artísticas y científicas
-            en cada uno de los Centros Culturales a su cargo.
-            A través de los diferentes programas que desarrollan
-            nuestros Centros Culturales se hace posible el rescate y registro
-            del patrimonio nacional, la difusión especializada de la
-            herencia histórica, cultural y documental; la apertura a las diferentes
-            manifestaciones artísticas y de encuentro, creando y
-            ampliando los espacios posibles y, también, lo supuestamente
-            imposible; así como la promoción a un mayor acceso de la
-            población a nuestros repositorios a través de sus exposiciones
-            itinerantes y de sus diferentes programas de difusión que
-            llevan el museo más allá de su espacio físico',
+            en cada uno de los Centros Culturales a su cargo.',
             'imagen' => 'PA18.png',
             'precio' => '20',
+            'cantidad' => '10',
+            'author_id' => '1',
+            'category_id' => '1',
+            'repository_id' => '2',
+            'isbn' => '123456789',
+        ]);
+        DB::table('products')->insert([
+            'titulo' => 'Piedra de Agua N° 19',
+            'edicion' => 'Primera',
+            'numero_paginas' => '32',
+            'fecha_publicacion' => '2016/12/01',
+            'idioma' => 'español',
+            'resumen' => 'Vivimos tiempos de cambio y las instituciones
+            del Estado debemos estar a la altura que las circunstancias
+            históricas exigen, con mayor razón si se trata de una entidad
+            como la Fundación Cultural del
+            Banco Central de Bolivia que promueve la interacción de la sociedad,
+            desarrollando medios que posibilitan la participación y el acceso de la
+            comunidad a las expresiones culturales, artísticas y científicas
+            en cada uno de los Centros Culturales a su cargo.',
+            'imagen' => 'PA19.png',
+            'precio' => '20',
+            'cantidad' => '10',
+            'author_id' => '1',
+            'category_id' => '1',
+            'repository_id' => '2',
+            'isbn' => '123456789',
+        ]);
+        DB::table('products')->insert([
+            'titulo' => 'Piedra de Agua N° 20',
+            'edicion' => 'Primera',
+            'numero_paginas' => '32',
+            'fecha_publicacion' => '2016/12/01',
+            'idioma' => 'español',
+            'resumen' => 'Vivimos tiempos de cambio y las instituciones
+            del Estado debemos estar a la altura que las circunstancias
+            históricas exigen, con mayor razón si se trata de una entidad
+            como la Fundación Cultural del
+            Banco Central de Bolivia que promueve la interacción de la sociedad,
+            desarrollando medios que posibilitan la participación y el acceso de la
+            comunidad a las expresiones culturales, artísticas y científicas
+            en cada uno de los Centros Culturales a su cargo.',
+            'imagen' => 'PA20.png',
+            'precio' => '20',
+            'cantidad' => '10',
+            'author_id' => '1',
+            'category_id' => '1',
+            'repository_id' => '2',
+            'isbn' => '123456789',
+        ]);
+        DB::table('products')->insert([
+            'titulo' => 'Piedra de Agua N° 21',
+            'edicion' => 'Primera',
+            'numero_paginas' => '32',
+            'fecha_publicacion' => '2016/12/01',
+            'idioma' => 'español',
+            'resumen' => 'Vivimos tiempos de cambio y las instituciones
+            del Estado debemos estar a la altura que las circunstancias
+            históricas exigen, con mayor razón si se trata de una entidad
+            como la Fundación Cultural del
+            Banco Central de Bolivia que promueve la interacción de la sociedad,
+            desarrollando medios que posibilitan la participación y el acceso de la
+            comunidad a las expresiones culturales, artísticas y científicas
+            en cada uno de los Centros Culturales a su cargo.',
+            'imagen' => 'PA21.png',
+            'precio' => '20',
+            'cantidad' => '10',
+            'author_id' => '1',
+            'category_id' => '1',
+            'repository_id' => '2',
+            'isbn' => '123456789',
+        ]);
+        DB::table('products')->insert([
+            'titulo' => 'Piedra de Agua N° 22',
+            'edicion' => 'Primera',
+            'numero_paginas' => '32',
+            'fecha_publicacion' => '2016/12/01',
+            'idioma' => 'español',
+            'resumen' => 'Vivimos tiempos de cambio y las instituciones
+            del Estado debemos estar a la altura que las circunstancias
+            históricas exigen, con mayor razón si se trata de una entidad
+            como la Fundación Cultural del
+            Banco Central de Bolivia que promueve la interacción de la sociedad,
+            desarrollando medios que posibilitan la participación y el acceso de la
+            comunidad a las expresiones culturales, artísticas y científicas
+            en cada uno de los Centros Culturales a su cargo.',
+            'imagen' => 'PA22.png',
+            'precio' => '20',
+            'cantidad' => '10',
+            'author_id' => '1',
+            'category_id' => '1',
+            'repository_id' => '2',
+            'isbn' => '123456789',
+        ]);
+        DB::table('products')->insert([
+            'titulo' => 'Piedra de Agua N° 23',
+            'edicion' => 'Primera',
+            'numero_paginas' => '32',
+            'fecha_publicacion' => '2016/12/01',
+            'idioma' => 'español',
+            'resumen' => 'Vivimos tiempos de cambio y las instituciones
+            del Estado debemos estar a la altura que las circunstancias
+            históricas exigen, con mayor razón si se trata de una entidad
+            como la Fundación Cultural del
+            Banco Central de Bolivia que promueve la interacción de la sociedad,
+            desarrollando medios que posibilitan la participación y el acceso de la
+            comunidad a las expresiones culturales, artísticas y científicas
+            en cada uno de los Centros Culturales a su cargo.',
+            'imagen' => 'PA23.png',
+            'precio' => '20',
+            'cantidad' => '10',
+            'author_id' => '1',
+            'category_id' => '1',
+            'repository_id' => '2',
+            'isbn' => '123456789',
+        ]);
+        DB::table('products')->insert([
+            'titulo' => 'Piedra de Agua N° 24',
+            'edicion' => 'Primera',
+            'numero_paginas' => '32',
+            'fecha_publicacion' => '2016/12/01',
+            'idioma' => 'español',
+            'resumen' => 'Vivimos tiempos de cambio y las instituciones
+            del Estado debemos estar a la altura que las circunstancias
+            históricas exigen, con mayor razón si se trata de una entidad
+            como la Fundación Cultural del
+            Banco Central de Bolivia que promueve la interacción de la sociedad,
+            desarrollando medios que posibilitan la participación y el acceso de la
+            comunidad a las expresiones culturales, artísticas y científicas
+            en cada uno de los Centros Culturales a su cargo.',
+            'imagen' => 'PA24.png',
+            'precio' => '20',
+            'cantidad' => '10',
+            'author_id' => '1',
+            'category_id' => '1',
+            'repository_id' => '2',
+            'isbn' => '123456789',
+        ]);
+        DB::table('products')->insert([
+            'titulo' => 'Piedra de Agua N° 25',
+            'edicion' => 'Primera',
+            'numero_paginas' => '32',
+            'fecha_publicacion' => '2016/12/01',
+            'idioma' => 'español',
+            'resumen' => 'Vivimos tiempos de cambio y las instituciones
+            del Estado debemos estar a la altura que las circunstancias
+            históricas exigen, con mayor razón si se trata de una entidad
+            como la Fundación Cultural del
+            Banco Central de Bolivia que promueve la interacción de la sociedad,
+            desarrollando medios que posibilitan la participación y el acceso de la
+            comunidad a las expresiones culturales, artísticas y científicas
+            en cada uno de los Centros Culturales a su cargo.',
+            'imagen' => 'PA25.png',
+            'precio' => '20',
+            'cantidad' => '10',
+            'author_id' => '1',
+            'category_id' => '1',
+            'repository_id' => '2',
+            'isbn' => '123456789',
+        ]);
+        DB::table('products')->insert([
+            'titulo' => 'Piedra de Agua N° 26',
+            'edicion' => 'Primera',
+            'numero_paginas' => '32',
+            'fecha_publicacion' => '2016/12/01',
+            'idioma' => 'español',
+            'resumen' => 'Vivimos tiempos de cambio y las instituciones
+            del Estado debemos estar a la altura que las circunstancias
+            históricas exigen, con mayor razón si se trata de una entidad
+            como la Fundación Cultural del
+            Banco Central de Bolivia que promueve la interacción de la sociedad,
+            desarrollando medios que posibilitan la participación y el acceso de la
+            comunidad a las expresiones culturales, artísticas y científicas
+            en cada uno de los Centros Culturales a su cargo.',
+            'imagen' => 'PA20.png',
+            'precio' => '26',
+            'cantidad' => '10',
+            'author_id' => '1',
+            'category_id' => '1',
+            'repository_id' => '2',
+            'isbn' => '123456789',
+        ]);
+        DB::table('products')->insert([
+            'titulo' => 'Piedra de Agua N° 27',
+            'edicion' => 'Primera',
+            'numero_paginas' => '32',
+            'fecha_publicacion' => '2016/12/01',
+            'idioma' => 'español',
+            'resumen' => 'Vivimos tiempos de cambio y las instituciones
+            del Estado debemos estar a la altura que las circunstancias
+            históricas exigen, con mayor razón si se trata de una entidad
+            como la Fundación Cultural del
+            Banco Central de Bolivia que promueve la interacción de la sociedad,
+            desarrollando medios que posibilitan la participación y el acceso de la
+            comunidad a las expresiones culturales, artísticas y científicas
+            en cada uno de los Centros Culturales a su cargo.',
+            'imagen' => 'PA20.png',
+            'precio' => '27',
             'cantidad' => '10',
             'author_id' => '1',
             'category_id' => '1',
