@@ -4,7 +4,7 @@
 <!-- Editar Perfil -->
 <div class="max-w-5xl">
 
-    <h2 class="bg-custom-100 text-white text-lg rounded-lg p-4 text-center font-bold ">Editar Perfil</h2>
+    <h2 class="bg-custom-100 text-white text-lg rounded-lg p-4 text-center font-bold ">Editar Rol</h2>
     @if (session('info'))
     <div class="flex items-center bg-blue-500 text-white text-sm font-bold px-4 py-3 my-2" role="alert">
         <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -37,8 +37,9 @@
 
                     <input
                     {{ $user->roles->pluck('name')->contains($role->name) ? 'checked' : '' }}
+
                     name=roles[]
-                    type="checkbox"
+                    type="radio"
                     value="{{ $role->id }}"
                     class="w-4 h-4 mx-2
                     text-blue-600

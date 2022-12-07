@@ -42,5 +42,13 @@ class UserSeeder extends Seeder
             'password' => Hash::make('12345678'), // password
             'remember_token' => Str::random(10),
         ])->assignRole('admin_tienda');
+
+        User::create([
+            'name' => 'editor_tienda',
+            'email' => 't2@t2.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('12345678'), // password
+            'remember_token' => Str::random(10),
+        ])->assignRole('editor');
     }
 }

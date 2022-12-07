@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
 @endpush
 
-<h2 class="bg-custom-100 text-white uppercase text-lg rounded-lg p-4 text-center font-bold ">Agregar Libro</h2>
+<h2 class="bg-custom-100 text-white uppercase text-lg rounded-lg p-4 text-center font-bold ">Agregar Producto</h2>
 
 <div class="flex lg:flex-row md:flex-col">
     {{-- imagen del libro --}}
@@ -15,7 +15,7 @@
     <div class="mx-3 my-6">
         <div class="px-3">
             <label class="mb-2 block uppercase text-gray-500 font-bold">
-                Imagen del Libro
+                Imagen del Producto
             </label>
             <form enctype="multipart/form-data" action="{{ route('imagenes.store') }}" method="POST" id="dropzone" class="dropzone border-dashed border-2 w-full h-96 rounded flex flex-col justify-center items-center">
                 @csrf
@@ -274,14 +274,14 @@
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                             <label class="block mb-2  text-gray-500 font-bold" for="grid-city">
-                                ANCHO <span class=" font-medium">(opcional)</span>
+                                ANCHO cm. <span class=" font-medium">(opcional)</span>
                             </label>
                             <input class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="ancho" type="number" name="ancho" placeholder="Ancho del libro en 'cm' (centimetros)" value="{{old('ancho')}}">
                         </div>
                         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
 
                             <label class="block mb-2  text-gray-500 font-bold" for="grid-city">
-                                ALTO <span class=" font-medium">(opcional)</span>
+                                ALTO cm. <span class=" font-medium">(opcional)</span>
                             </label>
                             <input class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="alto" type="number" name="alto" placeholder="altura del libro en 'cm' (centimetros)" value="{{old('alto')}}">
                         </div>
@@ -290,21 +290,21 @@
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                             <label class="block mb-2  text-gray-500 font-bold" for="grid-city">
-                                PESO<span class=" font-medium">(opcional)</span>
+                                PESO gr. <span class=" font-medium">(opcional)</span>
                             </label>
                             <input class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="peso" type="number" name="peso" placeholder="Peso del libro en 'gr' (gramos)" value="{{old('peso')}}">
                         </div>
                         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
 
                             <label class="block mb-2  text-gray-500 font-bold" for="grid-city">
-                                GRUESO <span class=" font-medium">(opcional)</span>
+                                GRUESO cm. <span class=" font-medium">(opcional)</span>
                             </label>
                             <input class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grueso" type="number" name="grueso" placeholder="grueso del libro en 'cm' (centimetros)" value="{{old('grueso')}}">
                         </div>
                     </div>
                     {{-- fin seccion datos opcionales --}}
 
-                    <input type="submit" value="Agregar Libro" class="bg-sky-600 hover:bg-sky-700 transition-colors cursor-pointer uppercase font-bold w-full text-white rounded-lg p-3" />
+                    <input type="submit" value="Agregar Producto" class="bg-sky-600 hover:bg-sky-700 transition-colors cursor-pointer uppercase font-bold w-full text-white rounded-lg p-3" />
                 </div>
             </div>
 

@@ -177,7 +177,7 @@
                                                     </h1>
                                                 </div>
                                                 <div>
-                                                    <p class="font-bold text-xl md:ml-56 ml-2">Bs. {{ $product->precio }}
+                                                    <p class="font-bold text-xl md:ml-10 ml-2">| Bs. {{ $product->precio }}
                                                     </p>
                                                 </div>
                                             </div>
@@ -197,7 +197,7 @@
                                         <div class="mt-auto mb-5 md:w-full w-56">
                                             <button onclick="location.href ='{{ route('products.show', $product) }}' "
                                                 name="add" type="button"
-                                                class="flex items-center w-full justify-center p-2 sm:px-5 sm:py-3 sm:mt-2 text-white bg-custom-500  hover:bg-orange-400 focus:outline-none  rounded-lg">
+                                                class="flex items-center justify-center p-2 sm:px-5 sm:py-1 sm:mt-2 text-white bg-custom-500  hover:bg-orange-400 focus:outline-none  rounded-lg">
                                                 <span class="text-lg font-medium">
                                                     Ver Descripción
                                                 </span>

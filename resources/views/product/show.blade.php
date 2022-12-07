@@ -9,10 +9,6 @@
             <div class="lg:w-full flex flex-wrap mx-2 object-center">
                 {{-- seccion de la imagen --}}
                 <img alt="imagen del post {{ $product->titulo }}" class="lg:w-1/4 max-w-screen-sm h-80 lg:h-full object-cover mx-auto rounded" src="{{ asset('uploads').'/'.$product->imagen}}">
-                {{-- <img
-                alt="imagen del post {{ $product->titulo }}"
-                class="lg:w-1/4 max-w-screen-sm h-full object-cover object-center rounded"
-                src="{{ asset('img/libroa.jpg')}}"> --}}
 
                 {{-- seccion informacion del libro --}}
                 <div class="lg:w-2/5 w-full lg:pl-5 lg:py-6 lg:pr-2 mt-6 lg:mt-0 ">
@@ -22,14 +18,13 @@
                             {{ $product->author->nombre_autor }}
                         </a>
                     </h2>
-                    <p x-data="{ isCollapsed: false, maxLength: 750, originalContent: '', content: '' }" x-init="originalContent = $el.firstElementChild.textContent.trim(); content = originalContent.slice(0, maxLength)" class="text-justify mr-2">
+                    <p x-data="{ isCollapsed: false, maxLength: 450, originalContent: '', content: '' }" x-init="originalContent = $el.firstElementChild.textContent.trim(); content = originalContent.slice(0, maxLength)" class="text-justify mr-2">
                         <span x-text="isCollapsed ? originalContent : content">
                             {{ $product->resumen }}
                         </span>
-                        ...
-                        <button @click="isCollapsed = !isCollapsed" x-show="originalContent.length > maxLength" x-text="isCollapsed ? 'Ver menos' : 'Ver mas'" class="font-semibold text-gray-500 underline"></button>
-                    </p>
 
+                        <button @click="isCollapsed = !isCollapsed" x-show="originalContent.length > maxLength" x-text="isCollapsed ? 'Ver menos' : 'Ver mas'" class="font-semibold text-gray-500 underline">...Ver mas</button>
+                    </p>
 
                     <hr class="mb-2">
                     <div class="flex">

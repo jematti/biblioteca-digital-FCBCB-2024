@@ -11,17 +11,6 @@
 
 <div class="flex lg:flex-row md:flex-col">
 
-     {{-- para ver errores  --}}
-    {{-- @if($errors->any())
-        <div class="alert alert-danger">
-            <p><strong>Opps Something went wrong</strong></p>
-            <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-            </ul>
-        </div>
-    @endif --}}
     <div class="mx-3 my-6">
         {{-- imagen de libro --}}
         <div class="mx-3 my-6">

@@ -25,85 +25,78 @@
                 {{-- icono de inicio de session y login --}}
 
                 @auth
+                    @if (auth()->user()->hasRole('usuario'))
+                    @can('nav.users')
 
-                @canany(['nav.admin','nav.admin_tienda'])
-                {{-- seccion de barra de neavegacion superior para el administrador  --}}
-                <div class="hidden md:flex lg:ml-2">
-                    <div class="flex">
-                        <button onclick="location.href = '{{ route('notification') }}'" class="flex items-center w-1/2 px-3 py-1 mx-1 rounded text-center text-sm bg-white font-medium text-black leading-5 hover:bg-gray-600 hover:text-white md:mx-2 md:w-auto">
-                            Hola: {{auth()->user()->name}}
-                            <span class="ml-2 w-6 h-6 bg-red-500 hover:bg-red-700 rounded-full flex flex-col justify-center items-center text-sm font-bold text-white ">
-                                {{ Auth::user()->unreadNotifications->count() }}
-                            </span>
-                        </button>
-                        <a class="block w-1/2 px-3 py-2 mx-1 rounded text-center text-sm bg-custom-400 font-medium text-white leading-5 hover:bg-red-600 md:mx-0 md:w-auto" href="{{route('admin.orders.index')}}">
-                            @can('nav.admin')
-                            <i class="fa-solid fa-screwdriver-wrench"></i> Administrador
-                            @endcan
-                            @can('nav.admin_tienda')
-                            <i class="fa-solid fa-shop"></i> Tienda
-                            @endcan
-                        </a>
-                        {{-- metodo para cerrar sesion --}}
-                        <form action="{{route('logout')}}" method="POST" class="mx-2">
-                            @csrf
-                            <button type="submit" class="block w-1/2 mx-2 px-1 py-2  rounded text-center text-sm bg-red-500 font-medium text-white leading-5 hover:bg-red-400 md:mx-0 md:w-auto ">Cerrar Sesión</button>
-                        </form>
+                    {{-- seccion de carro de compras --}}
+                    @livewire('dropdown-cart')
+                    {{-- fin de seccion  de carro de compras --}}
 
+                    {{-- seccion barra de navegacion superior para el usuario --}}
+                    <div class="hidden lg:flex lg:ml-2">
+                        <div class="flex">
+                            {{-- seccion de icono de perfil de usuario --}}
+                            <div class="relative" x-cloak x-data="{ open: false } ">
+                                <button @click="open = !open" :class="{ 'font-bold text-custom-100': open === true }" class="flex  px-3 py-2 mx-2  my-4  rounded text-center text-sm bg-custom-500 font-medium text-white leading-5 hover:bg-orange-400 md:mx-0 md:w-auto">
+                                    Ver Perfil
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                    <span class="absolute  right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full">
+                                        {{ Auth::user()->unreadNotifications->count() }}
+                                    </span>
+                                </button>
+                                {{-- lista de opciones de perfil de usuario     --}}
+                                <ul x-show="open" @click.away="open = false" class="border border-gray-200 text-gray-600 text-sm  bg-white shadow-md py-1 absolute w-44 right-0 mr-2 divide-y">
+                                    <li><a href="{{ route('orders.index') }}" class="block px-2 py-1 hover:bg-indigo-100 hover:text-custom-100"> Ordenes de Compra <i class="fa-solid fa-bag-shopping ml-2"></i></a></li>
+                                    <li><a href="{{ route('perfil.index') }}" class="block px-2 py-1 hover:bg-indigo-100 hover:text-custom-100">Datos Personales<i class="fa-solid fa-pencil ml-2"></i></a></li>
+                                    <li><a href="{{ route('changepassword') }}" class="block px-2 py-1 hover:bg-indigo-100 hover:text-custom-100">Cambiar Contraseña <i class="fa-solid fa-key ml-2"></i></a></li>
+                                    <li>
+                                        <a href="{{ route('notification') }}" class="flex px-2 py-1 text-base font-semibold hover:bg-indigo-100 hover:text-custom-100">Notificaciones
+                                            <span class="ml-2 w-6 h-6 bg-red-500 hover:bg-red-700 rounded-full flex flex-col justify-center items-center text-sm font-bold text-white ">
+                                                {{ Auth::user()->unreadNotifications->count() }}
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                {{-- fin de lista de opciones de perfil de usuario --}}
+                            </div>
+                            {{-- fin de seccion de icono de perfil de usuario --}}
+
+                            {{-- metodo para cerrar sesion --}}
+                            <form action="{{route('logout')}}" method="POST" class="mx-4 mt-4">
+                                @csrf
+                                <button type="submit" class="px-1 py-2 rounded text-center text-sm bg-red-500 font-medium text-white leading-5 hover:bg-red-400 md:mx-0 md:w-auto ">Cerrar Sesión</button>
+                            </form>
+                            {{-- fin de metodo de cerrar sesion --}}
+                        </div>
                     </div>
-                </div>
-                {{-- fin de seccion de barra de navegacio superios para el administrador     --}}
-                @endcan
+                    {{-- fin de seccion de barra de navegacion superior para el usuario --}}
+                    @endcan
 
-                @can('nav.users')
-
-                {{-- seccion de carro de compras --}}
-                @livewire('dropdown-cart')
-                {{-- fin de seccion  de carro de compras --}}
-
-                {{-- seccion barra de navegacion superior para el usuario --}}
-                <div class="hidden lg:flex lg:ml-2">
-                    <div class="flex">
-                        {{-- seccion de icono de perfil de usuario --}}
-                        <div class="relative" x-cloak x-data="{ open: false } ">
-                            <button @click="open = !open" :class="{ 'font-bold text-custom-100': open === true }" class="flex  px-3 py-2 mx-2  my-4  rounded text-center text-sm bg-custom-500 font-medium text-white leading-5 hover:bg-orange-400 md:mx-0 md:w-auto">
-                                Ver Perfil
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                                <span class="absolute  right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full">
+                    @else
+                    {{-- seccion de barra de neavegacion superior para el administrador  --}}
+                    <div class="hidden md:flex lg:ml-2">
+                        <div class="flex">
+                            <button onclick="location.href = '{{ route('notification') }}'" class="flex items-center w-1/2 px-3 py-1 mx-1 rounded text-center text-sm bg-white font-medium text-black leading-5 hover:bg-gray-600 hover:text-white md:mx-2 md:w-auto">
+                                Hola: {{auth()->user()->name}}
+                                <span class="ml-2 w-6 h-6 bg-red-500 hover:bg-red-700 rounded-full flex flex-col justify-center items-center text-sm font-bold text-white ">
                                     {{ Auth::user()->unreadNotifications->count() }}
                                 </span>
                             </button>
-                            {{-- lista de opciones de perfil de usuario     --}}
-                            <ul x-show="open" @click.away="open = false" class="border border-gray-200 text-gray-600 text-sm  bg-white shadow-md py-1 absolute w-44 right-0 mr-2 divide-y">
-                                <li><a href="{{ route('orders.index') }}" class="block px-2 py-1 hover:bg-indigo-100 hover:text-custom-100"> Ordenes de Compra <i class="fa-solid fa-bag-shopping ml-2"></i></a></li>
-                                <li><a href="{{ route('perfil.index') }}" class="block px-2 py-1 hover:bg-indigo-100 hover:text-custom-100">Datos Personales<i class="fa-solid fa-pencil ml-2"></i></a></li>
-                                <li><a href="{{ route('changepassword') }}" class="block px-2 py-1 hover:bg-indigo-100 hover:text-custom-100">Cambiar Contraseña <i class="fa-solid fa-key ml-2"></i></a></li>
-                                <li>
-                                    <a href="{{ route('notification') }}" class="flex px-2 py-1 text-base font-semibold hover:bg-indigo-100 hover:text-custom-100">Notificaciones
-                                        <span class="ml-2 w-6 h-6 bg-red-500 hover:bg-red-700 rounded-full flex flex-col justify-center items-center text-sm font-bold text-white ">
-                                            {{ Auth::user()->unreadNotifications->count() }}
-                                        </span>
-                                    </a>
-                                </li>
-                            </ul>
-                            {{-- fin de lista de opciones de perfil de usuario --}}
+                            <a class="block w-1/2 px-3 py-2 mx-1 rounded text-center text-sm bg-custom-400 font-medium text-white leading-5 hover:bg-red-600 md:mx-0 md:w-auto" href="{{route('products.index')}}">
+                                <i class="fa-solid fa-gears fa-lg"></i> Administración
+                            </a>
+                            {{-- metodo para cerrar sesion --}}
+                            <form action="{{route('logout')}}" method="POST" class="mx-2">
+                                @csrf
+                                <button type="submit" class="block w-1/2 mx-2 px-1 py-2  rounded text-center text-sm bg-red-500 font-medium text-white leading-5 hover:bg-red-400 md:mx-0 md:w-auto ">Cerrar Sesión</button>
+                            </form>
+
                         </div>
-                        {{-- fin de seccion de icono de perfil de usuario --}}
-
-                        {{-- metodo para cerrar sesion --}}
-                        <form action="{{route('logout')}}" method="POST" class="mx-4 mt-4">
-                            @csrf
-                            <button type="submit" class="px-1 py-2 rounded text-center text-sm bg-red-500 font-medium text-white leading-5 hover:bg-red-400 md:mx-0 md:w-auto ">Cerrar Sesión</button>
-                        </form>
-                        {{-- fin de metodo de cerrar sesion --}}
                     </div>
-                </div>
-                {{-- fin de seccion de barra de navegacion superior para el usuario --}}
-
-                @endcan
-
+                    {{-- fin de seccion de barra de navegacio superios para el administrador     --}}
+                    @endif
                 @endauth
 
                 @guest
@@ -156,62 +149,63 @@
         {{-- menu para dispositivos moviles --}}
 
         <div x-show="menu" class="block lg:hidden">
+            @auth
+            @if (auth()->user()->hasRole('usuario'))
+                {{-- inicio y registro para modo celular para el usuario--}}
+                    @can('nav.users')
+                    <div class="block md:flex items-center py-2 -mx-1 md:mx-0 ">
+                        <a class="flex justify-center w-full mx-2 my-2  px-1 py-2  rounded text-center text-sm bg-white font-medium leading-5 md:mx-2 md:w-1/2 " href="{{route('perfil.index')}}">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span class="font-normal pt-1">
+                                Hola: {{auth()->user()->name}}
+                            </span>
+                        </a>
+                        <a class="flex justify-center w-full mx-2 my-2 px-1 py-2 rounded text-center text-sm bg-white font-medium  leading-5 md:mx-2 md:w-1/2" href="{{route('orders.index')}}">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                            </svg>
+                            Ordenes
+                        </a>
+                        <a class="flex justify-center w-full mx-2 my-2 px-1 py-2 rounded text-center text-sm bg-white font-medium  leading-5 md:mx-2 md:w-1/2" href="{{route('changepassword')}}">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
+                            </svg>
+                            Cambio de Contraseña
+                        </a>
+                        <a class="flex w-full mx-2 my-2 px-1 py-2 rounded text-center text-sm bg-white-400 font-medium justify-center border border-white text-white leading-5 md:mx-2 md:w-1/2" href="{{route('orders.index')}}">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+                            </svg>
+                            Notificaciones
+                            <span class="ml-2 w-6 h-6 bg-red-500 hover:bg-red-700 rounded-full flex flex-col justify-center items-center text-sm font-bold text-white ">
+                                {{ Auth::user()->unreadNotifications->count() }}
+                            </span>
+                        </a>
+                        <form action="{{route('logout')}}" method="POST" class="md:w-1/2">
+                            @csrf
+                            <button type="submit" class="block w-full mx-2 my-2 px-1 py-2  rounded text-center text-sm bg-red-500 font-medium text-white leading-5 hover:bg-red-400 md:mx-2 md:px-10 md:w-auto">Cerrar Sesión</button>
+                        </form>
+                    </div>
+                    @endcan
+            @else
+
             <div class="px-2 ">
-                <a href="{{route('home')}}" class="text-center mt-1 block px-3 py-2 rounded-md text-white font-semibold hover:bg-yellow-500 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">  <i class="fa-solid fa-house fa-md px-2"></i>Pagina Principal</a>
-                <a href="{{route('filter.index')}}" class="text-center mt-1 block px-3 py-2 rounded-md text-white font-semibold hover:bg-yellow-500 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out"><i class="fa-solid fa-magnifying-glass-plus fa-md px-2"></i>Filtro de Busqueda Avanzada</a>
-                @auth
-                    @can('nav.admin')
                     <a href="{{route('admin.orders.index')}}" class="text-center mt-1 block px-3 py-2 rounded-md text-white font-semibold hover:bg-yellow-500 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out"><i class="fa-solid fa-screwdriver-wrench px-2"></i>Administración</a>
                     <form action="{{route('logout')}}" method="POST">
                         @csrf
                         <button type="submit" class="block w-full mx-2 my-2 px-1 py-2  rounded text-center text-sm bg-red-500 font-medium text-white leading-5 hover:bg-red-400 md:mx-2 md:px-10 ">Cerrar Sesión</button>
                     </form>
-                    @endcan
-                @endauth
             </div>
-            {{-- inicio y registro para modo celular para el usuario--}}
-            @auth
-            @can('nav.users')
-            <div class="block md:flex items-center py-2 -mx-1 md:mx-0 ">
-                <a class="flex justify-center w-full mx-2 my-2  px-1 py-2  rounded text-center text-sm bg-white font-medium leading-5 md:mx-2 md:w-1/2 " href="{{route('perfil.index')}}">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <span class="font-normal pt-1">
-                        Hola: {{auth()->user()->name}}
-                    </span>
-                </a>
-                <a class="flex justify-center w-full mx-2 my-2 px-1 py-2 rounded text-center text-sm bg-white font-medium  leading-5 md:mx-2 md:w-1/2" href="{{route('orders.index')}}">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                    </svg>
-                    Ordenes
-                </a>
-                <a class="flex justify-center w-full mx-2 my-2 px-1 py-2 rounded text-center text-sm bg-white font-medium  leading-5 md:mx-2 md:w-1/2" href="{{route('changepassword')}}">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
-                    </svg>
-                    Cambio de Contraseña
-                </a>
-                <a class="flex w-full mx-2 my-2 px-1 py-2 rounded text-center text-sm bg-white-400 font-medium justify-center border border-white text-white leading-5 md:mx-2 md:w-1/2" href="{{route('orders.index')}}">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
-                    </svg>
-                    Notificaciones
-                    <span class="ml-2 w-6 h-6 bg-red-500 hover:bg-red-700 rounded-full flex flex-col justify-center items-center text-sm font-bold text-white ">
-                        {{ Auth::user()->unreadNotifications->count() }}
-                    </span>
-                </a>
-                <form action="{{route('logout')}}" method="POST" class="md:w-1/2">
-                    @csrf
-                    <button type="submit" class="block w-full mx-2 my-2 px-1 py-2  rounded text-center text-sm bg-red-500 font-medium text-white leading-5 hover:bg-red-400 md:mx-2 md:px-10 md:w-auto">Cerrar Sesión</button>
-                </form>
-            </div>
-            @endcan
-
+            @endif
             @endauth
-
+            <div class="px-2 ">
+                <a href="{{route('home')}}" class="text-center mt-1 block px-3 py-2 rounded-md text-white font-semibold hover:bg-yellow-500 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out"> <i class="fa-solid fa-house fa-md px-2"></i>Pagina Principal</a>
+                <a href="{{route('filter.index')}}" class="text-center mt-1 block px-3 py-2 rounded-md text-white font-semibold hover:bg-yellow-500 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out"><i class="fa-solid fa-magnifying-glass-plus fa-md px-2"></i>Filtro de Busqueda Avanzada</a>
+            </div>
             @guest
+            {{-- inicio y registro de sesion --}}
             <div class="p-2 ">
                 <a class="text-center text-sm mt-1 block px-3 py-2 rounded-md bg-white text-black font-semibold focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out" href="{{ route('login') }}"> <i class="fa-solid fa-right-to-bracket"></i> INGRESA</a>
                 <a class="text-center text-sm mt-1 block px-3 py-2 rounded-md bg-blue-400 text-white font-semibold focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out" href="{{ route('register') }}"><i class="fa-regular fa-address-card"></i> REGISTRATE</a>

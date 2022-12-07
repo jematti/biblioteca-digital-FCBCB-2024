@@ -112,6 +112,7 @@ class RepositoryController extends Controller
         ->where('products.repository_id',$repository->id)
         ->where('products.habilitado',1)
         ->select('products.id','products.imagen','products.titulo','products.precio','repositories.nombre_repositorio')
+        ->orderBy('id','desc')
         ->paginate(10);
         return view('repository.show',compact('repository','products'));
     }

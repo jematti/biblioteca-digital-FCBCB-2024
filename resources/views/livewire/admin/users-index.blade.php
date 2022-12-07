@@ -34,6 +34,11 @@
                                 <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-base uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                                     Email
                                 </th>
+
+                                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-base uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                                    Rol
+                                </th>
+
                                 <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-base uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                                     Editar el Rol
                                 </th>
@@ -53,6 +58,13 @@
                                 </td>
                                 <td class="border-t-0 px-6 align-center border-l-0 border-r-0 text-base whitespace-nowrap p-4">
                                     {{ $user->email }}
+                                </td>
+                                <td class="border-t-0 px-6 align-center border-l-0 border-r-0 text-base whitespace-nowrap p-4">
+                                    @if(!empty($user->getRoleNames()))
+                                        @foreach($user->getRoleNames() as $rolNombre)
+                                          <h5><span class="text-white font-semibold bg-slate-500 p-1 rounded-md">{{ $rolNombre }}</span></h5>
+                                        @endforeach
+                                    @endif
                                 </td>
                                 <td class="border-t-0 px-2 align-middle border-l-0 border-r-0 text-base whitespace-nowrap p-2">
                                     <div class="flex text-red-500">
