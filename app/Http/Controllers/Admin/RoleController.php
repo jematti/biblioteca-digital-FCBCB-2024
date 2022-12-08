@@ -13,7 +13,7 @@ class RoleController extends Controller
         $this->middleware('can:admin.roles.index')->only('index','show');
         $this->middleware('can:admin.roles.create')->only('create');
         $this->middleware('can:admin.roles.edit')->only('edit','update');
-        $this->middleware('can:admin.categories.destroy')->only('destroy');
+        $this->middleware('can:admin.roles.destroy')->only('destroy');
     }
 
 
