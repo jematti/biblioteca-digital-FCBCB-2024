@@ -9,11 +9,14 @@
         <div>
             <h2 class="p-2 bg-custom-100 text-white uppercase text-lg rounded-lg text-center font-bold border-2 ">Lista de Roles</h2>
         </div>
+        @can('admin.roles.create')
         <div class="ml-auto">
             <button class="p-2 mt-2 uppercase bg-sky-600 text-white font-bold hover:bg-sky-700 border border-gray-900  rounded-lg" onclick="location.href = '{{ route('admin.roles.create') }}'">
                 <i class="fa-solid fa-plus"></i><span class="px-2">Nuevo Rol</span>
             </button>
         </div>
+        @endcan
+
     </div>
     @if (session('info'))
     <div class="flex items-center bg-blue-500 text-white text-sm font-bold px-4 py-3" role="alert">
@@ -54,7 +57,7 @@
                     <td class="border-t-0 px-2 align-middle border-l-0 border-r-0 text-base whitespace-nowrap p-2">
                         <div class="flex justify-center text-red-500">
                             {{-- editar --}}
-                            <p class="px-2">Editar</p>
+                            <p class="px-2">Editar Permisos</p>
                             <a href="{{ route('admin.roles.edit', $role->id) }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />

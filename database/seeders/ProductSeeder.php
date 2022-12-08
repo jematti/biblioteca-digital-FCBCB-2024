@@ -34,7 +34,7 @@ class ProductSeeder extends Seeder
             'precio' => '20',
             'author_id' => '1',
             'category_id' => '1',
-            'repository_id' => '2',
+            'repository_id' => '7',
             'isbn' => '123456789',
         ]);
 
@@ -57,7 +57,7 @@ class ProductSeeder extends Seeder
             'cantidad' => '10',
             'author_id' => '1',
             'category_id' => '1',
-            'repository_id' => '2',
+            'repository_id' => '7',
             'isbn' => '123456789',
         ]);
         DB::table('products')->insert([
@@ -79,7 +79,7 @@ class ProductSeeder extends Seeder
             'cantidad' => '10',
             'author_id' => '1',
             'category_id' => '1',
-            'repository_id' => '2',
+            'repository_id' => '7',
             'isbn' => '123456789',
         ]);
         DB::table('products')->insert([
@@ -101,7 +101,7 @@ class ProductSeeder extends Seeder
             'cantidad' => '10',
             'author_id' => '1',
             'category_id' => '1',
-            'repository_id' => '2',
+            'repository_id' => '7',
             'isbn' => '123456789',
         ]);
         DB::table('products')->insert([
@@ -123,7 +123,7 @@ class ProductSeeder extends Seeder
             'cantidad' => '10',
             'author_id' => '1',
             'category_id' => '1',
-            'repository_id' => '2',
+            'repository_id' => '7',
             'isbn' => '123456789',
         ]);
         DB::table('products')->insert([
@@ -145,7 +145,7 @@ class ProductSeeder extends Seeder
             'cantidad' => '10',
             'author_id' => '1',
             'category_id' => '1',
-            'repository_id' => '2',
+            'repository_id' => '7',
             'isbn' => '123456789',
         ]);
         DB::table('products')->insert([
@@ -167,7 +167,7 @@ class ProductSeeder extends Seeder
             'cantidad' => '10',
             'author_id' => '1',
             'category_id' => '1',
-            'repository_id' => '2',
+            'repository_id' => '7',
             'isbn' => '123456789',
         ]);
         DB::table('products')->insert([
@@ -189,7 +189,7 @@ class ProductSeeder extends Seeder
             'cantidad' => '10',
             'author_id' => '1',
             'category_id' => '1',
-            'repository_id' => '2',
+            'repository_id' => '7',
             'isbn' => '123456789',
         ]);
         DB::table('products')->insert([
@@ -211,7 +211,7 @@ class ProductSeeder extends Seeder
             'cantidad' => '10',
             'author_id' => '1',
             'category_id' => '1',
-            'repository_id' => '2',
+            'repository_id' => '7',
             'isbn' => '123456789',
         ]);
         DB::table('products')->insert([
@@ -233,7 +233,7 @@ class ProductSeeder extends Seeder
             'cantidad' => '10',
             'author_id' => '1',
             'category_id' => '1',
-            'repository_id' => '2',
+            'repository_id' => '7',
             'isbn' => '123456789',
         ]);
         DB::table('products')->insert([
@@ -255,7 +255,7 @@ class ProductSeeder extends Seeder
             'cantidad' => '10',
             'author_id' => '1',
             'category_id' => '1',
-            'repository_id' => '2',
+            'repository_id' => '7',
             'isbn' => '123456789',
         ]);
         DB::table('products')->insert([
@@ -277,7 +277,7 @@ class ProductSeeder extends Seeder
             'cantidad' => '10',
             'author_id' => '1',
             'category_id' => '1',
-            'repository_id' => '2',
+            'repository_id' => '7',
             'isbn' => '123456789',
         ]);
         DB::table('products')->insert([
@@ -321,7 +321,7 @@ class ProductSeeder extends Seeder
             'cantidad' => '10',
             'author_id' => '1',
             'category_id' => '1',
-            'repository_id' => '2',
+            'repository_id' => '7',
             'isbn' => '123456789',
         ]);
         DB::table('products')->insert([
@@ -343,7 +343,7 @@ class ProductSeeder extends Seeder
             'cantidad' => '10',
             'author_id' => '1',
             'category_id' => '1',
-            'repository_id' => '2',
+            'repository_id' => '7',
             'isbn' => '123456789',
         ]);
         DB::table('products')->insert([
@@ -365,7 +365,7 @@ class ProductSeeder extends Seeder
             'cantidad' => '10',
             'author_id' => '1',
             'category_id' => '1',
-            'repository_id' => '2',
+            'repository_id' => '7',
             'isbn' => '123456789',
         ]);
         DB::table('products')->insert([
@@ -387,7 +387,7 @@ class ProductSeeder extends Seeder
             'cantidad' => '10',
             'author_id' => '1',
             'category_id' => '1',
-            'repository_id' => '2',
+            'repository_id' => '7',
             'isbn' => '123456789',
         ]);
         DB::table('products')->insert([
@@ -409,7 +409,7 @@ class ProductSeeder extends Seeder
             'cantidad' => '10',
             'author_id' => '1',
             'category_id' => '1',
-            'repository_id' => '2',
+            'repository_id' => '7',
             'isbn' => '123456789',
         ]);
         DB::table('products')->insert([
@@ -426,12 +426,12 @@ class ProductSeeder extends Seeder
             desarrollando medios que posibilitan la participación y el acceso de la
             comunidad a las expresiones culturales, artísticas y científicas
             en cada uno de los Centros Culturales a su cargo.',
-            'imagen' => 'PA19.png',
+            'imagen' => 'PA19.jpg',
             'precio' => '20',
             'cantidad' => '10',
             'author_id' => '1',
             'category_id' => '1',
-            'repository_id' => '2',
+            'repository_id' => '7',
             'isbn' => '123456789',
         ]);
         DB::table('products')->insert([
@@ -448,12 +448,12 @@ class ProductSeeder extends Seeder
             desarrollando medios que posibilitan la participación y el acceso de la
             comunidad a las expresiones culturales, artísticas y científicas
             en cada uno de los Centros Culturales a su cargo.',
-            'imagen' => 'PA20.png',
+            'imagen' => 'PA20.jpg',
             'precio' => '20',
             'cantidad' => '10',
             'author_id' => '1',
             'category_id' => '1',
-            'repository_id' => '2',
+            'repository_id' => '7',
             'isbn' => '123456789',
         ]);
         DB::table('products')->insert([
@@ -470,12 +470,12 @@ class ProductSeeder extends Seeder
             desarrollando medios que posibilitan la participación y el acceso de la
             comunidad a las expresiones culturales, artísticas y científicas
             en cada uno de los Centros Culturales a su cargo.',
-            'imagen' => 'PA21.png',
+            'imagen' => 'PA21.jpg',
             'precio' => '20',
             'cantidad' => '10',
             'author_id' => '1',
             'category_id' => '1',
-            'repository_id' => '2',
+            'repository_id' => '7',
             'isbn' => '123456789',
         ]);
         DB::table('products')->insert([
@@ -492,12 +492,12 @@ class ProductSeeder extends Seeder
             desarrollando medios que posibilitan la participación y el acceso de la
             comunidad a las expresiones culturales, artísticas y científicas
             en cada uno de los Centros Culturales a su cargo.',
-            'imagen' => 'PA22.png',
+            'imagen' => 'PA22.jpg',
             'precio' => '20',
             'cantidad' => '10',
             'author_id' => '1',
             'category_id' => '1',
-            'repository_id' => '2',
+            'repository_id' => '7',
             'isbn' => '123456789',
         ]);
         DB::table('products')->insert([
@@ -514,12 +514,12 @@ class ProductSeeder extends Seeder
             desarrollando medios que posibilitan la participación y el acceso de la
             comunidad a las expresiones culturales, artísticas y científicas
             en cada uno de los Centros Culturales a su cargo.',
-            'imagen' => 'PA23.png',
+            'imagen' => 'PA23.jpg',
             'precio' => '20',
             'cantidad' => '10',
             'author_id' => '1',
             'category_id' => '1',
-            'repository_id' => '2',
+            'repository_id' => '7',
             'isbn' => '123456789',
         ]);
         DB::table('products')->insert([
@@ -536,12 +536,12 @@ class ProductSeeder extends Seeder
             desarrollando medios que posibilitan la participación y el acceso de la
             comunidad a las expresiones culturales, artísticas y científicas
             en cada uno de los Centros Culturales a su cargo.',
-            'imagen' => 'PA24.png',
+            'imagen' => 'PA24.jpg',
             'precio' => '20',
             'cantidad' => '10',
             'author_id' => '1',
             'category_id' => '1',
-            'repository_id' => '2',
+            'repository_id' => '7',
             'isbn' => '123456789',
         ]);
         DB::table('products')->insert([
@@ -558,12 +558,12 @@ class ProductSeeder extends Seeder
             desarrollando medios que posibilitan la participación y el acceso de la
             comunidad a las expresiones culturales, artísticas y científicas
             en cada uno de los Centros Culturales a su cargo.',
-            'imagen' => 'PA25.png',
+            'imagen' => 'PA25.jpg',
             'precio' => '20',
             'cantidad' => '10',
             'author_id' => '1',
             'category_id' => '1',
-            'repository_id' => '2',
+            'repository_id' => '7',
             'isbn' => '123456789',
         ]);
         DB::table('products')->insert([
@@ -580,12 +580,12 @@ class ProductSeeder extends Seeder
             desarrollando medios que posibilitan la participación y el acceso de la
             comunidad a las expresiones culturales, artísticas y científicas
             en cada uno de los Centros Culturales a su cargo.',
-            'imagen' => 'PA20.png',
-            'precio' => '26',
+            'imagen' => 'PA26.jpg',
+            'precio' => '20',
             'cantidad' => '10',
             'author_id' => '1',
             'category_id' => '1',
-            'repository_id' => '2',
+            'repository_id' => '7',
             'isbn' => '123456789',
         ]);
         DB::table('products')->insert([
@@ -602,12 +602,12 @@ class ProductSeeder extends Seeder
             desarrollando medios que posibilitan la participación y el acceso de la
             comunidad a las expresiones culturales, artísticas y científicas
             en cada uno de los Centros Culturales a su cargo.',
-            'imagen' => 'PA20.png',
-            'precio' => '27',
+            'imagen' => 'PA27.jpg',
+            'precio' => '20',
             'cantidad' => '10',
             'author_id' => '1',
             'category_id' => '1',
-            'repository_id' => '2',
+            'repository_id' => '7',
             'isbn' => '123456789',
         ]);
     }

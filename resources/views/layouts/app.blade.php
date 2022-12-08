@@ -8,15 +8,12 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     {{-- hojas de estilos diferentes --}}
-    @stack('styles')
-
+     @stack('styles')
      <!-- Styles - Scripts -->
      <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-     <script src="{{ mix('js/app.js') }}" defer></script>
 
     {{-- Styles Livewire --}}
     @livewireStyles
-
 
 </head>
 
@@ -33,11 +30,8 @@
         {{-- fin de seccion de introducir contenido --}}
 
     </body>
-
         <!-- Scripts Livewire -->
         @livewireScripts
-
-
 
         {{-- enlace a archivos js --}}
         <script src="{{ asset('js/app.js') }}" defer ></script>

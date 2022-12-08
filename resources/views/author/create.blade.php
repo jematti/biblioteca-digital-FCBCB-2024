@@ -9,18 +9,21 @@
 
     {{-- menu de navegacion para crear y editar autores de libros --}}
     <div class="md:grid grid-cols-2 gap-1  sm:flex-grow">
+        @can('admin.authors.index')
+        <div class="my-2 p-2 ">
+            <button class="w-full p-2 uppercase bg-sky-600 text-white font-bold hover:bg-sky-700 border border-gray-900  rounded-lg" onclick="location.href = '{{ route('author.index') }}'">
+                <i class="fa-solid fa-angle-down"></i><span class="px-2">Listar Autores</span>
+            </button>
+        </div>
+        @endcan
+        @can('admin.authors.create')
         <div class="my-2 p-2 ">
             <button class="w-full p-2 uppercase bg-sky-600 text-white font-bold hover:bg-sky-700 border border-gray-900  rounded-lg " onclick="location.href = '{{ route('author.create') }}'">
                 <i class="fa-solid fa-plus"></i><span class="px-2">Agregar Autor</span>
             </button>
         </div>
-        <div class="my-2 p-2 ">
-            <button class="w-full p-2 uppercase bg-sky-600 text-white font-bold hover:bg-sky-700  border border-gray-900  rounded-lg" onclick="location.href = '{{ route('author.index') }}'">
-                <i class="fa-solid fa-angle-down"></i><span class="px-2">Listar Autores</span>
-            </button>
-        </div>
+        @endcan
     </div>
-
     {{-- formulario para agregar categoria --}}
     <form action="{{ route('author.store') }}" method="POST" novalidate>
 

@@ -3,16 +3,24 @@
 
     {{-- menu de navegacion para crear y editar categorias --}}
     <div class="md:grid grid-cols-2 gap-1  sm:flex-grow">
-         <div class="my-2 p-2 ">
-             <button class="w-full p-2 uppercase bg-sky-600 text-white font-bold hover:bg-sky-700 border border-gray-900  rounded-lg " onclick="location.href = '{{ route('products.create') }}'">
-                 <i class="fa-solid fa-plus"></i><span class="px-2">Agregar Producto</span>
-             </button>
-         </div>
-         <div class="my-2 p-2 ">
-             <button class="w-full p-2 uppercase bg-sky-600 text-white font-bold hover:bg-sky-700 border border-gray-900  rounded-lg" onclick="location.href = '{{ route('products.index') }}'">
-                 <i class="fa-solid fa-angle-down"></i><span class="px-2">Listar Productos</span>
-             </button>
-         </div>
+
+
+        @can('admin.products.index')
+        <div class="my-2 p-2 ">
+            <button class="w-full p-2 uppercase bg-sky-600 text-white font-bold hover:bg-sky-700 border border-gray-900  rounded-lg" onclick="location.href = '{{ route('products.index') }}'">
+                <i class="fa-solid fa-angle-down"></i><span class="px-2">Listar Productos</span>
+            </button>
+        </div>
+        @endcan
+
+        @can('admin.products.create')
+        <div class="my-2 p-2 ">
+            <button class="w-full p-2 uppercase bg-sky-600 text-white font-bold hover:bg-sky-700 border border-gray-900  rounded-lg " onclick="location.href = '{{ route('products.create') }}'">
+                <i class="fa-solid fa-plus"></i><span class="px-2">Agregar Producto</span>
+            </button>
+        </div>
+        @endcan
+
      </div>
 
      <!-- Table -->
@@ -87,14 +95,14 @@
                                  {{-- seccion editar --}}
                                  <td class="p-2">
                                          <div class="flex justify-center">
-
+                                            @can('admin.products.edit')
                                              {{-- editar --}}
                                              <a href="{{ route('products.edit',$product->id) }}">
-                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                                     <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                                                 </svg>
-                                             </a>
-
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                                </svg>
+                                            </a>
+                                            @endcan
                                          </div>
                                  </td>
 

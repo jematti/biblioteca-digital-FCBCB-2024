@@ -18,6 +18,7 @@ use App\Http\Controllers\ShoppingCartController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\AdminOrderController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\SideNavigation;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,9 @@ Route::get('/', HomeController::class)->name('home');
 
 // Route::group(['middleware' => ['auth', 'verified']], function () {
 Route::group(['middleware' => ['auth']], function () {
+
+    // baara de navegacion lateral para usuarios y administradores autenticados
+    Route::get('sidenavigation', SideNavigation::class)->name('side.navigation');
     //Admin-Usuarios
     Route::resource('users', UserController::class)->names('admin.users');
 
