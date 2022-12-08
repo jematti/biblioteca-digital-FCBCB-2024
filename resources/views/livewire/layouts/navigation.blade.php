@@ -84,7 +84,7 @@
                                     {{ Auth::user()->unreadNotifications->count() }}
                                 </span>
                             </button>
-                            <a class="block w-1/2 px-3 py-2 mx-1 rounded text-center text-sm bg-custom-400 font-medium text-white leading-5 hover:bg-red-600 md:mx-0 md:w-auto" href="{{route('products.index')}}">
+                            <a class="block w-1/2 px-3 py-2 mx-1 rounded text-center text-sm bg-custom-400 font-medium text-white leading-5 hover:bg-red-600 md:mx-0 md:w-auto" href="{{route('side.navigation')}}">
                                 <i class="fa-solid fa-gears fa-lg"></i> Administración
                             </a>
                             {{-- metodo para cerrar sesion --}}

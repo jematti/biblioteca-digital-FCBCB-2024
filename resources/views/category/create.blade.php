@@ -7,16 +7,20 @@
 
     {{-- menu de navegacion para crear y editar categorias --}}
     <div class="md:grid grid-cols-2 gap-1  sm:flex-grow">
-        <div class="my-2 p-2 ">
-            <button class="w-full p-2 uppercase bg-sky-600 text-white font-bold hover:bg-sky-700 border border-gray-900  rounded-lg" onclick="location.href = '{{ route('category.create') }}'">
-                <i class="fa-solid fa-plus"></i><span class="px-2">Agregar Categoria</span>
-            </button>
-        </div>
+        @can('admin.categories.index')
         <div class="my-2 p-2 ">
             <button class="w-full p-2 uppercase bg-sky-600 text-white font-bold hover:bg-sky-700 border border-gray-900  rounded-lg" onclick="location.href = '{{ route('category.index') }}'">
-                <i class="fa-solid fa-angle-down"></i><span class="px-2">Listar Categorias</span>
+                <i class="fa-solid fa-angle-down"></i><span class="px-2">Listar Categorías</span>
             </button>
         </div>
+        @endcan
+        @can('admin.categories.create')
+        <div class="my-2 p-2 ">
+            <button class="w-full p-2 uppercase bg-sky-600 text-white font-bold hover:bg-sky-700 border border-gray-900  rounded-lg" onclick="location.href = '{{ route('category.create') }}'">
+                <i class="fa-solid fa-plus"></i><span class="px-2">Agregar Categoría</span>
+            </button>
+        </div>
+        @endcan
     </div>
 
 

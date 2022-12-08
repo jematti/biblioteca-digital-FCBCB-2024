@@ -9,11 +9,14 @@
         <div>
             <h2 class="p-2 bg-custom-100 text-white uppercase text-lg rounded-lg text-center font-bold border-2 ">Lista de Roles</h2>
         </div>
+        @can('admin.roles.create')
         <div class="ml-auto">
             <button class="p-2 mt-2 uppercase bg-sky-600 text-white font-bold hover:bg-sky-700 border border-gray-900  rounded-lg" onclick="location.href = '{{ route('admin.roles.create') }}'">
                 <i class="fa-solid fa-plus"></i><span class="px-2">Nuevo Rol</span>
             </button>
         </div>
+        @endcan
+
     </div>
     @if (session('info'))
     <div class="flex items-center bg-blue-500 text-white text-sm font-bold px-4 py-3" role="alert">

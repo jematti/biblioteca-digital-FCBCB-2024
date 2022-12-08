@@ -7,16 +7,20 @@
 
 {{-- menu de navegacion para crear y editar repositorios --}}
 <div class="md:grid grid-cols-2 gap-1  sm:flex-grow">
+    @can('admin.repositories.create')
     <div class="my-2 p-2">
         <button class="w-full p-2 uppercase bg-sky-600 text-white font-bold hover:bg-sky-700 border border-gray-900  rounded-lg " onclick="location.href = '{{ route('repository.create') }}'">
             <i class="fa-solid fa-plus"></i><span class="px-2">Agregar Repositorio</span>
         </button>
     </div>
+    @endcan
+    @can('admin.repositories.index')
     <div class="my-2 p-2">
-        <button class="w-full p-2 uppercase  bg-sky-600 text-white font-bold hover:bg-sky-700 border border-gray-900  rounded-lg " onclick="location.href = '{{ route('repository.index') }}'">
+        <button class="w-full p-2 uppercase bg-sky-600 text-white font-bold hover:bg-sky-700 border border-gray-900  rounded-lg " onclick="location.href = '{{ route('repository.index') }}'">
             <i class="fa-solid fa-angle-down"></i><span class="px-2">Listar Repositorio</span>
         </button>
     </div>
+    @endcan
 </div>
 
 
@@ -45,7 +49,7 @@
                     <label for="imagen_repositorio" class="mb-2 block uppercase text-gray-500 font-bold">
                         Imagen de Portada Repositorio
                     </label>
-                    <input id="imagen_repositorio" name="imagen_repositorio" type="file" class="rounded-lg block shadow-sm w-full text-sm p-2 border @error('imagen_repositorio') border-red-500 @enderror"  value="{{old('imagen_repositorio')}}" accept=".jpg, .jpeg, .png, .pdf" />
+                    <input id="imagen_repositorio" name="imagen_repositorio" type="file" class="rounded-lg block shadow-sm w-full text-sm p-2 border @error('imagen_repositorio') border-red-500 @enderror" value="{{old('imagen_repositorio')}}" accept=".jpg, .jpeg, .png, .pdf" />
 
                     @error('imagen_repositorio')
                     <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
@@ -58,7 +62,7 @@
                     <label for="correo" class="mb-2 block uppercase text-gray-500 font-bold">
                         Correo Electronico
                     </label>
-                    <input id="correo" type="text" name="correo" placeholder="correo electronico" class="border p-3 w-full rounded-lg @error('correo') border-red-500 @enderror"  value="{{old('correo')}}" />
+                    <input id="correo" type="text" name="correo" placeholder="correo electronico" class="border p-3 w-full rounded-lg @error('correo') border-red-500 @enderror" value="{{old('correo')}}" />
                     @error('correo')
                     <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
                     @enderror
@@ -70,7 +74,7 @@
                     <label for="nombre_encargado" class="mb-2 block uppercase text-gray-500 font-bold">
                         Nombre del Encargado del Repositorio
                     </label>
-                    <input id="nombre_encargado" type="text" name="nombre_encargado" placeholder="Nombre del Encargado del Repositorio" class="border p-3 w-full rounded-lg @error('nombre_encargado') border-red-500 @enderror"  value="{{old('nombre_encargado')}}" />
+                    <input id="nombre_encargado" type="text" name="nombre_encargado" placeholder="Nombre del Encargado del Repositorio" class="border p-3 w-full rounded-lg @error('nombre_encargado') border-red-500 @enderror" value="{{old('nombre_encargado')}}" />
                     @error('nombre_encargado')
                     <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
                     @enderror
@@ -82,7 +86,7 @@
                     <label for="direccion" class="mb-2 block uppercase text-gray-500 font-bold">
                         Dirección
                     </label>
-                    <input id="direccion" type="text" name="direccion" placeholder="Dirección Actual" class="border p-3 w-full rounded-lg @error('direccion') border-red-500 @enderror"  value="{{old('direccion')}}" />
+                    <input id="direccion" type="text" name="direccion" placeholder="Dirección Actual" class="border p-3 w-full rounded-lg @error('direccion') border-red-500 @enderror" value="{{old('direccion')}}" />
                     @error('direccion')
                     <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
                     @enderror
@@ -139,7 +143,7 @@
                     <label for="horario_atencion" class="mb-2 block uppercase text-gray-500 font-bold">
                         Horario de Atención
                     </label>
-                    <input id="horario_atencion" type="text" name="horario_atencion" placeholder="Ej: Lunes a Viernes de 8:00 a 18:00" class="border p-3 w-full rounded-lg @error('horario_atencion') border-red-500 @enderror"  value="{{old('horario_atencion')}}" />
+                    <input id="horario_atencion" type="text" name="horario_atencion" placeholder="Ej: Lunes a Viernes de 8:00 a 18:00" class="border p-3 w-full rounded-lg @error('horario_atencion') border-red-500 @enderror" value="{{old('horario_atencion')}}" />
                     @error('horario_atencion')
                     <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
                     @enderror
@@ -152,7 +156,7 @@
                     <label for="telefono" class="mb-2 block uppercase text-gray-500 font-bold">
                         Telefono
                     </label>
-                    <input id="telefono" type="text" name="telefono" placeholder="Telefono o celular de referencia" class="border p-3 w-full rounded-lg @error('telefono') border-red-500 @enderror"  value="{{old('telefono')}}" />
+                    <input id="telefono" type="text" name="telefono" placeholder="Telefono o celular de referencia" class="border p-3 w-full rounded-lg @error('telefono') border-red-500 @enderror" value="{{old('telefono')}}" />
                     @error('telefono')
                     <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
                     @enderror
