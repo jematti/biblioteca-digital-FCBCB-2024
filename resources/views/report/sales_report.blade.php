@@ -69,7 +69,7 @@
                         <td>{{ $item->qty }}</td>
                         <td>{{ $item->qty * $item->product->precio }} </td>
                         <td>{{ $item->order_id}}</td>
-                        <td>{{ $item->order->nit_factura }}</td>
+                        <td>{{ $item->order->nro_factura }}</td>
 
                     </tr>
 

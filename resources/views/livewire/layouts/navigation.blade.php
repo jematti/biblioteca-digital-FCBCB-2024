@@ -78,12 +78,21 @@
                     {{-- seccion de barra de neavegacion superior para el administrador  --}}
                     <div class="hidden md:flex lg:ml-2">
                         <div class="flex">
+                            @if (auth()->user()->hasRole('admin') || auth()->user()->hasRole('admin_tienda') )
+
                             <button onclick="location.href = '{{ route('notification') }}'" class="flex items-center w-1/2 px-3 py-1 mx-1 rounded text-center text-sm bg-white font-medium text-black leading-5 hover:bg-gray-600 hover:text-white md:mx-2 md:w-auto">
                                 Hola: {{auth()->user()->name}}
                                 <span class="ml-2 w-6 h-6 bg-red-500 hover:bg-red-700 rounded-full flex flex-col justify-center items-center text-sm font-bold text-white ">
                                     {{ Auth::user()->unreadNotifications->count() }}
                                 </span>
                             </button>
+
+                            @else
+                            <button class="flex items-center w-1/2 px-3 py-1 mx-1 rounded text-center text-sm bg-white font-medium text-black leading-5 hover:bg-gray-600 hover:text-white md:mx-2 md:w-auto">
+                                Hola: {{auth()->user()->name}}
+                            </button>
+
+                            @endif
                             <a class="block w-1/2 px-3 py-2 mx-1 rounded text-center text-sm bg-custom-400 font-medium text-white leading-5 hover:bg-red-600 md:mx-0 md:w-auto" href="{{route('side.navigation')}}">
                                 <i class="fa-solid fa-gears fa-lg"></i> Administración
                             </a>

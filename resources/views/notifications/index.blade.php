@@ -50,7 +50,7 @@
                 {{ $notification->created_at->diffForHumans() }}
             </span>
         </div>
-        @can('nav.admin')
+        @can('admin.orders.show')
         <div class="mt-5 lg:mt-0">
             <a href="{{ url("/admin/orders/{$notification->data['id_order'] }") }}" class="bg-teal-400 p-3 uppercase font-bold text-white rounded-lg">
                 Ver Orden
