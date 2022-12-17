@@ -24,7 +24,7 @@
                         Email
                     </label>
                     <input id="email" class="block mt-1 w-full rounded-lg" type="email" name="email"
-                        value="{{ old('email') }}" required autofocus />
+                        value="{{ old('email') }}" required autofocus autocomplete="off"/>
                 </div>
 
 
@@ -34,7 +34,7 @@
                         Contraseña
                     </label>
 
-                    <input id="password" class="block mt-1 w-full" type="password" name="password" required />
+                    <input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="off"/>
                 </div>
 
                 <!-- Confirm Password -->

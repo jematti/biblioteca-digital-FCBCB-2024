@@ -46,6 +46,8 @@
             <tbody>
 
                 @foreach ($roles as $role)
+
+                @if ($role->name != "admin")
                 <tr class="hover:bg-gray-100">
                     <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-base whitespace-nowrap p-4 text-left text-blueGray-700 ">
                         {{-- {{ $user->id}} --}}
@@ -82,7 +84,9 @@
                     </td>
                     @endcan
                 </tr>
+                @endif
                 @endforeach
+
             </tbody>
         </table>
     </div>

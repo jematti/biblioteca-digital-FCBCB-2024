@@ -16,7 +16,7 @@ class AdminOrderController extends Controller
     public function index(){
 
         //realizamos la consulta a la base de datos segun el usuario
-        $orders = Order::orderBy('id', 'desc');
+        $orders = Order::orderBy('id', 'asc');
         // $orders = Order::query()->where('estado','<>',1);
 
         //preguntamos si recibimos una variable del estado de la orden

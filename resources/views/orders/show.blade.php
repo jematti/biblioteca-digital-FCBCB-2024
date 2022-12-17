@@ -139,7 +139,7 @@
                 <div>
                     <p class="text-lg font-semibold uppercase text-blue-500">Datos de Contacto</p>
                     <p class="text-base"> <span class="font-semibold"> Persona que recibira el libro: </span>{{ $order->nombre_contacto }}</p>
-                    <p class="text-base"><span class="font-semibold">Correo: </span>{{ $order->correo_contacto }}</p>
+                    <p class="text-base"><span class="font-semibold">Correo: </span>{{ $order->user->email}}</p>
                     <p class="text-base"><span class="font-semibold">Telefono:</span> {{ $order->telefono_contacto }}</p>
                     <hr>
                     <p class="text-lg uppercase font-semibold text-blue-500">Datos para la Factura :</p>

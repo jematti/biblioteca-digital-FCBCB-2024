@@ -43,6 +43,7 @@ class OrderNotification extends Notification  implements ShouldQueue
      */
     public function toMail($notifiable)
     {
+        $url='https://tiendavirtual.fcbcb.gob.bo/';
         if ($this->usuario_id == 1) {
             $url = url('/admin/orders/'.$this->id_order);
         }else{
