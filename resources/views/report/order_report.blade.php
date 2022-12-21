@@ -51,7 +51,7 @@
                         "ANULADOS"
                         @break
                         @case(6)
-                        "PENDIENTES"-"ANULADOS" -"RECIBIDOS"-"ENVIADOS"-"ENTREGADOS"-"ANULADOS"
+                        "PENDIENTES"-"ANULADOS" -"RECIBIDOS"-"ENVIADOS"-"ENTREGADOS"
                         @break
                         @default
 
