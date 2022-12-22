@@ -86,10 +86,10 @@ class OrderController extends Controller
     public function report()
     {
         $orders = Order::all();
-        $repositories = Repository::all();
-        $products = Product::all();
-        $categories = Category::all();
-        $authors = Author::all();
+        $repositories = Repository::all()->where('habilitado',1);
+        $products = Product::all()->where('habilitado',1);
+        $categories = Category::all()->where('habilitado',1);
+        $authors = Author::all()->where('habilitado',1);
 
         return view('orders.report')->with('products',$products)
                                     ->with('categories',$categories)
@@ -128,10 +128,10 @@ class OrderController extends Controller
     public function sale()
     {
         $orders = Order::all();
-        $repositories = Repository::all();
-        $products = Product::all();
-        $categories = Category::all();
-        $authors = Author::all();
+        $repositories = Repository::all()->where('habilitado',1);
+        $products = Product::all()->where('habilitado',1);
+        $categories = Category::all()->where('habilitado',1);
+        $authors = Author::all()->where('habilitado',1);
 
         return view('orders.sale')->with('products',$products)
                                     ->with('categories',$categories)

@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-     //pago mediante la banca movil QR
+     //producto habilitado en la tienda
      const HABILITADO = 1;
 
-     //pago mediante deposito a la cuenta del banco
+     //producto no habilitado o eliminado de la tienda virtual
      const INHABILITADO = 0;
 
     use HasFactory;

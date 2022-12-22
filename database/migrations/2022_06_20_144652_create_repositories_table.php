@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use App\Models\Repository;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -26,6 +27,7 @@ return new class extends Migration
             $table->string('telefono');
             $table->string('pagina_web');
             $table->string('imagen_repositorio')->nullable();
+            $table->enum('habilitado', [Repository::HABILITADO,Repository::INHABILITADO])->default(Repository::HABILITADO);
             $table->timestamps();
         });
     }

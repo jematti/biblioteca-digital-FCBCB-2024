@@ -3,8 +3,6 @@
 
     {{-- menu de navegacion para crear y editar categorias --}}
     <div class="md:grid grid-cols-2 gap-1  sm:flex-grow">
-
-
         @can('admin.products.index')
         <div class="my-2 p-2 ">
             <button class="w-full p-2 uppercase bg-sky-600 text-white font-bold hover:bg-sky-700 border border-gray-900  rounded-lg" onclick="location.href = '{{ route('products.index') }}'">
@@ -12,7 +10,6 @@
             </button>
         </div>
         @endcan
-
         @can('admin.products.create')
         <div class="my-2 p-2 ">
             <button class="w-full p-2 uppercase bg-sky-600 text-white font-bold hover:bg-sky-700 border border-gray-900  rounded-lg " onclick="location.href = '{{ route('products.create') }}'">
@@ -20,7 +17,6 @@
             </button>
         </div>
         @endcan
-
      </div>
 
      <!-- Table -->
@@ -28,7 +24,6 @@
              <header class="px-5 py-4 border-b border-gray-100">
                  <div class="font-semibold text-gray-800">Libros </div>
              </header>
-
                  {{-- Barra de busqueda de libros --}}
                 <div class="rounded-t mb-0 px-4 py-3 border-0">
                     <div class="relative">
@@ -41,7 +36,6 @@
                     </div>
                 </div>
                 {{-- fin de barra de busqueda de libros --}}
-
              <div class="overflow-x-auto p-3">
                  <table class="table-auto w-full">
                      <thead class="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
@@ -64,8 +58,6 @@
 
                      <tbody class="text-sm divide-y divide-gray-100">
                          <!-- tabla de datos -->
-
-
                          @foreach ($products as $product)
                              <tr class="hover:bg-gray-100">
                                  <td class="p-2">
@@ -126,10 +118,8 @@
                                      </form>
                                  </td>
                                  @endcan
-
                              </tr>
                          @endforeach
-
                      </tbody>
                  </table>
              </div>

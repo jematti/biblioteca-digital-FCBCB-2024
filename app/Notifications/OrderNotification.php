@@ -75,6 +75,13 @@ class OrderNotification extends Notification  implements ShouldQueue
                         ->action('Ver Estado de Orden de Compra',$url)
                         ->line('Gracias por utilizar la Tienda Virtual de la FC-BCB');
                     break;
+                case 4:
+                     //entregado
+                    return (new MailMessage)
+                        ->line('¡Su orden de compra ha sido Entregada!')
+                        ->action('Ver Estado de Orden de Compra',$url)
+                        ->line('Gracias por utilizar la Tienda Virtual de la FC-BCB');
+                    break;
                 case 5:
                     //anulado
                     return (new MailMessage)

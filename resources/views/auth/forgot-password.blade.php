@@ -19,13 +19,13 @@
             <!-- Validation Errors -->
             <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-            <form method="POST" action="{{ route('password.email') }}" novalidate>
+            <form method="POST" action="{{ route('password.email') }}" onsubmit="document.getElementById('submit').disabled=true; processFormData();" novalidate>
                 @csrf
 
                 <!-- Email Address -->
                 <div>
                     <label class="block font-medium text-sm text-gray-700" for="email" value="Email">
-                        Email
+                        Email6
                     </label>
                     <input  id="email" class="block mt-1 w-full rounded-lg" type="email" name="email" value="{{old('email')}}" required autofocus />
                 </div>
@@ -36,7 +36,7 @@
                 </div>
 
                 <div class="flex items-center justify-end mt-4">
-                    <button type="submit" class="bg-sky-600 hover:bg-sky-700 transition-colors cursor-pointer uppercase font-bold w-full text-white rounded-lg p-3">
+                    <button id="submit" name="submit" type="submit"  class="bg-sky-600 hover:bg-sky-700 transition-colors cursor-pointer uppercase font-bold w-full text-white rounded-lg p-3">
                         Enviar Instrucciones
                     </button>
                 </div>

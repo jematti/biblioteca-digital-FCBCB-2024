@@ -18,6 +18,7 @@ class ProductIndex extends Component
     {
         $products = Product::join("authors","products.author_id","=","authors.id")
         ->join("repositories","products.repository_id","=","repositories.id")
+        ->where('products.habilitado',1)
         ->where('products.titulo','LIKE',"%". $this->search ."%")
         ->select('products.id','products.imagen','products.cantidad','products.titulo','products.precio','authors.nombre_autor','repositories.nombre_repositorio','repositories.sigla')
         ->orderBy('products.id','asc')

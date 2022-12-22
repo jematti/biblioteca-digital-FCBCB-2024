@@ -7,6 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Repository extends Model
 {
+    //Repositorio habilitado en la tienda
+    const HABILITADO = 1;
+
+    //Repositorio no habilitado o eliminado de la tienda virtual
+    const INHABILITADO = 0;
+
     use HasFactory;
 
     protected $fillable = [

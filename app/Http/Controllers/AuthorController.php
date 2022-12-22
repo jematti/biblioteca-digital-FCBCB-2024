@@ -15,7 +15,7 @@ class AuthorController extends Controller
 
     public function index()
     {
-        $data['author']= Author::orderBy('id','asc')->paginate(10);
+        $data['author']= Author::orderBy('id','asc')->where('habilitado',1)->paginate(10);
         return view('author.index',$data);
 
     }
@@ -69,7 +69,8 @@ class AuthorController extends Controller
 
     public function destroy(Author $author)
     {
-        $author->delete();
+        $author->habilitado = '0';
+        $author->save();
         return redirect()->route('author.index')
                         ->with('eliminar','ok');
     }

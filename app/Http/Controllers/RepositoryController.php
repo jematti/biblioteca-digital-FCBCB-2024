@@ -23,7 +23,7 @@ class RepositoryController extends Controller
      */
     public function index()
     {
-        $data['repository']= Repository::orderBy('id','asc')->paginate(15);
+        $data['repository']= Repository::orderBy('id','asc')->where('habilitado',1)->paginate(15);
         return view('repository.index',$data);
 
     }
@@ -201,8 +201,9 @@ class RepositoryController extends Controller
      */
     public function destroy(Repository $repository)
     {
-        // $repository->delete();
-        // return redirect()->route('repository.index')
-        //                 ->with('eliminar','ok');
+        $repository->habilitado = '0';
+        $repository->save();
+        return redirect()->route('repository.index')
+                        ->with('eliminar','ok');
     }
 }

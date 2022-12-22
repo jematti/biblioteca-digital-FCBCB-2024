@@ -55,6 +55,11 @@ class CitySeeder extends Seeder
             'costo' => '0'
         ]);
 
+        DB::table('cities')->insert([
+            'nombre_ciudad'=>'Cochabamba',
+            'costo' => '0'
+        ]);
+
 
     }
 }

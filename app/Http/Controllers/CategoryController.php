@@ -17,7 +17,7 @@ class CategoryController extends Controller
 
     public function index()
     {
-        $data['category']= Category::orderBy('id','asc')->paginate(10);
+        $data['category']= Category::orderBy('id','asc')->where('habilitado',1)->paginate(10);
         return view('category.index',$data);
     }
 
@@ -74,7 +74,8 @@ class CategoryController extends Controller
 
     public function destroy(Category $category)
     {
-        $category->delete();
+        $category->habilitado='0';
+        $category->save();
 
         return redirect()->route('category.index')
                          ->with('eliminar','ok');

@@ -19,16 +19,16 @@ class ProductController extends Controller
 
     public function index()
     {
-        $data['product']= Product::orderBy('id','asc')->simplepaginate(8);
+        $data['product']= Product::orderBy('id','asc')->where('habilitado',1)->simplepaginate(8);
         return view('product.index',$data);
     }
 
 
     public function create()
     {
-        $categories = Category::all();
-        $authors = Author::all();
-        $repositories = Repository::all();
+        $categories = Category::all()->where('habilitado',1);
+        $authors = Author::all()->where('habilitado',1);
+        $repositories = Repository::all()->where('habilitado',1);
         return view('product.create')
                   ->with('categories',$categories)
                   ->with('authors',$authors)
@@ -151,8 +151,9 @@ class ProductController extends Controller
 
     public function destroy(Product $product)
     {
-         // $product->delete();
-        // return redirect()->route('products.index')
-        //                 ->with('eliminar','ok');
+        $product->habilitado = '0';
+        $product->save();
+        return redirect()->route('products.index')
+                        ->with('eliminar','ok');
     }
 }

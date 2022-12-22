@@ -7,7 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Author extends Model
 {
+    //Autor habilitado en la tienda
+     const HABILITADO = 1;
+
+     //Autor no habilitado o eliminado de la tienda virtual
+     const INHABILITADO = 0;
+
     use HasFactory;
+
     /**
      * The attributes that are mass assignable.
      *

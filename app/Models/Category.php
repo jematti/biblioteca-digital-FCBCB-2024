@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
+    //Categoria habilitado en la tienda
+    const HABILITADO = 1;
+
+    //Categoria no habilitado o eliminado de la tienda virtual
+    const INHABILITADO = 0;
     use HasFactory;
     /**
      * The attributes that are mass assignable.

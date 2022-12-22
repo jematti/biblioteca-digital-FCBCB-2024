@@ -30,7 +30,7 @@ return new class extends Migration
             $table->double('ancho', 8, 2)->nullable();
             $table->double('peso', 8, 2)->nullable();
             $table->double('grueso', 8, 2)->nullable();
-            $table->enum('habilitado', [Product::HABILITADO,Product::INHABILITADO])->default(Product::HABILITADO);;
+            $table->enum('habilitado', [Product::HABILITADO,Product::INHABILITADO])->default(Product::HABILITADO);
             $table->foreignId('author_id')->constrained()->onDelete('cascade');
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->foreignId('repository_id')->constrained()->onDelete('cascade');
