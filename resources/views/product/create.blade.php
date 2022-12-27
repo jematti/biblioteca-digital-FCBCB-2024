@@ -10,7 +10,7 @@
 <h2 class="bg-custom-100 text-white uppercase text-lg rounded-lg p-4 text-center font-bold ">Agregar Producto</h2>
 
 <div class="flex lg:flex-row md:flex-col">
-    {{-- imagen del libro --}}
+    {{-- imagen del Producto --}}
 
     <div class="mx-3 my-6">
         <div class="px-3">
@@ -22,9 +22,9 @@
             </form>
         </div>
     </div>
-    {{-- fin imagen del libro --}}
+    {{-- fin imagen del Producto --}}
 
-    {{-- formulario de añadir libro --}}
+    {{-- formulario de añadir Producto --}}
     <div class="mx-3 my-6 flex-1">
         <form action="{{ route('products.store') }}" method="POST" class="w-full " novalidate>
             @csrf
@@ -39,7 +39,7 @@
 
             <div class="lg:grid lg:grid-cols-4 gap-5">
                 <div class="col-span-2">
-                    {{-- titulo del libro --}}
+                    {{-- titulo/nombre del Producto --}}
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full px-3">
                             <label class="mb-2 block uppercase text-gray-500 font-bold">
@@ -73,7 +73,7 @@
                         </div>
                     </div>
 
-                    {{-- resumen del libro --}}
+                    {{-- resumen del Producto --}}
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full px-3">
 
@@ -103,7 +103,7 @@
                         </div>
                     </div>
 
-                    {{-- ubicacion del libro (repositorios) --}}
+                    {{-- ubicacion del Producto (repositorios) --}}
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full px-3">
                             <label class="mb-2 block uppercase text-gray-500 font-bold">
@@ -150,7 +150,7 @@
                         </div>
                     </div>
 
-                    {{-- listado de categorias del libro --}}
+                    {{-- listado de categorias de los Productos --}}
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full px-3">
                             <label class="mb-2 block uppercase text-gray-500 font-bold">
@@ -200,7 +200,7 @@
                             @enderror
                         </div>
                     </div>
-                    {{-- precio - stock  del libro --}}
+                    {{-- precio - stock  del Producto --}}
                     <div class="flex flex-wrap -mx-3 mb-3">
                         <div class="w-full md:w-1/2 px-3">
                             <label class="mb-2 block uppercase text-gray-500 font-bold">
@@ -216,14 +216,14 @@
                             <label class="mb-2 block  text-gray-500 font-bold">
                                 STOCK <span class=" font-medium">(Nro. de copias del libro)</span>
                             </label>
-                            <input class="appearance-none block w-full  text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 @error('cantidad') border-red-500 @enderror" id="cantidad" name="cantidad" type="number" min="1" pattern="^[0-9]+" placeholder="Precio del Libro"  value="{{old('cantidad')}}" />
+                            <input class="appearance-none block w-full  text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 @error('cantidad') border-red-500 @enderror" id="cantidad" name="cantidad" type="number" min="1" pattern="^[0-9]+" placeholder="Nro de Ejemplares"  value="{{old('cantidad')}}" />
 
                             @error('cantidad')
                             <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
                             @enderror
                         </div>
                     </div>
-                    {{-- nro de paginas y edicion del libro --}}
+                    {{-- nro de paginas y edicion del Producto --}}
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                             <label class="block mb-2 uppercase text-gray-500 font-bold" for="grid-city">
@@ -310,7 +310,7 @@
 
         </form>
     </div>
-    {{-- fin de formulario de añadir libro --}}
+    {{-- fin de formulario de añadir Producto --}}
 </div>
 
 
