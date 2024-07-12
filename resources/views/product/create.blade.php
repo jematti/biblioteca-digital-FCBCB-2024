@@ -216,7 +216,7 @@
                             <label class="mb-2 block  text-gray-500 font-bold">
                                 STOCK <span class=" font-medium">(Nro. de copias del libro)</span>
                             </label>
-                            <input class="appearance-none block w-full  text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 @error('cantidad') border-red-500 @enderror" id="cantidad" name="cantidad" type="number" min="1" pattern="^[0-9]+" placeholder="Precio del Libro"  value="{{old('cantidad')}}" />
+                            <input class="appearance-none block w-full  text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 @error('cantidad') border-red-500 @enderror" id="cantidad" name="cantidad" type="number" min="1" pattern="^[0-9]+" placeholder="Nro de Ejemplares"  value="{{old('cantidad')}}" />
 
                             @error('cantidad')
                             <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>

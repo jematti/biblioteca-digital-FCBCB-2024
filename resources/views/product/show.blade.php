@@ -37,10 +37,10 @@
                     <p class="text-gray-900 text-base title-font font-medium mb-1">Precio:</p>
                     <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">{{ $product->precio }}bs</h1>
                     @if (Auth::guest())
-                        <button onclick="location.href = '{{ route('register') }}'" class="bg-blue-600 text-white font-bold uppercase text-sm px-3 py-3 rounded-lg shadow mr-1 mb-1 " type="button" onclick="">
+                        <!-- <button onclick="location.href = '{{ route('register') }}'" class="bg-blue-600 text-white font-bold uppercase text-sm px-3 py-3 rounded-lg shadow mr-1 mb-1 " type="button" onclick="">
                             <i class="fa-solid fa-right-to-bracket"></i>
                             ¡Registrate y Realiza tu Compra!
-                        </button>
+                        </button> -->
                     @else
                         {{-- añadir al carro de compras --}}
                         @can('nav.users')
@@ -53,10 +53,10 @@
                     <div class="p-2 text-left w-60" role="alert">
                         <h4 class="text-gray-900 font-bold mb-2">Disponible en las Sucursales: </h4>
                         <div class="flex flex-wrap">
-                            <div class="flex my-2">
+                            <!-- <div class="flex my-2">
                                 <i class="fa-solid fa-truck-moving fa-2xl mt-3 text-green-700"></i>
                                 <p class="font-bold px-2 text-sm ">¡Recibe tu pedido en 2 dias!</p>
-                            </div>
+                            </div> -->
                             <div class="flex mt-2">
                                 <i class="fa-solid fa-shop fa-2xl mt-5 text-green-700"></i>
                                 <p class="font-bold px-2 mb-5 text-sm ">¡También puedes comprarlo y recogerlo en nuestras Librerías!</p>
