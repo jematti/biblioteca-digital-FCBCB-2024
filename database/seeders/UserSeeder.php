@@ -36,6 +36,22 @@ class UserSeeder extends Seeder
         ])->assignRole('admin');
 
         User::create([
+            'name' => 'Sergio Daniel Aramayo Villarroel',
+            'email' => 'saramayo@fundacionculturalbcb.gob.bo',
+            'email_verified_at' => now(),
+            'password' => Hash::make('saramayo'), // password
+            'remember_token' => Str::random(10),
+        ])->assignRole('admin_tienda');
+
+        User::create([
+            'name' => 'Estefani Huiza Fernández',
+            'email' => 'ehuiza@fundacionculturalbcb.gob.bo',
+            'email_verified_at' => now(),
+            'password' => Hash::make('ehuiza100'), // password
+            'remember_token' => Str::random(10),
+        ])->assignRole('admin_tienda');
+
+        User::create([
             'name' => 'usuario_prueba',
             'email' => 'p1@p1.com',
             'email_verified_at' => now(),
