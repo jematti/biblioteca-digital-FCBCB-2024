@@ -217,7 +217,7 @@
             {{-- inicio y registro de sesion --}}
             <div class="p-2 ">
                 <a class="text-center text-sm mt-1 block px-3 py-2 rounded-md bg-white text-black font-semibold focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out" href="{{ route('login') }}"> <i class="fa-solid fa-right-to-bracket"></i> INGRESA</a>
-                <a class="text-center text-sm mt-1 block px-3 py-2 rounded-md bg-blue-400 text-white font-semibold focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out" href="{{ route('register') }}"><i class="fa-regular fa-address-card"></i> REGISTRATE</a>
+                <!-- <a class="text-center text-sm mt-1 block px-3 py-2 rounded-md bg-blue-400 text-white font-semibold focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out" href="{{ route('register') }}"><i class="fa-regular fa-address-card"></i> REGISTRATE</a> -->
             </div>
             @endguest
         </div>

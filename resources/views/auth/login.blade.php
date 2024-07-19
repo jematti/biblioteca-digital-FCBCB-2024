@@ -64,10 +64,10 @@
                         </label>
                     </div>
 
-                    <div class="flex justify-between my-5">
+                    <!-- <div class="flex justify-between my-5">
                         <a class="underline text-sm text-gray-600  hover:text-gray-900" href='{{ route('register') }}'>Crear Cuenta</a>
                         <a class="underline text-sm text-gray-600  hover:text-gray-900" href='{{ route('password.request') }}'>Olvidaste tu Password</a>
-                    </div>
+                    </div> -->
 
                     <input
                         id="submit"
