@@ -7,12 +7,12 @@
         {{-- menu usuario --}}
         @can('nav.users')
         <div class="hidden md:flex w-72 flex-col space-y-2 border-r-2 border-gray-300 bg-white p-2" style="height: 90.5vh">
-            <a href="{{ route('orders.index') }}" class="flex items-center space-x-1 rounded-md px-2 py-3 hover:bg-gray-100 hover:text-blue-600">
+            {{-- <a href="{{ route('orders.index') }}" class="flex items-center space-x-1 rounded-md px-2 py-3 hover:bg-gray-100 hover:text-blue-600">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                 </svg>
                 <span>Ordenes</span>
-            </a>
+            </a> --}}
             <a href="{{ route('perfil.index') }}" class="flex items-center space-x-1 rounded-md px-2 py-3 hover:bg-gray-100 hover:text-blue-600">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -26,13 +26,13 @@
                 <span>Cambiar Contraseña</span>
             </a>
             <a href="{{ route('notification') }}" class="flex items-center space-x-1 rounded-md px-2 py-3 hover:bg-gray-100 hover:text-blue-600">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                {{-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
                 </svg>
                 <span>Notificaciones </span>
                 <span class="ml-2 w-6 h-6 bg-red-500 hover:bg-red-700 rounded-full flex flex-col justify-center items-center text-sm font-bold text-white ">
                     {{ Auth::user()->unreadNotifications->count() }}
-                </span>
+                </span> --}}
             </a>
         </div>
         @endcan
@@ -59,7 +59,7 @@
             @endcan
 
             @can('admin.orders.index')
-            <a href="{{ route('notification') }}" class="flex items-center space-x-1 rounded-md px-2 py-1 hover:bg-gray-100 hover:text-blue-600">
+            {{-- <a href="{{ route('notification') }}" class="flex items-center space-x-1 rounded-md px-2 py-1 hover:bg-gray-100 hover:text-blue-600">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
                 </svg>
@@ -74,7 +74,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                 </svg>
                 <span>Pedidos</span>
-            </a>
+            </a> --}}
             @endcan
 
             @can('admin.repositories.index')
@@ -177,7 +177,7 @@
                 <div x-data="{ activeAccordion: true}">
                     <h3>
                         @canany(['admin.reports.orders','admin.reports.sales'])
-                        <button @click="activeAccordion = !activeAccordion" class="flex items-center w-full p-1 text-white bg-custom-100 rounded-lg">
+                        {{-- <button @click="activeAccordion = !activeAccordion" class="flex items-center w-full p-1 text-white bg-custom-100 rounded-lg">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
                             </svg>
@@ -188,27 +188,27 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
                                 </svg>
                             </span>
-                        </button>
+                        </button> --}}
                         @endcanany
 
                     </h3>
 
                     <div x-show="activeAccordion" x-collapse class="mt-4">
                         @can('admin.reports.orders')
-                        <a href="{{ route('report_order.pdf') }}" class="flex items-center space-x-1 rounded-md pl-5 py-1 hover:bg-gray-100 hover:text-blue-600">
+                        {{-- <a href="{{ route('report_order.pdf') }}" class="flex items-center space-x-1 rounded-md pl-5 py-1 hover:bg-gray-100 hover:text-blue-600">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
                             </svg>
                             <span>Reporte Ordenes de Compra</span>
-                        </a>
+                        </a> --}}
                         @endcan
                         @can('admin.reports.sales')
-                        <a href="{{ route('report_sale.pdf') }}" class="flex items-center space-x-1 rounded-md pl-5 py-1 hover:bg-gray-100 hover:text-blue-600">
+                        {{-- <a href="{{ route('report_sale.pdf') }}" class="flex items-center space-x-1 rounded-md pl-5 py-1 hover:bg-gray-100 hover:text-blue-600">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
                             </svg>
                             <span>Reporte Ventas</span>
-                        </a>
+                        </a> --}}
                         @endcan
                     </div>
                 </div>

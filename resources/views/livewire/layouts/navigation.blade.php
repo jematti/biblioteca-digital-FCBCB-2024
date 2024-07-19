@@ -82,9 +82,9 @@
 
                             <button onclick="location.href = '{{ route('notification') }}'" class="flex items-center w-1/2 px-3 py-1 mx-1 rounded text-center text-sm bg-white font-medium text-black leading-5 hover:bg-gray-600 hover:text-white md:mx-2 md:w-auto">
                                 Hola: {{auth()->user()->name}}
-                                <span class="ml-2 w-6 h-6 bg-red-500 hover:bg-red-700 rounded-full flex flex-col justify-center items-center text-sm font-bold text-white ">
+                                {{-- <span class="ml-2 w-6 h-6 bg-red-500 hover:bg-red-700 rounded-full flex flex-col justify-center items-center text-sm font-bold text-white ">
                                     {{ Auth::user()->unreadNotifications->count() }}
-                                </span>
+                                </span> --}}
                             </button>
 
                             @else
