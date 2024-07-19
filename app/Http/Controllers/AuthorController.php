@@ -31,10 +31,15 @@ class AuthorController extends Controller
     {
         $data = $request->validate([
             'nombre_autor' => 'required|unique:authors|max:255',
-            'biografia' => 'required'
+            'biografia' => 'nullable'
+            //'biografia' => 'required'
         ]);
 
-        Author::create($request->all());
+        // Si biografia es null, se asigna un valor predeterminado vacío
+        $data['biografia'] = $data['biografia'] ?? '';
+
+        Author::create($data);
+        //Author::create($request->all());
 
         return redirect()->route('author.index')
                          ->with('store','ok');
@@ -57,7 +62,8 @@ class AuthorController extends Controller
     {
         $request->validate([
             'nombre_autor' => 'required',
-            'biografia' => 'required'
+            'biografia' => 'nullable'
+            //'biografia' => 'required'
         ]);
 
         $author->update($request->all());

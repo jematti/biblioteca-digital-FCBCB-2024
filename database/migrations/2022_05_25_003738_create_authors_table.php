@@ -17,7 +17,7 @@ return new class extends Migration
         Schema::create('authors', function (Blueprint $table) {
             $table->id();
             $table->string('nombre_autor');
-            $table->text('biografia');
+            $table->text('biografia')->nullable();
             $table->enum('habilitado', [Author::HABILITADO,Author::INHABILITADO])->default(Author::HABILITADO);
             $table->timestamps();
         });

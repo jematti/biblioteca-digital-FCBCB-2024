@@ -3,6 +3,7 @@
 /public/storage
 /public/depositos
 /public/build
+/public/uploads
 /storage/*.key
 /vendor
 .env
@@ -16,3 +17,5 @@ yarn-error.log
 /.vscode
 /depositos
 /resources/views/pruebas
+package-lock.json
+composer.lock
