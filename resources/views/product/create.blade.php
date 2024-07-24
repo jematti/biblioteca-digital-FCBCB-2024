@@ -21,12 +21,16 @@
                 @csrf
             </form>
         </div>
+        
+        
     </div>
     {{-- fin imagen del Producto --}}
 
+    
+
     {{-- formulario de añadir Producto --}}
     <div class="mx-3 my-6 flex-1">
-        <form action="{{ route('products.store') }}" method="POST" class="w-full " novalidate>
+        <form action="{{ route('products.store') }}" method="POST" class="w-full " enctype="multipart/form-data" novalidate>
             @csrf
             {{-- input imagen --}}
             <div>
@@ -36,6 +40,18 @@
                 <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
                 @enderror
             </div>
+
+            {{-- añadir PDF del Producto --}}
+        <div class="px-3">
+            <label class="mb-2 block uppercase text-gray-500 font-bold">
+                Archivo PDF del Producto
+            </label>
+            <input type="file" name="pdf" id="pdf" class="border border-gray-200 p-2 w-full rounded" accept=".pdf">
+            @error('pdf')
+            <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
+            @enderror
+        </div>
+        {{-- fin añadir PDF del Producto --}}
 
             <div class="lg:grid lg:grid-cols-4 gap-5">
                 <div class="col-span-2">

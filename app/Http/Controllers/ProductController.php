@@ -56,7 +56,14 @@ class ProductController extends Controller
             'author' => 'required',
             'category'=> 'required',
             'ubicacion'=> 'required',
+            'pdf' => 'required|mimes:pdf|max:2048'
         ]);
+
+        // Guardar el PDF
+        if($request->hasFile('pdf')) {
+            $pdfName = time().'.'.$request->pdf->extension();
+            $request->pdf->move(public_path('pdfs'), $pdfName);
+        }
 
         //creacion de un nuevo libro y recibiendo datos de la vista usan las variables de request
         $product = new Product;
@@ -77,8 +84,9 @@ class ProductController extends Controller
         $product->author_id = $request->author;
         $product->category_id = $request->category;
         $product->repository_id = $request->ubicacion;
+        $product->pdf = $pdfName;
+        
         $product->save();
-
         return redirect()->route('products.index')->with('store','ok');
     }
 
