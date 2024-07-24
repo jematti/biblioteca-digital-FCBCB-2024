@@ -5,6 +5,26 @@
 {{-- mostrar estilos de dropzone solo en esta vista --}}
 @push('styles')
 <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+<style>
+    /* Estilos adicionales para ajustar el tamaño de la imagen */
+    .dropzone img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: cover;
+    }
+
+    .dropzone {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    .dropzone .dz-preview .dz-image {
+        max-width: 100%;
+        max-height: 100%;
+    }
+</style>
 @endpush
 
 <h2 class="bg-custom-100 text-white uppercase text-lg rounded-lg p-4 text-center font-bold ">Editar Producto</h2>
