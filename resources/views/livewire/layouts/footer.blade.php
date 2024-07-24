@@ -124,14 +124,16 @@
                             <span><i class="fab fa-youtube"></i></span>
                         </div>
                     </a>
-                    <a href="https://play.google.com/store/apps/details?id=com.app.museos_app" target="_blank" class="shadow-xl rounded-xl">
+
+                    <!-- icono y enlace de la aplicación wayruru -->
+                    <!-- <a href="https://play.google.com/store/apps/details?id=com.app.museos_app" target="_blank" class="shadow-xl rounded-xl">
                         <p class="mx-1 font-bold w-56 text-sm">¡Descarga Nuestra App Movil!</p>
                         <div class="flex items-center">
                             <img class="rounded-xl h-24 px-2 align-middle w-28 " alt="imagen de aplicacion wayruru" src="{{ asset('img/iconowayruru.png')}}">
 
                             <img class="rounded-xl h-24 px-2 align-middle w-24 " alt="codigo QR aplicacion wayruru" src="{{ asset('img/app-wayruru-qr.png')}}">
                         </div>
-                    </a>
+                    </a> -->
 
                 </div>
             </div>
@@ -142,17 +144,24 @@
             {{-- seccion de comentario de footer     --}}
             <div class="pt-8 mt-2 border-t border-white/10">
                 <p class="text-base leading-relaxed text-center text-black">
-                    © Company 2022. All rights reserved.
+                    © <span id="company-year"></span> FC BCB. Todos los derechos reservados.
 
-                    <br />
-
+                    <!-- <br />
                     Created with
                     <a href="" class="underline transition hover:text-white">Laravel</a> and
-                    <a href="" class="underline transition hover:text-white">Laravel Livewire</a>.
+                    <a href="" class="underline transition hover:text-white">Laravel Livewire</a>. -->
                 </p>
             </div>
     </footer>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const yearElement = document.getElementById('company-year');
+        const currentYear = new Date().getFullYear();
+        yearElement.textContent = currentYear;
+    });
+</script>
 <style>
     .icons_container {
         display: inline-flex;
