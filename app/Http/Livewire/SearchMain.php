@@ -34,9 +34,10 @@ class SearchMain extends Component
             //                 ->get();
 
             //busqueda solo titulos
-            $products = product::where('titulo','LIKE',"%". $this->search_main ."%")
-                           ->take(8)
-                           ->get();
+            $products = Product::where('habilitado', 1)  // Filtrar productos habilitados
+            ->where('titulo', 'LIKE', "%" . $this->search_main . "%")
+            ->take(8)
+            ->get();
 
         }
         else{

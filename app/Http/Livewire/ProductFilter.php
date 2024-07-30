@@ -29,11 +29,12 @@ class ProductFilter extends Component
 
     public function render()
     {
-        $productsQuery = Product::query();
-        $categories = Category::all();
+        $productsQuery = Product::where('habilitado', 1);
+        // Cambiar esta línea
+        $categories = Category::where('habilitado', 1)->get();
 
-        $authors = Author::all();
-        $repositories = Repository::all();
+        $authors = Author::where('habilitado', 1)->get();
+        $repositories = Repository::where('habilitado', 1)->get();
 
         //filtro para categorias
         if ($this->category) {
