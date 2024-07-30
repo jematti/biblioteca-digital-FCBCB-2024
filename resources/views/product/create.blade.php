@@ -41,18 +41,6 @@
                 @enderror
             </div>
 
-            {{-- añadir PDF del Producto --}}
-        <div class="px-3">
-            <label class="mb-2 block uppercase text-gray-500 font-bold">
-                Archivo PDF del Producto
-            </label>
-            <input type="file" name="pdf" id="pdf" class="border border-gray-200 p-2 w-full rounded" accept=".pdf">
-            @error('pdf')
-            <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
-            @enderror
-        </div>
-        {{-- fin añadir PDF del Producto --}}
-
             <div class="lg:grid lg:grid-cols-4 gap-5">
                 <div class="col-span-2">
                     {{-- titulo/nombre del Producto --}}
@@ -119,6 +107,20 @@
                         </div>
                     </div>
 
+                    {{-- añadir PDF del Producto --}}
+                    <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="w-full px-3">
+                            <label class="mb-2 block text-gray-500 font-bold">
+                                Archivo PDF del Producto (*opcional)
+                            </label>
+                            <input type="file" name="pdf" id="pdf" class="border border-gray-200 p-2 w-full rounded" accept=".pdf">
+                            @error('pdf')
+                            <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
+                            @enderror
+                        </div>
+                    </div>
+                    {{-- fin añadir PDF del Producto --}}
+                    
                     {{-- ubicacion del Producto (repositorios) --}}
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full px-3">

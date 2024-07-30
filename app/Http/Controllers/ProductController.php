@@ -37,8 +37,8 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-          //validacion de los inputs de la vista create de seccion "product"
-          $this->validate($request,[
+        // Validación de los inputs de la vista create de seccion "product"
+        $this->validate($request, [
             'titulo' => 'required|max:255',
             'edicion' => 'required',
             'numero_paginas' => 'required|numeric|regex:/^\d+$/',
@@ -56,16 +56,9 @@ class ProductController extends Controller
             'author' => 'required',
             'category'=> 'required',
             'ubicacion'=> 'required',
-            'pdf' => 'required|mimes:pdf|max:2048'
+            //'pdf' => 'nullable|mimes:pdf|max:2048' // PDF es opcional
         ]);
 
-        // Guardar el PDF
-        if($request->hasFile('pdf')) {
-            $pdfName = time().'.'.$request->pdf->extension();
-            $request->pdf->move(public_path('pdfs'), $pdfName);
-        }
-
-        //creacion de un nuevo libro y recibiendo datos de la vista usan las variables de request
         $product = new Product;
         $product->titulo = $request->titulo;
         $product->edicion = $request->edicion;
@@ -84,11 +77,18 @@ class ProductController extends Controller
         $product->author_id = $request->author;
         $product->category_id = $request->category;
         $product->repository_id = $request->ubicacion;
-        $product->pdf = $pdfName;
-        
+
+        // Guardar el PDF si se subió
+        if($request->hasFile('pdf')) {
+            $pdfName = time().'.'.$request->pdf->extension();
+            $request->pdf->move(public_path('pdfs'), $pdfName);
+            $product->pdf = 'pdfs/'.$pdfName;
+        }
+
         $product->save();
-        return redirect()->route('products.index')->with('store','ok');
+        return redirect()->route('products.index')->with('store', 'ok');
     }
+
 
     public function show(Product $product)
     {
@@ -112,8 +112,8 @@ class ProductController extends Controller
 
     public function update(Request $request, Product $product)
     {
-         //validacion de los inputs de la vista create de seccion "product"
-         $this->validate($request,[
+        // Validación de los inputs de la vista create de sección "product"
+        $this->validate($request, [
             'titulo' => 'required|max:255',
             'edicion' => 'required',
             'numero_paginas' => 'required|numeric|regex:/^\d+$/',
@@ -122,18 +122,30 @@ class ProductController extends Controller
             'resumen' => 'required',
             'imagen' => 'required',
             'precio' => 'required|numeric|regex:/^[\d]{0,11}(\.[\d]{1,2})?$/',
-            'cantidad'=> 'required|numeric|regex:/^\d+$/',
+            'cantidad' => 'required|numeric|regex:/^\d+$/',
             'isbn',
             'ancho',
             'alto',
             'peso',
             'grueso',
             'author' => 'required',
-            'category'=> 'required',
-            'ubicacion'=> 'required',
+            'category' => 'required',
+            'ubicacion' => 'required',
         ]);
 
-        //editar producto y recibiendo datos de la vista
+        // Editar producto y recibiendo datos de la vista
+        if($request->hasFile('pdf')) {
+            // Eliminar el PDF antiguo si existe
+            if ($product->pdf && file_exists(public_path($product->pdf))) {
+                unlink(public_path($product->pdf));
+            }
+
+            $pdfName = time().'.'.$request->pdf->extension();
+            $request->pdf->move(public_path('pdfs'), $pdfName);
+
+            // Actualizar el nombre del PDF en la base de datos
+            $product->pdf = 'pdfs/'.$pdfName;
+        }
 
         $product->titulo = $request->titulo;
         $product->edicion = $request->edicion;
@@ -147,8 +159,8 @@ class ProductController extends Controller
         $product->isbn = $request->isbn;
         $product->ancho = $request->ancho;
         $product->alto = $request->alto;
-        $product->peso= $request->peso;
-        $product->grueso= $request->grueso;
+        $product->peso = $request->peso;
+        $product->grueso = $request->grueso;
         $product->author_id = $request->author;
         $product->category_id = $request->category;
         $product->repository_id = $request->ubicacion;
@@ -157,6 +169,13 @@ class ProductController extends Controller
         return redirect()->route('products.index')->with('update','ok');
     }
 
+    public function download($id)
+    {
+        $product = Product::findOrFail($id);
+        $filePath = public_path($product->pdf);
+
+        return response()->download($filePath);
+    }
     public function destroy(Product $product)
     {
         $product->habilitado = '0';

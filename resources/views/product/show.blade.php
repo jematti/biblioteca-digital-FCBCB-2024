@@ -67,6 +67,14 @@
                                     {{ $product->repository->ciudad}}
                                 </button>
                             </div>
+                            @if ($product->pdf)
+                                <div class="mt-4">
+                                    <a href="{{ route('products.download', $product->id) }}" class="bg-blue-600 text-white font-bold uppercase text-sm px-3 py-3 rounded-lg shadow mr-1 mb-1" type="button">
+                                        <i class="fa-solid fa-file-pdf px-1"></i>
+                                        Descargar PDF
+                                    </a>
+                                </div>
+                            @endif
                         </div>
                     </div>
                     {{-- fin de seccion de informacion de envio --}}

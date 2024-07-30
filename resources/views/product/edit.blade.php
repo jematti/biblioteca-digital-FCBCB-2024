@@ -48,7 +48,7 @@
 
     {{-- formulario de añadir libro --}}
     <div class="mx-3 my-6 flex-1">
-        <form action="{{ route('products.update', ['product' => $product->id]) }}" method="POST" class="w-full actualizar" novalidate>
+        <form action="{{ route('products.update', ['product' => $product->id]) }}" method="POST" class="w-full actualizar" enctype="multipart/form-data" novalidate>
             @csrf
             @method('PUT')
 
@@ -57,6 +57,17 @@
                 <input type="hidden" name="imagen" id="imagen" value="{{ $product->imagen }}">
 
                 @error('imagen')
+                <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
+                @enderror
+            </div>
+
+            {{-- añadir PDF del Producto --}}
+            <div class="px-3">
+                <label class="mb-2 block uppercase text-gray-500 font-bold">
+                    Archivo PDF del Producto
+                </label>
+                <input type="file" name="pdf" id="pdf" class="border border-gray-200 p-2 w-full rounded" accept=".pdf">
+                @error('pdf')
                 <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">{{$message}}</p>
                 @enderror
             </div>

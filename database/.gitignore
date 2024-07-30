@@ -1,2 +1,3 @@
 *.sqlite*
 /public/uploads
+/public/pdfs

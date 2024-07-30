@@ -105,6 +105,9 @@ Route::resource('author', AuthorController::class);
 Route::resource('products', ProductController::class);
 //CRUD Repositorios
 Route::resource('repository', RepositoryController::class);
+//ruta para descargar pdf de los productos
+Route::get('/products/download/{id}', [ProductController::class, 'download'])->name('products.download');
+
 //Filtro de busqueda
 Route::resource('filter', FilterController::class);
 //Ruta de la Barra de Busqueda Principal Busqueda
